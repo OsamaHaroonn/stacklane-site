@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free invoice generator — no signup</title>
+<meta name="description" content="Create an invoice in your browser. Line items, tax, discounts and totals recalculate instantly. Autosaves locally, prints to PDF. Nothing is uploaded.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav class="nav no-print">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">Stack<span>lane</span></a>
+    <div class="nav-links">
+      <a href="calculator.html">Pricing calculator</a>
+      <a href="product.html" class="hide-sm">Product</a>
+      <a class="btn btn-secondary" href="index.html#contact">Get a quote</a>
+    </div>
+  </div>
+</nav>
+
+<section style="padding-top:2.5rem">
+  <div class="wrap">
+    <span class="eyebrow">Free tool · runs in your browser</span>
+    <h1 style="font-size:clamp(1.7rem,3.6vw,2.5rem)">Invoice generator</h1>
+    <p class="lede">Add your details and line items. Totals calculate instantly, your draft autosaves on this device, and you can print or save it as a PDF. Nothing is uploaded anywhere.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap app">
+
+    <!-- ============ LEFT: editable invoice ============ -->
+    <div class="panel">
+      <div class="field-row">
+        <div class="field">
+          <label for="from-name">From (your name / business)</label>
+          <input id="from-name" type="text" placeholder="Doe Plumbing Ltd">
+        </div>
+        <div class="field">
+          <label for="from-contact">Your email or phone</label>
+          <input id="from-contact" type="text" placeholder="jane@example.com">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="to-name">Bill to (client name)</label>
+          <input id="to-name" type="text" placeholder="Acme Retail">
+        </div>
+        <div class="field">
+          <label for="to-contact">Client email or address</label>
+          <input id="to-contact" type="text" placeholder="accounts@acme.com">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="inv-number">Invoice number</label>
+          <input id="inv-number" type="text" placeholder="INV-001">
+        </div>
+        <div class="field">
+          <label for="inv-date">Issue date</label>
+          <input id="inv-date" type="date">
+        </div>
+        <div class="field">
+          <label for="inv-due">Due date</label>
+          <input id="inv-due" type="date">
+        </div>
+      </div>
+
+      <h3 style="margin-top:1.75rem">Line items</h3>
+      <table class="table" id="items-table">
+        <thead>
+          <tr>
+            <th style="width:46%">Description</th>
+            <th class="num" style="width:13%">Qty</th>
+            <th class="num" style="width:20%">Rate</th>
+            <th class="num" style="width:18%">Amount</th>
+            <th class="no-print" style="width:36px"></th>
+          </tr>
+        </thead>
+        <tbody id="items-body"><!-- rows injected --></tbody>
+      </table>
+
+      <div class="tool-actions">
+        <button class="btn btn-secondary" id="add-item" type="button">+ Add line item</button>
+        <button class="btn btn-ghost no-print" id="reset-all" type="button">Clear invoice</button>
+      </div>
+
+      <div class="field" style="margin-top:1.75rem">
+        <label for="notes">Notes / payment terms</label>
+        <textarea id="notes" placeholder="Thank you for your business. Payment due within 14 days by bank transfer."></textarea>
+      </div>
+    </div>
+
+    <!-- ============ RIGHT: live totals ============ -->
+    <aside class="app-side">
+      <div class="panel">
+        <span class="badge">Live total</span>
+        <div class="totals">
+          <div class="row"><span>Subtotal</span><span id="t-subtotal">$0.00</span></div>
+          <div class="row">
+            <span>Discount</span>
+            <span>
+              <input id="discount" type="number" min="0" step="0.01" value="0"
+                     style="width:88px;text-align:right;display:inline-block" aria-label="Discount">
+              %
+            </span>
+          </div>
+          <div class="row">
+            <span>Tax (VAT)</span>
+            <span>
+              <input id="tax" type="number" min="0" step="0.01" value="20"
+                     style="width:88px;text-align:right;display:inline-block" aria-label="Tax rate">
+              %
+            </span>
+          </div>
+          <div class="row grand"><span>Total due</span><span id="t-total">$0.00</span></div>
+        </div>
+
+        <div class="tool-actions no-print">
+          <button class="btn" id="print-btn" type="button">Print / Save as PDF</button>
+        </div>
+        <p class="form-note no-print">
+          Draft saves automatically in this browser only. Use <strong>Print → Save as PDF</strong> to keep a copy or send it to a client.
+        </p>
+      </div>
+
+      <div class="panel no-print" style="margin-top:1.25rem">
+        <span class="badge badge-warn">Need this automated?</span>
+        <p style="font-size:.93rem;color:var(--ink-soft);margin-bottom:.9rem">
+          If you're still building invoices by hand every week, that's the kind of admin I automate for businesses.
+        </p>
+        <a class="btn btn-secondary btn-block" href="index.html#contact">Ask about automation</a>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<footer class="no-print">
+  <div class="wrap footer-inner">
+    <div>© <span id="year">2026</span> Stacklane · Free tool, no signup, no tracking.</div>
+    <div><a href="index.html">Home</a> · <a href="calculator.html">Pricing calculator</a> · <a href="product.html">Product</a></div>
+  </div>
+</footer>
+
+<script src="assets/invoice.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job pricing calculator — what should you charge?</title>
+<meta name="description" content="Free calculator: work out what to charge for a job from your costs, your hours and the margin you want. Updates instantly, runs in your browser.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">Stack<span>lane</span></a>
+    <div class="nav-links">
+      <a href="invoice.html">Invoice tool</a>
+      <a href="product.html" class="hide-sm">Product</a>
+      <a class="btn btn-secondary" href="index.html#contact">Get a quote</a>
+    </div>
+  </div>
+</nav>
+
+<section style="padding-top:2.5rem">
+  <div class="wrap">
+    <span class="eyebrow">Free tool · runs in your browser</span>
+    <h1 style="font-size:clamp(1.7rem,3.6vw,2.5rem)">Job pricing calculator</h1>
+    <p class="lede">Most people price by guessing, then feel guilty about the number. Start from your real costs, decide your margin on purpose, and see what you should actually charge.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap app">
+
+    <div class="panel">
+      <div class="field-row">
+        <div class="field">
+          <label for="hours">Hours the job will take</label>
+          <input id="hours" type="number" min="0" step="0.5" value="8">
+        </div>
+        <div class="field">
+          <label for="rate">What you need to earn per hour ($)</label>
+          <input id="rate" type="number" min="0" step="1" value="40">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="materials">Materials / direct costs ($)</label>
+          <input id="materials" type="number" min="0" step="1" value="150">
+        </div>
+        <div class="field">
+          <label for="overhead">Overhead share ($ per job)</label>
+          <input id="overhead" type="number" min="0" step="1" value="60">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="margin">Margin on top (%)</label>
+          <input id="margin" type="number" min="0" step="1" value="25">
+        </div>
+        <div class="field">
+          <label for="competitor">What the market charges ($)</label>
+          <input id="competitor" type="number" min="0" step="1" placeholder="optional">
+        </div>
+      </div>
+
+      <div class="alert alert-info" style="margin-top:1.5rem;margin-bottom:0">
+        <strong>Overhead</strong> is your share of the costs that exist whether or not you win the job:
+        software, insurance, phone, travel, accounting. Divide your monthly overhead by the jobs you
+        expect each month.
+      </div>
+    </div>
+
+    <aside class="app-side">
+      <div class="panel">
+        <span class="badge">Your price</span>
+        <div class="totals">
+          <div class="row"><span>Labour</span><span id="o-labour">$0.00</span></div>
+          <div class="row"><span>Materials</span><span id="o-materials">$0.00</span></div>
+          <div class="row"><span>Overhead</span><span id="o-overhead">$0.00</span></div>
+          <div class="row"><span>Break-even</span><span id="o-breve">$0.00</span></div>
+          <div class="row"><span>Margin</span><span id="o-margin">$0.00</span></div>
+          <div class="row grand"><span>Charge</span><span id="o-price">$0.00</span></div>
+        </div>
+        <p class="form-note" id="verdict">Fill the fields to see your price.</p>
+      </div>
+
+      <div class="panel" style="margin-top:1.25rem">
+        <span class="badge badge-good">Sanity check</span>
+        <div class="totals">
+          <div class="row"><span>Effective hourly rate</span><span id="o-effective">$0.00</span></div>
+          <div class="row"><span>Per-minute rate</span><span id="o-minute">$0.00</span></div>
+        </div>
+        <p class="form-note">If the effective rate is below what you need per hour, the job is underpriced — even if the total looks big.</p>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<section class="section-soft">
+  <div class="narrow">
+    <span class="eyebrow">Next step</span>
+    <h2>Know the number. Now send it without flinching.</h2>
+    <p class="lede">Build the quote properly and invoice it in seconds with the free generator.</p>
+    <div class="btn-row">
+      <a class="btn" href="invoice.html">Open the invoice generator</a>
+      <a class="btn btn-secondary" href="product.html">See the business kit</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span id="year">2026</span> Stacklane · Free tool, no signup, no tracking.</div>
+    <div><a href="index.html">Home</a> · <a href="invoice.html">Invoice tool</a> · <a href="product.html">Product</a></div>
+  </div>
+</footer>
+
+<script src="assets/calculator.js"></script>
+</body>
+</html>
