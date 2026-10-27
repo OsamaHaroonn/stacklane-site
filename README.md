@@ -55,6 +55,18 @@ Until `CHECKOUT_URL` is set, the buy button shows a setup notice instead of a br
 
 **Payments:** create a free Stripe Payment Link at https://dashboard.stripe.com/payment-links and paste it in. That's the whole integration — no server, no keys in the browser.
 
+### 3. Deliver the kit automatically
+
+The kit lives at `kit.html` and the delivery page at `thank-you.html`. On your Stripe Payment Link, set **Confirmation page → Redirect to your website** to:
+
+```
+https://osamaharoonn.github.io/stacklane-site/thank-you.html
+```
+
+The buyer lands there straight after paying, with the kit one click away.
+
+> **Honest caveat:** GitHub Pages is static, so `thank-you.html` is reachable by anyone who knows the URL. The kit page ships `noindex` so it stays out of search engines, which is fine while you're starting. If you want real gating, upload the kit to a delivery platform (Gumroad, Lemon Squeezy) and point `CHECKOUT_URL` at their checkout instead — they handle both payment and delivery.
+
 ### 3. Deploy
 
 **Option A — GitHub Pages (free, matches "put it on my GitHub")**
@@ -75,9 +87,12 @@ Drag the folder into Netlify, Cloudflare Pages, or Vercel. All are free for this
 ## File map
 
 ```
-index.html          Landing page (offer, demos, pricing, quote form)
+index.html          Landing page (offer, demos, leak bridge, pricing, quote form)
 invoice.html        Free tool #1 — invoice generator (fully working)
 calculator.html     Free tool #2 — job pricing calculator (fully working)
+loss-calculator.html Free tool #3 — the bridge to the automation offer
+kit.html            THE PRODUCT — six real template packs, printable
+thank-you.html      Post-payment delivery page for the kit
 product.html        Paid product page (income layer)
 robots.txt          Crawl rules
 sitemap.xml         Index of the four pages
@@ -85,6 +100,8 @@ assets/style.css    Shared design system + print stylesheet
 assets/invoice.js   Invoice maths, autosave, PDF printing
 assets/calculator.js Pricing maths and verdicts
 assets/site.js      Quote form, fallback contact path, config-driven links
+assets/loss.js      Leak calculator maths + adaptive messaging
+assets/kit.js       Kit print button
 assets/product.js   Checkout button and setup states
 assets/store.js     ← ALL site configuration lives here
 assets/favicon.svg  Site icon
