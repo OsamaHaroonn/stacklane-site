@@ -230,6 +230,39 @@ textarea { resize: vertical; min-height: 110px; }
 .table .num { text-align: right; }
 .table .amount-cell { text-align: right; font-family: var(--mono); white-space: nowrap; padding-top: .85rem; }
 
+/* Line items stack into cards on small screens so every field is
+   actually typable with a thumb instead of a 26px-wide box. */
+@media (max-width: 700px) {
+  .table thead { display: none; }
+  .table, .table tbody, .table tr, .table td { display: block; width: 100%; }
+  .table tr {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: .75rem .85rem;
+    margin-bottom: .8rem;
+    background: #fff;
+  }
+  .table td { border-bottom: none; padding: .35rem 0; }
+  .table td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: .2rem;
+  }
+  .table input { font-size: 16px; min-height: 44px; }
+  .table .icon-btn { width: 100%; min-height: 42px; margin-top: .4rem; }
+  .table .amount-cell {
+    text-align: right;
+    padding-top: .5rem;
+    margin-top: .3rem;
+    border-top: 1px dashed var(--line);
+  }
+}
+
 /* ---------- App layout (tools) ---------- */
 .app { display: grid; grid-template-columns: 1.55fr .95fr; gap: 1.5rem; align-items: start; }
 .app-side { position: sticky; top: 84px; }

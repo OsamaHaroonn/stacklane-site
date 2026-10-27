@@ -31,28 +31,29 @@ python3 -m http.server 8080
 
 ---
 
-## Make it yours (5 minutes of editing)
+## Make it yours (5 minutes of editing)### 1. Brand and copy
 
-### 1. Brand and copy
 Search and replace `Stacklane` with your business name, then edit:
-- `hello@example.com` — your email (appears in [index.html](index.html), [assets/store.js](assets/store.js))
+
+- Your email, WhatsApp and booking link → `assets/store.js` only (it drives every page)
 - Prices and service descriptions in `index.html`
-- Product name, price and copy in `product.html`
+- Product name, price and copy in `product.html`### 2. Set your details — the required change
 
-### 2. Turn on payments — the only required change
-The buy button is wired up but points at no payment provider yet, so it shows a setup notice instead of a broken checkout.
-
-1. Create a free Stripe account and a **Payment Link**: https://dashboard.stripe.com/payment-links
-2. Paste it into [assets/store.js](assets/store.js):
+Everything configurable lives in one file, [assets/store.js](assets/store.js):
 
 ```js
 window.STORE = {
-  CHECKOUT_URL: 'https://buy.stripe.com/your-link',
-  CONTACT_EMAIL: 'you@example.com'
+  CHECKOUT_URL: '',     // Stripe Payment Link — turns "Buy now" into a real checkout
+  CONTACT_EMAIL: '',    // your real address; fills every email link on the site
+  WHATSAPP: '',         // '15551234567' — adds a WhatsApp button to the contact panel
+  BOOKING_URL: '',      // e.g. 'https://cal.com/you/15min' — adds a booking button
+  FORM_ENDPOINT: ''     // optional: Formspree/Web3Forms URL to POST the quote form
 };
 ```
 
-That's the whole integration — no server, no keys in the browser, no code.
+Until `CHECKOUT_URL` is set, the buy button shows a setup notice instead of a broken checkout, and the quote form falls back to **email + visible message + copy button + WhatsApp** so a lead is never silently lost.
+
+**Payments:** create a free Stripe Payment Link at https://dashboard.stripe.com/payment-links and paste it in. That's the whole integration — no server, no keys in the browser.
 
 ### 3. Deploy
 
@@ -74,15 +75,21 @@ Drag the folder into Netlify, Cloudflare Pages, or Vercel. All are free for this
 ## File map
 
 ```
-index.html          Landing page (Track A offer, demos, pricing, quote form)
+index.html          Landing page (offer, demos, pricing, quote form)
 invoice.html        Free tool #1 — invoice generator (fully working)
 calculator.html     Free tool #2 — job pricing calculator (fully working)
-product.html        Paid product page (Track B income layer)
+product.html        Paid product page (income layer)
+robots.txt          Crawl rules
+sitemap.xml         Index of the four pages
 assets/style.css    Shared design system + print stylesheet
 assets/invoice.js   Invoice maths, autosave, PDF printing
 assets/calculator.js Pricing maths and verdicts
-assets/store.js     ← your payment link goes here
+assets/site.js      Quote form, fallback contact path, config-driven links
+assets/product.js   Checkout button and setup states
+assets/store.js     ← ALL site configuration lives here
+assets/favicon.svg  Site icon
 BUSINESS-PLAN.md    The strategy this site executes
+ACTION-PLAN.md      The step-by-step execution plan
 ```
 
 ---
@@ -90,7 +97,9 @@ BUSINESS-PLAN.md    The strategy this site executes
 ## Design notes
 
 - **Zero dependencies** — nothing to audit, nothing to break, no npm install.
-- **No tracking, no data collection** — the quote form never leaves the device; tool drafts stay in `localStorage`.
+- **No tracking, no data collection** — the quote form never leaves the device; tool drafts stay in `localStorage` and **expire after 7 days** because they hold client details.
+- **Strict Content-Security-Policy** on every page (`script-src 'self'` — no inline script anywhere).
+- **SEO-ready** — canonical, Open Graph and Twitter tags per page, `robots.txt`, `sitemap.xml`, one `h1` per page, every field labelled.
 - **Responsive** — single column under 860px, sticky summary panels on desktop.
 - **Print stylesheet** — the invoice prints as a clean document; nav, buttons and footer are hidden.
 

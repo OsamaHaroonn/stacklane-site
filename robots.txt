@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://osamaharoonn.github.io/stacklane-site/sitemap.xml

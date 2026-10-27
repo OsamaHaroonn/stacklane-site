@@ -11,6 +11,8 @@
 
   function money(n) {
     var v = isFinite(n) ? n : 0;
+    // Kill float dust and negative zero so we never render "$-0.00".
+    if (Math.abs(v) < 0.005) v = 0;
     return currency + v.toLocaleString(undefined, {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
@@ -20,6 +22,11 @@
   function num(el) {
     var v = parseFloat(el.value);
     return isFinite(v) ? v : 0;
+  }
+
+  // Quantities and rates are never negative: -5 × -100 must not become +$500.
+  function numPos(el) {
+    return Math.max(0, num(el));
   }
 
   /* ---------- persistence ---------- */
@@ -43,7 +50,11 @@
       };
     });
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ fields: fields(), items: items }));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        fields: fields(),
+        items: items,
+        savedAt: Date.now()
+      }));
     } catch (e) { /* private mode: run without persistence */ }
   }
 
@@ -53,6 +64,15 @@
     if (!raw) return false;
     try {
       var data = JSON.parse(raw);
+
+      // Drafts hold client names, emails and prices. Expire them after 7 days
+      // so a shared or unattended machine doesn't keep them indefinitely.
+      var age = Date.now() - (data.savedAt || 0);
+      if (data.savedAt && (age < 0 || age > 7 * 86400000)) {
+        localStorage.removeItem(STORAGE_KEY);
+        return false;
+      }
+
       Object.keys(data.fields || {}).forEach(function (id) {
         var el = document.getElementById(id);
         if (el) el.value = data.fields[id];
@@ -64,7 +84,7 @@
 
   /* ---------- rows & maths ---------- */
   function rowAmount(tr) {
-    return num(tr.querySelector('.i-qty')) * num(tr.querySelector('.i-rate'));
+    return numPos(tr.querySelector('.i-qty')) * numPos(tr.querySelector('.i-rate'));
   }
 
   function recalc() {
@@ -89,11 +109,11 @@
   function addRow(item) {
     var tr = document.createElement('tr');
     tr.innerHTML =
-      '<td><input class="i-desc" type="text" placeholder="e.g. Replace kitchen tap"></td>' +
-      '<td><input class="i-qty num" type="number" min="0" step="0.25" value="1" style="text-align:right"></td>' +
-      '<td><input class="i-rate num" type="number" min="0" step="0.01" value="0" style="text-align:right"></td>' +
-      '<td class="amount-cell">$0.00</td>' +
-      '<td class="no-print"><button class="icon-btn" type="button" title="Remove line" aria-label="Remove line">✕</button></td>';
+      '<td data-label="Description"><input class="i-desc" type="text" aria-label="Line description" placeholder="e.g. Replace kitchen tap"></td>' +
+      '<td data-label="Qty"><input class="i-qty num" type="number" inputmode="decimal" min="0" step="0.25" value="1" aria-label="Quantity" style="text-align:right"></td>' +
+      '<td data-label="Rate"><input class="i-rate num" type="number" inputmode="decimal" min="0" step="0.01" value="0" aria-label="Rate" style="text-align:right"></td>' +
+      '<td class="amount-cell" data-label="Amount">$0.00</td>' +
+      '<td class="no-print"><button class="icon-btn" type="button" title="Remove line" aria-label="Remove line item">✕</button></td>';
 
     tr.querySelector('button').addEventListener('click', function () {
       tr.remove();
