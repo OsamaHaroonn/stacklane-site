@@ -99,6 +99,15 @@ a:hover { text-decoration: underline; }
 .btn-block { display: block; text-align: center; width: 100%; }
 .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.5rem; }
 
+/* Tap targets: nothing interactive is shorter than 44px. */
+.btn, button, .icon-btn, input[type="checkbox"] + span, summary,
+input[type="radio"], label[for], a.badge {
+  min-height: 44px;
+}
+.btn, button { box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center; }
+input[type="checkbox"], input[type="radio"] { min-height: auto; width: 20px; height: 20px; }
+summary { display: flex; align-items: center; cursor: pointer; }
+
 /* ---------- Sections ---------- */
 section { padding: 4.5rem 0; }
 .section-soft { background: var(--bg-soft); border-block: 1px solid var(--line); }
@@ -121,6 +130,7 @@ section { padding: 4.5rem 0; }
 
 /* ---------- Cards / grids ---------- */
 .grid { display: grid; gap: 1.25rem; }
+.grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 .grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
 
@@ -319,3 +329,143 @@ footer {
   section { padding: 1rem 0; }
   .wrap, .narrow { width: 100%; }
 }
+
+/* ============================================================
+   Tool pages, category directories and search
+   ============================================================ */
+
+/* ---------- Tool layout: controls left, live result right ---------- */
+.tool {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .tool { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+}
+.tool-out { position: sticky; top: 1rem; }
+@media (max-width: 899px) { .tool-out { position: static; } }
+
+.tool-status {
+  font-family: var(--mono);
+  font-size: .85rem;
+  padding: .6rem .8rem;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+  color: var(--ink-soft);
+  overflow-wrap: anywhere;
+}
+.tool-status[hidden] { display: none; }
+.tool-status.is-error { background: var(--warn-soft); border-color: #e6cf9a; color: var(--warn); }
+.tool-status.is-ok { background: var(--good-soft); border-color: #b6e0cd; color: var(--good); }
+
+/* Big readout numbers */
+.readout { font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 800; letter-spacing: -.02em; color: var(--accent); line-height: 1.15; overflow-wrap: anywhere; }
+.readout-sub { font-size: .95rem; color: var(--ink-soft); }
+
+/* Progress: never let a long job freeze the tab silently */
+.progress { height: 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--line); overflow: hidden; }
+.progress > span { display: block; height: 100%; width: 0%; background: var(--accent); transition: width .18s; }
+.progress[hidden] { display: none; }
+
+/* Drop zone */
+.drop {
+  border: 2px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 1.75rem 1rem;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: .95rem;
+  background: var(--bg-soft);
+}
+.drop.is-over { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+
+/* File / item list with reorder controls */
+.itemlist { list-style: none; margin: .75rem 0 0; padding: 0; display: grid; gap: .5rem; }
+.itemlist li {
+  display: flex; align-items: center; gap: .6rem;
+  border: 1px solid var(--line); border-radius: 10px;
+  padding: .5rem .6rem; background: #fff; font-size: .9rem;
+}
+.itemlist .item-name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.itemlist .item-meta { color: var(--ink-soft); font-family: var(--mono); font-size: .78rem; flex: none; }
+.icon-btn {
+  flex: none; width: 44px; height: 44px; padding: 0;
+  border: 1px solid var(--line); border-radius: 8px;
+  background: #fff; color: var(--ink); cursor: pointer; font-size: 1rem;
+}
+.icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+.icon-btn[disabled] { opacity: .35; cursor: not-allowed; }
+
+/* Checkbox / radio rows */
+.checks { display: grid; gap: .35rem; }
+.check-row { display: flex; align-items: center; gap: .6rem; font-size: .93rem; padding: .35rem 0; cursor: pointer; }
+.check-row input { flex: none; }
+
+/* Range + its readout */
+.range-row { display: flex; align-items: center; gap: .75rem; }
+.range-row input[type="range"] { flex: 1; padding: 0; border: none; }
+.range-val { font-family: var(--mono); font-weight: 700; min-width: 3.5ch; text-align: center; }
+
+/* ---------- Home search ---------- */
+.search-box { position: relative; max-width: 46ch; }
+.search-box input { padding-inline-start: 2.5rem; }
+.search-box::before {
+  content: "⌕"; position: absolute; inset-inline-start: .85rem; top: 50%;
+  transform: translateY(-50%); font-size: 1.15rem; color: var(--ink-soft); pointer-events: none;
+}
+.search-wrap { margin-top: 1.5rem; }
+.search-count { font-size: .87rem; color: var(--ink-soft); margin-top: .5rem; }
+
+/* ---------- Category directories ---------- */
+.cat-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.tool-card {
+  display: flex; flex-direction: column; gap: .4rem;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: #fff; padding: 1.1rem; text-decoration: none; color: inherit;
+  transition: border-color .15s, transform .15s; min-height: 44px;
+}
+.tool-card:hover, .tool-card:focus-visible { border-color: var(--accent); transform: translateY(-2px); }
+.tool-card h3 { margin: 0; font-size: 1.05rem; }
+.tool-card p { margin: 0; font-size: .88rem; color: var(--ink-soft); }
+.tool-card .badge { align-self: flex-start; }
+
+/* ---------- Page furniture ---------- */
+.crumbs { font-size: .85rem; color: var(--ink-soft); margin-bottom: 1rem; }
+.crumbs a { color: var(--ink-soft); }
+.prose h3 { margin-top: 2rem; }
+.prose ul { padding-inline-start: 1.2rem; }
+.prose li { margin-bottom: .4rem; }
+.worked {
+  background: var(--bg-soft); border: 1px solid var(--line);
+  border-inline-start: 3px solid var(--accent); border-radius: 10px;
+  padding: 1rem 1.15rem; font-size: .95rem; white-space: pre-wrap;
+}
+.related { display: flex; flex-wrap: wrap; gap: .5rem; }
+.related a {
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: .45rem .95rem; font-size: .88rem; text-decoration: none; color: var(--ink);
+  min-height: 44px; display: inline-flex; align-items: center;
+}
+.related a:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ============================================================
+   RTL — Arabic pages set dir="rtl" on <html>; these flip the
+   few places where the layout is not already logical.
+   ============================================================ */
+[dir="rtl"] body { font-family: "Segoe UI", Tahoma, "Noto Naskh Arabic", "Noto Sans Arabic", sans-serif; }
+[dir="rtl"] .crumbs,
+[dir="rtl"] .readout,
+[dir="rtl"] .tool-status { direction: rtl; }
+[dir="rtl"] .prose ul { padding-inline-start: 1.2rem; }
+[dir="rtl"] .search-box input { padding-inline-start: 2.5rem; padding-inline-end: .8rem; }
+[dir="rtl"] .progress > span { transition: width .18s; }
+[dir="rtl"] .itemlist .item-name { direction: rtl; text-align: start; }
+[dir="rtl"] .icon-btn { font-size: 1rem; }
+/* Numbers inside Arabic text stay LTR so they read as digits. */
+[dir="rtl"] .num, [dir="rtl"] input, [dir="rtl"] output, [dir="rtl"] .readout { unicode-bidi: plaintext; }
+[dir="rtl"] input[type="number"], [dir="rtl"] input[type="date"],
+[dir="rtl"] output, [dir="rtl"] .range-val, [dir="rtl"] .money { direction: ltr; unicode-bidi: isolate; }
+[dir="rtl"] table { direction: rtl; }
