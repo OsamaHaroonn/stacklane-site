@@ -12,3 +12,6 @@ Thumbs.db
 # Local env (never commit keys)
 .env
 .env.*
+
+# Paid product source — never publish
+product-source/

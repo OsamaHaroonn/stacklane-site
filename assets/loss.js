@@ -6,10 +6,6 @@
 (function () {
   'use strict';
 
-  // Keep in sync with the price on product.html and on the platform's
-  // checkout — this figure only ever appears as a comparison, never as a
-  // cart. The site sells nothing else.
-  var KIT_PRICE = 49;
 
   var ids = ['hours', 'rate', 'enquiries', 'value', 'conversion', 'weeks'];
 
@@ -85,7 +81,6 @@
     setText('o-year', money(monthly * 12));
     setText('o-week', money(monthly / weeks));
     setText('o-fix', 'Free');
-    setText('o-care', money(KIT_PRICE));
 
     // The row is labelled "One month of your leak" — it must always show a
     // money figure. The payback period belongs in the note below it.
@@ -124,7 +119,7 @@
         '</strong> a month — <strong>' + money(monthly * 12) +
         '</strong> a year. That is worth acting on, starting with the free fix list below.';
       ratioNote.textContent = 'A single month of this leak is ' + money(monthly) +
-        '. The template kit is ' + money(KIT_PRICE) + ' once, and the audit that finds the gaps is free.';
+        '. Every tool on this site is free — start with the audit, which finds the gaps.';
     }
   }
 
