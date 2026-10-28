@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Margin and markup calculator — what did you actually make?</title>
+<meta name="description" content="Free margin and markup calculator: from cost and selling price get profit, margin %, markup %, the effect of a discount, and the price you need for a target margin.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/margin-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane">
+<meta property="og:title" content="Margin and markup calculator — free, instant">
+<meta property="og:description" content="Cost and price in: profit, margin, markup, discount impact and target price out. No signup.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/margin-calculator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https:; base-uri 'none'; form-action 'self' https:; object-src 'none'">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">Stack<span>lane</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="hide-sm">Home</a>
+      <a href="index.html#tools" class="hide-sm">Free tools</a>
+      <a href="loss-calculator.html" class="hide-sm">Leak calculator</a>
+      <a href="invoice.html" class="hide-sm">Invoice</a>
+      <a class="btn btn-secondary" href="product.html">Get the Kit</a>
+    </div>
+  </div>
+</nav>
+
+<section style="padding-top:2.5rem">
+  <div class="wrap">
+    <span class="eyebrow">Free tool · runs in your browser</span>
+    <h1 style="font-size:clamp(1.7rem,3.6vw,2.5rem)">Margin and markup calculator</h1>
+    <p class="lede">Margin and markup are not the same number, and mixing them up is the most expensive small mistake in pricing. Put your cost and your price in — you get profit, both percentages, what a discount does to them, and the price you'd need for a target margin.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap app">
+
+    <div class="panel">
+      <div class="field-row">
+        <div class="field">
+          <label for="cost">What the job costs you</label>
+          <input id="cost" type="number" min="0" step="1" value="600" aria-describedby="cost-hint">
+          <p class="form-note" id="cost-hint">Materials, subcontractors, your own hours at your rate — everything you spend to deliver it.</p>
+        </div>
+        <div class="field">
+          <label for="price">What you sell it for</label>
+          <input id="price" type="number" min="0" step="1" value="1500">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="target">Target margin (%)</label>
+          <input id="target" type="number" min="0" max="99" step="1" value="30">
+          <p class="form-note">Used only for the "price I should charge" line. 30% is a common service target — set yours.</p>
+        </div>
+        <div class="field">
+          <label for="discount">Discount you're considering (%)</label>
+          <input id="discount" type="number" min="0" max="100" step="1" value="10">
+        </div>
+      </div>
+
+      <div class="alert alert-info" style="margin-top:1.5rem;margin-bottom:0">
+        Nothing is sent anywhere. Every figure recalculates as you type and nothing is stored.
+      </div>
+    </div>
+
+    <aside class="app-side">
+      <div class="panel card-featured">
+        <span class="badge">The result</span>
+        <div class="totals">
+          <div class="row"><span>Profit</span><span id="o-profit">$900</span></div>
+          <div class="row grand"><span>Margin</span><span id="o-margin">60%</span></div>
+          <div class="row"><span>Markup</span><span id="o-markup">150%</span></div>
+        </div>
+        <p class="form-note" id="verdict">Fill in your cost and price.</p>
+      </div>
+
+      <div class="panel" style="margin-top:1.25rem">
+        <span class="badge badge-warn">Before you discount</span>
+        <div class="totals">
+          <div class="row"><span>Price after discount</span><span id="o-after">$1,350</span></div>
+          <div class="row"><span>Profit then</span><span id="o-profit-after">$750</span></div>
+          <div class="row grand"><span>Margin then</span><span id="o-margin-after">44%</span></div>
+          <div class="row"><span>Price for target margin</span><span id="o-needed">$857</span></div>
+        </div>
+        <p class="form-note" id="discount-note"></p>
+        <a class="btn btn-block" href="calculator.html" style="margin-top:.75rem">Price a whole job instead</a>
+        <a class="btn btn-secondary btn-block" href="product.html" style="margin-top:.6rem">Get the pricing sheet template</a>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<section class="section-soft">
+  <div class="narrow">
+    <span class="eyebrow">Check the maths</span>
+    <h2>Margin and markup, spelled out</h2>
+    <div class="card">
+      <div class="tpl" style="font-family:var(--mono);font-size:.92rem;background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;padding:1.1rem;white-space:pre-wrap">profit   = price − cost
+margin   = profit ÷ price    (share of the sale that is yours)
+markup   = profit ÷ cost     (how much you added on top of cost)
+price at target margin = cost ÷ (1 − target/100)</div>
+      <p class="form-note" style="margin-top:1rem">A $600 cost sold for $1,500 is <strong>60% margin</strong> but <strong>150% markup</strong>. Quoting "150% margin" to a client who checks would be embarrassing — this tool tells you which one you're holding.</p>
+    </div>
+    <div class="card" style="margin-top:1.25rem">
+      <span class="badge">Assumptions, labelled</span>
+      <div class="totals" style="margin-top:.75rem">
+        <div class="row"><span>Cost is a cash figure</span><span>Include your own hours if your time has a cost</span></div>
+        <div class="row"><span>Target margin is your choice</span><span>Not a benchmark or a market rate</span></div>
+        <div class="row"><span>No tax, currency or fees modelled</span><span>Add VAT/sales tax separately if you charge it</span></div>
+        <div class="row grand"><span>Not advice</span><span>Check anything contract-critical yourself</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="narrow" style="text-align:center">
+    <div class="card card-featured">
+      <span class="badge">The next step</span>
+      <h3>Know the number — now send it properly</h3>
+      <p style="color:var(--ink-soft);font-size:.95rem">The Client-Ready Business Kit turns this price into a quote a client can sign, with the wording that stops them negotiating against themselves, plus the invoice terms that get you paid on time.</p>
+      <div class="btn-row" style="justify-content:center">
+        <a class="btn" href="product.html">See what's inside the Kit</a>
+        <a class="btn btn-secondary" href="break-even-calculator.html">Check break-even first</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span data-year>2026</span> Stacklane · Free tool, no signup, no tracking.</div>
+    <div><a href="index.html">Home</a> · <a href="calculator.html">Pricing calculator</a> · <a href="invoice.html">Invoice</a> · <a href="loss-calculator.html">Leak calculator</a> · <a href="product.html">The Kit</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="refunds.html">Refunds</a></div>
+  </div>
+</footer>
+
+<script src="assets/store.js"></script>
+<script src="assets/chrome.js"></script>
+<script src="assets/margin.js"></script>
+</body>
+</html>

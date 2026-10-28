@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Late payment calculator — what an overdue invoice really costs</title>
+<meta name="description" content="Free late payment calculator: days overdue, interest and late fees in — total owed, cost per day of waiting, and the number to put in a reminder. No signup.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/late-payment-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane">
+<meta property="og:title" content="Late payment calculator — free, instant">
+<meta property="og:description" content="See what an overdue invoice costs you and them, day by day. Arithmetic only, no signup.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/late-payment-calculator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https:; base-uri 'none'; form-action 'self' https:; object-src 'none'">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">Stack<span>lane</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="hide-sm">Home</a>
+      <a href="index.html#tools" class="hide-sm">Free tools</a>
+      <a href="loss-calculator.html" class="hide-sm">Leak calculator</a>
+      <a href="invoice.html" class="hide-sm">Invoice</a>
+      <a class="btn btn-secondary" href="product.html">Get the Kit</a>
+    </div>
+  </div>
+</nav>
+
+<section style="padding-top:2.5rem">
+  <div class="wrap">
+    <span class="eyebrow">Free tool · runs in your browser</span>
+    <h1 style="font-size:clamp(1.7rem,3.6vw,2.5rem)">Late payment calculator</h1>
+    <p class="lede">An invoice unpaid for 60 days is not "still outstanding" — it has cost you money twice: what you could have been earning with it, and what the delay is now charging. Put the invoice in and see the running total, plus the one-line figure you can put in a reminder.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap app">
+
+    <div class="panel">
+      <div class="field-row">
+        <div class="field">
+          <label for="amount">Invoice amount ($)</label>
+          <input id="amount" type="number" min="0" step="50" value="3500">
+        </div>
+        <div class="field">
+          <label for="days">Days overdue</label>
+          <input id="days" type="number" min="0" step="1" value="45">
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="rate">Annual interest rate (%)</label>
+          <input id="rate" type="number" min="0" max="200" step="0.5" value="8" aria-describedby="rate-hint">
+          <p class="form-note" id="rate-hint">The rate written into your terms. If you didn't write one in, use your cost of money (an overdraft or card rate is a fair stand-in).</p>
+        </div>
+        <div class="field">
+          <label for="late">Late fee per month (%)</label>
+          <input id="late" type="number" min="0" max="100" step="0.1" value="1.5" aria-describedby="late-hint">
+          <p class="form-note" id="late-hint">Commonly 1–1.5% a month. Charged proportionally by days, not per part-month.</p>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="fee">One-off admin fee ($)</label>
+          <input id="fee" type="number" min="0" step="5" value="0">
+        </div>
+        <div class="field">
+          <label for="weekly">What you earn a week elsewhere (%)</label>
+          <input id="weekly" type="number" min="0" max="100" step="0.5" value="0" aria-describedby="weekly-hint">
+          <p class="form-note" id="weekly-hint">Optional. What the money would have returned had it been working while you waited. 0 to ignore.</p>
+        </div>
+      </div>
+
+      <div class="alert alert-info" style="margin-top:1.5rem;margin-bottom:0">
+        Nothing is sent anywhere. Every figure recalculates as you type and nothing is stored.
+      </div>
+    </div>
+
+    <aside class="app-side">
+      <div class="panel card-featured">
+        <span class="badge">Total owed today</span>
+        <div class="totals">
+          <div class="row grand"><span>Ask for this</span><span id="o-total">$3,500</span></div>
+          <div class="row"><span>Interest so far</span><span id="o-interest">$0</span></div>
+          <div class="row"><span>Late fees so far</span><span id="o-fees">$0</span></div>
+          <div class="row"><span>One-off admin fee</span><span id="o-admin">$0</span></div>
+        </div>
+        <p class="form-note" id="verdict">Fill in the invoice to see the running total.</p>
+      </div>
+
+      <div class="panel" style="margin-top:1.25rem">
+        <span class="badge badge-warn">The cost of waiting</span>
+        <div class="totals">
+          <div class="row"><span>Cost per day of delay</span><span id="o-perday">$0</span></div>
+          <div class="row"><span>Per month of delay</span><span id="o-permonth">$0</span></div>
+          <div class="row grand"><span>Opportunity cost so far</span><span id="o-opp">$0</span></div>
+        </div>
+        <p class="form-note" id="note"></p>
+        <a class="btn btn-block" href="invoice.html" style="margin-top:.75rem">Raise the next one properly</a>
+        <a class="btn btn-secondary btn-block" href="product.html" style="margin-top:.6rem">Get the late-payment wording</a>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<section class="section-soft">
+  <div class="narrow">
+    <span class="eyebrow">Check the maths</span>
+    <h2>What is being charged, and on what basis</h2>
+    <div class="card">
+      <div class="tpl" style="font-family:var(--mono);font-size:.92rem;background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;padding:1.1rem;white-space:pre-wrap">daily interest     = amount × (annual rate ÷ 100) ÷ 365
+interest to date    = daily interest × days overdue
+late fee to date    = amount × (monthly rate ÷ 100) × (days ÷ 30)
+total owed          = amount + interest + late fee + admin fee</div>
+      <p class="form-note" style="margin-top:1rem">The fee is prorated by days rather than charged in blocks, so a 10-day delay doesn't cost a whole month's fee.</p>
+    </div>
+
+    <div class="card" style="margin-top:1.25rem">
+      <span class="badge badge-warn">Read this before you send it</span>
+      <div class="totals" style="margin-top:.75rem">
+        <div class="row"><span>These are arithmetic, not entitlements</span><span>Whether you may charge them depends on your contract and your country's law</span></div>
+        <div class="row"><span>Interest must be agreed first</span><span>Put the rate in your terms before the work starts</span></div>
+        <div class="row"><span>Caps exist</span><span>Some jurisdictions cap late fees and statutory rates differ widely</span></div>
+        <div class="row grand"><span>Not legal or financial advice</span><span>Check the rules that apply to you before enforcing anything</span></div>
+      </div>
+    </div>
+
+    <div class="btn-row" style="margin-top:1.5rem">
+      <a class="btn btn-secondary" href="margin-calculator.html">Margin calculator</a>
+      <a class="btn btn-secondary" href="break-even-calculator.html">Break-even calculator</a>
+      <a class="btn btn-ghost" href="invoice.html">Invoice tool</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="narrow" style="text-align:center">
+    <div class="card card-featured">
+      <span class="badge">The next step</span>
+      <h3>Stop it happening at all</h3>
+      <p style="color:var(--ink-soft);font-size:.95rem">The Kit's invoice pack carries the payment terms, late-fee wording and escalation messages that get paid without souring the relationship — deposit, stage and final layouts included.</p>
+      <div class="btn-row" style="justify-content:center">
+        <a class="btn" href="product.html">See what's inside the Kit</a>
+        <a class="btn btn-secondary" href="loss-calculator.html">What is your total leak?</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span data-year>2026</span> Stacklane · Free tool, no signup, no tracking.</div>
+    <div><a href="index.html">Home</a> · <a href="calculator.html">Pricing calculator</a> · <a href="invoice.html">Invoice</a> · <a href="loss-calculator.html">Leak calculator</a> · <a href="product.html">The Kit</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="refunds.html">Refunds</a></div>
+  </div>
+</footer>
+
+<script src="assets/store.js"></script>
+<script src="assets/chrome.js"></script>
+<script src="assets/late-fee.js"></script>
+</body>
+</html>

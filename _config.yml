@@ -1,0 +1,17 @@
+# GitHub Pages build rules.
+#
+# The paid product's source lives in /product-source and must NEVER be
+# published: the buyer receives it from the payment platform, not from
+# this site. `exclude` keeps it out of the built site entirely.
+exclude:
+  - product-source
+  - .sass-cache
+  - .jekyll-cache
+  - .git
+  - .github
+  - node_modules
+  - README.md
+  - LICENSE
+
+# No theme, no plugins: the site is plain static HTML/CSS/JS.
+theme: null

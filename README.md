@@ -1,148 +1,163 @@
-# Stacklane — the live site
+# Stacklane — free business tools + one digital product
 
-A complete, dependency-free website implementing **[BUSINESS-PLAN.md](BUSINESS-PLAN.md)**:
+A dependency-free static website: **seven free tools that run in the browser**
+and **one paid product**. No services are sold, nothing is delivered by this
+site, and no personal contact details appear anywhere in it.
 
-| Track | Deliverable | File |
+| Layer | What it is | File |
 |---|---|---|
-| **A** — cash now | Service landing page with published pricing and a quote form | [index.html](index.html) |
-| **A** — proof | Three live demos instead of fake screenshots | [invoice.html](invoice.html), [calculator.html](calculator.html) |
-| **B** — money while you sleep | Free tool (traffic) + paid product page (income) | [invoice.html](invoice.html), [product.html](product.html) |
+| Free tools | Invoice generator, pricing, margin, break-even, late payment, leak calculator, website audit | `invoice.html`, `calculator.html`, `margin-calculator.html`, `break-even-calculator.html`, `late-payment-calculator.html`, `loss-calculator.html`, `audit.html` |
+| Paid product | Client-Ready Business Kit — sold and delivered by the checkout platform | `product.html` (page), `product-source/` (file the buyer receives) |
+| Support | A form posting to a form-service endpoint, or a receipt-first notice when none is configured | `index.html#contact` |
 
-**No build step, no framework, no dependencies.** Plain HTML, CSS and JavaScript. It runs by double-clicking `index.html` and deploys anywhere that serves static files.
+**No build step, no framework, no dependencies.** Plain HTML, CSS and
+JavaScript. It runs by double-clicking `index.html` and deploys anywhere that
+serves static files.
 
 ---
 
 ## Run it locally
 
 ```bash
-# simplest: open index.html in your browser
-
-# or serve it (recommended, matches real hosting)
 python3 -m http.server 8080
 # then open http://localhost:8080
 ```
 
-### What works out of the box
-
-- **Invoice generator** — line items, 10 currencies, discount %, tax %, live totals, **sequential invoice numbers (INV-1001…)**, a saved-invoice archive kept only in your browser, autosave, **Print → Save as PDF**. Verified working.
-- **Quote builder** — scope, line items, deposit %, validity date, live "valid until", email / copy / print. Verified working.
-- **15-point website audit** — score, ranked fix list, email/copy the result. Verified working.
-- **Pricing calculator** — cost-plus maths, margin, break-even, effective hourly rate, market-price comparison with a plain-English verdict. Verified working.
-- **Leak calculator** — four inputs, adaptive honest verdict (it tells you *not* to automate under ~$500/mo), shareable numbers link, labelled assumptions and a 10% stress test.
-- **Quote form** — composes a `mailto:` message with everything filled in, plus WhatsApp. No backend, no data collected, works offline.
-- **Product page** — full sales page; checkout activates the moment you add `CHECKOUT_URL` (Stripe, Paddle, Lemon Squeezy, Gumroad) or `PAYPAL_ME`.
-- **Legal pages** — privacy, terms, refunds + a custom `404.html`. All cross-linked from every footer.
-
 ---
 
-## Make it yours (5 minutes of editing)### 1. Brand and copy
-
-Search and replace `Stacklane` with your business name, then edit:
-
-- Your email, WhatsApp and booking link → `assets/store.js` only (it drives every page)
-- Prices and service descriptions in `index.html`
-- Product name, price and copy in `product.html`### 2. Set your details — the required change
-
-Everything configurable lives in one file, [assets/store.js](assets/store.js):
+## Configuration — everything lives in [assets/store.js](assets/store.js)
 
 ```js
 window.STORE = {
-  CHECKOUT_URL: '',     // any hosted checkout link (Stripe/Paddle/Lemon Squeezy/Gumroad)
-  PAYPAL_ME: '',        // fallback: just your paypal.me username, e.g. 'osama.h'
-  CONTACT_EMAIL: '',    // your real address; fills every email link on the site
-  WHATSAPP: '',         // '15551234567' — adds WhatsApp buttons site-wide
-  BOOKING_URL: '',      // e.g. 'https://cal.com/you/15min' — adds a booking button
-  BUSINESS_NAME: '',    // shown in the footer and schemas
-  SUPPORT_PHONE: '',    // shown as plain text next to the WhatsApp button
-  FORM_ENDPOINT: ''     // optional: Formspree/Web3Forms URL to POST the quote form
+  SITE_URL:       'https://osamaharoonn.github.io/stacklane-site',
+  CHECKOUT_URL:   '',   // Lemon Squeezy / Paddle / Gumroad checkout link
+  FORM_ENDPOINT:  ''    // Formspree / Web3Forms / Basin URL that accepts JSON POST
 };
 ```
 
-`CONTACT_EMAIL`, `WHATSAPP` and `SUPPORT_PHONE` are read by `assets/chrome.js` on **every** page, so the contact details in the footer of each tool are always the ones in this file.
+Three values, nothing else. There is **no email address, phone number or
+WhatsApp handle** in `store.js`, in any page, or in this file — support runs
+through the payment receipt and, when configured, the contact form.
 
-Until `CHECKOUT_URL` is set, the buy button shows a setup notice instead of a broken checkout, and the quote form falls back to **email + visible message + copy button + WhatsApp** so a lead is never silently lost.
+### `SITE_URL` — one edit changes the domain
 
-**Payments:** create a free Stripe Payment Link at https://dashboard.stripe.com/payment-links and paste it in. That's the whole integration — no server, no keys in the browser.
+It feeds the canonical URL, `og:url`, `og:image` and the JSON-LD on every
+page, re-derived at load from wherever the page is actually served. Moving to
+`https://stacklane.com` means changing this one line. Two static files still
+carry the old address by hand — [`sitemap.xml`](sitemap.xml) and
+[`robots.txt`](robots.txt) are read by crawlers before any JavaScript runs,
+so each needs its URL updated too (one line each).
 
-### 3. Deliver the kit automatically
+### `CHECKOUT_URL` — the only thing for sale
 
-The kit lives at `kit.html` and the delivery page at `thank-you.html`. On your Stripe Payment Link, set **Confirmation page → Redirect to your website** to:
+While it is empty, `assets/chrome.js` hides every `[data-buy]` button and
+removes `#price-schema`, so the site never shows a price it cannot take.
+Set it to the platform's checkout and the buttons appear by themselves.
 
-```
-https://osamaharoonn.github.io/stacklane-site/thank-you.html
-```
+Delivery is the platform's job: the buyer receives the file from the
+platform's receipt. The file itself lives in
+[`product-source/`](product-source/README.md) and is **excluded from the
+deployed site** by `_config.yml`, so it stays in the repo without ever
+being publicly downloadable.
 
-The buyer lands there straight after paying, with the kit one click away.
+### `FORM_ENDPOINT` — support without an inbox
 
-> **Honest caveat:** GitHub Pages is static, so `thank-you.html` is reachable by anyone who knows the URL. The kit page ships `noindex` so it stays out of search engines, which is fine while you're starting. If you want real gating, upload the kit to a delivery platform (Gumroad, Lemon Squeezy) and point `CHECKOUT_URL` at their checkout instead — they handle both payment and delivery.
+Set it to a form-service URL that accepts a JSON POST (Formspree,
+Web3Forms, Basin, Getform) and the support form appears on the home page.
+Leave it empty and the form is hidden and replaced by a panel that points
+buyers at their payment receipt, their platform's customer portal and the
+refund link inside it.
 
-### 3. Deploy
+---
 
-**Option A — GitHub Pages (free, matches "put it on my GitHub")**
+## The seven free tools
+
+All of them: no signup, no cookies, no network requests, drafts saved only in
+`localStorage` (and drafts holding names or prices expire after 7 days).
+
+| Tool | What it answers |
+|---|---|
+| [invoice.html](invoice.html) | An invoice in one screen: 10 currencies, sequential numbers, discount/tax, a saved-invoice archive, Print → PDF, email as plain text |
+| [calculator.html](calculator.html) | What to charge from cost, hours and margin, with a market comparison |
+| [margin-calculator.html](margin-calculator.html) | Margin vs markup, discount impact, price needed for a target margin |
+| [break-even-calculator.html](break-even-calculator.html) | Jobs and revenue needed before the business stops losing money, tested against real capacity |
+| [late-payment-calculator.html](late-payment-calculator.html) | Interest and fees accrued on an overdue invoice, cost per day of waiting |
+| [loss-calculator.html](loss-calculator.html) | What unanswered enquiries and manual admin cost each month, with shareable links and labelled assumptions |
+| [audit.html](audit.html) | 15 checks across speed, trust, conversion and findability, scored with a ranked fix list |
+
+Every tool ends with a link to the paid product — that is the whole sales
+funnel: free utility → one product.
+
+---
+
+## Deployment
+
+**GitHub Pages (current):**
+
 ```bash
-git init
-git add .
-git commit -m "Add Stacklane demo site"
-git remote add origin git@github.com:YOUR_USER/YOUR_REPO.git
-git push -u origin main
-# then enable Pages: repo → Settings → Pages → deploy from main branch
+git add . && git commit -m "…" && git push origin master
 ```
 
-**Option B — any static host**
-Drag the folder into Netlify, Cloudflare Pages, or Vercel. All are free for this size.
+Pages rebuilds automatically from the repo root. `_config.yml` excludes
+`product-source/` from the published output; verify after pushing that
+`/product-source/kit.html` returns 404.
+
+**Any static host:** drag the folder into Netlify, Cloudflare Pages or
+Vercel. Delete `_config.yml` if the host doesn't use Jekyll, and hide
+`product-source/` with the host's own exclude rule instead.
 
 ---
 
 ## File map
 
 ```
-index.html          Landing page (offer, demos, leak bridge, pricing, quote form)
-invoice.html        Free tool — invoice generator, 10 currencies, saved archive
-calculator.html     Free tool — job pricing calculator
-loss-calculator.html Free tool — the bridge to the automation offer
-quote.html          Free tool — fixed-price quote builder (scope, deposit, validity)
-audit.html          Free tool — 15-point website audit with a ranked fix list
-kit.html            THE PRODUCT — six real template packs, printable (noindex)
-thank-you.html      Post-payment delivery page for the kit
-product.html        Paid product page (income layer)
-privacy.html        Privacy policy (no cookies, no analytics, local drafts only)
-terms.html          Terms: services, Kit licence, liability, honest-marketing promise
-refunds.html        14-day refund on the Kit + preview-first rule for services
-404.html            Custom not-found page listing everything that exists
-robots.txt          Crawl rules (kit.html disallowed)
-sitemap.xml         Index of all indexable pages
-assets/style.css    Shared design system + print stylesheet
-assets/invoice.js   Invoice maths, currencies, archive, autosave, PDF printing
-assets/quote.js     Quote maths, deposit, validity, email/copy/print
-assets/audit.js     Audit scoring, ranked fixes, local save
-assets/calculator.js Pricing maths and verdicts
-assets/site.js      Quote form, fallback contact path, config-driven links
-assets/chrome.js    ← shared footer/nav contact details on every page
-assets/loss.js      Leak maths + deep links + adaptive honest messaging
-assets/kit.js       Kit print button
-assets/product.js   Checkout button (payment link, PayPal, or email/WhatsApp)
-assets/store.js     ← ALL site configuration lives here
-assets/og.png       1200×630 social share image
-assets/favicon.svg  Site icon
-BUSINESS-PLAN.md    The strategy this site executes
-ACTION-PLAN.md      The step-by-step execution plan
-AUDIT.md            The 20 problems found before launch + how they were fixed
+index.html                 Home: seven tools, the product, the support form
+product.html               The only page that sells something
+invoice.html               Free tool — invoice generator
+calculator.html            Free tool — pricing calculator
+margin-calculator.html     Free tool — margin & markup
+break-even-calculator.html Free tool — break-even
+late-payment-calculator.html Free tool — late payment
+loss-calculator.html       Free tool — monthly leak
+audit.html                 Free tool — 15-point website audit
+thank-you.html             Post-purchase page: "your file is in the receipt" (noindex)
+privacy.html · terms.html · refunds.html   Legal, no contact details named
+404.html                   Custom not-found page
+product-source/            Paid file + README on uploading it (NOT deployed)
+_config.yml                Excludes product-source from the build
+sitemap.xml · robots.txt   Crawlers (update URLs here when the domain changes)
+assets/store.js            ← all configuration
+assets/chrome.js           ← shared behaviour: base URL, buy buttons, support form
+assets/*.js                One script per tool
+assets/og.png              1200×630 share image
+AUDIT.md · BUSINESS-PLAN.md · ACTION-PLAN.md   Strategy and audit history
 ```
+
+Removed from earlier versions, deliberately: the services pages, the quote
+builder, the quote form, `kit.html` on the public site, and every `mailto:`
+/ `wa.me` contact path.
 
 ---
 
 ## Design notes
 
 - **Zero dependencies** — nothing to audit, nothing to break, no npm install.
-- **No tracking, no data collection** — the quote form never leaves the device; tool drafts stay in `localStorage` and **expire after 7 days** because they hold client details.
-- **Strict Content-Security-Policy** on every page (`script-src 'self'` — no inline script anywhere).
-- **SEO-ready** — canonical, Open Graph/Twitter tags with a real `og:image`, JSON-LD (`ProfessionalService` + `WebSite` on the home page, `Product` with price, availability and the 14-day return policy on the product page, `FAQPage` on the leak calculator), `robots.txt`, `sitemap.xml`, one `h1` per page, every field labelled.
-- **Privacy by construction** — `<meta name="referrer" content="no-referrer">` on every page, so nothing about the visitor leaks outbound, and no third-party scripts at all.
-- **Responsive** — single column under 860px, sticky summary panels on desktop.
-- **Print stylesheet** — the invoice prints as a clean document; nav, buttons and footer are hidden.
+- **Strict CSP** (`script-src 'self'`, no inline script) on every page; the
+  JSON-LD blocks are `type="application/ld+json"` and are validated by
+  `assets/chrome.js` before it rewrites their URLs.
+- **No tracking** — no analytics, no cookies, `<meta name="referrer"
+  content="no-referrer">` everywhere, no third-party requests except the
+  configured form endpoint.
+- **Honest numbers** — illustrative defaults are labelled illustrative,
+  assumptions are listed as assumptions, and the calculators say so when the
+  answer doesn't justify buying anything.
+- **Responsive** — single column under 860px; verified at 375px.
+- **Print stylesheet** — tools print as clean documents.
 
 ## What this site deliberately does not do
 
-- Analytics or cookies (add later if you want; the plan says track by hand for the first 60 days)
-- User accounts or a database
-- Server-side checkout validation — Stripe owns the transaction, which is what you want
+- Sell services, take quote requests, or publish an email address, phone
+  number or WhatsApp handle
+- Hold payments or card details — the checkout platform owns that
+- Ship the paid file from the site — the platform does the delivery
+- Use analytics, accounts or a database

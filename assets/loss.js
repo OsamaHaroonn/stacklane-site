@@ -1,14 +1,15 @@
 /* ============================================================
    Lost-revenue calculator — the bridge between the free tools and
-   the automation offer. Pure client-side maths, nothing stored,
+   the paid product. Pure client-side maths, nothing stored,
    no network calls.
    ============================================================ */
 (function () {
   'use strict';
 
-  // Must match the published price on index.html.
-  var FIX_PRICE = 2500;
-  var CARE_PRICE = 250;
+  // Keep in sync with the price on product.html and on the platform's
+  // checkout — this figure only ever appears as a comparison, never as a
+  // cart. The site sells nothing else.
+  var KIT_PRICE = 49;
 
   var ids = ['hours', 'rate', 'enquiries', 'value', 'conversion', 'weeks'];
 
@@ -83,8 +84,8 @@
     setText('o-month', money(monthly));
     setText('o-year', money(monthly * 12));
     setText('o-week', money(monthly / weeks));
-    setText('o-fix', money(FIX_PRICE));
-    setText('o-care', money(CARE_PRICE) + '/mo');
+    setText('o-fix', 'Free');
+    setText('o-care', money(KIT_PRICE));
 
     // The row is labelled "One month of your leak" — it must always show a
     // money figure. The payback period belongs in the note below it.
@@ -110,27 +111,20 @@
       return;
     }
 
-    // Honest, adaptive messaging: don't sell automation to somebody
-    // whose leak does not justify it.
+    // Honest, adaptive messaging: the calculator never tells somebody to
+    // buy anything. It says what the number means, and points at the free
+    // tools that do the fixing.
     if (monthly < 500) {
       verdict.innerHTML = 'About <strong>' + money(monthly) +
-        '</strong> a month is leaking. That is real but small — an automation project would not pay for itself yet. ' +
-        'Fix the follow-up habit first, free.';
-      ratioNote.textContent = 'At this level, fix it by hand: one 20-minute block each morning to clear enquiries.';
-    } else if (monthly < FIX_PRICE) {
+        '</strong> a month is leaking. That is real but small — buying anything to fix it would not pay for itself yet. ' +
+        'Fix the follow-up habit first: one 20-minute block each morning to clear enquiries.';
+      ratioNote.textContent = 'At this level the fix is free — run the 15-point audit and close the gaps it finds.';
+    } else {
       verdict.innerHTML = 'About <strong>' + money(monthly) +
         '</strong> a month — <strong>' + money(monthly * 12) +
-        '</strong> a year. That is worth automating, and a one-time build pays back in roughly <strong>' +
-        (FIX_PRICE / monthly).toFixed(1) + ' months</strong>.';
-      ratioNote.textContent = 'The one-time build costs about ' +
-        (FIX_PRICE / monthly).toFixed(1) +
-        ' months of what you are losing now — paid back before the first quarter ends.';
-    } else {
-      verdict.innerHTML = '<strong>' + money(monthly) +
-        '</strong> a month, <strong>' + money(monthly * 12) +
-        '</strong> a year. One month of this leak already covers the entire automation build.';
-      ratioNote.textContent = 'You are paying more to keep the problem than it would cost to remove it — ' +
-        'fix it once, then it stops.';
+        '</strong> a year. That is worth acting on, starting with the free fix list below.';
+      ratioNote.textContent = 'A single month of this leak is ' + money(monthly) +
+        '. The template kit is ' + money(KIT_PRICE) + ' once, and the audit that finds the gaps is free.';
     }
   }
 

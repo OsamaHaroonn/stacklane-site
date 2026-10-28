@@ -1,8 +1,8 @@
 User-agent: *
 Allow: /
 
-# The delivered kit lives at a guessable URL in a public repo, so it is
-# excluded from search while it still needs protecting (see README).
-Disallow: /kit.html
+# The paid product's source is in the repo but excluded from the build by
+# _config.yml. This line is the second belt in case that ever changes.
+Disallow: /product-source/
 
 Sitemap: https://osamaharoonn.github.io/stacklane-site/sitemap.xml

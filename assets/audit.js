@@ -136,19 +136,6 @@
     if (el) el.addEventListener('change', function () { save(); render(); });
   });
 
-  var emailBtn = document.getElementById('email-audit');
-  if (emailBtn) {
-    emailBtn.addEventListener('click', function () {
-      var S = window.STORE || {};
-      var to = (S.CONTACT_EMAIL || '').trim();
-      var subject = 'My website audit — ' + score() + '/15';
-      window.location.href = 'mailto:' + encodeURIComponent(to) +
-        '?subject=' + encodeURIComponent(subject) +
-        '&body=' + encodeURIComponent(asText() + '\n\n---\nSent from the Stacklane free audit tool.');
-      say('Opening your email app with the audit in the body.');
-    });
-  }
-
   var copyBtn = document.getElementById('copy-audit');
   if (copyBtn) {
     copyBtn.addEventListener('click', function () {

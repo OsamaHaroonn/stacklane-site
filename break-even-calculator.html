@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Break-even calculator — how many jobs until you stop losing money</title>
+<meta name="description" content="Free break-even calculator: fixed costs, price and variable cost in — contribution per job, jobs to break even, revenue needed, and what happens at your capacity.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/break-even-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane">
+<meta property="og:title" content="Break-even calculator — free, instant">
+<meta property="og:description" content="How many jobs or sales you need before you stop losing money, with the arithmetic shown.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/break-even-calculator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https:; base-uri 'none'; form-action 'self' https:; object-src 'none'">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">Stack<span>lane</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="hide-sm">Home</a>
+      <a href="index.html#tools" class="hide-sm">Free tools</a>
+      <a href="loss-calculator.html" class="hide-sm">Leak calculator</a>
+      <a href="invoice.html" class="hide-sm">Invoice</a>
+      <a class="btn btn-secondary" href="product.html">Get the Kit</a>
+    </div>
+  </div>
+</nav>
+
+<section style="padding-top:2.5rem">
+  <div class="wrap">
+    <span class="eyebrow">Free tool · runs in your browser</span>
+    <h1 style="font-size:clamp(1.7rem,3.6vw,2.5rem)">Break-even calculator</h1>
+    <p class="lede">Three numbers: what it costs you to exist each month, what one job sells for, and what one job costs you to deliver. From there you get how many you must sell before the business stops losing money — and what your current capacity actually earns.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap app">
+
+    <div class="panel">
+      <div class="field-row">
+        <div class="field">
+          <label for="fixed">Fixed costs per month ($)</label>
+          <input id="fixed" type="number" min="0" step="50" value="3000" aria-describedby="fixed-hint">
+          <p class="form-note" id="fixed-hint">Rent, software, insurance, phone, your own draw — the bills that arrive whether you sell anything or not.</p>
+        </div>
+        <div class="field">
+          <label for="vcost">Cost to deliver one job ($)</label>
+          <input id="vcost" type="number" min="0" step="10" value="400" aria-describedby="vcost-hint">
+          <p class="form-note" id="vcost-hint">Materials, subcontractors, payment fees — costs that only appear when you actually do one. Enter 0 for pure services.</p>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="price">Price of one job ($)</label>
+          <input id="price" type="number" min="0" step="50" value="1500">
+        </div>
+        <div class="field">
+          <label for="capacity">Jobs you can actually do a month</label>
+          <input id="capacity" type="number" min="0" step="1" value="6" aria-describedby="cap-hint">
+          <p class="form-note" id="cap-hint">Your realistic capacity, not a fantasy. This is the line that tests whether break-even is reachable.</p>
+        </div>
+      </div>
+
+      <div class="alert alert-info" style="margin-top:1.5rem;margin-bottom:0">
+        Nothing is sent anywhere. Every figure recalculates as you type and nothing is stored.
+      </div>
+    </div>
+
+    <aside class="app-side">
+      <div class="panel card-featured">
+        <span class="badge">Break-even point</span>
+        <div class="totals">
+          <div class="row"><span>Profit per job</span><span id="o-unit">$1,100</span></div>
+          <div class="row grand"><span>Jobs to break even</span><span id="o-jobs">3</span></div>
+          <div class="row"><span>Revenue at break-even</span><span id="o-rev">$4,500</span></div>
+        </div>
+        <p class="form-note" id="verdict">Fill in the three numbers.</p>
+      </div>
+
+      <div class="panel" style="margin-top:1.25rem">
+        <span class="badge badge-warn">At your real capacity</span>
+        <div class="totals">
+          <div class="row"><span>Jobs a month</span><span id="o-cjobs">6</span></div>
+          <div class="row"><span>Revenue</span><span id="o-crev">$9,000</span></div>
+          <div class="row grand"><span>Left after fixed costs</span><span id="o-cnet">$3,600</span></div>
+        </div>
+        <p class="form-note" id="capacity-note"></p>
+        <a class="btn btn-block" href="margin-calculator.html" style="margin-top:.75rem">Check the margin on one job</a>
+        <a class="btn btn-secondary btn-block" href="product.html" style="margin-top:.6rem">Get the pricing sheet template</a>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<section class="section-soft">
+  <div class="narrow">
+    <span class="eyebrow">Check the maths</span>
+    <h2>Break-even, spelled out</h2>
+    <div class="card">
+      <div class="tpl" style="font-family:var(--mono);font-size:.92rem;background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;padding:1.1rem;white-space:pre-wrap">profit per job = price − variable cost
+jobs to break even = fixed costs ÷ profit per job
+revenue at break even = jobs × price</div>
+      <p class="form-note" style="margin-top:1rem">Round up: you can't sell 2.7 jobs, so 3 is the real answer. The calculator rounds for you and shows the raw figure too.</p>
+    </div>
+
+    <div class="card" style="margin-top:1.25rem">
+      <span class="badge">Assumptions, labelled</span>
+      <div class="totals" style="margin-top:.75rem">
+        <div class="row"><span>Every job has the same price</span><span>No upsells or price rises modelled</span></div>
+        <div class="row"><span>Every job has the same variable cost</span><span>Some jobs cost more than others in reality</span></div>
+        <div class="row"><span>Fixed costs are steady</span><span>Annual or seasonal costs are smoothed into a month</span></div>
+        <div class="row"><span>No tax, debt or one-off costs</span><span>Add them to fixed costs if they recur</span></div>
+        <div class="row grand"><span>Not advice</span><span>An arithmetic check, not a business plan</span></div>
+      </div>
+    </div>
+
+    <div class="btn-row" style="margin-top:1.5rem">
+      <a class="btn btn-secondary" href="calculator.html">Pricing calculator</a>
+      <a class="btn btn-secondary" href="late-payment-calculator.html">Late payment calculator</a>
+      <a class="btn btn-ghost" href="invoice.html">Invoice tool</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="narrow" style="text-align:center">
+    <div class="card card-featured">
+      <span class="badge">The next step</span>
+      <h3>Below break-even? Fix the price, not the volume</h3>
+      <p style="color:var(--ink-soft);font-size:.95rem">Most small service businesses are one repriced job away from break-even. The Kit's pricing sheet does this arithmetic in 60 seconds, and its quote templates put the number in front of a client properly.</p>
+      <div class="btn-row" style="justify-content:center">
+        <a class="btn" href="product.html">See what's inside the Kit</a>
+        <a class="btn btn-secondary" href="loss-calculator.html">What is inaction costing?</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span data-year>2026</span> Stacklane · Free tool, no signup, no tracking.</div>
+    <div><a href="index.html">Home</a> · <a href="calculator.html">Pricing calculator</a> · <a href="invoice.html">Invoice</a> · <a href="loss-calculator.html">Leak calculator</a> · <a href="product.html">The Kit</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="refunds.html">Refunds</a></div>
+  </div>
+</footer>
+
+<script src="assets/store.js"></script>
+<script src="assets/chrome.js"></script>
+<script src="assets/break-even.js"></script>
+</body>
+</html>
