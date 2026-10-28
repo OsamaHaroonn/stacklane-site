@@ -12,6 +12,38 @@
 
   var ids = ['hours', 'rate', 'enquiries', 'value', 'conversion', 'weeks'];
 
+  /* Deep-link support: ?h=8&r=60&e=6&v=400&c=20&w=4.33
+     Lets a visitor bookmark a scenario, email their numbers as a link,
+     or come from the home page with a pre-set case. Only recognised
+     numeric keys are read, and only valid ranges are applied. */
+  var PARAM = { h: 'hours', r: 'rate', e: 'enquiries', v: 'value', c: 'conversion', w: 'weeks' };
+
+  function readParams() {
+    var q;
+    try { q = new URLSearchParams(window.location.search); }
+    catch (err) { return; }
+    Object.keys(PARAM).forEach(function (k) {
+      if (!q.has(k)) return;
+      var n = parseFloat(q.get(k));
+      if (!isFinite(n) || n < 0) return;
+      var el = document.getElementById(PARAM[k]);
+      if (el) el.value = n;
+    });
+  }
+
+  function queryString() {
+    var parts = [];
+    Object.keys(PARAM).forEach(function (k) {
+      var el = document.getElementById(PARAM[k]);
+      if (!el) return;
+      var n = parseFloat(el.value);
+      if (isFinite(n) && n > 0) parts.push(k + '=' + encodeURIComponent(n));
+    });
+    return parts.length ? '?' + parts.join('&') : '';
+  }
+
+  readParams();
+
   function val(id, fallback) {
     var el = document.getElementById(id);
     if (!el) return fallback || 0;
@@ -58,6 +90,17 @@
     // money figure. The payback period belongs in the note below it.
     setText('o-ratio', money(monthly));
 
+    // Sceptic's case: same leak, one tenth of the conversion assumption.
+    var ten = admin + enquiries * weeks * 0.10 * jobValue;
+    setText('o-ten', money(ten));
+
+    // Keep the address bar in sync so "copy a link to my numbers" is real.
+    try {
+      window.history.replaceState(null, '', window.location.pathname + queryString());
+      var share = document.getElementById('share-link');
+      if (share) share.href = window.location.pathname + queryString() + window.location.hash;
+    } catch (err) { /* file:// or sandboxed: sharing degrades, maths still runs */ }
+
     var verdict = document.getElementById('verdict');
     var ratioNote = document.getElementById('ratio-note');
 
@@ -98,6 +141,29 @@
 
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
+
+  /* Copy a link that reopens the calculator with these exact numbers. */
+  var share = document.getElementById('share-link');
+  if (share) {
+    share.addEventListener('click', function (e) {
+      e.preventDefault();
+      var url = window.location.origin === 'null'
+        ? window.location.href
+        : window.location.origin + window.location.pathname + queryString() + window.location.hash;
+      var status = document.getElementById('share-status');
+      function say(t) { if (status) status.textContent = t; }
+      function fallback() {
+        window.prompt('Copy this link:', url);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () {
+          say('Link copied — it reopens these exact numbers.');
+        }, fallback);
+      } else {
+        fallback();
+      }
+    });
+  }
 
   calc();
 })();

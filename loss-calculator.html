@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
 <title>What is your admin costing you? — monthly lost-revenue calculator</title>
 <meta name="description" content="Free calculator: work out what manual admin and missed enquiries cost your business every month, then what it would take to fix it.">
 <link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/loss-calculator.html">
@@ -11,10 +12,22 @@
 <meta property="og:title" content="What is your admin actually costing you?">
 <meta property="og:description" content="Free calculator: put a monthly dollar figure on the hours and lost enquiries your business absorbs.">
 <meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/loss-calculator.html">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane — websites, booking and automation for small businesses">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https:; base-uri 'none'; form-action 'self'; object-src 'none'">
 <link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+ {"@type":"Question","name":"How is the monthly leak calculated?","acceptedAnswer":{"@type":"Answer","text":"Monthly leak = (manual admin hours per week x weeks per month x your hourly value) + (ignored enquiries per week x weeks per month x conversion rate x average job value). The full formula is printed on the page so you can check it by hand."}},
+ {"@type":"Question","name":"Is the conversion default of 30% realistic?","acceptedAnswer":{"@type":"Answer","text":"It is a deliberately cautious share of people who contact you and never hear back. Change it to what you know about your own follow-up: the page recalculates instantly and also shows the result at 10%."}},
+ {"@type":"Question","name":"Is this calculator free and does it store my data?","acceptedAnswer":{"@type":"Answer","text":"It is free, needs no signup, runs entirely in your browser and stores nothing. No cookies, no analytics, and the numbers are never sent anywhere."}},
+ {"@type":"Question","name":"Should I automate if my leak is small?","acceptedAnswer":{"@type":"Answer","text":"No. Under about $500 a month the page tells you not to automate and to fix your follow-up habit first instead. Automation only pays for itself when the leak is large enough to cover the build cost."}}
+]}
+</script>
 </head>
 <body>
 
@@ -22,8 +35,11 @@
   <div class="wrap nav-inner">
     <a class="brand" href="index.html">Stack<span>lane</span></a>
     <div class="nav-links">
+      <a href="index.html" class="hide-sm">Home</a>
+      <a href="index.html#work" class="hide-sm">Free tools</a>
       <a href="invoice.html" class="hide-sm">Invoice tool</a>
       <a href="calculator.html" class="hide-sm">Pricing calculator</a>
+      <a href="product.html" class="hide-sm">The kit</a>
       <a class="btn btn-secondary" href="index.html#contact">Get a quote</a>
     </div>
   </div>
@@ -106,6 +122,8 @@
         <p class="form-note" id="ratio-note"></p>
         <a class="btn btn-block" href="index.html#services" style="margin-top:.75rem">See how it gets fixed</a>
         <a class="btn btn-secondary btn-block" href="index.html#contact" style="margin-top:.6rem">Send me this breakdown</a>
+        <a class="btn btn-ghost btn-block" id="share-link" href="#" style="margin-top:.6rem">Copy a link to my numbers</a>
+        <p class="form-note" id="share-status" aria-live="polite"></p>
       </div>
     </aside>
 
@@ -122,17 +140,42 @@ lost sales   = ignored enquiries × weeks × conversion × job value
 monthly leak = admin cost + lost sales</div>
       <p class="form-note" style="margin-top:1rem">The conversion default (30%) is a deliberately cautious share of people who contact you and never hear back. Change it — you know your follow-up better than I do.</p>
     </div>
-    <div class="btn-row">
+
+    <div class="card" style="margin-top:1.25rem">
+      <span class="badge badge-warn">Every assumption, labelled</span>
+      <h3 style="margin-top:.75rem">Where each default comes from — and what it is not</h3>
+      <div class="totals" style="margin-top:1rem">
+        <div class="row"><span>6 hrs/week on admin</span><span>Your own entry — not a statistic</span></div>
+        <div class="row"><span>$45/hour for your time</span><span>A placeholder, set your real rate</span></div>
+        <div class="row"><span>4 ignored enquiries a week</span><span>Illustrative, not measured</span></div>
+        <div class="row"><span>$350 average job value</span><span>Illustrative, not measured</span></div>
+        <div class="row"><span>30% would have bought</span><span>A cautious share, not a benchmark</span></div>
+      </div>
+      <p class="form-note" style="margin-top:.75rem"><strong>What this is:</strong> an estimate built from numbers you entered yourself, using arithmetic printed above. <strong>What this is not:</strong> a measurement of your business, a promise of results, or a guarantee that automation will recover the figure. Actual outcomes depend on your market, your follow-up and how the work is implemented.</p>
+      <p class="form-note"><strong>Stress test the sceptical case.</strong> If only 10% of those ignored enquiries would have bought instead of 30%, you are still leaking <strong id="o-ten">$0</strong> a month — because the admin cost alone does not move when the conversion guess changes.</p>
+    </div>
+
+    <div class="card" style="margin-top:1.25rem">
+      <span class="badge">Common questions</span>
+      <h3 style="margin-top:.75rem">Before you ask</h3>
+      <details><summary>How is the monthly leak calculated?</summary><p>Admin cost + lost sales, using the formula printed above. Nothing is hidden and nothing is estimated on our side — every input is yours.</p></details>
+      <details><summary>Is the 30% conversion guess too high?</summary><p>Possibly — that is why the page also shows the result at 10%. If the number still matters at 10%, the problem is real whatever the exact percentage is.</p></details>
+      <details><summary>Do you store my numbers?</summary><p>No. Everything runs in your browser, nothing is uploaded, and the page sets no cookies. The only thing that leaves your device is a link you choose to copy.</p></details>
+      <details><summary>My leak is small — should I still automate?</summary><p>No. Under about $500 a month the page tells you not to automate and to fix your follow-up habit first, free. A build only pays for itself when the leak covers it.</p></details>
+    </div>
+
+    <div class="btn-row" style="margin-top:1.5rem">
       <a class="btn btn-secondary" href="calculator.html">Pricing calculator</a>
       <a class="btn btn-ghost" href="invoice.html">Invoice generator</a>
+      <a class="btn btn-ghost" href="kit.html">The free Kit sample</a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap footer-inner">
-    <div>© <span id="year">2026</span> Stacklane · Free tool, no signup, no tracking.</div>
-    <div><a href="index.html">Home</a> · <a href="product.html">The kit</a></div>
+    <div>© <span id="year">2026</span> Stacklane · Free tool, no signup, no tracking. <a data-email href="#">Email us</a></div>
+    <div><a href="index.html">Home</a> · <a href="invoice.html">Invoice tool</a> · <a href="calculator.html">Pricing calculator</a> · <a href="product.html">The kit</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="refunds.html">Refunds</a></div>
   </div>
 </footer>
 

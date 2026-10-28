@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Free website audit — 15 checks in 10 minutes</title>
+<meta name="description" content="A 15-point website audit any owner can run in ten minutes: speed, trust, conversion and findability, with an honest score and a ranked fix list. Free, no signup.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/audit.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane">
+<meta property="og:title" content="Free website audit — 15 checks in 10 minutes">
+<meta property="og:description" content="Speed, trust, conversion and findability — scored honestly, with the fixes ranked. No signup, nothing uploaded.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/audit.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane — websites, booking and automation for small businesses">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https:; base-uri 'none'; form-action 'self' mailto: https:; object-src 'none'">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .check { display: flex; gap: .85rem; align-items: flex-start; padding: .85rem 0; border-bottom: 1px solid var(--line); }
+  .check:last-child { border-bottom: none; }
+  .check input { width: 20px; height: 20px; margin-top: .2rem; accent-color: var(--accent); flex: none; }
+  .check label { cursor: pointer; font-weight: 600; color: var(--ink); }
+  .check .why { display: block; font-weight: 400; color: var(--ink-soft); font-size: .9rem; margin-top: .25rem; }
+  .check-group { border-top: 1px solid var(--line); padding-top: 1.5rem; margin-top: 1.5rem; }
+  .check-group:first-of-type { border-top: none; margin-top: .5rem; padding-top: 0; }
+  .score-big { font-size: 3rem; font-weight: 800; letter-spacing: -.03em; color: var(--accent); line-height: 1; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">Stack<span>lane</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="hide-sm">Home</a>
+      <a href="index.html#work" class="hide-sm">Free tools</a>
+      <a href="loss-calculator.html" class="hide-sm">Leak calculator</a>
+      <a href="invoice.html" class="hide-sm">Invoice tool</a>
+      <a href="quote.html" class="hide-sm">Quote builder</a>
+      <a href="product.html" class="hide-sm">The kit</a>
+      <a class="btn btn-secondary" href="index.html#contact">Get a quote</a>
+    </div>
+  </div>
+</nav>
+
+<section style="padding-top:2.5rem">
+  <div class="wrap">
+    <span class="eyebrow">Free tool · runs in your browser</span>
+    <h1 style="font-size:clamp(1.7rem,3.6vw,2.5rem)">The 15-point website audit</h1>
+    <p class="lede">Ten minutes, no signup, honest scoring. Tick what your site already does — the ones you can't tick are where enquiries are being lost. Ticks are saved on this device only.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap app">
+
+    <div class="panel">
+      <div class="check-group">
+        <span class="badge">Group 1 · Speed &amp; basics</span>
+        <div class="check"><input type="checkbox" id="c1" data-fix="Speed: compress images and enable caching — slow pages lose about 1 in 3 visitors before they see your offer.">
+          <label for="c1">It loads in under 3 seconds on a phone<span class="why">Test it on Google PageSpeed Insights. Over 3s and most people leave before reading a word.</span></label></div>
+        <div class="check"><input type="checkbox" id="c2" data-fix="Security: serve the whole site over HTTPS. Browsers warn visitors away from plain HTTP.">
+          <label for="c2">Every page uses HTTPS with no certificate warning<span class="why">A padlock in the address bar is now a basic trust signal, not a luxury.</span></label></div>
+        <div class="check"><input type="checkbox" id="c3" data-fix="Mobile: the layout breaks on small screens — most of your visitors are on one.">
+          <label for="c3">It reads properly at 360px wide, with nothing cut off<span class="why">Open it on the narrowest phone you can find. Horizontal scrolling is a bounce trigger.</span></label></div>
+        <div class="check"><input type="checkbox" id="c4" data-fix="Maintenance: the platform or plugins are outdated — this is how sites get hacked and de-indexed.">
+          <label for="c4">The software behind it is still maintained and updated<span class="why">Outdated plugins are the most common way small-business sites get compromised.</span></label></div>
+      </div>
+
+      <div class="check-group">
+        <span class="badge">Group 2 · Trust</span>
+        <div class="check"><input type="checkbox" id="c5" data-fix="Contact: your phone number is buried — visitors who want to call now, don't hunt for it.">
+          <label for="c5">Phone number or WhatsApp is visible without scrolling<span class="why">On mobile, a tap-to-call number converts better than any form.</span></label></div>
+        <div class="check"><input type="checkbox" id="c6" data-fix="Proof: no named reviews or testimonials — strangers have no reason to believe you yet.">
+          <label for="c6">At least three real reviews with a name and a source<span class="why">"Great service" with no name reads as invented. Named reviews don't.</span></label></div>
+        <div class="check"><input type="checkbox" id="c7" data-fix="Identity: no photo of you, your team or your premises — the site feels anonymous.">
+          <label for="c7">A real photo of you, your team or your premises<span class="why">People buy from people. A stock photo does the opposite of its job.</span></label></div>
+        <div class="check"><input type="checkbox" id="c8" data-fix="Pricing: no prices anywhere — price-checkers leave to compare you against someone who publishes theirs.">
+          <label for="c8">Prices, or at least a price range, appear somewhere on the site<span class="why">Publishing a starting price filters out the people who could never afford you and keeps the rest.</span></label></div>
+      </div>
+
+      <div class="check-group">
+        <span class="badge">Group 3 · Conversion</span>
+        <div class="check"><input type="checkbox" id="c9" data-fix="Focus: every page offers three competing actions, so visitors take none. Pick one.">
+          <label for="c9">Each page has exactly one obvious next action<span class="why">"Call, subscribe, read more, follow us" on one screen means nothing gets done.</span></label></div>
+        <div class="check"><input type="checkbox" id="c10" data-fix="Friction: enquiry or booking takes more than a minute or two — every extra step costs you leads.">
+          <label for="c10">A customer can book or enquire in under 60 seconds, on the page they're reading<span class="why">A form on the landing page beats a contact page they have to find.</span></label></div>
+        <div class="check"><input type="checkbox" id="c11" data-fix="Message: the first screen describes the business, not the outcome for the customer.">
+          <label for="c11">The first screen answers "what's in it for me", not "who we are"<span class="why">Visitors decide in five seconds whether this is for them.</span></label></div>
+        <div class="check"><input type="checkbox" id="c12" data-fix="Follow-up: enquiries wait hours or days for a reply — speed of reply wins more jobs than price does.">
+          <label for="c12">Enquiries get a reply within an hour during working hours<span class="why">The business that answers first usually wins, even at a higher price.</span></label></div>
+      </div>
+
+      <div class="check-group">
+        <span class="badge">Group 4 · Findability</span>
+        <div class="check"><input type="checkbox" id="c13" data-fix="Local search: your Google Business Profile is missing or has wrong hours — that's the local map pack you're absent from.">
+          <label for="c13">Google Business Profile is claimed, complete and has correct hours<span class="why">For local trades and shops, this is where most enquiries actually start.</span></label></div>
+        <div class="check"><input type="checkbox" id="c14" data-fix="Metadata: page titles and descriptions are missing or duplicated — Google guesses, badly.">
+          <label for="c14">Every page has its own unique title and description<span class="why">These two lines decide what people read in the search results.</span></label></div>
+        <div class="check"><input type="checkbox" id="c15" data-fix="Indexing: the site has no sitemap or is blocked from search — invisible pages can't sell.">
+          <label for="c15">A sitemap exists and the site appears in a search for your own name<span class="why">If you type your business name in Google and the site isn't near the top, something is wrong.</span></label></div>
+      </div>
+
+      <div class="alert alert-info" style="margin-top:1.5rem;margin-bottom:0">
+        Nothing is sent anywhere. Ticks stay in this browser and can be cleared any time — see the <a href="privacy.html">privacy policy</a>.
+      </div>
+    </div>
+
+    <aside class="app-side">
+      <div class="panel card-featured">
+        <span class="badge">Your score</span>
+        <div style="margin:.75rem 0 .25rem">
+          <span class="score-big" id="score">0</span>
+          <span style="font-size:1.25rem;color:var(--ink-soft);font-weight:600"> / 15</span>
+        </div>
+        <div class="totals">
+          <div class="row"><span>Passed</span><span id="s-pass">0</span></div>
+          <div class="row"><span>To fix</span><span id="s-fail">15</span></div>
+          <div class="row grand"><span>Group strength</span><span id="s-groups">—</span></div>
+        </div>
+        <p class="form-note" id="verdict">Tick a few checks to get your score.</p>
+        <div class="tool-actions">
+          <button class="btn" id="email-audit" type="button">Email me this audit</button>
+          <button class="btn btn-secondary" id="copy-audit" type="button">Copy as text</button>
+        </div>
+        <p class="form-note" id="audit-status" aria-live="polite"></p>
+        <button class="btn btn-ghost btn-block" id="reset-audit" type="button" style="margin-top:.5rem">Clear all ticks</button>
+      </div>
+
+      <div class="panel" style="margin-top:1.25rem">
+        <span class="badge badge-warn">Fix these first</span>
+        <ol id="fix-list" style="font-size:.93rem;color:var(--ink-soft);padding-left:1.2rem;margin:.6rem 0 0">
+          <li>Tick the checks on the left — the biggest gaps rise to the top here.</li>
+        </ol>
+        <a class="btn btn-block" href="index.html#contact" style="margin-top:1rem">Get a fixed quote to fix them</a>
+        <a class="btn btn-secondary btn-block" href="loss-calculator.html" style="margin-top:.6rem">What is the delay costing?</a>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<section class="section-soft">
+  <div class="narrow">
+    <span class="eyebrow">What the score means</span>
+    <h2>Read it honestly</h2>
+    <div class="card">
+      <div class="totals">
+        <div class="row"><span>13–15</span><span>Sound — small polish, no emergency</span></div>
+        <div class="row"><span>9–12</span><span>Leaking — a few fixes recover most of it</span></div>
+        <div class="row"><span>5–8</span><span>Losing enquiries most weeks</span></div>
+        <div class="row grand"><span>0–4</span><span>A business card, not a sales tool</span></div>
+      </div>
+      <p class="form-note" style="margin-top:.75rem">This is a checklist, not an audit report: it reflects what you ticked, not a measured test of your site. Use it to see which questions you couldn't answer — that gap is the actual problem.</p>
+    </div>
+    <div class="btn-row" style="margin-top:1.5rem">
+      <a class="btn btn-secondary" href="loss-calculator.html">Leak calculator</a>
+      <a class="btn btn-secondary" href="quote.html">Quote builder</a>
+      <a class="btn btn-ghost" href="invoice.html">Invoice tool</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>© <span data-year>2026</span> Stacklane · Free tool, no signup, no tracking. <a data-email href="#">Email us</a></div>
+    <div><a href="index.html">Home</a> · <a href="quote.html">Quote builder</a> · <a href="invoice.html">Invoice tool</a> · <a href="loss-calculator.html">Leak calculator</a> · <a href="product.html">The kit</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="refunds.html">Refunds</a></div>
+  </div>
+</footer>
+
+<script src="assets/store.js"></script>
+<script src="assets/chrome.js"></script>
+<script src="assets/audit.js"></script>
+</body>
+</html>

@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
 <title>Stacklane — Websites, booking and automation for small businesses</title>
 <meta name="description" content="I build fast websites, online booking and automated follow-up for small businesses. Fixed prices, live in days, not months.">
 <link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/">
@@ -11,10 +12,20 @@
 <meta property="og:title" content="Stacklane — Websites, booking and automation for small businesses">
 <meta property="og:description" content="Fast websites, online booking and automated follow-up for small businesses. Fixed prices, live in days.">
 <meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane — websites, booking and automation for small businesses">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https:; base-uri 'none'; form-action 'self'; object-src 'none'">
 <link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"ProfessionalService","@id":"https://osamaharoonn.github.io/stacklane-site/#business","name":"Stacklane","description":"Websites, online booking setup and workflow automation for small businesses, sold at fixed published prices. Also publishes free business tools and a digital template kit.","url":"https://osamaharoonn.github.io/stacklane-site/","email":"osamaharoun39@gmail.com","telephone":"+201016570406","priceRange":"$1500–$3500","areaServed":"Worldwide","knowsAbout":["Small business websites","Online booking","Workflow automation","Quoting and invoicing"],"founder":{"@type":"Person","name":"Osama Haroon"}},
+ {"@type":"WebSite","@id":"https://osamaharoonn.github.io/stacklane-site/#website","name":"Stacklane","url":"https://osamaharoonn.github.io/stacklane-site/","publisher":{"@id":"https://osamaharoonn.github.io/stacklane-site/#business"}}
+]}
+</script>
 </head>
 <body>
 
@@ -25,6 +36,8 @@
       <a href="#work" class="hide-sm">Live demos</a>
       <a href="loss-calculator.html" class="hide-sm">What's it costing you?</a>
       <a href="#pricing" class="hide-sm">Pricing</a>
+      <a href="quote.html" class="hide-sm">Quote builder</a>
+      <a href="audit.html" class="hide-sm">Website audit</a>
       <a href="invoice.html">Free invoice tool</a>
       <a class="btn" href="#contact">Get a quote</a>
     </div>
@@ -112,6 +125,18 @@
         <a class="btn btn-block" href="calculator.html">Open the calculator</a>
       </article>
       <article class="card">
+        <span class="badge badge-good">Fully working</span>
+        <h3>Quote builder</h3>
+        <p>Scope, line items, deposit and a 14-day validity date. Print to PDF or email it — the fixed-price habit, in one screen.</p>
+        <a class="btn btn-block" href="quote.html">Open the quote builder</a>
+      </article>
+      <article class="card">
+        <span class="badge badge-good">Fully working</span>
+        <h3>15-point website audit</h3>
+        <p>Tick what your site actually does across speed, trust, conversion and findability. Get a score and the fixes ranked.</p>
+        <a class="btn btn-block" href="audit.html">Run the audit</a>
+      </article>
+      <article class="card">
         <span class="badge">Product page</span>
         <h3>Client-Ready Business Kit</h3>
         <p>A live example of a paid product page: offer, proof, price and checkout — the income layer that runs while you sleep.</p>
@@ -163,7 +188,7 @@
           <div class="row"><span>Ignored enquiries</span><span>$1,819/mo</span></div>
           <div class="row grand"><span>Leaking</span><span>$2,988/mo</span></div>
         </div>
-        <p class="form-note">Illustrative defaults — 6 hrs/week admin at $45, four unanswered enquiries a week at $350 average, 30% would have bought. Run your own numbers in 30 seconds.</p>
+        <p class="form-note">Illustrative defaults — 6 hrs/week admin at $45, four unanswered enquiries a week at $350 average, 30% would have bought. <a href="loss-calculator.html?h=6&amp;r=45&amp;e=4&amp;v=350&amp;c=30">Run these numbers in 30 seconds →</a></p>
       </div>
     </div>
   </div>
@@ -258,7 +283,7 @@
 
     <div class="panel" id="contact-fallback" hidden style="margin-top:1.25rem">
       <span class="badge badge-warn">Nothing opened?</span>
-      <p style="font-size:.95rem;color:var(--ink-soft)">Send the same details to <strong data-email>this address</strong>, or use any option below.</p>
+      <p style="font-size:.95rem;color:var(--ink-soft)">Send the same details to <a data-email href="#">this address</a>, or use any option below.</p>
       <div class="btn-row" id="fb-links"></div>
       <div class="field" style="margin-top:1rem">
         <label for="copy-summary-text">Your message (select it and copy if nothing else works)</label>
@@ -268,23 +293,32 @@
       <p class="form-note" id="copy-status" aria-live="polite"></p>
     </div>
 
-    <p class="form-note" style="margin-top:1.25rem">Prefer plain email? <span data-email>your email</span></p>
+    <div class="btn-row" style="margin-top:1.25rem;align-items:center">
+      <span class="form-note" style="margin:0">Prefer plain email? <a data-email href="#">your email</a></span>
+      <a class="btn btn-secondary" data-wa hidden href="#">WhatsApp instead</a>
+    </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap footer-inner">
-    <div>© <span id="year">2026</span> Stacklane · Built as a working demo site.</div>
+    <div>© <span id="year">2026</span> Stacklane · <a data-email href="#">Email us</a></div>
     <div>
       <a href="loss-calculator.html">Leak calculator</a> ·
+      <a href="quote.html">Quote builder</a> ·
+      <a href="audit.html">Website audit</a> ·
       <a href="invoice.html">Invoice tool</a> ·
       <a href="calculator.html">Pricing calculator</a> ·
-      <a href="product.html">Product</a>
+      <a href="product.html">The kit</a> ·
+      <a href="privacy.html">Privacy</a> ·
+      <a href="terms.html">Terms</a> ·
+      <a href="refunds.html">Refunds</a>
     </div>
   </div>
 </footer>
 
 <script src="assets/store.js"></script>
+<script src="assets/chrome.js"></script>
 <script src="assets/site.js"></script>
 </body>
 </html>

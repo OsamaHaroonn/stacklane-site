@@ -1,21 +1,41 @@
 /* ============================================================
    Site configuration — the only file you need to edit.
 
-   Set these to your real details; every page reads them.
-   Leaving one empty makes the matching button show a clear
-   setup notice instead of silently doing nothing.
+   Every page reads these. Leaving one empty makes the matching
+   button show a clear setup notice instead of silently doing
+   nothing.
+
+   ── CONNECTING PAYMENTS ───────────────────────────────────
+   Set ONE of these two:
+     CHECKOUT_URL  → any hosted checkout link that delivers the
+                     file automatically. Works with:
+                       · Stripe Payment Link   buy.stripe.com/...
+                       · Paddle checkout       paddle.com/...
+                       · Lemon Squeezy         lemonsqueezy.com/...
+                       · Gumroad               gumroad.com/l/...
+     PAYPAL_ME     → just your PayPal username (the word after
+                     paypal.me/), e.g. 'osama.h'. Used only when
+                     CHECKOUT_URL is empty. Takes the buyer to
+                     PayPal to pay, then they land on thank-you.
+
+   Until one is set, the buy button shows how to order instead
+   of pretending to work.
    ============================================================ */
 window.STORE = {
   /* ---- Money ---- */
-  // Stripe Payment Link (https://dashboard.stripe.com/payment-links)
-  CHECKOUT_URL: '',
+  CHECKOUT_URL: '',        // e.g. 'https://buy.stripe.com/xxxx'
+  PAYPAL_ME: '',           // e.g. 'osama.h'  → https://paypal.me/osama.h
 
-  /* ---- Contact ---- */
-  CONTACT_EMAIL: '',          // e.g. 'you@yourbusiness.com'
-  WHATSAPP: '',               // e.g. '15551234567' (international, no +)
-  BOOKING_URL: '',            // e.g. 'https://cal.com/you/15min'
+  /* ---- Contact (live details, used on every page) ---- */
+  CONTACT_EMAIL: 'osamaharoun39@gmail.com',
+  WHATSAPP: '201016570406',       // international, no +  → wa.me/201016570406
+  BOOKING_URL: '',                // e.g. 'https://cal.com/you/15min'
 
-  /* ---- Optional real form backend ----
+  /* ---- Business ---- */
+  BUSINESS_NAME: 'Stacklane',
+  SUPPORT_PHONE: '+20 10 1657 0406',
+
+  /* ---- Optional real form backend
      Any service that accepts a JSON POST, e.g. Formspree or Web3Forms:
      'https://formspree.io/f/xxxxxxx'
      Set it and the quote form posts instead of opening the mail app.

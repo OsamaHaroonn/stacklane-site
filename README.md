@@ -1,4 +1,4 @@
-# Stacklane — working demo site for the two-track plan
+# Stacklane — the live site
 
 A complete, dependency-free website implementing **[BUSINESS-PLAN.md](BUSINESS-PLAN.md)**:
 
@@ -24,10 +24,14 @@ python3 -m http.server 8080
 
 ### What works out of the box
 
-- **Invoice generator** — line items, quantity × rate, discount %, tax %, live totals, autosave to `localStorage`, **Print → Save as PDF**. Verified working.
+- **Invoice generator** — line items, 10 currencies, discount %, tax %, live totals, **sequential invoice numbers (INV-1001…)**, a saved-invoice archive kept only in your browser, autosave, **Print → Save as PDF**. Verified working.
+- **Quote builder** — scope, line items, deposit %, validity date, live "valid until", email / copy / print. Verified working.
+- **15-point website audit** — score, ranked fix list, email/copy the result. Verified working.
 - **Pricing calculator** — cost-plus maths, margin, break-even, effective hourly rate, market-price comparison with a plain-English verdict. Verified working.
-- **Quote form** — composes a `mailto:` message with everything filled in. No backend, no data collected, works offline.
-- **Product page** — full sales page; checkout activates the moment you add a payment link.
+- **Leak calculator** — four inputs, adaptive honest verdict (it tells you *not* to automate under ~$500/mo), shareable numbers link, labelled assumptions and a 10% stress test.
+- **Quote form** — composes a `mailto:` message with everything filled in, plus WhatsApp. No backend, no data collected, works offline.
+- **Product page** — full sales page; checkout activates the moment you add `CHECKOUT_URL` (Stripe, Paddle, Lemon Squeezy, Gumroad) or `PAYPAL_ME`.
+- **Legal pages** — privacy, terms, refunds + a custom `404.html`. All cross-linked from every footer.
 
 ---
 
@@ -43,13 +47,18 @@ Everything configurable lives in one file, [assets/store.js](assets/store.js):
 
 ```js
 window.STORE = {
-  CHECKOUT_URL: '',     // Stripe Payment Link — turns "Buy now" into a real checkout
+  CHECKOUT_URL: '',     // any hosted checkout link (Stripe/Paddle/Lemon Squeezy/Gumroad)
+  PAYPAL_ME: '',        // fallback: just your paypal.me username, e.g. 'osama.h'
   CONTACT_EMAIL: '',    // your real address; fills every email link on the site
-  WHATSAPP: '',         // '15551234567' — adds a WhatsApp button to the contact panel
+  WHATSAPP: '',         // '15551234567' — adds WhatsApp buttons site-wide
   BOOKING_URL: '',      // e.g. 'https://cal.com/you/15min' — adds a booking button
+  BUSINESS_NAME: '',    // shown in the footer and schemas
+  SUPPORT_PHONE: '',    // shown as plain text next to the WhatsApp button
   FORM_ENDPOINT: ''     // optional: Formspree/Web3Forms URL to POST the quote form
 };
 ```
+
+`CONTACT_EMAIL`, `WHATSAPP` and `SUPPORT_PHONE` are read by `assets/chrome.js` on **every** page, so the contact details in the footer of each tool are always the ones in this file.
 
 Until `CHECKOUT_URL` is set, the buy button shows a setup notice instead of a broken checkout, and the quote form falls back to **email + visible message + copy button + WhatsApp** so a lead is never silently lost.
 
@@ -88,25 +97,36 @@ Drag the folder into Netlify, Cloudflare Pages, or Vercel. All are free for this
 
 ```
 index.html          Landing page (offer, demos, leak bridge, pricing, quote form)
-invoice.html        Free tool #1 — invoice generator (fully working)
-calculator.html     Free tool #2 — job pricing calculator (fully working)
-loss-calculator.html Free tool #3 — the bridge to the automation offer
-kit.html            THE PRODUCT — six real template packs, printable
+invoice.html        Free tool — invoice generator, 10 currencies, saved archive
+calculator.html     Free tool — job pricing calculator
+loss-calculator.html Free tool — the bridge to the automation offer
+quote.html          Free tool — fixed-price quote builder (scope, deposit, validity)
+audit.html          Free tool — 15-point website audit with a ranked fix list
+kit.html            THE PRODUCT — six real template packs, printable (noindex)
 thank-you.html      Post-payment delivery page for the kit
 product.html        Paid product page (income layer)
-robots.txt          Crawl rules
-sitemap.xml         Index of the four pages
+privacy.html        Privacy policy (no cookies, no analytics, local drafts only)
+terms.html          Terms: services, Kit licence, liability, honest-marketing promise
+refunds.html        14-day refund on the Kit + preview-first rule for services
+404.html            Custom not-found page listing everything that exists
+robots.txt          Crawl rules (kit.html disallowed)
+sitemap.xml         Index of all indexable pages
 assets/style.css    Shared design system + print stylesheet
-assets/invoice.js   Invoice maths, autosave, PDF printing
+assets/invoice.js   Invoice maths, currencies, archive, autosave, PDF printing
+assets/quote.js     Quote maths, deposit, validity, email/copy/print
+assets/audit.js     Audit scoring, ranked fixes, local save
 assets/calculator.js Pricing maths and verdicts
 assets/site.js      Quote form, fallback contact path, config-driven links
-assets/loss.js      Leak calculator maths + adaptive messaging
+assets/chrome.js    ← shared footer/nav contact details on every page
+assets/loss.js      Leak maths + deep links + adaptive honest messaging
 assets/kit.js       Kit print button
-assets/product.js   Checkout button and setup states
+assets/product.js   Checkout button (payment link, PayPal, or email/WhatsApp)
 assets/store.js     ← ALL site configuration lives here
+assets/og.png       1200×630 social share image
 assets/favicon.svg  Site icon
 BUSINESS-PLAN.md    The strategy this site executes
 ACTION-PLAN.md      The step-by-step execution plan
+AUDIT.md            The 20 problems found before launch + how they were fixed
 ```
 
 ---
@@ -116,7 +136,8 @@ ACTION-PLAN.md      The step-by-step execution plan
 - **Zero dependencies** — nothing to audit, nothing to break, no npm install.
 - **No tracking, no data collection** — the quote form never leaves the device; tool drafts stay in `localStorage` and **expire after 7 days** because they hold client details.
 - **Strict Content-Security-Policy** on every page (`script-src 'self'` — no inline script anywhere).
-- **SEO-ready** — canonical, Open Graph and Twitter tags per page, `robots.txt`, `sitemap.xml`, one `h1` per page, every field labelled.
+- **SEO-ready** — canonical, Open Graph/Twitter tags with a real `og:image`, JSON-LD (`ProfessionalService` + `WebSite` on the home page, `Product` with price, availability and the 14-day return policy on the product page, `FAQPage` on the leak calculator), `robots.txt`, `sitemap.xml`, one `h1` per page, every field labelled.
+- **Privacy by construction** — `<meta name="referrer" content="no-referrer">` on every page, so nothing about the visitor leaks outbound, and no third-party scripts at all.
 - **Responsive** — single column under 860px, sticky summary panels on desktop.
 - **Print stylesheet** — the invoice prints as a clean document; nav, buttons and footer are hidden.
 
