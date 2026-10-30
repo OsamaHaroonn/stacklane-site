@@ -947,9 +947,9 @@
         "tip": "Tip",
         "total": "Total to pay",
         "each": "Each person pays",
-      "split": "Split between",
-      "peopleWord": "people",
-      "person": "person",
+        "split": "Split between",
+        "peopleWord": "people",
+        "person": "person",
         "working": "Working",
         "empty": "Enter the bill amount to start.",
         "partial": "Fill in the bill, the tip percentage and the number of people.",
@@ -1105,6 +1105,257 @@
         "tooBig": "Those figures are too large to calculate.",
         "maxRows": "Twelve courses is the most this page lists at once.",
         "note": "Weighted by units: your own grade points, no assumed scale."
+      }
+    },
+    "case-converter": {
+      "title": "Case converter",
+      "desc": "Change text between upper case, lower case, title case, sentence case, camelCase, snake_case and kebab-case.",
+      "lede": "Paste your text, pick a case and read the result straight away. The conversion runs in this tab as you type, and you can copy the output in one click.",
+      "how": "The converter applies one string transform per case, in this tab, on every keystroke. Upper and lower case use the browser's own Unicode-aware mapping, so accented letters change with their plain counterparts. Title case capitalises the first letter of every run of letters and digits and lowercases the rest. Sentence case lowercases everything, then restores capitals after . ! ? and at the start of the text. The programming styles first split the text on anything that is not a letter or a digit: camelCase joins the parts with the first lower and later parts capitalised, snake_case and kebab-case join them in lower case with an underscore or a hyphen. Splitting on non-alphanumerics means punctuation and spaces are removed in those four modes — that is what makes an identifier, not a sentence.",
+      "example": "For stacklane tools 2024 the modes give: UPPER CASE → STACKLANE TOOLS 2024; title case → Stacklane Tools 2024; camelCase → stacklaneTools2024; snake_case → stacklane_tools_2024; kebab-case → stacklane-tools-2024. Notice the digits stay lowercase in camelCase because only the first letter of each part is capitalised, and a part that starts with digits gains no capital at all.",
+      "faq": [
+        {
+          "q": "Is my text uploaded anywhere?",
+          "a": "No. Every transform is a string operation inside your browser tab. Nothing is sent to a server and nothing is stored after you leave the page."
+        },
+        {
+          "q": "Why does camelCase drop my spaces and commas?",
+          "a": "Because identifiers cannot contain them. The text is split on anything that is not a letter or a digit, and the parts are rejoined. If you need the punctuation kept, use upper, lower, title or sentence case."
+        },
+        {
+          "q": "How does title case treat small words?",
+          "a": "It capitalises every word equally. Editorial title case would usually leave words like \"and\" lowercase in the middle of a title, which needs a word list and a language judgement this tool does not attempt."
+        },
+        {
+          "q": "Does it handle accents and other scripts?",
+          "a": "Upper and lower case do, because they use the browser's own Unicode mapping. The word-splitting styles break on non-Latin scripts differently, since they treat a run of letters as one part — check the output before using it as an identifier."
+        },
+        {
+          "q": "Is there a length limit?",
+          "a": "Yes, 500,000 characters. Transforms are re-run on every keystroke, so a longer paste would make typing lag; the tool refuses it with a message instead of freezing."
+        }
+      ],
+      "ui": {
+        "input": "Text to convert",
+        "placeholder": "Paste or type your text here…",
+        "output": "Converted text",
+        "mode": "Convert to",
+        "upper": "UPPERCASE",
+        "lower": "lowercase",
+        "title": "Title Case",
+        "sentence": "Sentence case",
+        "camel": "camelCase",
+        "pascal": "PascalCase",
+        "snake": "snake_case",
+        "kebab": "kebab-case",
+        "alternating": "aLtErNaTiNg CaSe",
+        "reverse": "Reverse the text",
+        "copy": "Copy result",
+        "copied": "Copied to the clipboard.",
+        "copyFail": "The browser blocked the copy — select the text and copy it yourself.",
+        "chars": "Characters in",
+        "charsOut": "Characters out",
+        "applied": "Mode",
+        "empty": "Type or paste some text to convert it.",
+        "tooLong": "That text is over 500,000 characters — split it up before converting."
+      }
+    },
+    "character-counter": {
+      "title": "Character counter",
+      "desc": "Count characters, characters without spaces, words, lines, sentences, letters, digits and the UTF-8 size of your text.",
+      "lede": "Paste or type your text and every count updates as you type: characters with and without spaces, words, lines, sentences, letters, digits and the byte size of the text.",
+      "how": "Characters are counted as code points, which means a single emoji or an accented letter counts as one character even though it may be stored as two UTF-16 units. Removing spaces from that count gives the figure forms and bios usually cap. Words are runs separated by whitespace, lines are separated by line breaks and sentences by . ! ? and …. Letters and digits use Unicode properties, so they are counted correctly in scripts other than Latin. Bytes are measured in UTF-8: plain ASCII costs one byte, most Latin and Cyrillic characters cost two, and an emoji costs four, which matters when a service counts bytes rather than characters.",
+      "example": "Hello, world! is 13 characters and 12 without spaces, because only the comma and the exclamation mark are not letters and there is one space to remove. It holds 2 words, 1 line, 1 sentence, 10 letters, 0 digits and 13 bytes — the count is 13 bytes because every character in it is a single-byte ASCII character.",
+      "faq": [
+        {
+          "q": "Does an emoji count as one character or more?",
+          "a": "One character, because characters are counted as code points. It still takes four bytes in UTF-8, which is why the byte figure can be much larger than the character figure on emoji-heavy text."
+        },
+        {
+          "q": "Why are spaces excluded in one figure?",
+          "a": "Because limits on bios, usernames and form fields often ignore spaces. Both figures are shown so you can match whichever rule the field you are filling in uses."
+        },
+        {
+          "q": "How are sentences counted?",
+          "a": "By splitting on . ! ? and … and keeping the parts that contain text. A file with no sentence punctuation counts as one sentence, and abbreviations with full stops can be over-counted."
+        },
+        {
+          "q": "Is my text stored or sent anywhere?",
+          "a": "No. Counting happens in this tab as you type, and the text is never uploaded. Closing or clearing the page removes it."
+        },
+        {
+          "q": "Can it count very large documents?",
+          "a": "Yes, as long as your browser has the memory for the string. Counts are a single pass over the text, so the limit is usually the textarea itself rather than the counting."
+        }
+      ],
+      "ui": {
+        "input": "Text to count",
+        "placeholder": "Type or paste your text here…",
+        "characters": "Characters",
+        "noSpaces": "Characters without spaces",
+        "words": "Words",
+        "lines": "Lines",
+        "sentences": "Sentences",
+        "letters": "Letters",
+        "digits": "Digits",
+        "bytes": "Bytes (UTF-8)",
+        "longest": "Longest word",
+        "charsUnit": "characters",
+        "wordsUnit": "words",
+        "working": "Working",
+        "empty": "Type or paste some text to count it.",
+        "note": "Counts are computed in your browser: nothing is uploaded."
+      }
+    },
+    "remove-duplicate-lines": {
+      "title": "Remove duplicate lines",
+      "desc": "Delete repeated lines from a list or a block of text, keeping the first occurrence and the original order.",
+      "lede": "Paste your lines and the duplicate ones disappear from the output, with a count of how many were removed. Matching is exact unless you ask it to ignore spaces or capitals.",
+      "how": "The text is split on line breaks and each line is visited once from top to bottom. The first time a line appears it is kept; every later occurrence of the same line is dropped, so the order of the original list is preserved. By default two lines match only when they are identical strings. Trimming ignores leading and trailing spaces, ignoring capital letters folds the text to lower case first, and removing blank lines drops empty ones on top of that. Each option changes the comparison key rather than the text you get back, so nothing in the kept lines is rewritten.",
+      "example": "Five lines — apple, banana, apple, Banana, cherry — keep four with the defaults, because the second apple repeats the first while Banana is a different string. Switch on ignoring capital letters and Banana is dropped too, leaving three lines. Switch on removing blank lines as well and empty rows are dropped too.",
+      "faq": [
+        {
+          "q": "Which duplicate is kept?",
+          "a": "The first one, at its original position. Later repeats are dropped, so your output follows the order of the input rather than being sorted."
+        },
+        {
+          "q": "Does it change the text of the lines I keep?",
+          "a": "No. The options only affect how lines are compared. Trimming, for example, lets apple and \" apple \" be seen as the same line, but the version kept is written out exactly as it was pasted."
+        },
+        {
+          "q": "Why did nothing get removed?",
+          "a": "Because there were no exact repeats. Turn on ignoring capital letters or trimming if your duplicates differ only by case or spacing — the count tells you how many each change removes."
+        },
+        {
+          "q": "Does it sort or renumber my list?",
+          "a": "No. It only removes repeated lines. Sorting, renumbering or reformatting would change your data, so it stays out of this tool."
+        },
+        {
+          "q": "Is there a limit?",
+          "a": "200,000 lines in one paste. Beyond that the page would spend longer scanning than it is worth, so the tool refuses with a message instead of freezing your tab."
+        }
+      ],
+      "ui": {
+        "input": "Lines to clean",
+        "placeholder": "Paste one item per line…",
+        "output": "Lines without duplicates",
+        "trim": "Ignore leading and trailing spaces",
+        "ignoreCase": "Ignore capital letters",
+        "dropBlanks": "Also remove blank lines",
+        "copy": "Copy result",
+        "copied": "Copied to the clipboard.",
+        "copyFail": "The browser blocked the copy — select the text and copy it yourself.",
+        "linesIn": "Lines in",
+        "linesOut": "Lines out",
+        "dupes": "Duplicates removed",
+        "blanks": "Blank lines removed",
+        "working": "Working",
+        "empty": "Paste a list to remove the duplicate lines.",
+        "none": "No duplicate lines found.",
+        "note": "First occurrence kept, original order preserved.",
+        "tooMany": "That is over 200,000 lines — split the list up before cleaning it."
+      }
+    },
+    "random-number": {
+      "title": "Random number generator",
+      "desc": "Generate one or more random whole numbers in a range you choose, using the browser's cryptographic random source.",
+      "lede": "Set a minimum, a maximum and how many numbers you need, then generate them in this tab with crypto.getRandomValues — no server, no seed, no pattern.",
+      "how": "Each number comes from crypto.getRandomValues, the browser's cryptographic random generator, not from a predictable formula. For ranges that fit in 32 bits the tool uses exact rejection sampling: the 32-bit space is divided into whole blocks of the range size and any draw that lands in the leftover tail is discarded and redrawn, so every value in the range is exactly as likely as every other. Wider ranges combine two 32-bit draws into a 53-bit value and scale it into the range. Draws are independent: seeing a number several times does not make it less likely next time, and the tool does not promise to avoid repeats.",
+      "example": "With the range 1 to 6 each draw lands on any given number with probability 1/6, which is about 16.7%. Two draws make 6 × 6 = 36 equally likely pairs, so two sixes in a row has probability 1/36, about 2.8%. Set the minimum to 0 and the maximum to 99 for two-digit numbers: every pair in that range is equally likely, so 42 coming up twice in a row is exactly as likely as any other pair.",
+      "faq": [
+        {
+          "q": "Is this good enough for passwords?",
+          "a": "The source is the same cryptographic generator browsers use for session tokens, so the numbers themselves are sound. But a password needs mixed character types and enough length — use the password generator, which handles that for you."
+        },
+        {
+          "q": "Why can the same number appear twice?",
+          "a": "Every draw is independent, so repeats are normal and expected. If you need numbers that cannot repeat, generate fewer numbers than there are values in the range and tell me — that mode is not built yet."
+        },
+        {
+          "q": "Are the numbers the same on every run?",
+          "a": "No. crypto.getRandomValues draws from the operating system's entropy source, and this tool keeps no seed, so there is nothing to reproduce a previous result."
+        },
+        {
+          "q": "What are the limits?",
+          "a": "Between 1 and 1,000 numbers at a time, and a range no wider than the safe-integer limit. Generating in batches keeps the page responsive and the output readable."
+        },
+        {
+          "q": "Can a negative range be used?",
+          "a": "Yes. Set a minimum below zero, for example -50 to 50, and every value in between is equally likely, zero included."
+        }
+      ],
+      "ui": {
+        "min": "Minimum",
+        "max": "Maximum",
+        "count": "How many",
+        "generate": "Generate",
+        "output": "Numbers",
+        "copy": "Copy",
+        "copied": "Copied to the clipboard.",
+        "copyFail": "The browser blocked the copy — select the numbers and copy them yourself.",
+        "range": "Range",
+        "drawn": "Numbers generated",
+        "source": "Source",
+        "crypto": "crypto.getRandomValues",
+        "empty": "Enter a minimum, a maximum and how many numbers you need.",
+        "partial": "Fill in the minimum, the maximum and the count.",
+        "order": "The minimum must not be greater than the maximum.",
+        "countLow": "Generate at least one number.",
+        "countHigh": "Generate 1,000 numbers or fewer at a time.",
+        "rangeWide": "That range is wider than 9,007,199,254,740,991 — narrow it down.",
+        "noCrypto": "This browser did not provide a secure random source, so no numbers were generated.",
+        "note": "Every draw is independent: repeats are normal."
+      }
+    },
+    "uuid-generator": {
+      "title": "UUID generator",
+      "desc": "Generate version 4 UUIDs in your browser, one at a time or in a batch, with an optional uppercase form.",
+      "lede": "Choose how many identifiers you need and generate them with the browser's crypto.randomUUID — 128-bit version 4 UUIDs, made and shown only in this tab.",
+      "how": "A version 4 UUID is 128 bits written as 32 hexadecimal digits in five groups of 8-4-4-4-12. Of those 128 bits, 122 are random and 6 are fixed: the first character of the third group is always 4, marking version 4, and the first character of the fourth group is always one of 8, 9, a or b, marking the RFC 4122 variant. The browser's crypto.randomUUID sets those bits for you; where it is missing, the tool fills 16 bytes from crypto.getRandomValues and applies the same two masks by hand. The uppercase option only changes the letters — the value is the same identifier either way.",
+      "example": "Take 550e8400-e29b-41d4-a716-446655440000 and check it against the two rules. The third group is 41d4, which starts with 4, so the version is right. The fourth group is a716, which starts with a — in binary a is 1010, so the top two bits are 10, the RFC 4122 variant. Both rules hold, so it is a genuine version 4 UUID, and any v4 identifier you generate here will pass the same two checks.",
+      "faq": [
+        {
+          "q": "Are these really random?",
+          "a": "Yes. They come from crypto.getRandomValues, the browser's cryptographic random source, and 122 of the 128 bits are free to vary. Nothing is stored, so a later run cannot reproduce them."
+        },
+        {
+          "q": "What does version 4 mean?",
+          "a": "It says how the identifier was made: version 4 means random bits. Other versions derive the value from a timestamp, a name or a hash, which is why their fourth group differs."
+        },
+        {
+          "q": "Could two runs produce the same UUID?",
+          "a": "With 122 random bits the chance is about 1 in 5.3 × 10^36 for any single pair, so generating identifiers one at a time will not collide in practice. That figure comes from the size of the space, not from a measurement."
+        },
+        {
+          "q": "Why does uppercase exist if the value is the same?",
+          "a": "Because some systems and conventions print them in capitals. The hexadecimal digits are case-insensitive, so an uppercase UUID is the same identifier as its lowercase form."
+        },
+        {
+          "q": "How many can I make at once?",
+          "a": "Up to 100 per run. The list is shown in the output box and copied as plain lines, so you can paste it straight into a config file or a test fixture."
+        }
+      ],
+      "ui": {
+        "count": "How many",
+        "upper": "Use uppercase letters",
+        "generate": "Generate",
+        "output": "UUIDs",
+        "copy": "Copy",
+        "copied": "Copied to the clipboard.",
+        "copyFail": "The browser blocked the copy — select the identifiers and copy them yourself.",
+        "version": "Version",
+        "versionValue": "4 (random)",
+        "variant": "Variant",
+        "variantValue": "RFC 4122 (10xx)",
+        "generated": "Identifiers generated",
+        "source": "Source",
+        "crypto": "crypto.randomUUID / getRandomValues",
+        "empty": "Enter how many identifiers you need.",
+        "partial": "The count has to be a whole number.",
+        "countLow": "Generate at least one identifier.",
+        "countHigh": "Generate 100 identifiers or fewer at a time.",
+        "noCrypto": "This browser did not provide a secure random source, so nothing was generated.",
+        "note": "128 bits, 122 of them random: made in this tab and never sent anywhere."
       }
     }
   },

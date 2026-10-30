@@ -27,6 +27,11 @@ window.TOOL_CATALOG = [
   { slug: 'roi-calculator', category: 'calculators', keywords: 'roi calculator return on investment profit loss percentage' },
   { slug: 'savings-goal-calculator', category: 'calculators', keywords: 'savings goal calculator monthly deposit compound interest target' },
   { slug: 'gpa-calculator', category: 'calculators', keywords: 'gpa calculator grade point average credits units transcript' },
+  { slug: 'case-converter', category: 'text', keywords: 'case converter uppercase lowercase title camel snake kebab sentence case' },
+  { slug: 'character-counter', category: 'text', keywords: 'character counter characters words lines sentences length limit' },
+  { slug: 'remove-duplicate-lines', category: 'text', keywords: 'remove duplicate lines dedupe unique lines text clean' },
+  { slug: 'random-number', category: 'generators', keywords: 'random number generator crypto secure pick number between range' },
+  { slug: 'uuid-generator', category: 'generators', keywords: 'uuid generator v4 unique id random identifier rfc 4122' },
 ];
 
 window.TOOL_CATS = {};
