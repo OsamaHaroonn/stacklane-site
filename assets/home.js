@@ -46,8 +46,12 @@ window.HomePage = function (json, h) {
         var n = slug === 'business'
           ? window.BUSINESS_PAGES.length
           : window.TOOL_CATALOG.filter(function (t) { return t.category === slug; }).length;
-        var unit = n === 1 ? get(json, 'category.countOne') : get(json, 'category.countMany');
-        card.appendChild(el('span', { class: 'badge' }, n + ' ' + unit));
+        // countOne already carries its own "1" ("1 tool"); only plural
+        // counts are prefixed with the number, so no badge reads "1 1 tool".
+        var label = n === 1
+          ? get(json, 'category.countOne')
+          : n + ' ' + get(json, 'category.countMany');
+        card.appendChild(el('span', { class: 'badge' }, label));
       }
       card.setAttribute('data-search', (name + ' ' + desc + ' ' + slug).toLowerCase());
       catGrid.appendChild(card);
