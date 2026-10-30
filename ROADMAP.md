@@ -20,13 +20,13 @@ browser. **planned** = roadmap only, not built, no page, no JSON entry.
 | 9 | `heic-to-jpg` | images | convert heic to jpg | planned |
 | 10 | `crop-rotate-image` | images | crop and rotate image online | planned |
 | 11 | `word-counter` | text | word counter | **built** |
-| 12 | `character-counter` | text | character counter with limit | planned |
-| 13 | `case-converter` | text | convert text to uppercase lowercase | planned |
-| 14 | `remove-duplicate-lines` | text | remove duplicate lines from text | planned |
+| 12 | `character-counter` | text | character counter with limit | **built** |
+| 13 | `case-converter` | text | convert text to uppercase lowercase | **built** |
+| 14 | `remove-duplicate-lines` | text | remove duplicate lines from text | **built** |
 | 15 | `qr-code-generator` | generators | qr code generator for url | **built** |
 | 16 | `password-generator` | generators | strong random password generator | **built** |
 | 17 | `barcode-generator` | generators | barcode generator online | planned |
-| 18 | `random-number` | generators | random number generator between | planned |
+| 18 | `random-number` | generators | random number generator between | **built** |
 | 19 | `age-calculator` | calculators | age calculator from date of birth | **built** |
 | 20 | `percentage-calculator` | calculators | percentage calculator | **built** |
 | 21 | `date-difference` | calculators | days between two dates | **built** |
@@ -46,6 +46,7 @@ browser. **planned** = roadmap only, not built, no page, no JSON entry.
 | 35 | `roi-calculator` | calculators | roi calculator return on investment | **built** |
 | 36 | `savings-goal-calculator` | calculators | savings goal monthly deposit calculator | **built** |
 | 37 | `gpa-calculator` | calculators | gpa calculator grade point average | **built** |
+| 38 | `uuid-generator` | generators | uuid generator version 4 online | **built** |
 
 ## Category directories
 
