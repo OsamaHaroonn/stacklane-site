@@ -40,7 +40,7 @@ window.TOOL = (function () {
       out.textarea.value = '';
       countChars();
       box.clear();
-      out.row.hidden = false;
+      out.row.hidden = true;
       copyBtn.disabled = true;
     }, { secondary: true });
     var copyBtn = TK.btn(ui('copy'), function () {
@@ -70,6 +70,7 @@ window.TOOL = (function () {
       var raw = input.textarea.value;
       if (!raw.trim()) {
         out.textarea.value = '';
+        out.row.hidden = true;
         copyBtn.disabled = true;
         box.show(ui('empty'), 'warn');
         return;
@@ -81,6 +82,7 @@ window.TOOL = (function () {
         parsed = JSON.parse(raw);
       } catch (e) {
         out.textarea.value = '';
+        out.row.hidden = true;
         copyBtn.disabled = true;
         box.show(ui('invalid') + ' ' + String((e && e.message) || ''), 'error');
         return;
@@ -88,6 +90,7 @@ window.TOOL = (function () {
 
       if (kind === 'validate') {
         out.textarea.value = '';
+        out.row.hidden = true;
         copyBtn.disabled = true;
         box.show(ui('valid'));
         return;
@@ -98,6 +101,7 @@ window.TOOL = (function () {
         : JSON.stringify(parsed, null, 2);
 
       out.textarea.value = text;
+      out.row.hidden = false;
       copyBtn.disabled = false;
       box.show(ui('valid'));
     }

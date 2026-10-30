@@ -616,6 +616,10 @@ footer a { display: inline-flex; align-items: center; min-height: 44px; }
 .tk-msg.warn { background: var(--warn-soft); border-color: var(--warn); color: var(--warn); }
 .tk-msg.ok { background: var(--good-soft); border-color: var(--good); color: var(--good); }
 
+/* ToolKit panels are flex/grid, which overrides the browser's [hidden] rule —
+   so an element hidden with the attribute stayed visible. */
+.tk-field[hidden] { display: none; }
+
 .tk-out { display: grid; gap: .4rem; margin-top: 1rem; min-height: 3.25rem; }
 .tk-out[hidden] { display: none; }
 /* A preview canvas that is hidden until it has output still holds its box,
