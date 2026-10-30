@@ -16,7 +16,12 @@ window.TOOL_CATALOG = [
   { slug: 'age-calculator',         category: 'calculators', keywords: 'age calculator birthday date of birth' },
   { slug: 'percentage-calculator',  category: 'calculators', keywords: 'percentage calculator percent increase discount' },
   { slug: 'unit-converter',         category: 'converters',  keywords: 'unit converter metric imperial length temperature' },
-  { slug: 'json-formatter',         category: 'developer',   keywords: 'json formatter validator minify pretty print' }
+  { slug: 'json-formatter',         category: 'developer',   keywords: 'json formatter validator minify pretty print' },
+  { slug: 'loan-calculator',        category: 'calculators', keywords: 'loan calculator monthly payment interest amortisation borrowing' },
+  { slug: 'mortgage-calculator', category: 'calculators', keywords: 'mortgage calculator monthly payment down payment house loan' },
+  { slug: 'compound-interest-calculator', category: 'calculators', keywords: 'compound interest calculator savings growth compounding' },
+  { slug: 'discount-calculator', category: 'calculators', keywords: 'discount calculator percent off sale price savings' },
+  { slug: 'vat-calculator', category: 'calculators', keywords: 'vat calculator add remove tax net gross rate' },
 ];
 
 window.TOOL_CATS = {};
