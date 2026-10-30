@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Mortgage calculator — Stacklane Tools</title>
+<meta name="description" content="Estimate the monthly principal and interest on a mortgage from the price, down payment, rate and term.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/mortgage-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="Mortgage calculator — Stacklane Tools">
+<meta property="og:description" content="Estimate the monthly principal and interest on a mortgage from the price, down payment, rate and term.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/mortgage-calculator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="mortgage-calculator">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.calculators.name">calculatorsname</p>
+    <h1 data-i18n="tools.mortgage-calculator.title">Mortgage calculator</h1>
+    <p class="lede" data-i18n="tools.mortgage-calculator.lede">Enter the property price, your down payment, the annual rate and the term to see the monthly principal-and-interest payment, the loan size and the interest over the full term.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.mortgage-calculator.how">The loan is the price minus the down payment. The monthly payment then comes from M = L × i ÷ (1 − (1 + i)^−n), with i the annual rate divided by 100 and then by 12, and n the number of monthly payments. The tool also reports the down payment as a percentage of the price and the total cost including the deposit. Property tax, buildings insurance, mortgage insurance, arrangement fees and service charges are not part of this figure, and a variable rate will change it.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.mortgage-calculator.example">A 300,000 home with a 60,000 down payment leaves a 240,000 loan. At 6% over 30 years, i = 0.005 and n = 360, so the payment is 240,000 × 0.005 ÷ (1 − 1.005^−360) = 1,438.92. The down payment is 20% of the price, 360 payments total 518,011.20 and the interest is 278,011.20.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.mortgage-calculator.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="calculators.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/mortgage-calculator.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>
