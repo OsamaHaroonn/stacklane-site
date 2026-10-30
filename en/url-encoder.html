@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>URL encoder — Stacklane Tools</title>
+<meta name="description" content="Percent-encode text for a URL or query string, and decode it back again.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/url-encoder.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="URL encoder — Stacklane Tools">
+<meta property="og:description" content="Percent-encode text for a URL or query string, and decode it back again.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/url-encoder.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="url-encoder">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.developer.name">developername</p>
+    <h1 data-i18n="tools.url-encoder.title">URL encoder</h1>
+    <p class="lede" data-i18n="tools.url-encoder.lede">Paste the value you need to put in a link and the tool encodes it into a safe percent-encoded form, or turns an already encoded string back into readable text.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.url-encoder.how">Percent-encoding replaces any character that is not safe in a URL with a percent sign and two hexadecimal digits, for example %20 for a space. The tool uses the browser's encodeURIComponent, which leaves letters, digits and - _ . ! ~ * ' ( ) alone and encodes everything else, including spaces, ampersands, equals signs, slashes, non-Latin characters and emoji. Multi-byte characters are encoded one UTF-8 byte at a time, so an Arabic letter becomes three percent sequences. Decoding does the reverse and stops with a message when it meets a percent sign that is not followed by two hexadecimal digits, which is the usual cause of a failed decode.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.url-encoder.example">a b&c=d encodes to a%20b%26c%3Dd: the space becomes %20, the ampersand becomes %26 and the equals sign becomes %3D, while the letters are left alone. Decoding hello%20world%2Fx gives back hello world/x, because %20 is a space and %2F is a forward slash. That slash is encoded deliberately — encodeURIComponent always escapes it, so encode path segments separately if you want slashes to stay visible.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.url-encoder.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="developer.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/url-encoder.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>
