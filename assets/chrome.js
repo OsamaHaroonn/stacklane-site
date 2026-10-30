@@ -78,7 +78,13 @@
       else if (k === 'class') node.className = attrs[k];
       else node.setAttribute(k, attrs[k]);
     });
-    if (text != null) node.textContent = text;
+    // A child node must be appended, never assigned to textContent: stringifying
+    // an <a> yields its resolved href, which is how raw URLs once leaked into
+    // the footer as visible text.
+    if (text != null) {
+      if (text.nodeType) node.appendChild(text);
+      else node.textContent = text;
+    }
     return node;
   }
 
