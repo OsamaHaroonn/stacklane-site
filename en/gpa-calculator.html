@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>GPA calculator — Stacklane Tools</title>
+<meta name="description" content="Grade point average from the courses you list, using the grade points and unit values your own course uses.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/gpa-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="GPA calculator — Stacklane Tools">
+<meta property="og:description" content="Grade point average from the courses you list, using the grade points and unit values your own course uses.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/gpa-calculator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="gpa-calculator">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.calculators.name">calculatorsname</p>
+    <h1 data-i18n="tools.gpa-calculator.title">GPA calculator</h1>
+    <p class="lede" data-i18n="tools.gpa-calculator.lede">Enter each course with its grade points and its units, and the tool returns the weighted average, the total units and the quality points behind it.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.gpa-calculator.how">GPA = total quality points ÷ total units. Quality points for one course are its grade points multiplied by its units, so a course worth four units counts twice as much as one worth two — this is why a high mark in a large course moves the average more than a high mark in a small one. The tool adds up the quality points and the units across every row you fill in and divides one by the other. The grade scale is entirely yours: there is no built-in scale, because scales differ between countries, institutions and departments, and claiming one standard would be wrong. Rows left blank are ignored, so you can keep a spare row ready.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.gpa-calculator.example">Three courses: A with 4.0 points for 3 units, B with 3.0 points for 4 units, and A with 4.0 points for 2 units. The quality points are 4.0 × 3 = 12, 3.0 × 4 = 12 and 4.0 × 2 = 8, which add up to 32, and the units are 3 + 4 + 2 = 9. The GPA is 32 ÷ 9 = 3.56.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.gpa-calculator.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="calculators.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/gpa-calculator.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>
