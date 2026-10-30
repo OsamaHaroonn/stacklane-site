@@ -465,6 +465,9 @@ footer a { display: inline-flex; align-items: center; min-height: 44px; }
   transition: border-color .15s, transform .15s; min-height: 44px;
 }
 .tool-card:hover, .tool-card:focus-visible { border-color: var(--accent); transform: translateY(-2px); }
+/* flex overrides the browser's [hidden] rule, which would leave filtered-out
+   cards on screen — the search filter sets card.hidden. */
+.tool-card[hidden] { display: none; }
 .tool-card h3 { margin: 0; font-size: 1.05rem; }
 .tool-card p { margin: 0; font-size: .88rem; color: var(--ink-soft); }
 .tool-card .badge { align-self: flex-start; }
