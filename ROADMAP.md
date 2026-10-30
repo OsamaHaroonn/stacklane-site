@@ -29,7 +29,7 @@ browser. **planned** = roadmap only, not built, no page, no JSON entry.
 | 18 | `random-number` | generators | random number generator between | planned |
 | 19 | `age-calculator` | calculators | age calculator from date of birth | **built** |
 | 20 | `percentage-calculator` | calculators | percentage calculator | **built** |
-| 21 | `date-difference` | calculators | days between two dates | planned |
+| 21 | `date-difference` | calculators | days between two dates | **built** |
 | 22 | `loan-calculator` | calculators | loan calculator monthly payment | **built** |
 | 23 | `discount-calculator` | calculators | discount calculator percent off | **built** |
 | 24 | `unit-converter` | converters | unit converter length temperature | **built** |
@@ -42,6 +42,10 @@ browser. **planned** = roadmap only, not built, no page, no JSON entry.
 | 31 | `mortgage-calculator` | calculators | mortgage calculator monthly payment | **built** |
 | 32 | `compound-interest-calculator` | calculators | compound interest calculator | **built** |
 | 33 | `vat-calculator` | calculators | vat calculator add or remove tax | **built** |
+| 34 | `tip-split-calculator` | calculators | tip calculator split bill between people | **built** |
+| 35 | `roi-calculator` | calculators | roi calculator return on investment | **built** |
+| 36 | `savings-goal-calculator` | calculators | savings goal monthly deposit calculator | **built** |
+| 37 | `gpa-calculator` | calculators | gpa calculator grade point average | **built** |
 
 ## Category directories
 
