@@ -36,9 +36,9 @@ browser. **planned** = roadmap only, not built, no page, no JSON entry.
 | 25 | `time-zone-converter` | converters | time zone converter current time | planned |
 | 26 | `roman-numerals` | converters | roman numeral converter | planned |
 | 27 | `json-formatter` | developer | json formatter and validator | **built** |
-| 28 | `base64` | developer | base64 encode decode | planned |
-| 29 | `color-converter` | developer | hex to rgb color converter | planned |
-| 30 | `url-encoder` | developer | url encode decode online | planned |
+| 28 | `base64` | developer | base64 encode decode | **built** |
+| 29 | `color-converter` | developer | hex to rgb color converter | **built** |
+| 30 | `url-encoder` | developer | url encode decode online | **built** |
 | 31 | `mortgage-calculator` | calculators | mortgage calculator monthly payment | **built** |
 | 32 | `compound-interest-calculator` | calculators | compound interest calculator | **built** |
 | 33 | `vat-calculator` | calculators | vat calculator add or remove tax | **built** |
@@ -47,6 +47,7 @@ browser. **planned** = roadmap only, not built, no page, no JSON entry.
 | 36 | `savings-goal-calculator` | calculators | savings goal monthly deposit calculator | **built** |
 | 37 | `gpa-calculator` | calculators | gpa calculator grade point average | **built** |
 | 38 | `uuid-generator` | generators | uuid generator version 4 online | **built** |
+| 39 | `timestamp-converter` | developer | unix timestamp to date converter | **built** |
 
 ## Category directories
 
