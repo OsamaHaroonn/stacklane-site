@@ -147,7 +147,10 @@ section { padding: var(--sp-6) 0; }
 .section-head { max-width: 62ch; margin-bottom: 2.5rem; }
 
 /* ---------- Hero ---------- */
-.hero { padding: 5rem 0 4rem; }
+/* Bottom padding is deliberately small: the section below supplies the rest,
+   and a 4rem hero base plus 3.5rem section top left a 128px hole under the
+   search box. */
+.hero { padding: clamp(2.5rem, 6vw, 5rem) 0 1.5rem; }
 .hero h1 { max-width: 16ch; }
 .hero .lede { font-size: 1.25rem; }
 .hero-note {
