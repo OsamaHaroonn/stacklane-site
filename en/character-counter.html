@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Character counter — Stacklane Tools</title>
+<meta name="description" content="Count characters, characters without spaces, words, lines, sentences, letters, digits and the UTF-8 size of your text.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/character-counter.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="Character counter — Stacklane Tools">
+<meta property="og:description" content="Count characters, characters without spaces, words, lines, sentences, letters, digits and the UTF-8 size of your text.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/character-counter.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="character-counter">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.text.name">textname</p>
+    <h1 data-i18n="tools.character-counter.title">Character counter</h1>
+    <p class="lede" data-i18n="tools.character-counter.lede">Paste or type your text and every count updates as you type: characters with and without spaces, words, lines, sentences, letters, digits and the byte size of the text.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.character-counter.how">Characters are counted as code points, which means a single emoji or an accented letter counts as one character even though it may be stored as two UTF-16 units. Removing spaces from that count gives the figure forms and bios usually cap. Words are runs separated by whitespace, lines are separated by line breaks and sentences by . ! ? and …. Letters and digits use Unicode properties, so they are counted correctly in scripts other than Latin. Bytes are measured in UTF-8: plain ASCII costs one byte, most Latin and Cyrillic characters cost two, and an emoji costs four, which matters when a service counts bytes rather than characters.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.character-counter.example">Hello, world! is 13 characters and 12 without spaces, because only the comma and the exclamation mark are not letters and there is one space to remove. It holds 2 words, 1 line, 1 sentence, 10 letters, 0 digits and 13 bytes — the count is 13 bytes because every character in it is a single-byte ASCII character.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.character-counter.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="text.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/character-counter.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>
