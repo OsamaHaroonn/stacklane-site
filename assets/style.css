@@ -518,12 +518,24 @@ footer a { display: inline-flex; align-items: center; min-height: 44px; }
 }
 .badge-row { margin: .6rem 0 0; display: flex; gap: .5rem; flex-wrap: wrap; }
 
+/* The tool itself is the page's main element: a raised white card with an
+   accent edge, capped in width so fields do not stretch across the screen. */
 .tool-panel {
-  background: var(--bg-soft); border: 1px solid var(--line);
-  border-radius: var(--radius); padding: clamp(1rem, 3vw, 1.75rem);
-  margin-bottom: 2rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(1rem, 2.5vw, 1.75rem);
+  padding-block-start: calc(clamp(1rem, 2.5vw, 1.75rem) - 3px);
+  margin-bottom: var(--sp-5);
+  max-width: 860px;
+  min-height: 200px;
 }
-.tool-section { margin: 2.25rem 0; max-width: 72ch; padding: 0; }
+@media (min-width: 900px) {
+  .tool-panel { min-height: 260px; }
+}
+.tool-section { margin: var(--sp-5) 0; max-width: 68ch; padding: 0; }
 .tool-section h2 { font-size: clamp(1.25rem, 2.6vw, 1.6rem); }
 .tool-section .note { color: var(--ink-soft); font-size: .92rem; }
 
@@ -579,9 +591,14 @@ footer a { display: inline-flex; align-items: center; min-height: 44px; }
 .tk-modes .tk-check { font-size: .92rem; }
 
 .tk-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin: .5rem 0 1rem; }
-.tk-actions .btn { flex: 1 1 auto; min-width: 120px; }
+/* Mobile: full-width actions. Desktop: natural buttons, never a 1000px bar. */
+.tk-actions .btn { flex: 1 1 100%; }
+@media (min-width: 640px) {
+  .tk-actions .btn { flex: 0 1 auto; min-width: 168px; max-width: 320px; }
+}
 
 .tk-msg {
+  display: flex; align-items: center; min-height: 44px;
   margin: 0 0 1rem; padding: .7rem .9rem; border-radius: 10px;
   background: var(--accent-soft); border: 1px solid var(--accent);
   color: var(--ink); font-size: .93rem;
@@ -591,8 +608,11 @@ footer a { display: inline-flex; align-items: center; min-height: 44px; }
 .tk-msg.warn { background: var(--warn-soft); border-color: var(--warn); color: var(--warn); }
 .tk-msg.ok { background: var(--good-soft); border-color: var(--good); color: var(--good); }
 
-.tk-out { display: grid; gap: .4rem; margin-top: 1rem; }
+.tk-out { display: grid; gap: .4rem; margin-top: 1rem; min-height: 3.25rem; }
 .tk-out[hidden] { display: none; }
+/* A preview canvas that is hidden until it has output still holds its box,
+   so the page does not jump when the QR code appears. */
+#tool-ui canvas.qr-canvas[hidden] { display: block; visibility: hidden; min-height: 220px; }
 .tk-row {
   display: flex; justify-content: space-between; gap: 1rem;
   border-bottom: 1px dashed var(--line); padding: .45rem 0; font-size: .95rem;
@@ -628,7 +648,8 @@ footer a { display: inline-flex; align-items: center; min-height: 44px; }
   justify-content: center; font-size: .8rem; font-weight: 600;
 }
 .tk-chars { font-size: .85rem; color: var(--ink-soft); margin: 0 0 .8rem; }
-.tk-preview { max-width: 100%; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+.tk-preview { display: block; max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+#tool-ui canvas, #tool-ui img.tk-preview { max-width: 100%; height: auto; }
 .tk-mono { font-family: var(--mono); font-size: .85rem; white-space: pre-wrap; word-break: break-all; margin: 0; }
 
 /* ============================================================
