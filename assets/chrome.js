@@ -1,170 +1,286 @@
 /* ============================================================
-   Shared site behaviour — loaded on every page after store.js.
+   Shared site chrome — loaded on every page after config.js,
+   i18n.js and catalog.js.
 
-   One config file drives everything:
-     SITE_URL       → rewrites canonical, og:url and og:image for
-                      the deployed address, so a custom domain is
-                      a single edit in store.js.
-     CHECKOUT_URL   → shows or hides every buy button and the
-                      price schema. Empty means nothing is for
-                      sale, and the site shows no price.
-     FORM_ENDPOINT  → shows or hides the support form. Empty
-                      means support is handled by the payment
-                      receipt instead.
+   What it does:
+     1. fills the year
+     2. points canonical, hreflang, og:url/og:image and JSON-LD at
+        SITE_CONFIG.siteUrl, so a custom domain is a single config edit
+     3. loads assets/i18n/<lang>.json and applies every data-i18n string
+     4. renders header, footer, breadcrumbs, FAQ, related tools,
+        the home grid/search or the category directory
+     5. mounts the tool registered by assets/tools/<slug>.js
 
-   No inline script, no external requests beyond the configured
-   form endpoint: strict CSP holds.
+   Pages that are plain English HTML (the seven Business tools) carry no
+   data-i18n attributes, so step 3-5 is skipped for them entirely.
+
+   No inline script, no third-party request: strict CSP holds.
    ============================================================ */
 (function () {
   'use strict';
 
-  var S = window.STORE || {};
-  var base = String(S.SITE_URL || '').trim().replace(/\/+$/, '');
-  var checkout = String(S.CHECKOUT_URL || '').trim();
-  var checkoutOK = /^https?:\/\//.test(checkout);
-  var endpoint = String(S.FORM_ENDPOINT || '').trim();
-  var endpointOK = /^https?:\/\//.test(endpoint);
+  var C = window.SITE_CONFIG || {};
+  var base = String(C.siteUrl || '').trim().replace(/\/+$/, '');
+  var lang = (document.documentElement.getAttribute('lang') || 'en').toLowerCase();
+  var body = document.body;
+  var CATS = C.categories || [];
 
-  /* ---------- 1. Years ---------- */
+  /* ---------- 1. Year ---------- */
   [].forEach.call(document.querySelectorAll('[data-year], #year'), function (el) {
     el.textContent = String(new Date().getFullYear());
   });
 
-  /* ---------- 2. Base URL: canonical, og:url, og:image, JSON-LD ----------
-     The old base is derived from wherever this page is actually served,
-     so it keeps working after a domain move. */
+  /* ---------- 2. Base URL: canonical, hreflang, og:, JSON-LD ----------
+     Every URL is rebuilt as siteUrl + this page's path, so the head tags
+     are correct after a domain move without touching any HTML file. */
   if (base) {
-    var path = window.location.pathname;
-    var file = path.split('/').pop();
-    // The home page canonicalises to the bare directory, not /index.html.
-    var page = (!file || file === 'index.html') ? base + '/' : base + '/' + file;
+    var page = base + location.pathname.replace(/index\.html$/, '');
 
     var canon = document.querySelector('link[rel="canonical"]');
     if (canon) canon.setAttribute('href', page);
+
+    [].forEach.call(document.querySelectorAll('link[rel="alternate"][hreflang]'), function (l) {
+      try { l.setAttribute('href', base + new URL(l.getAttribute('href'), location.href).pathname); }
+      catch (e) { /* leave a malformed href alone */ }
+    });
 
     [].forEach.call(document.querySelectorAll('meta[property="og:url"]'), function (m) {
       m.setAttribute('content', page);
     });
     [].forEach.call(document.querySelectorAll('meta[property="og:image"]'), function (m) {
-      m.setAttribute('content', base + '/assets/og.png');
+      try { m.setAttribute('content', base + new URL(m.getAttribute('content'), location.href).pathname); }
+      catch (e) { /* leave it alone */ }
     });
 
-    var origin = window.location.origin;
-    var dir = path.substring(0, path.lastIndexOf('/') + 1);
-    var oldBase = (origin + dir).replace(/\/+$/, '');
-    if (oldBase && oldBase !== base) {
-      [].forEach.call(document.querySelectorAll('script[type="application/ld+json"]'), function (s) {
-        try {
-          var text = s.textContent.split(oldBase).join(base);
-          JSON.parse(text); // only swap in text that is still valid JSON
-          s.textContent = text;
-        } catch (e) { /* leave the original block alone */ }
-      });
-    }
-  }
-
-  /* ---------- 3. Buy buttons, price and price schema ---------- */
-  function fmtPrice(p) {
-    var n = Number(p);
-    if (!isFinite(n) || n <= 0) return '';
-    return '$' + n.toLocaleString(undefined, { maximumFractionDigits: 2 });
-  }
-
-  var price = fmtPrice(S.PRODUCT_PRICE);
-
-  if (!checkoutOK) {
-    // Nothing is for sale: hide the buttons, the prices and the price schema
-    // so no search engine ever lists a price this site cannot take.
-    [].forEach.call(document.querySelectorAll('[data-buy]'), function (el) {
-      el.setAttribute('hidden', '');
-    });
-    [].forEach.call(document.querySelectorAll('[data-price]'), function (el) {
-      el.setAttribute('hidden', '');
-    });
-    [].forEach.call(document.querySelectorAll('#price-schema, script[data-price-schema]'), function (s) {
-      if (s.parentNode) s.parentNode.removeChild(s);
-    });
-    // Public-facing wording: never expose internal config to visitors.
-    [].forEach.call(document.querySelectorAll('[data-buy-note]'), function (el) {
-      el.textContent = 'Purchasing is not open yet — this page never takes a payment itself.';
-    });
-  } else {
-    [].forEach.call(document.querySelectorAll('[data-price]'), function (el) {
-      if (!price) return;
-      // Authored template only: {{PRICE}} is swapped for the configured
-      // figure, so nothing else in the markup is ever rewritten.
-      var tpl = el.getAttribute('data-price-template');
-      if (tpl) el.innerHTML = tpl.split('{{PRICE}}').join(price);
-      el.removeAttribute('hidden');
-    });
-    [].forEach.call(document.querySelectorAll('[data-buy]'), function (el) {
-      el.removeAttribute('hidden');
-      if (price && el.textContent.indexOf(price) === -1) {
-        el.textContent = el.textContent.replace(/[\s—-]+$/, '') + ' — ' + price;
-      }
-      el.addEventListener('click', function () { window.location.href = checkout; });
-    });
-    // Keep the Product schema's price in step with the configured price.
-    var schema = document.getElementById('price-schema') ||
-                 document.querySelector('script[data-price-schema]');
-    if (schema && price) {
+    [].forEach.call(document.querySelectorAll('script[type="application/ld+json"]'), function (s) {
       try {
-        var data = JSON.parse(schema.textContent);
-        if (data.offers) { data.offers.price = String(Number(S.PRODUCT_PRICE)); data.offers.priceCurrency = 'USD'; }
-        schema.textContent = JSON.stringify(data);
+        var data = JSON.parse(s.textContent);
+        if (data && typeof data === 'object') {
+          if (data.url) data.url = page;
+          if (data['@id']) data['@id'] = page;
+          s.textContent = JSON.stringify(data);
+        }
       } catch (e) { /* leave the block as shipped */ }
-    }
+    });
   }
 
-  /* ---------- 4. Support form ---------- */
-  var form = document.getElementById('support-form');
-  var fallback = document.getElementById('support-fallback');
+  /* ---------- 3-5. Everything visible, from the i18n JSON ---------- */
+  var needsI18n = document.querySelector('[data-i18n], [data-tool], [data-home], [data-category]');
+  if (!needsI18n || !window.I18N) return;
 
-  if (form && endpointOK) {
-    form.setAttribute('hidden', '');
-    if (fallback) fallback.setAttribute('hidden', '');
+  function get(json, path) { return I18N.get(json, path); }
+  function fill(json, path, vars) { return I18N.fill(I18N.get(json, path), vars); }
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var btn = document.getElementById('support-submit');
-      var status = document.getElementById('support-status');
-      var hp = form.querySelector('[name="_honey"]');
-      if (hp && hp.value) return; // honeypot tripped: bot, not a human
+  function el(tag, attrs, text) {
+    var node = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      if (k === 'href') node.setAttribute('href', attrs[k]);
+      else if (k === 'class') node.className = attrs[k];
+      else node.setAttribute(k, attrs[k]);
+    });
+    if (text != null) node.textContent = text;
+    return node;
+  }
 
-      var data = {};
-      [].forEach.call(form.querySelectorAll('input, textarea, select'), function (el) {
-        if (!el.name || el.type === 'hidden') return;
-        data[el.name] = el.value.trim();
-      });
-      data._subject = 'Support request — ' + (data.topic || 'general');
-      data._replyto = data.email || '';
-
-      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
-      fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
-      }).then(function (r) {
-        if (btn) { btn.disabled = false; btn.textContent = 'Send message'; }
-        if (r.ok) {
-          form.setAttribute('hidden', '');
-          if (status) status.innerHTML = 'Sent — you\'ll get a reply using the receipt email you used at checkout.';
-          if (status) status.removeAttribute('hidden');
-        } else {
-          if (status) status.textContent = 'Sending failed. Please try again in a moment.';
-          if (status) status.removeAttribute('hidden');
+  /* data-i18n="path.to.string"           → textContent
+     data-i18n-var-<name>="path"          → fills the {name} token
+     data-i18n-ph="path"                 → placeholder attribute
+     data-i18n-aria="path"               → aria-label attribute */
+  function applyText(root, json) {
+    [].forEach.call(root.querySelectorAll('[data-i18n]'), function (node) {
+      var str = get(json, node.getAttribute('data-i18n'));
+      if (!str) return;
+      var vars = {};
+      [].forEach.call(node.attributes, function (a) {
+        if (a.name.indexOf('data-i18n-var-') === 0) {
+          vars[a.name.slice('data-i18n-var-'.length)] = get(json, a.value);
         }
-      }).catch(function () {
-        if (btn) { btn.disabled = false; btn.textContent = 'Send message'; }
-        if (status) status.textContent = 'No connection. Please try again in a moment.';
-        if (status) status.removeAttribute('hidden');
+      });
+      node.textContent = I18N.fill(str, vars);
+    });
+    [].forEach.call(root.querySelectorAll('[data-i18n-ph]'), function (node) {
+      var v = get(json, node.getAttribute('data-i18n-ph'));
+      if (v) node.setAttribute('placeholder', v);
+    });
+    [].forEach.call(root.querySelectorAll('[data-i18n-aria]'), function (node) {
+      var v = get(json, node.getAttribute('data-i18n-aria'));
+      if (v) node.setAttribute('aria-label', v);
+    });
+  }
+
+  /* Header: brand + home + all tools + language switcher.
+     The switcher only appears when this page actually declares an
+     alternate language version in its head. */
+  function buildHeader(json, homeHref) {
+    var host = document.getElementById('site-header');
+    if (!host) return;
+
+    var nav = get(json, 'nav');
+    var wrap = el('div', { class: 'wrap nav' });
+    var brand = el('a', { class: 'brand', href: homeHref }, get(json, 'meta.siteName'));
+    var links = el('div', { class: 'nav-links' });
+
+    links.appendChild(el('a', { href: homeHref, class: 'hide-sm' }, nav.home));
+    links.appendChild(el('a', { href: homeHref + '#tools' }, nav.allTools));
+
+    var alts = document.querySelectorAll('link[rel="alternate"][hreflang]');
+    var alt = null;
+    for (var i = 0; i < alts.length; i++) {
+      var code = alts[i].getAttribute('hreflang');
+      if (code && code !== 'x-default' && code !== lang) { alt = alts[i]; break; }
+    }
+    if (alt) {
+      var a = el('a', {
+        class: 'lang-switch',
+        href: alt.getAttribute('href'),
+        lang: alt.getAttribute('hreflang'),
+        hreflang: alt.getAttribute('hreflang'),
+        'aria-label': nav.otherLangLabel
+      }, nav.otherLang);
+      links.appendChild(a);
+    }
+
+    wrap.appendChild(brand);
+    wrap.appendChild(links);
+    host.appendChild(wrap);
+  }
+
+  function buildFooter(json, homeHref) {
+    var host = document.getElementById('site-footer');
+    if (!host) return;
+    var f = get(json, 'footer');
+    var nav = get(json, 'nav');
+
+    var wrap = el('div', { class: 'wrap foot-grid' });
+
+    var about = el('div', {});
+    about.appendChild(el('strong', {}, get(json, 'meta.siteName')));
+    about.appendChild(el('p', { class: 'note' }, f.tagline));
+    about.appendChild(el('p', { class: 'note' }, f.madeWith));
+    wrap.appendChild(about);
+
+    var cats = el('nav', { class: 'foot-cats', 'aria-label': f.categories });
+    cats.appendChild(el('span', { class: 'foot-head' }, f.categories));
+    var list = el('ul', {});
+    CATS.forEach(function (slug) {
+      var name = get(json, 'categories.' + slug + '.name');
+      if (!name) return;
+      // The Business directory exists in English only: never emit a link
+      // to an /ar/business.html that does not exist.
+      if (slug === 'business' && lang !== 'en') return;
+      list.appendChild(el('li', {}, el('a', { href: homeHref.replace(/index\.html$/, '') + slug + '.html' }, name)));
+    });
+    cats.appendChild(list);
+    wrap.appendChild(cats);
+
+    var legal = el('div', {});
+    legal.appendChild(el('span', { class: 'foot-head' }, 'Stacklane'));
+    var ul = el('ul', {});
+    ul.appendChild(el('li', {}, el('a', { href: '../privacy.html' }, nav.privacy)));
+    ul.appendChild(el('li', {}, el('a', { href: '../terms.html' }, nav.terms)));
+    legal.appendChild(ul);
+    wrap.appendChild(legal);
+
+    host.appendChild(wrap);
+    host.appendChild(el('p', { class: 'foot-copy' },
+      '© ' + new Date().getFullYear() + ' ' + get(json, 'meta.siteName')));
+  }
+
+  I18N.load().then(function (json) {
+    var bodyTool = body.getAttribute('data-tool');
+    var isHome = body.hasAttribute('data-home');
+    var category = body.getAttribute('data-category');
+    // Every i18n page lives one level below the root (en/…, ar/…), so the
+    // language home is always a sibling index.html.
+    var homeHref = 'index.html';
+
+    applyText(document, json);
+    buildHeader(json, homeHref);
+    buildFooter(json, homeHref);
+
+    /* Breadcrumb: Home / Category / (tool) */
+    var crumbs = document.getElementById('crumbs');
+    if (crumbs && (bodyTool || category)) {
+      var catSlug = category || (window.TOOL_CATS && window.TOOL_CATS[bodyTool]);
+      crumbs.appendChild(el('a', { href: 'index.html' }, get(json, 'nav.home')));
+      if (catSlug) {
+        crumbs.appendChild(el('span', { class: 'sep', 'aria-hidden': 'true' }, '›'));
+        crumbs.appendChild(el('a', { href: catSlug + '.html' },
+          get(json, 'categories.' + catSlug + '.name')));
+      }
+      if (bodyTool) {
+        crumbs.appendChild(el('span', { class: 'sep', 'aria-hidden': 'true' }, '›'));
+        crumbs.appendChild(el('span', {}, get(json, 'tools.' + bodyTool + '.title')));
+      }
+    }
+
+    /* FAQ blocks: <dl data-faq="tools.<slug>.faq"></dl> */
+    [].forEach.call(document.querySelectorAll('[data-faq]'), function (list) {
+      var items = get(json, list.getAttribute('data-faq'));
+      if (!Array.isArray(items)) return;
+      items.forEach(function (item) {
+        var d = el('details', { class: 'faq-item' });
+        d.appendChild(el('summary', {}, item.q));
+        d.appendChild(el('p', {}, item.a));
+        list.appendChild(d);
       });
     });
 
-    // Reveal only when there is a real endpoint to post to.
-    form.removeAttribute('hidden');
-  } else if (form) {
-    form.setAttribute('hidden', '');
-    if (fallback) fallback.removeAttribute('hidden');
-  }
+    /* Related tools: same-category siblings (max 4) + a back link.
+       The section hides itself when the category has no siblings yet. */
+    if (bodyTool && window.TOOL_CATS && window.TOOL_CATALOG) {
+      var relHost = document.getElementById('related');
+      var backLink = document.getElementById('back-cat');
+      var cat = window.TOOL_CATS[bodyTool];
+
+      var siblings = cat ? window.TOOL_CATALOG.filter(function (t) {
+        return t.category === cat && t.slug !== bodyTool &&
+               !!get(json, 'tools.' + t.slug + '.title');
+      }) : [];
+
+      if (relHost) {
+        siblings.slice(0, 4).forEach(function (t) {
+          var card = el('a', { class: 'card tool-card', href: t.slug + '.html' });
+          card.appendChild(el('span', { class: 'card-kicker' },
+            get(json, 'categories.' + cat + '.name')));
+          card.appendChild(el('h3', {}, get(json, 'tools.' + t.slug + '.title')));
+          card.appendChild(el('p', {}, get(json, 'tools.' + t.slug + '.desc')));
+          relHost.appendChild(card);
+        });
+        if (!relHost.children.length) {
+          var sec = relHost.closest ? relHost.closest('section') : null;
+          if (sec) sec.setAttribute('hidden', '');
+        }
+      }
+
+      if (backLink && cat) {
+        backLink.setAttribute('href', cat + '.html');
+        backLink.textContent = fill(json, 'tool.backToCategory', {
+          name: get(json, 'categories.' + cat + '.name')
+        });
+      }
+    }
+
+    if (isHome && window.HomePage) window.HomePage(json, { el: el, get: get, fill: fill, CATS: CATS });
+    if (category && window.CategoryPage) window.CategoryPage(json, { category: category, el: el, get: get, fill: fill });
+
+    if (bodyTool && window.TOOL && typeof window.TOOL.mount === 'function') {
+      window.TOOL.mount(json, {
+        slug: bodyTool,
+        lang: lang,
+        el: el,
+        get: function (p) { return get(json, p); },
+        t: function (key, vars) { return fill(json, 'tools.' + bodyTool + '.' + key, vars); },
+        ui: function (key, vars) { return fill(json, 'tools.' + bodyTool + '.ui.' + key, vars); },
+        common: function (key, vars) { return fill(json, 'tool.' + key, vars); }
+      });
+    }
+  }).catch(function (err) {
+    // A failed i18n load must never leave a silent blank page.
+    var main = document.getElementById('main') || body;
+    var note = el('p', { class: 'load-error' },
+      'This page could not load its text file. Please reload. (' + err.message + ')');
+    main.insertBefore(note, main.firstChild);
+    if (window.console && console.error) console.error('i18n load failed:', err);
+  });
 })();

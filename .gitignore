@@ -15,3 +15,12 @@ Thumbs.db
 
 # Paid product source — never publish
 product-source/
+
+# Local QA harness — test files, never tracked
+qa-run.html
+qa-page.js
+qa-server.py
+qa-log.json
+
+# Windows artifact (reserved device name created by a redirect to /dev/null)
+nul
