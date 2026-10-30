@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Date difference — Stacklane Tools</title>
+<meta name="description" content="Count the days between two dates, split into weeks and into years, months and days, with the weekday of each date.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/date-difference.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="Date difference — Stacklane Tools">
+<meta property="og:description" content="Count the days between two dates, split into weeks and into years, months and days, with the weekday of each date.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/date-difference.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="date-difference">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.calculators.name">calculatorsname</p>
+    <h1 data-i18n="tools.date-difference.title">Date difference</h1>
+    <p class="lede" data-i18n="tools.date-difference.lede">Enter a start date and an end date to see how many whole days separate them, how that splits into weeks, and the same gap expressed as years, months and days.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.date-difference.how">Each date is converted to midnight in UTC and the two are subtracted, then divided by the number of milliseconds in a day. Using a fixed midnight rather than your local clock means a daylight-saving change can never add or remove an hour and turn 59 days into 60. Weeks are the day count divided by seven with the remainder kept, so 60 days reads as 8 weeks and 4 days. The calendar breakdown is worked out month by month — counting back to the same day of the month — instead of dividing by an average month length, which would drift on February and on 31-day months. Dates are counted as whole days: the start day is day zero, so the same date twice is 0 days.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.date-difference.example">From 01/01/2024 to 01/03/2024: 1 January to 1 February is 31 days, and 1 February to 1 March 2024 is 29 days because 2024 is a leap year, so 31 + 29 = 60 days. In weeks that is 8 weeks and 4 days, because 8 × 7 = 56 and 60 − 56 = 4. Measured month by month the same gap is 2 months and 0 days.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.date-difference.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="calculators.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/date-difference.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>
