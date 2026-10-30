@@ -1357,6 +1357,208 @@
         "noCrypto": "This browser did not provide a secure random source, so nothing was generated.",
         "note": "128 bits, 122 of them random: made in this tab and never sent anywhere."
       }
+    },
+    "base64": {
+      "title": "Base64 encoder",
+      "desc": "Encode text to Base64 and decode it back, with UTF-8 handled correctly in both directions.",
+      "lede": "Type or paste your text, choose encode or decode, and read the result. Non-Latin text, emoji and line breaks survive the round trip because the bytes are converted properly.",
+      "how": "Base64 represents arbitrary bytes with 64 printable characters: A to Z, a to z, 0 to 9, + and /, with = padding the end. Every three bytes become four characters, so the output is always a multiple of four and about a third longer than the input. Encoding here converts the text to UTF-8 first and then to Base64, because the browser's own btoa only accepts bytes 0 to 255 and would reject most accented letters, all Arabic text and every emoji if it were handed the raw string. Decoding reverses the order: the Base64 is read back into bytes and those bytes are decoded as UTF-8, with a fatal decoder so a wrong input produces a message rather than a run of replacement characters.",
+      "example": "hello becomes aGVsbG8=: it is five bytes, and 5 × 4 ÷ 3 = 6.67 rounds up to the next multiple of four, which is eight characters. Stacklane is nine bytes, exactly three groups of three, so it becomes twelve characters: U3RhY2tsYW5l. The emoji 😀 is four bytes in UTF-8, which costs eight characters: 8J+YgA==. Decoding aGVsbG8= returns hello.",
+      "faq": [
+        {
+          "q": "Is Base64 encryption?",
+          "a": "No. It is an encoding: anyone can reverse it without a key, so never use it for passwords, tokens or anything secret. It exists so binary data can travel through channels that only accept text."
+        },
+        {
+          "q": "Why does my Arabic or emoji text come out as letters I do not recognise?",
+          "a": "Because Base64 works on bytes, and UTF-8 stores non-Latin characters as several bytes each. The tool converts to UTF-8 before encoding and back again on decode, so a proper round trip returns your original text."
+        },
+        {
+          "q": "Why is there an equals sign at the end?",
+          "a": "Padding. The input length is not always a multiple of three, and = marks the missing bytes so every decoder reads the same result."
+        },
+        {
+          "q": "Can another language decode this?",
+          "a": "Yes. This is standard Base64 (RFC 4648), the same format used everywhere. Remember the text was UTF-8, so decode the bytes as UTF-8 on the other side."
+        },
+        {
+          "q": "Is my text sent anywhere?",
+          "a": "No. Encoding happens in this browser tab with the browser's own functions. Nothing is uploaded, logged or stored."
+        }
+      ],
+      "ui": {
+        "mode": "Direction",
+        "encode": "Encode text to Base64",
+        "decode": "Decode Base64 to text",
+        "input": "Text",
+        "output": "Result",
+        "placeholder": "Type or paste your text here…",
+        "copy": "Copy result",
+        "copied": "Copied to the clipboard.",
+        "copyFail": "The browser blocked the copy — select the text and copy it yourself.",
+        "inChars": "Characters in",
+        "outChars": "Characters out",
+        "direction": "Direction",
+        "encoded": "Encoded",
+        "decoded": "Decoded",
+        "empty": "Type or paste some text first.",
+        "tooLong": "That is over 500,000 characters — split it up before converting.",
+        "badBase64": "That is not valid Base64: use A-Z, a-z, 0-9, +, / and = padding, with a length that is a multiple of four.",
+        "badUtf8": "Those bytes are not valid UTF-8 text, so they cannot be shown as characters.",
+        "note": "Converted in your browser: nothing is uploaded."
+      }
+    },
+    "url-encoder": {
+      "title": "URL encoder",
+      "desc": "Percent-encode text for a URL or query string, and decode it back again.",
+      "lede": "Paste the value you need to put in a link and the tool encodes it into a safe percent-encoded form, or turns an already encoded string back into readable text.",
+      "how": "Percent-encoding replaces any character that is not safe in a URL with a percent sign and two hexadecimal digits, for example %20 for a space. The tool uses the browser's encodeURIComponent, which leaves letters, digits and - _ . ! ~ * ' ( ) alone and encodes everything else, including spaces, ampersands, equals signs, slashes, non-Latin characters and emoji. Multi-byte characters are encoded one UTF-8 byte at a time, so an Arabic letter becomes three percent sequences. Decoding does the reverse and stops with a message when it meets a percent sign that is not followed by two hexadecimal digits, which is the usual cause of a failed decode.",
+      "example": "a b&c=d encodes to a%20b%26c%3Dd: the space becomes %20, the ampersand becomes %26 and the equals sign becomes %3D, while the letters are left alone. Decoding hello%20world%2Fx gives back hello world/x, because %20 is a space and %2F is a forward slash. That slash is encoded deliberately — encodeURIComponent always escapes it, so encode path segments separately if you want slashes to stay visible.",
+      "faq": [
+        {
+          "q": "Why does the slash get encoded?",
+          "a": "Because this is component encoding, meant for one value inside a query string rather than a whole address. Encoding the value keeps it from accidentally starting a new path or parameter."
+        },
+        {
+          "q": "Why does my space become %20 and not a plus?",
+          "a": "Both appear in the wild: %20 is percent-encoding of the space byte, while + is the form used inside application/x-www-form-urlencoded bodies. For a link value, %20 is the form to use."
+        },
+        {
+          "q": "Why does decoding fail on my text?",
+          "a": "Almost always a percent sign with fewer than two hexadecimal digits after it — a literal % that was never encoded. Encode the source first, or fix that one character."
+        },
+        {
+          "q": "Does it handle Arabic and emoji?",
+          "a": "Yes. Those characters are encoded from their UTF-8 bytes, so each one becomes two or three percent sequences and decodes back to exactly the same character."
+        },
+        {
+          "q": "Is my text uploaded?",
+          "a": "No. Encoding and decoding both run in this tab using the browser's own functions; nothing is sent anywhere."
+        }
+      ],
+      "ui": {
+        "mode": "Direction",
+        "encode": "Encode",
+        "decode": "Decode",
+        "input": "Text",
+        "output": "Result",
+        "placeholder": "e.g. search term & page=1",
+        "copy": "Copy result",
+        "copied": "Copied to the clipboard.",
+        "copyFail": "The browser blocked the copy — select the text and copy it yourself.",
+        "inChars": "Characters in",
+        "outChars": "Characters out",
+        "escapes": "Percent escapes",
+        "direction": "Direction",
+        "encoded": "Encoded",
+        "decoded": "Decoded",
+        "empty": "Type or paste some text first.",
+        "tooLong": "That is over 500,000 characters — split it up before converting.",
+        "badEscape": "That is not valid percent-encoding: every % has to be followed by two hexadecimal digits.",
+        "note": "Converted in your browser: nothing is uploaded."
+      }
+    },
+    "timestamp-converter": {
+      "title": "Timestamp converter",
+      "desc": "Turn a Unix timestamp into a readable date and time, and a date and time back into a timestamp.",
+      "lede": "Enter a Unix timestamp to see it as a date in your local time zone and in UTC, or pick a date and time to get the timestamp for it.",
+      "how": "Unix time counts the seconds that have passed since 00:00:00 UTC on 1 January 1970. A ten-digit value is read as seconds; JavaScript and many systems store milliseconds instead, which is a thirteen-digit value. The auto setting treats anything below 100,000,000,000 as seconds — that number is centuries away in seconds but only 1973 in milliseconds, so the two never overlap in practice — and the selector lets you force either reading. Local time comes from the browser's own clock and time zone through Intl, and the zone in use is named in the result; the UTC row always shows the same instant regardless of where you are. The date field works in the other direction, using your local wall-clock time.",
+      "example": "0 is 1 January 1970 00:00:00 UTC, the instant Unix time starts: the UTC row reads 1970-01-01T00:00:00.000Z. 1700000000 is 14 November 2023 22:13:20 UTC — a Tuesday in UTC, while the local row and the day of the week follow your own time zone and can already show the next day. The same moment in milliseconds is 1700000000000, three digits longer, and that is how the auto setting tells the two readings apart.",
+      "faq": [
+        {
+          "q": "Which time zone does it use?",
+          "a": "The one your browser reports, and it is printed in the result row so you can see it. The UTC row is fixed at zero offset, so it is the same everywhere."
+        },
+        {
+          "q": "Seconds or milliseconds?",
+          "a": "The auto setting decides by size: a short value is seconds, a long one is milliseconds. If you know which you have, set the unit yourself and the value will be read that way."
+        },
+        {
+          "q": "Can it handle dates before 1970?",
+          "a": "Yes. Those come out as negative timestamps, for example -86400000 milliseconds is 31 December 1969. Values outside the range JavaScript can represent are refused with a message."
+        },
+        {
+          "q": "Why 1 January 1970?",
+          "a": "It is the epoch Unix time was defined against in the early 1970s — a convenient, unambiguous zero point chosen when the system was designed, not because anything happened that day."
+        },
+        {
+          "q": "Does it send my date anywhere?",
+          "a": "No. Everything is computed from Date and Intl inside this tab. Nothing is stored, and no network request is made."
+        }
+      ],
+      "ui": {
+        "timestamp": "Unix timestamp",
+        "tsPh": "e.g. 1700000000",
+        "unit": "Unit",
+        "auto": "Detect automatically",
+        "secUnit": "Seconds",
+        "msUnit": "Milliseconds",
+        "datetime": "Date and time (your time zone)",
+        "now": "Use the current time",
+        "localTime": "Local time",
+        "utc": "UTC (ISO 8601)",
+        "secondsRow": "Unix seconds",
+        "millisRow": "Unix milliseconds",
+        "weekday": "Day of the week",
+        "relative": "Compared with now",
+        "timezone": "Time zone used",
+        "unknownZone": "not reported by this browser",
+        "justNow": "right now",
+        "mins": "{n} minutes",
+        "hours": "{n} hours",
+        "days": "{n} days",
+        "inFuture": "in {v}",
+        "inPast": "{v} ago",
+        "empty": "Enter a timestamp or pick a date and time.",
+        "notWhole": "A timestamp has to be a whole number — no decimal point, spaces or letters.",
+        "outOfRange": "That value is outside the dates JavaScript can represent.",
+        "badDate": "That date and time could not be read.",
+        "note": "Times come from your browser's clock and time zone."
+      }
+    },
+    "color-converter": {
+      "title": "Color converter",
+      "desc": "Convert a hex colour code to RGB and HSL, with the working shown and a swatch to check it.",
+      "lede": "Type a colour such as #1e90ff or rgb(30, 144, 255) to see the other forms, the arithmetic behind them and a swatch of the colour itself.",
+      "how": "A hex code is three pairs of hexadecimal digits, one each for red, green and blue, with each channel running from 00 to ff — that is 0 to 255 in decimal. The three-digit form expands by doubling each digit, so #f00 becomes #ff0000. HSL re-expresses the same colour as hue in degrees from 0 to 360, saturation from 0 to 100% and lightness from 0 to 100%. Lightness is the midpoint of the brightest and darkest channels divided by 255, saturation comes from how far apart those two channels are, and the hue follows which channel is highest. The swatch is a background colour set in the page — no image is loaded, and nothing is requested from anywhere.",
+      "example": "#1e90ff is rgb(30, 144, 255), because 1e is 30, 90 is 144 and ff is 255. The lightest channel is 255 and the darkest is 30, so the lightness is (255 + 30) ÷ 2 ÷ 255 = 56%. Blue is the highest channel, which puts the hue at 210°, and with the channels far apart the saturation is 100%, giving hsl(210, 100%, 56%). The shorthand #f00 expands to #ff0000: rgb(255, 0, 0) and hsl(0, 100%, 50%).",
+      "faq": [
+        {
+          "q": "Which formats does it accept?",
+          "a": "#rgb, #rrggbb, the same six digits without the hash, and rgb(r, g, b) with each channel from 0 to 255. Anything else, including named colours like \"tomato\", is refused with a message."
+        },
+        {
+          "q": "Why are there three ways to write the same colour?",
+          "a": "They suit different jobs: hex and RGB describe the light your screen mixes, which is what CSS and design tools take directly. HSL is easier for people to reason about, because moving one number changes one thing — the shade, the intensity or the brightness."
+        },
+        {
+          "q": "Does it handle transparency?",
+          "a": "No. Only the three colour channels are converted. A fourth value in rgba() is ignored by this parser rather than guessed at."
+        },
+        {
+          "q": "The hue looks different from my design tool — why?",
+          "a": "Rounding. Hue is a continuous angle and this tool rounds it to a whole degree, so a tool showing 209.6° will read 210° here."
+        },
+        {
+          "q": "Is anything uploaded?",
+          "a": "No. The conversion is arithmetic in this tab, and the swatch is a background colour on a div. Nothing is requested from a server."
+        }
+      ],
+      "ui": {
+        "input": "Colour",
+        "placeholder": "#1e90ff or rgb(30, 144, 255)",
+        "hex": "Hex",
+        "rgb": "RGB",
+        "hsl": "HSL",
+        "working": "Working",
+        "workingText": "R={r}, G={g}, B={b} · lightness {l}%, hue {h}°",
+        "copy": "Copy hex",
+        "copied": "Copied to the clipboard.",
+        "copyFail": "The browser blocked the copy — select the value and copy it yourself.",
+        "empty": "Enter a colour to convert it.",
+        "bad": "That is not a colour this tool can read: use #rgb, #rrggbb, six hex digits, or rgb(r, g, b).",
+        "note": "The swatch is drawn in the page: no image is loaded."
+      }
     }
   },
   "business": {

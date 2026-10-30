@@ -32,6 +32,10 @@ window.TOOL_CATALOG = [
   { slug: 'remove-duplicate-lines', category: 'text', keywords: 'remove duplicate lines dedupe unique lines text clean' },
   { slug: 'random-number', category: 'generators', keywords: 'random number generator crypto secure pick number between range' },
   { slug: 'uuid-generator', category: 'generators', keywords: 'uuid generator v4 unique id random identifier rfc 4122' },
+  { slug: 'base64', category: 'developer', keywords: 'base64 encoder decoder encode decode text utf-8' },
+  { slug: 'url-encoder', category: 'developer', keywords: 'url encoder percent encode decode query string encode uri component' },
+  { slug: 'timestamp-converter', category: 'developer', keywords: 'unix timestamp converter epoch date time seconds milliseconds utc' },
+  { slug: 'color-converter', category: 'developer', keywords: 'color converter hex to rgb hsl hex code picker color values' },
 ];
 
 window.TOOL_CATS = {};
