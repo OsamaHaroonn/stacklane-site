@@ -1,8 +1,7 @@
 User-agent: *
 Allow: /
 
-# The paid product's source is in the repo but excluded from the build by
-# _config.yml. This line is the second belt in case that ever changes.
+# Source files for the paid product, if the folder is ever present locally.
 Disallow: /product-source/
 
 Sitemap: https://osamaharoonn.github.io/stacklane-site/sitemap.xml

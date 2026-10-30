@@ -1,13 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
+<!--
+  This page is served by GitHub Pages for ANY missing URL, including deep
+  paths like /en/some/tool. A relative href would resolve against that deep
+  path and break, so every relative URL below resolves against <base> —
+  the one site-wide address (SITE_URL in assets/config.js). Change this
+  value together with siteUrl when the domain changes; README →
+  "Changing the domain".
+-->
+<base href="https://osamaharoonn.github.io/stacklane-site/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <title>Page not found — Stacklane</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>

@@ -1,8 +1,7 @@
 # GitHub Pages build rules.
 #
-# The paid product's source lives in /product-source and must NEVER be
-# published: the buyer receives it from the payment platform, not from
-# this site. `exclude` keeps it out of the built site entirely.
+# product-source/ is local-only, git-ignored and must NEVER be published.
+# `exclude` is the second belt (the first is that it is never committed).
 exclude:
   - product-source
   - .sass-cache
