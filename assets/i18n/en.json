@@ -57,21 +57,93 @@
     "done": "Done"
   },
   "categories": {
-    "pdf": { "name": "PDF", "desc": "Merge, split and convert PDF files. The files stay on your device." },
-    "images": { "name": "Images", "desc": "Compress, resize and convert pictures without uploading them." },
-    "text": { "name": "Text", "desc": "Count, check and transform text you paste in." },
-    "generators": { "name": "Generators", "desc": "Create QR codes and strong passwords in your browser." },
-    "calculators": { "name": "Calculators", "desc": "Age, percentage, discount and loan maths with the working shown." },
-    "converters": { "name": "Converters", "desc": "Convert units, time zones and formats locally." },
-    "developer": { "name": "Developer", "desc": "Format, validate and encode data you are working with." },
-    "business": { "name": "Business", "desc": "Pricing, invoicing, late-payment and leakage calculators for small businesses. English only for now." }
+    "pdf": {
+      "name": "PDF",
+      "desc": "Merge, split and convert PDF files. The files stay on your device."
+    },
+    "images": {
+      "name": "Images",
+      "desc": "Compress, resize and convert pictures without uploading them."
+    },
+    "text": {
+      "name": "Text",
+      "desc": "Count, check and transform text you paste in."
+    },
+    "generators": {
+      "name": "Generators",
+      "desc": "Create QR codes and strong passwords in your browser."
+    },
+    "calculators": {
+      "name": "Calculators",
+      "desc": "Age, percentage, discount and loan maths with the working shown."
+    },
+    "converters": {
+      "name": "Converters",
+      "desc": "Convert units, time zones and formats locally."
+    },
+    "developer": {
+      "name": "Developer",
+      "desc": "Format, validate and encode data you are working with."
+    },
+    "business": {
+      "name": "Business",
+      "desc": "Pricing, invoicing, late-payment and leakage calculators for small businesses. English only for now."
+    }
   },
   "units": {
-    "length": { "name": "Length", "units": { "m": "Metre", "km": "Kilometre", "cm": "Centimetre", "mm": "Millimetre", "mi": "Mile", "yd": "Yard", "ft": "Foot", "in": "Inch" } },
-    "mass": { "name": "Mass", "units": { "kg": "Kilogram", "g": "Gram", "mg": "Milligram", "t": "Tonne", "lb": "Pound", "oz": "Ounce" } },
-    "volume": { "name": "Volume", "units": { "l": "Litre", "ml": "Millilitre", "m3": "Cubic metre", "gal": "US gallon", "qt": "US quart", "cup": "US cup", "floz": "US fluid ounce" } },
-    "temperature": { "name": "Temperature", "units": { "c": "Celsius", "f": "Fahrenheit", "k": "Kelvin" } },
-    "speed": { "name": "Speed", "units": { "ms": "Metres per second", "kmh": "Kilometres per hour", "mph": "Miles per hour", "kn": "Knot" } }
+    "length": {
+      "name": "Length",
+      "units": {
+        "m": "Metre",
+        "km": "Kilometre",
+        "cm": "Centimetre",
+        "mm": "Millimetre",
+        "mi": "Mile",
+        "yd": "Yard",
+        "ft": "Foot",
+        "in": "Inch"
+      }
+    },
+    "mass": {
+      "name": "Mass",
+      "units": {
+        "kg": "Kilogram",
+        "g": "Gram",
+        "mg": "Milligram",
+        "t": "Tonne",
+        "lb": "Pound",
+        "oz": "Ounce"
+      }
+    },
+    "volume": {
+      "name": "Volume",
+      "units": {
+        "l": "Litre",
+        "ml": "Millilitre",
+        "m3": "Cubic metre",
+        "gal": "US gallon",
+        "qt": "US quart",
+        "cup": "US cup",
+        "floz": "US fluid ounce"
+      }
+    },
+    "temperature": {
+      "name": "Temperature",
+      "units": {
+        "c": "Celsius",
+        "f": "Fahrenheit",
+        "k": "Kelvin"
+      }
+    },
+    "speed": {
+      "name": "Speed",
+      "units": {
+        "ms": "Metres per second",
+        "kmh": "Kilometres per hour",
+        "mph": "Miles per hour",
+        "kn": "Knot"
+      }
+    }
   },
   "tools": {
     "word-counter": {
@@ -81,11 +153,26 @@
       "how": "The text box is split on whitespace to count words, then scanned for sentence-ending punctuation and blank lines to count sentences and paragraphs. Characters are counted twice: once exactly as typed, and once with spaces removed. Reading time is the word count divided by about 200 words per minute, a rough average for prose — treat it as an estimate, not a measurement.",
       "example": "The sentence “Send the invoice on Friday.” has 5 words, 33 characters including the space after “the”, 31 without spaces, 1 sentence and 1 paragraph. At 200 words per minute it reads in under a second.",
       "faq": [
-        { "q": "Is my text uploaded anywhere?", "a": "No. Counting happens in your browser with JavaScript. The text box is never sent to a server, and nothing is stored." },
-        { "q": "How exactly is a word counted?", "a": "A word is any run of characters separated by whitespace. “well-known” and “don’t” each count as one word; punctuation attached to a word is counted with it." },
-        { "q": "Why might the sentence count look wrong?", "a": "Sentences are counted by splitting on . ! ? and similar marks. Abbreviations such as “e.g.” or decimals such as “3.5” can be counted as sentence ends, so treat the figure as an estimate." },
-        { "q": "What does reading time assume?", "a": "It divides the word count by 200 words per minute. Technical, dense or second-language reading is slower; skimming is faster. It is a guide, not a guarantee." },
-        { "q": "Does it work for Arabic or Chinese?", "a": "For languages written with spaces, yes. For Chinese and Japanese, which do not use spaces, the character count is the more useful figure. The character count is always shown." }
+        {
+          "q": "Is my text uploaded anywhere?",
+          "a": "No. Counting happens in your browser with JavaScript. The text box is never sent to a server, and nothing is stored."
+        },
+        {
+          "q": "How exactly is a word counted?",
+          "a": "A word is any run of characters separated by whitespace. “well-known” and “don’t” each count as one word; punctuation attached to a word is counted with it."
+        },
+        {
+          "q": "Why might the sentence count look wrong?",
+          "a": "Sentences are counted by splitting on . ! ? and similar marks. Abbreviations such as “e.g.” or decimals such as “3.5” can be counted as sentence ends, so treat the figure as an estimate."
+        },
+        {
+          "q": "What does reading time assume?",
+          "a": "It divides the word count by 200 words per minute. Technical, dense or second-language reading is slower; skimming is faster. It is a guide, not a guarantee."
+        },
+        {
+          "q": "Does it work for Arabic or Chinese?",
+          "a": "For languages written with spaces, yes. For Chinese and Japanese, which do not use spaces, the character count is the more useful figure. The character count is always shown."
+        }
       ],
       "ui": {
         "label": "Your text",
@@ -111,11 +198,26 @@
       "how": "Your text is encoded into a QR symbol: the characters become a numeric value, which is laid out on a square grid with error-correction data added so the code still scans if part of it is damaged or dirty. Larger inputs need more grid cells, so the code gets denser. The image is drawn on a canvas in your browser and exported as a PNG.",
       "example": "A link such as “https://example.com/menu” produces a compact code that scans from a few centimetres away. A 400-character Wi-Fi configuration produces a denser grid that needs to be printed larger to scan reliably.",
       "faq": [
-        { "q": "Is the content sent anywhere?", "a": "No. Encoding and drawing both happen in your browser. Nothing you type is transmitted or stored." },
-        { "q": "What can I put in a QR code?", "a": "A website link, plain text, an email address, a phone number, or connection details for a Wi-Fi network. Links are the most reliable because phones open them directly." },
-        { "q": "Why is my code hard to scan?", "a": "Usually it is too small for the amount of data, or it lacks quiet space around it. Print it larger, keep a clear margin on all four sides, and make sure it is printed in high contrast on a plain background." },
-        { "q": "Is there a length limit?", "a": "Yes. The largest QR version holds about 2,900 bytes of ordinary text. Past that the tool reports an error instead of drawing a code that would not scan." },
-        { "q": "Does the colour or shape matter?", "a": "This tool draws the standard black-on-white code, which every reader supports. Extreme colours or rounded modules may look better but reduce how reliably phones scan them." }
+        {
+          "q": "Is the content sent anywhere?",
+          "a": "No. Encoding and drawing both happen in your browser. Nothing you type is transmitted or stored."
+        },
+        {
+          "q": "What can I put in a QR code?",
+          "a": "A website link, plain text, an email address, a phone number, or connection details for a Wi-Fi network. Links are the most reliable because phones open them directly."
+        },
+        {
+          "q": "Why is my code hard to scan?",
+          "a": "Usually it is too small for the amount of data, or it lacks quiet space around it. Print it larger, keep a clear margin on all four sides, and make sure it is printed in high contrast on a plain background."
+        },
+        {
+          "q": "Is there a length limit?",
+          "a": "Yes. The largest QR version holds about 2,900 bytes of ordinary text. Past that the tool reports an error instead of drawing a code that would not scan."
+        },
+        {
+          "q": "Does the colour or shape matter?",
+          "a": "This tool draws the standard black-on-white code, which every reader supports. Extreme colours or rounded modules may look better but reduce how reliably phones scan them."
+        }
       ],
       "ui": {
         "label": "Text or link",
@@ -139,11 +241,26 @@
       "how": "Each character is drawn uniformly at random from the alphabet you enable, using the browser's cryptographically secure random source. Strength is shown as entropy in bits: length multiplied by the log₂ of the alphabet size. Eight bits roughly means one chance in 256 of guessing, so 60 bits and above is strong for everyday accounts and 100 bits and above is strong even against patient, well-resourced guessing.",
       "example": "16 characters drawn from upper case, lower case, digits and symbols gives an alphabet of 94 characters: 16 × log₂(94) ≈ 105 bits. Reducing it to 8 characters drops the same alphabet to about 52 bits — half the strength, and much easier to guess by brute force.",
       "faq": [
-        { "q": "Where do these passwords come from?", "a": "From your browser's cryptographic random generator (crypto.getRandomValues). Nothing is requested from a server, so no third party sees the password." },
-        { "q": "How strong is strong enough?", "a": "As a rough guide, 40 bits is weak, 60–80 bits is good for most accounts, and 100 bits or more resists serious offline guessing. The tool shows the bits it calculated for your settings." },
-        { "q": "Should I use a different password everywhere?", "a": "Yes. Reusing a password means one breached site exposes every other account. Store unique passwords in a password manager rather than memorising them." },
-        { "q": "Why is the password not remembered after I refresh?", "a": "Deliberately. Nothing is stored in cookies, local storage or on a server, so a refresh simply generates a new one. Save it where you keep your other passwords." },
-        { "q": "Can it make memorable passphrases instead?", "a": "Not yet. This tool produces random character strings. A passphrase of random words is also a good choice, but this page does not generate one." }
+        {
+          "q": "Where do these passwords come from?",
+          "a": "From your browser's cryptographic random generator (crypto.getRandomValues). Nothing is requested from a server, so no third party sees the password."
+        },
+        {
+          "q": "How strong is strong enough?",
+          "a": "As a rough guide, 40 bits is weak, 60–80 bits is good for most accounts, and 100 bits or more resists serious offline guessing. The tool shows the bits it calculated for your settings."
+        },
+        {
+          "q": "Should I use a different password everywhere?",
+          "a": "Yes. Reusing a password means one breached site exposes every other account. Store unique passwords in a password manager rather than memorising them."
+        },
+        {
+          "q": "Why is the password not remembered after I refresh?",
+          "a": "Deliberately. Nothing is stored in cookies, local storage or on a server, so a refresh simply generates a new one. Save it where you keep your other passwords."
+        },
+        {
+          "q": "Can it make memorable passphrases instead?",
+          "a": "Not yet. This tool produces random character strings. A passphrase of random words is also a good choice, but this page does not generate one."
+        }
       ],
       "ui": {
         "labelLength": "Length",
@@ -177,11 +294,26 @@
       "how": "The file is decoded into pixels by your browser, then re-encoded at the quality you choose. JPEG and WebP are lossy formats, so lower quality means fewer bits and a smaller file, with visible detail loss below a certain point. PNG is lossless, so re-encoding it can only shrink the file if the image has fewer colours than before — otherwise the result can be larger, and the tool says so.",
       "example": "A 3.2 MB photo set to 75% JPEG quality may come back near 400 KB — about an eighth of the size, with the difference mostly invisible at normal screen size. The same file saved as lossless PNG would be far larger, not smaller, which is why the tool reports the real numbers rather than promising a percentage.",
       "faq": [
-        { "q": "Is my picture uploaded?", "a": "No. Decoding, re-encoding and download all happen in your browser. The file never leaves your device." },
-        { "q": "Which quality should I pick?", "a": "Around 80% is a good default for photos. Use 60–70% when file size matters more than fine detail, and 90%+ when the image will be printed or cropped." },
-        { "q": "Why did my PNG get bigger?", "a": "PNG is lossless: the re-encoder keeps every bit of detail, and if your browser's encoder is less efficient than the original, the file grows. The tool reports the real size, and you can choose JPEG instead." },
-        { "q": "Which format should I use?", "a": "JPEG or WebP for photographs and anything with gradients. PNG for screenshots, logos and transparency. WebP is usually smallest but is not accepted everywhere." },
-        { "q": "Why does it struggle with very large files?", "a": "The image has to be held as raw pixels in memory, so a very large photo can take a while or fail on a phone. The tool shows progress and reports a clear error instead of freezing the tab." }
+        {
+          "q": "Is my picture uploaded?",
+          "a": "No. Decoding, re-encoding and download all happen in your browser. The file never leaves your device."
+        },
+        {
+          "q": "Which quality should I pick?",
+          "a": "Around 80% is a good default for photos. Use 60–70% when file size matters more than fine detail, and 90%+ when the image will be printed or cropped."
+        },
+        {
+          "q": "Why did my PNG get bigger?",
+          "a": "PNG is lossless: the re-encoder keeps every bit of detail, and if your browser's encoder is less efficient than the original, the file grows. The tool reports the real size, and you can choose JPEG instead."
+        },
+        {
+          "q": "Which format should I use?",
+          "a": "JPEG or WebP for photographs and anything with gradients. PNG for screenshots, logos and transparency. WebP is usually smallest but is not accepted everywhere."
+        },
+        {
+          "q": "Why does it struggle with very large files?",
+          "a": "The image has to be held as raw pixels in memory, so a very large photo can take a while or fail on a phone. The tool shows progress and reports a clear error instead of freezing the tab."
+        }
       ],
       "ui": {
         "file": "Image file",
@@ -213,11 +345,26 @@
       "how": "Your browser decodes the file into pixels, then draws those pixels onto a canvas of the size you asked for. When shrinking, the tool samples the image down; when growing, it simply makes each pixel bigger, which softens detail — no tool can invent detail that was never in the file. The result is encoded as JPEG, PNG or WebP, matching the input unless you choose otherwise.",
       "example": "A 4032 × 3024 phone photo resized to 1200 px wide comes out at 1200 × 900 with the ratio preserved, and is usually a few hundred kilobytes instead of several megabytes. Resizing that same photo up to 4000 px would produce a large file with no extra detail.",
       "faq": [
-        { "q": "Is my photo uploaded?", "a": "No. Decoding, resizing and download happen on your device only. Nothing is sent to a server." },
-        { "q": "Does upscaling ruin quality?", "a": "It does not add detail. Small increases are usually fine; enlarging far beyond the original makes the image soft and blocky, because the software is guessing the in-between pixels." },
-        { "q": "Why does the height change when I type a width?", "a": "The aspect ratio lock keeps the picture undistorted. Unlock it only if you deliberately want to stretch or squash the image." },
-        { "q": "Which format should I download?", "a": "JPEG for photographs, PNG for screenshots and transparency, WebP for the smallest files where it is supported. The tool keeps your original format unless you change it." },
-        { "q": "What if the result is bigger than the original?", "a": "Enlarging adds pixels, and sometimes a re-encoded file grows slightly. The tool shows the real size after resizing so you can decide before downloading." }
+        {
+          "q": "Is my photo uploaded?",
+          "a": "No. Decoding, resizing and download happen on your device only. Nothing is sent to a server."
+        },
+        {
+          "q": "Does upscaling ruin quality?",
+          "a": "It does not add detail. Small increases are usually fine; enlarging far beyond the original makes the image soft and blocky, because the software is guessing the in-between pixels."
+        },
+        {
+          "q": "Why does the height change when I type a width?",
+          "a": "The aspect ratio lock keeps the picture undistorted. Unlock it only if you deliberately want to stretch or squash the image."
+        },
+        {
+          "q": "Which format should I download?",
+          "a": "JPEG for photographs, PNG for screenshots and transparency, WebP for the smallest files where it is supported. The tool keeps your original format unless you change it."
+        },
+        {
+          "q": "What if the result is bigger than the original?",
+          "a": "Enlarging adds pixels, and sometimes a re-encoded file grows slightly. The tool shows the real size after resizing so you can decide before downloading."
+        }
       ],
       "ui": {
         "file": "Image file",
@@ -248,11 +395,26 @@
       "how": "Each file is parsed in the browser and its pages are copied into a new document you control the order of. Pages keep their original size, rotation and content; only the container changes. The work runs in steps with a progress bar, because assembling a large document in one go can stall a slow device.",
       "example": "Three files — cover.pdf (1 page), prices.pdf (3 pages) and terms.pdf (2 pages) — combine into a 6-page document in the order you list them. Moving prices.pdf below terms.pdf changes the output to 1, 2, 3, 4 pages without reopening either file.",
       "faq": [
-        { "q": "Are my PDFs uploaded?", "a": "No. The files are read with JavaScript inside your browser and the result is written locally. Nothing is transmitted, and there is no server to receive it." },
-        { "q": "Can I change the order of the files?", "a": "Yes. Each file in the list can be moved up or down, or removed, before you merge. The output follows the order shown on screen." },
-        { "q": "Why did the merge fail?", "a": "Password-protected PDFs cannot be opened, and a very large set of files can exceed the memory your browser allows. The tool reports which file failed instead of producing a broken document." },
-        { "q": "Will the quality or page sizes change?", "a": "No. Pages are copied as they are, so dimensions, images and text stay exactly as they were in the source files." },
-        { "q": "Is there a file size limit?", "a": "There is no fixed limit — it depends on your device's memory. If a merge fails on very large files, split the job into smaller batches." }
+        {
+          "q": "Are my PDFs uploaded?",
+          "a": "No. The files are read with JavaScript inside your browser and the result is written locally. Nothing is transmitted, and there is no server to receive it."
+        },
+        {
+          "q": "Can I change the order of the files?",
+          "a": "Yes. Each file in the list can be moved up or down, or removed, before you merge. The output follows the order shown on screen."
+        },
+        {
+          "q": "Why did the merge fail?",
+          "a": "Password-protected PDFs cannot be opened, and a very large set of files can exceed the memory your browser allows. The tool reports which file failed instead of producing a broken document."
+        },
+        {
+          "q": "Will the quality or page sizes change?",
+          "a": "No. Pages are copied as they are, so dimensions, images and text stay exactly as they were in the source files."
+        },
+        {
+          "q": "Is there a file size limit?",
+          "a": "There is no fixed limit — it depends on your device's memory. If a merge fails on very large files, split the job into smaller batches."
+        }
       ],
       "ui": {
         "file": "PDF files",
@@ -278,11 +440,26 @@
       "how": "The calculator subtracts the calendar dates rather than the raw timestamps, so a birthday at 11pm does not lose a day. It walks year by year, then month by month, then counts the remaining days — the same method that handles February in a leap year correctly. The total-days figure counts whole days between the two dates, ignoring the time of day.",
       "example": "Born 5 March 2000, checked on 28 October 2026: 26 years, 7 months and 23 days — about 9,733 days in total. The year count only increases once the anniversary has passed, so it stays 26 for the whole month of March until the 5th.",
       "faq": [
-        { "q": "Does it handle leap years?", "a": "Yes. Because it works on calendar dates rather than a fixed number of days per year, 29 February birthdays are counted correctly, including people born on a day that does not exist in common years." },
-        { "q": "What if the date is in the future?", "a": "The tool refuses it and asks for a date on or before today, instead of showing a negative age." },
-        { "q": "Why does the age differ from my birthday on Facebook?", "a": "Some services count a full year only after the whole birth month has passed, or use the time zone the account was created in. This tool counts exact calendar years, months and days." },
-        { "q": "Is the total number of days exact?", "a": "It counts whole days between the two dates, so it is exact for dates but does not include the hour of birth. Treat it as a day-level figure." },
-        { "q": "Can I use this officially?", "a": "For passports, legal documents or benefits, use the date printed on your official documents. This tool is a quick check, not a legal record." }
+        {
+          "q": "Does it handle leap years?",
+          "a": "Yes. Because it works on calendar dates rather than a fixed number of days per year, 29 February birthdays are counted correctly, including people born on a day that does not exist in common years."
+        },
+        {
+          "q": "What if the date is in the future?",
+          "a": "The tool refuses it and asks for a date on or before today, instead of showing a negative age."
+        },
+        {
+          "q": "Why does the age differ from my birthday on Facebook?",
+          "a": "Some services count a full year only after the whole birth month has passed, or use the time zone the account was created in. This tool counts exact calendar years, months and days."
+        },
+        {
+          "q": "Is the total number of days exact?",
+          "a": "It counts whole days between the two dates, so it is exact for dates but does not include the hour of birth. Treat it as a day-level figure."
+        },
+        {
+          "q": "Can I use this officially?",
+          "a": "For passports, legal documents or benefits, use the date printed on your official documents. This tool is a quick check, not a legal record."
+        }
       ],
       "ui": {
         "birth": "Date of birth",
@@ -309,11 +486,26 @@
       "how": "Percentage of a number multiplies the value by the percentage and divides by 100. “X is what percent of Y” divides X by Y and multiplies by 100, and is refused when Y is zero because division by zero has no answer. Increase and decrease apply the percentage to the original value first, then add or subtract it, so a 20% increase followed by a 20% decrease lands 4% below where you started — the two percentages do not cancel each other out.",
       "example": "15% of 240 = 0.15 × 240 = 36. The number 36 is 15% of 240. Increasing 240 by 15% gives 276; decreasing 276 by 15% gives 234.60 — not back at 240, which is the trap this page shows in full.",
       "faq": [
-        { "q": "Why can't I divide by zero?", "a": "Because there is no number that multiplied by zero gives a nonzero value. When the base is zero the tool says so instead of showing infinity or an error." },
-        { "q": "What is the difference between the three modes?", "a": "“% of” gives a part of a number. “X is what %” compares two numbers as a percentage. “Increase/decrease” applies a percentage change to a starting value." },
-        { "q": "Are the results rounded?", "a": "The exact result is shown to two decimal places, and the working above each answer shows the unrounded value so you can round the way you need." },
-        { "q": "Does a 50% increase and a 50% decrease cancel out?", "a": "No. Going up 50% and then down 50% from the new, larger number lands you 25% below where you started. The examples on this page show why." },
-        { "q": "Is anything stored?", "a": "No. Every calculation is done in your browser and disappears when you clear the fields or close the page." }
+        {
+          "q": "Why can't I divide by zero?",
+          "a": "Because there is no number that multiplied by zero gives a nonzero value. When the base is zero the tool says so instead of showing infinity or an error."
+        },
+        {
+          "q": "What is the difference between the three modes?",
+          "a": "“% of” gives a part of a number. “X is what %” compares two numbers as a percentage. “Increase/decrease” applies a percentage change to a starting value."
+        },
+        {
+          "q": "Are the results rounded?",
+          "a": "The exact result is shown to two decimal places, and the working above each answer shows the unrounded value so you can round the way you need."
+        },
+        {
+          "q": "Does a 50% increase and a 50% decrease cancel out?",
+          "a": "No. Going up 50% and then down 50% from the new, larger number lands you 25% below where you started. The examples on this page show why."
+        },
+        {
+          "q": "Is anything stored?",
+          "a": "No. Every calculation is done in your browser and disappears when you clear the fields or close the page."
+        }
       ],
       "ui": {
         "modeLabel": "What do you want to find?",
@@ -341,11 +533,26 @@
       "how": "Every conversion in a category is expressed against one base unit — metres for length, kilograms for mass — using exact, defined factors such as 1 inch = 25.4 mm. The value is converted to the base unit and then to the target unit, so any pair of units can be related through the same reference. Temperature is different: it uses formulas with an offset (°F = °C × 9/5 + 32) because the scales do not start at the same point, and Kelvin starts at absolute zero.",
       "example": "10 kilometres is 10,000 metres, which is 6.2137 miles. Converting 25 °C uses the offset formula: 25 × 9/5 + 32 = 77 °F. Converting 0 °C gives 32 °F, not 0 — which is exactly why temperature cannot use a simple multiplier.",
       "faq": [
-        { "q": "Are the conversion factors exact?", "a": "Metric factors are exact by definition (1 inch is exactly 25.4 mm, 1 pound is exactly 0.45359237 kg). The displayed result is rounded, but the calculation uses the full value." },
-        { "q": "Why is temperature handled differently?", "a": "Temperature scales have different zero points, so converting needs an offset as well as a multiplier. The tool uses the standard formulas rather than a ratio." },
-        { "q": "Which units are supported?", "a": "Length, mass, volume, temperature and speed, covering the metric units and the common imperial and US units. More categories can be added later." },
-        { "q": "Why does the result show so many decimals?", "a": "It shows the exact converted value rounded to a sensible number of digits, with the full precision used in the calculation shown in the working line below." },
-        { "q": "Does it work offline?", "a": "Yes. Nothing needs the network: the factors are built into the page and the calculation happens in your browser." }
+        {
+          "q": "Are the conversion factors exact?",
+          "a": "Metric factors are exact by definition (1 inch is exactly 25.4 mm, 1 pound is exactly 0.45359237 kg). The displayed result is rounded, but the calculation uses the full value."
+        },
+        {
+          "q": "Why is temperature handled differently?",
+          "a": "Temperature scales have different zero points, so converting needs an offset as well as a multiplier. The tool uses the standard formulas rather than a ratio."
+        },
+        {
+          "q": "Which units are supported?",
+          "a": "Length, mass, volume, temperature and speed, covering the metric units and the common imperial and US units. More categories can be added later."
+        },
+        {
+          "q": "Why does the result show so many decimals?",
+          "a": "It shows the exact converted value rounded to a sensible number of digits, with the full precision used in the calculation shown in the working line below."
+        },
+        {
+          "q": "Does it work offline?",
+          "a": "Yes. Nothing needs the network: the factors are built into the page and the calculation happens in your browser."
+        }
       ],
       "ui": {
         "category": "Category",
@@ -367,11 +574,26 @@
       "how": "The input is parsed with the browser's own JSON parser, which is the same standard every language implements. Formatting re-serialises the parsed value with a chosen indentation; minifying does the same with no whitespace. Because parsing happens first, a syntax error is reported before anything is printed — with the position in the text where the parser stopped.",
       "example": "The compact string {\"a\":1,\"b\":[true,null,\"x\"]} formats across four lines with two-space indentation, showing that b is an array of three items. Minifying it again returns byte-for-byte the same compact text, since whitespace outside strings carries no meaning.",
       "faq": [
-        { "q": "Is my JSON sent anywhere?", "a": "No. Parsing, formatting and validation all happen in your browser tab. Nothing is transmitted or stored." },
-        { "q": "What is the difference between format and minify?", "a": "Formatting adds indentation and line breaks so the structure is readable. Minifying removes every optional whitespace to make the smallest possible version. Neither changes the data." },
-        { "q": "Why does my JSON fail to parse?", "a": "The usual causes are a trailing comma after the last item, single quotes instead of double quotes, or an unquoted key. The message tells you where the parser stopped so you can jump straight to it." },
-        { "q": "Does it check my data against a schema?", "a": "No. It checks syntax only — that the text is valid JSON. Whether the structure matches what your program expects is a separate check." },
-        { "q": "Is there a size limit?", "a": "There is no fixed limit, but very large documents take time and memory to parse. If nothing appears after a moment, the document is probably too big for this page — split it up." }
+        {
+          "q": "Is my JSON sent anywhere?",
+          "a": "No. Parsing, formatting and validation all happen in your browser tab. Nothing is transmitted or stored."
+        },
+        {
+          "q": "What is the difference between format and minify?",
+          "a": "Formatting adds indentation and line breaks so the structure is readable. Minifying removes every optional whitespace to make the smallest possible version. Neither changes the data."
+        },
+        {
+          "q": "Why does my JSON fail to parse?",
+          "a": "The usual causes are a trailing comma after the last item, single quotes instead of double quotes, or an unquoted key. The message tells you where the parser stopped so you can jump straight to it."
+        },
+        {
+          "q": "Does it check my data against a schema?",
+          "a": "No. It checks syntax only — that the text is valid JSON. Whether the structure matches what your program expects is a separate check."
+        },
+        {
+          "q": "Is there a size limit?",
+          "a": "There is no fixed limit, but very large documents take time and memory to parse. If nothing appears after a moment, the document is probably too big for this page — split it up."
+        }
       ],
       "ui": {
         "label": "JSON input",
@@ -387,6 +609,254 @@
         "empty": "Paste some JSON first.",
         "chars": "characters",
         "running": "Working…"
+      }
+    },
+    "loan-calculator": {
+      "title": "Loan calculator",
+      "desc": "Work out the monthly payment, total paid and total interest on a fixed-rate loan, with the formula and the numbers filled in.",
+      "lede": "Enter the amount borrowed, the annual interest rate and the term in years to see the monthly payment, what you pay in total and how much of that is interest.",
+      "how": "The monthly payment comes from the standard amortising-loan formula M = P × i ÷ (1 − (1 + i)^−n), where P is the amount borrowed, i is the annual rate divided by 100 and then by 12 (a monthly rate) and n is the number of monthly payments. Early payments are mostly interest and later ones are mostly principal, which is why the total you repay is higher than the amount you borrowed. The calculation assumes a fixed rate for the whole term, the same payment every month, no missed payments and no fees, insurance or early-repayment charges.",
+      "example": "Borrowing 10,000 at 6% a year over 5 years: i = 0.06 ÷ 12 = 0.005 and n = 60. The payment is 10,000 × 0.005 ÷ (1 − 1.005^−60) = 193.33. Sixty payments total 11,599.68, so the interest is 1,599.68.",
+      "faq": [
+        {
+          "q": "Is this financial advice?",
+          "a": "No. It is arithmetic on the three numbers you type in. It does not know your lender's fees, your credit terms or whether the rate will change, so treat the result as an estimate of the payment structure, not an offer."
+        },
+        {
+          "q": "Why is the total higher than the amount I borrowed?",
+          "a": "Because interest is charged on the balance that is still outstanding each month. Over a long term the interest adds up even at a modest rate, and the figure shown is the sum of every payment."
+        },
+        {
+          "q": "What if the interest rate is zero?",
+          "a": "Then the payment is simply the amount divided by the number of months, and the total equals the amount borrowed. The tool handles that case without dividing by zero."
+        },
+        {
+          "q": "Does it include fees or insurance?",
+          "a": "No. Arrangement fees, payment protection, insurance and late charges are outside the calculation. Add them to the amount borrowed if you want them reflected, or treat the result as a lower bound."
+        },
+        {
+          "q": "Why do longer terms cost more overall?",
+          "a": "Spreading the same balance over more months lowers each payment but charges interest for longer, so the total interest rises even though the monthly figure falls."
+        }
+      ],
+      "ui": {
+        "amount": "Amount borrowed",
+        "rate": "Annual interest rate (%)",
+        "years": "Term (years)",
+        "monthly": "Monthly payment",
+        "payments": "Number of payments",
+        "months": "months",
+        "total": "Total paid",
+        "interest": "Total interest",
+        "working": "Working",
+        "empty": "Fill in the amount, the rate and the term.",
+        "partial": "Fill in all three boxes to see the payment.",
+        "amountLow": "Enter an amount above zero.",
+        "rateLow": "The rate cannot be negative.",
+        "yearsLow": "Enter a term longer than zero years.",
+        "yearsHigh": "Enter a term of 50 years or less.",
+        "tooBig": "That combination is too large to calculate.",
+        "note": "Estimate only: fixed rate, equal monthly payments, no fees."
+      }
+    },
+    "mortgage-calculator": {
+      "title": "Mortgage calculator",
+      "desc": "Estimate the monthly principal and interest on a mortgage from the price, down payment, rate and term.",
+      "lede": "Enter the property price, your down payment, the annual rate and the term to see the monthly principal-and-interest payment, the loan size and the interest over the full term.",
+      "how": "The loan is the price minus the down payment. The monthly payment then comes from M = L × i ÷ (1 − (1 + i)^−n), with i the annual rate divided by 100 and then by 12, and n the number of monthly payments. The tool also reports the down payment as a percentage of the price and the total cost including the deposit. Property tax, buildings insurance, mortgage insurance, arrangement fees and service charges are not part of this figure, and a variable rate will change it.",
+      "example": "A 300,000 home with a 60,000 down payment leaves a 240,000 loan. At 6% over 30 years, i = 0.005 and n = 360, so the payment is 240,000 × 0.005 ÷ (1 − 1.005^−360) = 1,438.92. The down payment is 20% of the price, 360 payments total 518,011.65 and the interest is 278,011.65.",
+      "faq": [
+        {
+          "q": "Does this include tax and insurance?",
+          "a": "No. It is principal and interest only. Many lenders collect property tax and insurance alongside the payment, which makes the amount you actually pay higher than the figure shown here."
+        },
+        {
+          "q": "What down payment should I enter?",
+          "a": "The amount you pay up front in cash. If you are still deciding, try a few values: a larger deposit lowers both the loan and the interest, while the same deposit on a longer term lowers the payment but raises the total interest."
+        },
+        {
+          "q": "Why is the total cost bigger than the price?",
+          "a": "The tool adds the down payment to every monthly payment. Interest across a 25- or 30-year term is a large share of that sum, which is why the total can approach or pass double the loan."
+        },
+        {
+          "q": "What about a variable or fixed rate?",
+          "a": "The maths treats the rate you enter as fixed for the whole term. With a variable rate, re-run it at the rate you expect after each change to see the effect."
+        },
+        {
+          "q": "Is this a mortgage offer?",
+          "a": "No. It is an estimate from four numbers you typed. Lenders apply affordability checks, fees and their own criteria, and the rate you are offered may differ."
+        }
+      ],
+      "ui": {
+        "price": "Property price",
+        "down": "Down payment",
+        "rate": "Annual interest rate (%)",
+        "years": "Term (years)",
+        "monthly": "Monthly payment",
+        "loan": "Loan amount",
+        "downPct": "Down payment share",
+        "payments": "Number of payments",
+        "months": "months",
+        "interest": "Total interest",
+        "totalCost": "Total cost (deposit + payments)",
+        "working": "Working",
+        "empty": "Fill in the price and the rate to start.",
+        "partial": "Fill in the price, down payment, rate and term.",
+        "priceLow": "Enter a price above zero.",
+        "downLow": "The down payment cannot be negative.",
+        "downTooHigh": "The down payment covers the whole price, so there is no loan to calculate.",
+        "rateLow": "The rate cannot be negative.",
+        "yearsLow": "Enter a term longer than zero years.",
+        "yearsHigh": "Enter a term of 50 years or less.",
+        "tooBig": "That combination is too large to calculate.",
+        "note": "Principal and interest only: no tax, insurance or fees."
+      }
+    },
+    "compound-interest-calculator": {
+      "title": "Compound interest calculator",
+      "desc": "See what a lump sum grows to with compound interest, and how much of the result is interest rather than your own money.",
+      "lede": "Enter a starting amount, an annual rate, the number of years and how often interest is added, to see the final balance and the interest earned.",
+      "how": "Compound interest uses A = P × (1 + r ÷ n)^(n × t): P is the starting amount, r the annual rate as a decimal, n how many times a year interest is added and t the number of years. Each period's interest is added to the balance, so the next period earns interest on it too. More frequent compounding gives a slightly higher result for the same annual rate. The tool also shows what simple interest would give, so the difference compounding makes is visible. It assumes the rate never changes, no money is added or withdrawn and interest is reinvested.",
+      "example": "5,000 at 4% a year for 10 years, compounded monthly: A = 5,000 × (1 + 0.04 ÷ 12)^(12 × 10) = 7,454.16, so the interest is 2,454.16. Simple interest on the same figures would give 5,000 + 5,000 × 0.04 × 10 = 7,000, which is 454.16 less.",
+      "faq": [
+        {
+          "q": "What is the difference between compound and simple interest?",
+          "a": "Simple interest is charged only on the original amount. Compound interest is charged on the original amount plus the interest already added, which is why it grows faster over long periods."
+        },
+        {
+          "q": "Does compounding frequency matter much?",
+          "a": "It matters, but modestly at typical rates. Moving from yearly to monthly compounding raises the result slightly; moving from monthly to daily changes it by a few pounds or less on most balances."
+        },
+        {
+          "q": "Can I add monthly contributions?",
+          "a": "Not on this page. This tool compounds a single lump sum. For a monthly saving plan, the savings goal calculator works backwards from a target instead."
+        },
+        {
+          "q": "Are these returns guaranteed?",
+          "a": "No. The tool applies the rate you type in as if it never changed. Real savings rates move, and investments can fall as well as rise, so the result is a projection, not a promise."
+        },
+        {
+          "q": "Why does the rate have to be below 100%?",
+          "a": "A rate above 100% a year is not a savings rate in any normal sense, and over long periods the result grows beyond what the display can show meaningfully. The tool reports an error instead of an unreadable number."
+        }
+      ],
+      "ui": {
+        "principal": "Starting amount",
+        "rate": "Annual interest rate (%)",
+        "years": "Years",
+        "frequency": "Compounding",
+        "yearly": "Once a year",
+        "halfYearly": "Twice a year",
+        "quarterly": "Four times a year",
+        "monthly": "Every month",
+        "daily": "Every day",
+        "final": "Final balance",
+        "interest": "Interest earned",
+        "growth": "Total growth",
+        "withoutCompounding": "Same rate, simple interest",
+        "working": "Working",
+        "empty": "Fill in the amount, rate and years.",
+        "partial": "Fill in all three boxes to see the balance.",
+        "principalLow": "Enter a starting amount above zero.",
+        "rateLow": "The rate cannot be negative.",
+        "rateHigh": "Enter a rate of 100% or less.",
+        "yearsLow": "Enter a period longer than zero years.",
+        "yearsHigh": "Enter 100 years or fewer.",
+        "tooBig": "That combination is too large to calculate.",
+        "note": "Projection only: fixed rate, interest reinvested, no withdrawals."
+      }
+    },
+    "discount-calculator": {
+      "title": "Discount calculator",
+      "desc": "Work out a sale price from a percentage discount, including two discounts in a row and the real total percentage off.",
+      "lede": "Enter the original price and the percentage off to see what you pay and what you save. A second discount box handles “an extra 10% off the sale price” without the usual double-counting mistake.",
+      "how": "A discount of p percent leaves (100 − p) percent of the price, so the price after the discount is original × (1 − p ÷ 100). Two discounts are applied one after the other, never added: 20% then 10% leaves 0.8 × 0.9 = 0.72 of the original, which is 28% off, not 30%. The tool reports the effective total discount so the two figures can be compared. Prices are treated as plain numbers without a currency symbol.",
+      "example": "An 80 item with 25% off costs 80 × 0.75 = 60. A further 10% off that sale price takes it to 60 × 0.9 = 54, so you save 26 in total. That is 32.5% off the original, not the 35% you would get by adding the two percentages.",
+      "faq": [
+        {
+          "q": "Why is 20% then 10% not 30% off?",
+          "a": "Because the second discount applies to the reduced price, not the original one. 20% takes the price to 80% of the original, then 10% takes another tenth of that, leaving 72% — a 28% total discount."
+        },
+        {
+          "q": "Can I use this for tax as well as discounts?",
+          "a": "You can, in the sense that the arithmetic is the same percentage change, but for adding VAT use the VAT calculator, which labels net, tax and gross properly and works in both directions."
+        },
+        {
+          "q": "What if the discount is exactly 100%?",
+          "a": "Then the final price is zero and the saving is the whole original price. The tool accepts 100% and reports the result rather than treating it as an error."
+        },
+        {
+          "q": "Does it handle prices with decimals?",
+          "a": "Yes. Type 19.99 and it is treated as 19.99. Commas as thousand separators are also accepted, so 1,200 and 1200 both work."
+        },
+        {
+          "q": "Why does it not show a currency symbol?",
+          "a": "Because the tool does not know which currency you are shopping in. The numbers you get are in whatever unit you typed, so the result is exact for any currency."
+        }
+      ],
+      "ui": {
+        "price": "Original price",
+        "first": "Discount (%)",
+        "second": "Second discount (%) — optional",
+        "final": "Price you pay",
+        "saved": "You save",
+        "effective": "Total discount",
+        "notAdditive": "Added percentages would be",
+        "working": "Working",
+        "empty": "Enter a price and a discount percentage.",
+        "partial": "Fill in the price and the discount to see the result.",
+        "priceLow": "Enter a price above zero.",
+        "negPercent": "A discount cannot be negative.",
+        "over100": "A discount cannot be more than 100%.",
+        "note": "Prices are shown as plain numbers: whatever currency you typed in."
+      }
+    },
+    "vat-calculator": {
+      "title": "VAT calculator",
+      "desc": "Add VAT to a price or take it out again, with the rate you type in and the net, tax and gross figures shown separately.",
+      "lede": "Type the amount and the VAT rate that applies to you, and choose whether to add VAT to a net price or remove it from a price that already includes it.",
+      "how": "To add VAT, the amount is the net figure, the tax is net × rate ÷ 100, and the gross is the two added together. To remove VAT, the amount you typed is the gross, so the net is gross ÷ (1 + rate ÷ 100) and the tax is the difference. Removing VAT is not the same as subtracting the rate: taking 20% off a gross figure over-refunds, because the 20% was charged on the smaller net figure. The rate is deliberately not pre-filled, because it differs by country and by item, and it changes.",
+      "example": "At 20%: a net price of 200 has VAT of 200 × 20 ÷ 100 = 40 and a gross of 240. Going the other way, a gross of 240 gives a net of 240 ÷ 1.2 = 200 and VAT of 40 — subtracting 20% of 240 would wrongly give 192.",
+      "faq": [
+        {
+          "q": "Why is the rate blank?",
+          "a": "Because there is no single correct rate. Countries, regions and product categories all differ, and rates change. Typing the rate yourself keeps the tool honest instead of guessing a jurisdiction for you."
+        },
+        {
+          "q": "Why is removing VAT not just minus the percentage?",
+          "a": "The percentage was charged on the net amount, so it is a smaller share of the gross. Dividing by (1 + rate ÷ 100) reverses the calculation exactly; subtracting the rate does not."
+        },
+        {
+          "q": "Can I use a 0% rate?",
+          "a": "Yes. A zero rate leaves the net and gross equal and the tax at zero, which is what a zero-rated or exempt supply looks like arithmetically."
+        },
+        {
+          "q": "Does this work for sales tax and GST?",
+          "a": "The arithmetic is the same for any percentage-based tax added to a net price. Only the label differs, so you can use it for GST, sales tax or a service tax by typing that rate."
+        },
+        {
+          "q": "Is the result rounded the way an invoice must be?",
+          "a": "No. The tool shows two decimals for reading, but tax authorities have their own rounding rules — often per line or per invoice. Round the final tax figure the way your jurisdiction requires."
+        }
+      ],
+      "ui": {
+        "amount": "Amount",
+        "rate": "VAT rate (%)",
+        "mode": "Direction",
+        "add": "Add VAT to a net amount",
+        "remove": "Remove VAT from a gross amount",
+        "net": "Net (before tax)",
+        "vat": "VAT",
+        "gross": "Gross (with tax)",
+        "rateApplied": "Rate applied",
+        "working": "Working",
+        "empty": "Enter an amount and a VAT rate.",
+        "partial": "Fill in both boxes to see the breakdown.",
+        "amountLow": "Enter an amount above zero.",
+        "rateLow": "The rate cannot be negative.",
+        "rateHigh": "Enter a VAT rate of 100% or less.",
+        "tooBig": "That combination is too large to calculate.",
+        "note": "The rate is yours to enter: this tool applies no country's rules."
       }
     }
   },
