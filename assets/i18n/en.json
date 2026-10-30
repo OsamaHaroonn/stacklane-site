@@ -858,6 +858,254 @@
         "tooBig": "That combination is too large to calculate.",
         "note": "The rate is yours to enter: this tool applies no country's rules."
       }
+    },
+    "date-difference": {
+      "title": "Date difference",
+      "desc": "Count the days between two dates, split into weeks and into years, months and days, with the weekday of each date.",
+      "lede": "Enter a start date and an end date to see how many whole days separate them, how that splits into weeks, and the same gap expressed as years, months and days.",
+      "how": "Each date is converted to midnight in UTC and the two are subtracted, then divided by the number of milliseconds in a day. Using a fixed midnight rather than your local clock means a daylight-saving change can never add or remove an hour and turn 59 days into 60. Weeks are the day count divided by seven with the remainder kept, so 60 days reads as 8 weeks and 4 days. The calendar breakdown is worked out month by month — counting back to the same day of the month — instead of dividing by an average month length, which would drift on February and on 31-day months. Dates are counted as whole days: the start day is day zero, so the same date twice is 0 days.",
+      "example": "From 01/01/2024 to 01/03/2024: 1 January to 1 February is 31 days, and 1 February to 1 March 2024 is 29 days because 2024 is a leap year, so 31 + 29 = 60 days. In weeks that is 8 weeks and 4 days, because 8 × 7 = 56 and 60 − 56 = 4. Measured month by month the same gap is 2 months and 0 days.",
+      "faq": [
+        {
+          "q": "Does it count the first day?",
+          "a": "No. The result is the distance between the two dates, so the start date is day zero. Using the same date twice gives 0 days, and the day after gives 1 day."
+        },
+        {
+          "q": "Why not treat every month as 30 days?",
+          "a": "Months run from 28 to 31 days, and February changes with leap years. Averaging them makes long ranges drift by days or weeks, so the calendar breakdown counts real months instead."
+        },
+        {
+          "q": "Does daylight saving affect the count?",
+          "a": "No. Both dates are read as midnight UTC, which has no daylight-saving shifts, so the day count is the same in every time zone."
+        },
+        {
+          "q": "Can I count backwards?",
+          "a": "Not directly. If the end date is before the start date the tool asks you to swap them rather than showing a negative number of days."
+        },
+        {
+          "q": "Does it exclude weekends or holidays?",
+          "a": "No, it counts every calendar day including weekends. The weekday of both dates is shown in the result so you can see where the weekends fall."
+        }
+      ],
+      "ui": {
+        "start": "Start date",
+        "end": "End date",
+        "daysLabel": "Days between",
+        "weeksLabel": "Weeks and days",
+        "calendar": "Calendar difference",
+        "startDay": "Start falls on",
+        "endDay": "End falls on",
+        "and": "and",
+        "day1": "day",
+        "dayN": "days",
+        "week1": "week",
+        "weekN": "weeks",
+        "year1": "year",
+        "yearN": "years",
+        "month1": "month",
+        "monthN": "months",
+        "working": "Working",
+        "empty": "Enter both dates to count the days.",
+        "partial": "Enter the start date and the end date.",
+        "invalid": "One of those dates is not a real calendar date.",
+        "order": "The end date is before the start date — swap them.",
+        "note": "Whole days counted: the start day is day zero."
+      }
+    },
+    "tip-split-calculator": {
+      "title": "Tip and split calculator",
+      "desc": "Work out the tip, the total bill and what each person pays when a group splits it.",
+      "lede": "Type the bill, the tip percentage and how many people are splitting it to see the tip, the total and each person's share.",
+      "how": "The tip is the bill multiplied by the tip percentage divided by 100. The total is the bill plus the tip, and each person's share is the total divided by the number of people. Anyone splitting has to pay a whole amount of money, so a fractional head count is rounded up to the next person: splitting between 2.5 people would otherwise show a figure nobody can hand over. The figures are plain numbers with no currency symbol, because the tool cannot know which currency you are paying in.",
+      "example": "A bill of 120 with a 15% tip split between 4 people: the tip is 120 × 15 ÷ 100 = 18, so the total is 120 + 18 = 138. Divided by 4 people each pays 138 ÷ 4 = 34.5.",
+      "faq": [
+        {
+          "q": "Why is there no currency symbol?",
+          "a": "Because the tool does not know which currency you are using. The result is in whatever unit you typed, which makes it correct for any currency."
+        },
+        {
+          "q": "Why can the tip not go above 100%?",
+          "a": "A tip larger than the bill itself is almost always a typing slip — 1500 entered instead of 15, say. Capping it at 100% turns that mistake into a clear message instead of a nonsense total."
+        },
+        {
+          "q": "What happens with a fractional number of people?",
+          "a": "It is rounded up to the next whole person. Splitting 138 between 2.5 people would give 55.20 each, which nobody can pay, so the tool splits between 3 instead."
+        },
+        {
+          "q": "Can I calculate a zero tip?",
+          "a": "Yes. Enter 0% and the tip row shows 0, the total equals the bill and the split is the bill divided by the people."
+        },
+        {
+          "q": "Does it handle a service charge already added?",
+          "a": "No. Enter the bill with the service charge already included and use the tip percentage only for what you want to add on top, so you do not tip twice."
+        }
+      ],
+      "ui": {
+        "bill": "Bill amount",
+        "pct": "Tip (%)",
+        "people": "People splitting",
+        "tip": "Tip",
+        "total": "Total to pay",
+        "each": "Each person pays",
+      "split": "Split between",
+      "peopleWord": "people",
+      "person": "person",
+        "working": "Working",
+        "empty": "Enter the bill amount to start.",
+        "partial": "Fill in the bill, the tip percentage and the number of people.",
+        "billLow": "Enter a bill amount above zero.",
+        "pctLow": "A tip cannot be negative.",
+        "pctHigh": "Enter a tip of 100% or less.",
+        "peopleLow": "At least one person has to split the bill.",
+        "tooBig": "That combination is too large to calculate.",
+        "note": "Plain numbers: they are in whatever currency you typed."
+      }
+    },
+    "roi-calculator": {
+      "title": "ROI calculator",
+      "desc": "Return on investment from what you put in and what you got back, with the profit, the percentage and the multiple.",
+      "lede": "Enter what an investment cost and what it is worth now to see the profit or loss, the return as a percentage and the value as a multiple of what you put in.",
+      "how": "Return on investment is (final value − initial value) ÷ initial value × 100, so a result of 60% means you ended up with 1.60 for every 1 you started with. A loss shows as a loss row with a positive money figure and a negative percentage, which keeps the arithmetic honest: you can always see which direction the result went. The initial value must be above zero because dividing by zero has no answer. Nothing here accounts for fees, tax, inflation or the length of time you held the investment — a 60% return over one year and a 60% return over ten years are treated the same.",
+      "example": "Bought for 250 and sold for 400: the profit is 400 − 250 = 150, and 150 ÷ 250 × 100 = 60%, so the return is 60% and the multiple is 400 ÷ 250 = 1.6. Bought for 250 and sold for 200: the loss is 50, which is 50 ÷ 250 × 100 = -20%, and the multiple is 0.8.",
+      "faq": [
+        {
+          "q": "Is this financial advice?",
+          "a": "No. It is arithmetic on two numbers you typed in. It does not know your tax position, your fees or your objectives, so treat the result as a calculation, not a recommendation."
+        },
+        {
+          "q": "Does it include fees and taxes?",
+          "a": "No. Trading fees, commissions, currency charges and tax all reduce the real return. Deduct them from the final value first if you want them reflected."
+        },
+        {
+          "q": "Why does a loss show a negative percentage but a positive money figure?",
+          "a": "So the direction is never ambiguous. The row is labelled as a loss, the money figure is the size of that loss, and the percentage keeps its minus sign because that is how the percentage is signed."
+        },
+        {
+          "q": "Why must the initial amount be above zero?",
+          "a": "The return is divided by the amount you invested. With nothing invested the division has no answer, so the tool asks for a real figure instead of printing Infinity."
+        },
+        {
+          "q": "How is this different from annual return?",
+          "a": "This is the total return over the whole period. Annual return would divide it across the years held, and would compound if you re-invested. Time held is deliberately not an input here."
+        }
+      ],
+      "ui": {
+        "initial": "Amount invested",
+        "final": "Value now",
+        "profit": "Net profit",
+        "loss": "Net loss",
+        "roi": "Return on investment",
+        "multiple": "Multiple of your money",
+        "working": "Working",
+        "empty": "Enter what you invested and what it is worth now.",
+        "partial": "Fill in both boxes to see the return.",
+        "initialLow": "Enter an amount invested above zero.",
+        "finalLow": "A value cannot be negative — enter 0 for a total loss.",
+        "tooBig": "That combination is too large to calculate.",
+        "note": "Estimate only: no fees, tax, inflation or time period are included.",
+        "noteLoss": "Estimate only: no fees, tax, inflation or time period are included."
+      }
+    },
+    "savings-goal-calculator": {
+      "title": "Savings goal calculator",
+      "desc": "Work out the monthly deposit that reaches a savings target, with the interest you earn along the way.",
+      "lede": "Enter the amount you want, what you already have, an interest rate and the number of years to see how much you still need and the monthly deposit that gets you there.",
+      "how": "What you already have grows at the monthly rate for the number of months you entered, using FV = C × (1 + i)^N where i is the annual rate divided by 100 and then by 12 and N is the number of months. The gap left is the target minus that figure. The monthly deposit needed to close the gap is PMT = gap × i ÷ ((1 + i)^N − 1), the standard annuity formula for payments made at the end of each month. At a 0% rate it simplifies to the gap divided by the number of months. The assumptions are stated because they matter: one fixed rate for the whole period, interest added every month, no withdrawals, and a deposit at the end of every month without fail. Results are an estimate from those assumptions, not financial advice.",
+      "example": "A goal of 10,000 with 2,000 already saved, 4% a year over 5 years: i = 0.04 ÷ 12 = 0.003333 and N = 60. The 2,000 grows to 2,000 × 1.003333^60 = 2,441.99, leaving 10,000 − 2,441.99 = 7,558.01 to find. The monthly deposit is 7,558.01 × 0.003333 ÷ (1.003333^60 − 1) = 114. With no interest the same goal would need (10,000 − 2,000) ÷ 60 = 133.33 a month.",
+      "faq": [
+        {
+          "q": "Is this financial advice?",
+          "a": "No. It applies the rate you type in as if it never changed. Savings rates move, and the tool cannot know your circumstances, so the figure is a projection from four numbers you entered."
+        },
+        {
+          "q": "Are the deposits made at the start or the end of the month?",
+          "a": "At the end. That is the ordinary annuity assumption behind the formula. Depositing at the start of each month would earn slightly more interest and need a slightly smaller deposit."
+        },
+        {
+          "q": "Why does the monthly figure change so much with the rate?",
+          "a": "Interest does part of the work for you. At 0% you must fund the whole gap yourself; at a higher rate the existing balance grows towards the goal, so less has to come out of your pocket each month."
+        },
+        {
+          "q": "What if I already reach the goal?",
+          "a": "The tool says so and shows a deposit of 0. That happens when the starting balance, left alone at the rate you gave, grows past the target before the years run out."
+        },
+        {
+          "q": "Can I add a lump sum later or skip months?",
+          "a": "Not in this version. It assumes the same deposit every month. Treat a missed month as a gap you make up afterwards, or re-run it with the figures you expect."
+        }
+      ],
+      "ui": {
+        "target": "Savings goal",
+        "current": "Already saved",
+        "rate": "Annual interest rate (%)",
+        "years": "Years to save",
+        "need": "Still needed from your deposits",
+        "future": "What you already have will be worth",
+        "deposit": "Monthly deposit needed",
+        "totalDeposits": "Total you will deposit",
+        "working": "Working",
+        "empty": "Enter the goal, the rate and the number of years.",
+        "partial": "Fill in all four boxes to see the plan.",
+        "targetLow": "Enter a goal above zero.",
+        "currentLow": "What you have saved cannot be negative.",
+        "rateLow": "The rate cannot be negative.",
+        "rateHigh": "Enter a rate of 100% or less.",
+        "yearsLow": "Enter a period longer than zero years.",
+        "yearsHigh": "Enter 100 years or fewer.",
+        "tooBig": "That combination is too large to calculate.",
+        "reached": "Your starting balance already reaches this goal at that rate.",
+        "note": "Estimate only: one fixed rate, monthly interest, deposits at the end of each month."
+      }
+    },
+    "gpa-calculator": {
+      "title": "GPA calculator",
+      "desc": "Grade point average from the courses you list, using the grade points and unit values your own course uses.",
+      "lede": "Enter each course with its grade points and its units, and the tool returns the weighted average, the total units and the quality points behind it.",
+      "how": "GPA = total quality points ÷ total units. Quality points for one course are its grade points multiplied by its units, so a course worth four units counts twice as much as one worth two — this is why a high mark in a large course moves the average more than a high mark in a small one. The tool adds up the quality points and the units across every row you fill in and divides one by the other. The grade scale is entirely yours: there is no built-in scale, because scales differ between countries, institutions and departments, and claiming one standard would be wrong. Rows left blank are ignored, so you can keep a spare row ready.",
+      "example": "Three courses: A with 4.0 points for 3 units, B with 3.0 points for 4 units, and A with 4.0 points for 2 units. The quality points are 4.0 × 3 = 12, 3.0 × 4 = 12 and 4.0 × 2 = 8, which add up to 32, and the units are 3 + 4 + 2 = 9. The GPA is 32 ÷ 9 = 3.56.",
+      "faq": [
+        {
+          "q": "Which grade scale does this use?",
+          "a": "The one you type in. Each row takes the grade points your institution assigns, so a 4.0 scale, a 5.0 scale, a 10-point scale or anything else works as long as you enter the points."
+        },
+        {
+          "q": "What is the difference between grade points and units?",
+          "a": "Grade points are the value of the mark itself, such as 4.0 for an A. Units (credits, hours) are the weight of the course. The average is weighted by units, not a plain mean of the marks."
+        },
+        {
+          "q": "Do I need to fill in the course name?",
+          "a": "No. The name is only there to help you keep track of which row is which; the calculation uses the points and units alone."
+        },
+        {
+          "q": "Why is my GPA lower than the plain average of my marks?",
+          "a": "Because it is weighted. If your weakest marks sit in your highest-unit courses, they pull the weighted average down further than a simple average would."
+        },
+        {
+          "q": "Does this match my institution's official GPA?",
+          "a": "It matches the arithmetic, but institutions round differently, drop or repeat modules, and may use their own scale conversions. Check your own rules before relying on the figure."
+        }
+      ],
+      "ui": {
+        "course": "Course (optional)",
+        "coursePh": "e.g. Physics 2",
+        "points": "Grade points",
+        "units": "Units",
+        "add": "Add a course",
+        "remove": "Remove",
+        "gpa": "GPA",
+        "totalUnits": "Total units",
+        "quality": "Quality points",
+        "counted": "Courses counted",
+        "working": "Working",
+        "empty": "Add your courses: grade points and units for each row you use.",
+        "partial": "Fill in the grade points and the units for each row you use.",
+        "invalid": "Grade points and units have to be numbers.",
+        "range": "Grade points must be 0 or more, and units must be above 0.",
+        "unitsLow": "Add up to at least one unit.",
+        "tooBig": "Those figures are too large to calculate.",
+        "maxRows": "Twelve courses is the most this page lists at once.",
+        "note": "Weighted by units: your own grade points, no assumed scale."
+      }
     }
   },
   "business": {

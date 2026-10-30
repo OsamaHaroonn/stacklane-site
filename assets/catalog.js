@@ -22,6 +22,11 @@ window.TOOL_CATALOG = [
   { slug: 'compound-interest-calculator', category: 'calculators', keywords: 'compound interest calculator savings growth compounding' },
   { slug: 'discount-calculator', category: 'calculators', keywords: 'discount calculator percent off sale price savings' },
   { slug: 'vat-calculator', category: 'calculators', keywords: 'vat calculator add remove tax net gross rate' },
+  { slug: 'date-difference', category: 'calculators', keywords: 'date difference days between two dates calculator duration' },
+  { slug: 'tip-split-calculator', category: 'calculators', keywords: 'tip calculator split bill per person gratuity' },
+  { slug: 'roi-calculator', category: 'calculators', keywords: 'roi calculator return on investment profit loss percentage' },
+  { slug: 'savings-goal-calculator', category: 'calculators', keywords: 'savings goal calculator monthly deposit compound interest target' },
+  { slug: 'gpa-calculator', category: 'calculators', keywords: 'gpa calculator grade point average credits units transcript' },
 ];
 
 window.TOOL_CATS = {};
