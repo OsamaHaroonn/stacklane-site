@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Color converter — Stacklane Tools</title>
+<meta name="description" content="Convert a hex colour code to RGB and HSL, with the working shown and a swatch to check it.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/color-converter.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="Color converter — Stacklane Tools">
+<meta property="og:description" content="Convert a hex colour code to RGB and HSL, with the working shown and a swatch to check it.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/color-converter.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="color-converter">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.developer.name">developername</p>
+    <h1 data-i18n="tools.color-converter.title">Color converter</h1>
+    <p class="lede" data-i18n="tools.color-converter.lede">Type a colour such as #1e90ff or rgb(30, 144, 255) to see the other forms, the arithmetic behind them and a swatch of the colour itself.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.color-converter.how">A hex code is three pairs of hexadecimal digits, one each for red, green and blue, with each channel running from 00 to ff — that is 0 to 255 in decimal. The three-digit form expands by doubling each digit, so #f00 becomes #ff0000. HSL re-expresses the same colour as hue in degrees from 0 to 360, saturation from 0 to 100% and lightness from 0 to 100%. Lightness is the midpoint of the brightest and darkest channels divided by 255, saturation comes from how far apart those two channels are, and the hue follows which channel is highest. The swatch is a background colour set in the page — no image is loaded, and nothing is requested from anywhere.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.color-converter.example">#1e90ff is rgb(30, 144, 255), because 1e is 30, 90 is 144 and ff is 255. The lightest channel is 255 and the darkest is 30, so the lightness is (255 + 30) ÷ 2 ÷ 255 = 56%. Blue is the highest channel, which puts the hue at 210°, and with the channels far apart the saturation is 100%, giving hsl(210, 100%, 56%). The shorthand #f00 expands to #ff0000: rgb(255, 0, 0) and hsl(0, 100%, 50%).</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.color-converter.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="developer.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/color-converter.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>
