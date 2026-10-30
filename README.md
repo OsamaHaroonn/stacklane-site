@@ -93,6 +93,33 @@ URL you were on. Change the `<base href="…">` there to match `siteUrl`
 
 Nothing else moves: templates, scripts and CSS are shared.
 
+### Re-enabling Arabic (the version is parked, not deleted)
+
+The Arabic site is complete and still in the repository — every `ar/` page,
+`ar/index.html` and `assets/i18n/ar.json` are untouched. It is only
+*unlinked* and *noindexed* so the site ships English-only for now. To turn
+it back on, reverse those four things:
+
+1. Delete the `<meta name="robots" content="noindex, nofollow">` line from
+   every `ar/*.html` file (one line each, directly under the charset meta).
+2. Re-add the `hreflang` alternate links that were removed from the `en/`
+   pages. One block per page in `<head>`:
+   ```html
+   <link rel="alternate" hreflang="en" href="https://osamaharoonn.github.io/stacklane-site/en/<slug>.html">
+   <link rel="alternate" hreflang="ar" href="https://osamaharoonn.github.io/stacklane-site/ar/<slug>.html">
+   <link rel="alternate" hreflang="x-default" href="https://osamaharoonn.github.io/stacklane-site/en/<slug>.html">
+   ```
+   chrome.js reads these tags to build the header language switcher, so the
+   switcher returns by itself once the tags are back.
+3. Re-add the Arabic links that were removed: the second language card and
+   the `العربية` footer link on [`index.html`](index.html), and the two
+   Arabic links in [`404.html`](404.html).
+4. Put the `ar/` URLs back in [`sitemap.xml`](sitemap.xml) (18 of them when
+   they were removed).
+
+No file was deleted to park the Arabic version, so nothing has to be
+rewritten — only relinked.
+
 ---
 
 ## Libraries
