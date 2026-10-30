@@ -81,6 +81,11 @@ a:hover { text-decoration: underline; }
   position: sticky;
   top: 0;
   z-index: 20;
+  /* The generated header is one element carrying both .wrap and .nav, so the
+     row layout lives here: brand and links share a single line. */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   background: rgba(255, 255, 255, .9);
   backdrop-filter: saturate(180%) blur(12px);
   border-bottom: 1px solid var(--line);
