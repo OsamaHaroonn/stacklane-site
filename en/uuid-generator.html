@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>UUID generator — Stacklane Tools</title>
+<meta name="description" content="Generate version 4 UUIDs in your browser, one at a time or in a batch, with an optional uppercase form.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/uuid-generator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="UUID generator — Stacklane Tools">
+<meta property="og:description" content="Generate version 4 UUIDs in your browser, one at a time or in a batch, with an optional uppercase form.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/uuid-generator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="uuid-generator">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.generators.name">generatorsname</p>
+    <h1 data-i18n="tools.uuid-generator.title">UUID generator</h1>
+    <p class="lede" data-i18n="tools.uuid-generator.lede">Choose how many identifiers you need and generate them with the browser's crypto.randomUUID — 128-bit version 4 UUIDs, made and shown only in this tab.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.uuid-generator.how">A version 4 UUID is 128 bits written as 32 hexadecimal digits in five groups of 8-4-4-4-12. Of those 128 bits, 122 are random and 6 are fixed: the first character of the third group is always 4, marking version 4, and the first character of the fourth group is always one of 8, 9, a or b, marking the RFC 4122 variant. The browser's crypto.randomUUID sets those bits for you; where it is missing, the tool fills 16 bytes from crypto.getRandomValues and applies the same two masks by hand. The uppercase option only changes the letters — the value is the same identifier either way.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.uuid-generator.example">Take 550e8400-e29b-41d4-a716-446655440000 and check it against the two rules. The third group is 41d4, which starts with 4, so the version is right. The fourth group is a716, which starts with a — in binary a is 1010, so the top two bits are 10, the RFC 4122 variant. Both rules hold, so it is a genuine version 4 UUID, and any v4 identifier you generate here will pass the same two checks.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.uuid-generator.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="generators.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/uuid-generator.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>
