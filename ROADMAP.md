@@ -30,8 +30,8 @@ browser. **planned** = roadmap only, not built, no page, no JSON entry.
 | 19 | `age-calculator` | calculators | age calculator from date of birth | **built** |
 | 20 | `percentage-calculator` | calculators | percentage calculator | **built** |
 | 21 | `date-difference` | calculators | days between two dates | planned |
-| 22 | `loan-calculator` | calculators | loan calculator monthly payment | planned |
-| 23 | `discount-calculator` | calculators | discount calculator percent off | planned |
+| 22 | `loan-calculator` | calculators | loan calculator monthly payment | **built** |
+| 23 | `discount-calculator` | calculators | discount calculator percent off | **built** |
 | 24 | `unit-converter` | converters | unit converter length temperature | **built** |
 | 25 | `time-zone-converter` | converters | time zone converter current time | planned |
 | 26 | `roman-numerals` | converters | roman numeral converter | planned |
@@ -39,6 +39,9 @@ browser. **planned** = roadmap only, not built, no page, no JSON entry.
 | 28 | `base64` | developer | base64 encode decode | planned |
 | 29 | `color-converter` | developer | hex to rgb color converter | planned |
 | 30 | `url-encoder` | developer | url encode decode online | planned |
+| 31 | `mortgage-calculator` | calculators | mortgage calculator monthly payment | **built** |
+| 32 | `compound-interest-calculator` | calculators | compound interest calculator | **built** |
+| 33 | `vat-calculator` | calculators | vat calculator add or remove tax | **built** |
 
 ## Category directories
 
