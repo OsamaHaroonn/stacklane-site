@@ -597,6 +597,7 @@ footer a { display: inline-flex; align-items: center; min-height: 44px; }
 }
 .tk-check input { width: 20px; height: 20px; flex: none; }
 .tk-checks { display: grid; gap: .1rem; margin-bottom: .75rem; }
+.colour-swatch { width: 100%; height: 56px; border-radius: 10px; border: 1px solid var(--line); margin-bottom: .75rem; }
 @media (min-width: 720px) {
   .tk-checks { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); column-gap: 1.5rem; }
 }
