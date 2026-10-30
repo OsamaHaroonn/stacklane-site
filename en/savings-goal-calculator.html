@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Savings goal calculator — Stacklane Tools</title>
+<meta name="description" content="Work out the monthly deposit that reaches a savings target, with the interest you earn along the way.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/savings-goal-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="Savings goal calculator — Stacklane Tools">
+<meta property="og:description" content="Work out the monthly deposit that reaches a savings target, with the interest you earn along the way.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/savings-goal-calculator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="savings-goal-calculator">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.calculators.name">calculatorsname</p>
+    <h1 data-i18n="tools.savings-goal-calculator.title">Savings goal calculator</h1>
+    <p class="lede" data-i18n="tools.savings-goal-calculator.lede">Enter the amount you want, what you already have, an interest rate and the number of years to see how much you still need and the monthly deposit that gets you there.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.savings-goal-calculator.how">What you already have grows at the monthly rate for the number of months you entered, using FV = C × (1 + i)^N where i is the annual rate divided by 100 and then by 12 and N is the number of months. The gap left is the target minus that figure. The monthly deposit needed to close the gap is PMT = gap × i ÷ ((1 + i)^N − 1), the standard annuity formula for payments made at the end of each month. At a 0% rate it simplifies to the gap divided by the number of months. The assumptions are stated because they matter: one fixed rate for the whole period, interest added every month, no withdrawals, and a deposit at the end of every month without fail. Results are an estimate from those assumptions, not financial advice.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.savings-goal-calculator.example">A goal of 10,000 with 2,000 already saved, 4% a year over 5 years: i = 0.04 ÷ 12 = 0.003333 and N = 60. The 2,000 grows to 2,000 × 1.003333^60 = 2,441.99, leaving 10,000 − 2,441.99 = 7,558.01 to find. The monthly deposit is 7,558.01 × 0.003333 ÷ (1.003333^60 − 1) = 114.00. With no interest the same goal would need (10,000 − 2,000) ÷ 60 = 133.33 a month.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.savings-goal-calculator.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="calculators.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/savings-goal-calculator.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>
