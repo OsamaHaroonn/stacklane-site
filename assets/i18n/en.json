@@ -1559,6 +1559,226 @@
         "bad": "That is not a colour this tool can read: use #rgb, #rrggbb, six hex digits, or rgb(r, g, b).",
         "note": "The swatch is drawn in the page: no image is loaded."
       }
+    },
+    "images-to-pdf": {
+      "title": "Images to PDF",
+      "desc": "Combine JPG, PNG and other image files into a single PDF, with the page size you choose and the files never leaving your device.",
+      "lede": "Pick the images, choose A4, US Letter or a page that matches each image, and download one PDF with every picture on its own page.",
+      "how": "Each image is read in the browser and placed on a page that is one point per pixel of your chosen paper size: A4 is 595.28 × 841.89 points and US Letter is 612 × 792, which is the scale every PDF viewer uses. With a fixed page size the picture is scaled down until it fits inside a 24-point margin on all sides, centred on the page, and it is never scaled up past its own size. With the matching-page option the page is cut to the image's own pixel dimensions, so nothing is scaled at all. JPEG and PNG files are copied into the PDF exactly as they are — no second round of compression — while any other format is decoded and re-encoded as PNG, because that is what a PDF can carry. One unreadable file is skipped and named in the result instead of stopping the whole job.",
+      "example": "A 1600 × 1200 photo on A4: the margins leave 595.28 − 48 = 547.28 points across and 841.89 − 48 = 793.89 points down, so the scale is the smaller of 547.28 ÷ 1600 = 0.342 and 793.89 ÷ 1200 = 0.662, which is 0.342. The picture is drawn at 1600 × 0.342 = 547.28 points wide and 1200 × 0.342 = 410.46 points tall, centred on the sheet. Three images give a three-page PDF, and each JPEG keeps its original bytes.",
+      "faq": [
+        {
+          "q": "Are my photos uploaded?",
+          "a": "No. The files are read with the browser's own file API, assembled into a PDF in memory and offered as a download. Nothing is sent to a server."
+        },
+        {
+          "q": "Which image formats work?",
+          "a": "Anything your browser can display. JPEG and PNG are copied straight in; WebP, GIF, BMP and similar formats are converted to PNG first because a PDF can only embed those two."
+        },
+        {
+          "q": "Will the file be large?",
+          "a": "The size depends on what you put in. JPEG and PNG images keep their original bytes, so a set of photos comes out roughly the same size; only images that need converting gain anything."
+        },
+        {
+          "q": "Why does the picture shrink on A4?",
+          "a": "Because the page is a fixed size. The image keeps its aspect ratio and is scaled down until it fits the margin — it is never stretched, and never enlarged beyond its own resolution."
+        },
+        {
+          "q": "Is there a limit?",
+          "a": "40 images and 60 MB in one go, so the page stays responsive. Larger collections can be done in batches with the same result."
+        }
+      ],
+      "ui": {
+        "file": "Images",
+        "browse": "Choose images",
+        "none": "No images chosen",
+        "empty": "Choose the images you want to put in the PDF.",
+        "list": "Chosen images",
+        "remove": "Remove",
+        "pageSize": "Page size",
+        "a4": "A4 (210 × 297 mm)",
+        "letter": "US Letter (8.5 × 11 in)",
+        "fit": "Page matches each image",
+        "create": "Create PDF",
+        "download": "Download PDF",
+        "working": "Building the PDF…",
+        "progress": "Image {n} of {total}",
+        "done": "Created a {n}-page PDF · {size}",
+        "skipped": "Could not be read: {list}",
+        "failed": "No PDF could be made — none of the chosen files could be read as an image.",
+        "tooMany": "Choose 40 images or fewer at once.",
+        "tooBig": "That is more than 60 MB of images in total — split them into smaller batches."
+      }
+    },
+    "split-pdf": {
+      "title": "Split PDF",
+      "desc": "Take a range of pages out of a PDF, or write every page as its own file, without uploading the document.",
+      "lede": "Choose a PDF, then either type the pages you want — 1-3, 5, 8-10 — or split the whole document into one file per page.",
+      "how": "The document is opened in the browser with pdf-lib and its pages are counted. A range like 1-3, 5 means pages one to three and page five, in that order, with duplicates dropped; the numbers you type count from one while the library counts from zero, so the last page you can name is the page count shown on screen. To extract, the chosen pages are copied into a fresh document; to split fully, that copy is made once per page and each is downloaded in turn, which is why the whole-document mode is capped. A page number the document does not have, a reversed range such as 8-3 or an empty range are each refused with their own message rather than producing an empty file.",
+      "example": "On a ten-page PDF the range 1-3, 5 gives four pages: one, two, three and five, in that order, because the parser reads 1-3 as three pages and then 5, and has already seen nothing twice. The same range on a five-page document also works, but 1-12 is refused — page 12 does not exist — and 8-3 is refused because the end comes before the start.",
+      "faq": [
+        {
+          "q": "Is my document uploaded?",
+          "a": "No. pdf-lib opens the file in this tab, the pages are copied in memory and the result is offered as a download. The original never leaves your device."
+        },
+        {
+          "q": "What syntax does the range use?",
+          "a": "Comma-separated pages and ranges: 1-3, 5, 8-10. Spaces are ignored, single pages need no dash, and repeated pages are only counted once."
+        },
+        {
+          "q": "Can I split a protected PDF?",
+          "a": "Not if it is encrypted. The loader is told not to ignore encryption, so a locked document fails with the message instead of producing a copy you should not have."
+        },
+        {
+          "q": "Why is one file per page capped?",
+          "a": "Each page becomes its own download, so a large document would mean hundreds of files and a long stall. The cap is 60 pages for the whole-document mode; extract the rest with a range."
+        },
+        {
+          "q": "Does splitting change the pages?",
+          "a": "No. Pages are copied exactly — same size, same content, same order inside each output. Nothing is re-rendered, so the quality cannot drop."
+        }
+      ],
+      "ui": {
+        "file": "PDF file",
+        "browse": "Choose a PDF",
+        "none": "No file chosen",
+        "empty": "Choose a PDF to split.",
+        "mode": "What to do",
+        "modeRange": "Extract the pages I name",
+        "modeAll": "Every page as its own file",
+        "range": "Pages to keep",
+        "rangePh": "e.g. 1-3, 5, 8-10",
+        "split": "Split",
+        "download": "Download PDF",
+        "loading": "Reading the document…",
+        "ready": "Ready: {name}",
+        "failed": "That file could not be opened as a PDF — it may be damaged or password protected.",
+        "source": "Document",
+        "pages": "Pages in the document",
+        "selected": "Pages in the result",
+        "result": "Result size",
+        "badRange": "Use pages and ranges like 1-3, 5, 8-10 — digits only, with a hyphen for a range.",
+        "offPage": "That range names a page the document does not have.",
+        "badOrder": "That range runs backwards — the second number has to be at least the first.",
+        "noPages": "Name at least one page to keep.",
+        "tooMany": "Writing every page as its own file is capped at 60 pages — use a range instead.",
+        "rangeDone": "Extracted {n} pages.",
+        "allDone": "Downloaded {n} files, one per page.",
+        "working": "Working…",
+        "progress": "Page {n} of {total}"
+      }
+    },
+    "image-converter": {
+      "title": "Image converter",
+      "desc": "Convert a picture between JPG, PNG and WebP in your browser, with a quality setting and the real output size.",
+      "lede": "Choose a picture, pick the format you want and see the result, its dimensions and its exact file size before you download it.",
+      "how": "The image is decoded by the browser and drawn onto a canvas at its original dimensions, then the canvas is encoded in the format you chose. That is a real re-encode, not a rename: JPEG uses lossy compression and has no alpha channel, so transparency is filled with white first; PNG is lossless and keeps transparency; WebP keeps it too and is usually smaller. The quality box applies to JPEG and WebP and is ignored by PNG, which has no quality setting. Dimensions never change — if you also want to resize, do that with the image resizer first.",
+      "example": "A 1200 × 800 PNG converted to JPG at quality 90 comes out as 1200 × 800 px: the tool never resizes, so the result row repeats the original dimensions and the only figure that moves is the byte count. Converting the same file to PNG keeps the transparency if there is any, while the JPG version fills those pixels with white, because JPEG cannot store an alpha channel.",
+      "faq": [
+        {
+          "q": "Are my pictures uploaded?",
+          "a": "No. Decoding, drawing and encoding all happen in this tab on a canvas. The file never leaves your device."
+        },
+        {
+          "q": "Why does the JPG look slightly different?",
+          "a": "Because JPEG is lossy: it discards detail it judges invisible to save space. Raise the quality for fewer artefacts and a bigger file, or use PNG when the image must stay exact."
+        },
+        {
+          "q": "Why did my transparency turn white?",
+          "a": "JPEG has no alpha channel, so there is nowhere to store transparency. The tool fills it with white before encoding; choose PNG or WebP instead to keep it."
+        },
+        {
+          "q": "Does it resize the image?",
+          "a": "No. The output keeps the source dimensions exactly. Resizing is a separate job, so use the image resizer and then convert if you need both."
+        },
+        {
+          "q": "How big a file can I use?",
+          "a": "30 MB, and 40 megapixels. Larger images would take long enough to lock up the tab, so the tool refuses them with a message instead."
+        }
+      ],
+      "ui": {
+        "file": "Image file",
+        "browse": "Choose an image",
+        "none": "No file chosen",
+        "empty": "Choose a picture to convert.",
+        "ready": "Ready: {name}",
+        "format": "Convert to",
+        "formatJpg": "JPG",
+        "formatPng": "PNG",
+        "formatWebp": "WebP",
+        "quality": "Quality (1-100, JPG and WebP)",
+        "convert": "Convert",
+        "download": "Download image",
+        "working": "Converting…",
+        "original": "Original",
+        "result": "Result",
+        "formatRow": "Format",
+        "preview": "Preview of the converted image",
+        "tooBig": "That file is over 30 MB — choose a smaller one.",
+        "notImage": "That file does not look like an image this browser can read.",
+        "badQuality": "Enter a quality between 1 and 100.",
+        "tooManyPixels": "That image is over 40 megapixels — choose a smaller one.",
+        "failed": "That image could not be decoded or encoded in this browser."
+      }
+    },
+    "crop-rotate-image": {
+      "title": "Crop and rotate image",
+      "desc": "Cut a rectangle out of a picture and turn it 90, 180 or 270 degrees, in the browser, keeping the original format.",
+      "lede": "Choose a picture, set the rectangle you want to keep in pixels, pick an angle and download the result with its exact new size.",
+      "how": "The crop rectangle is given in pixels measured from the top-left corner of the original image, and the region inside it is copied onto a canvas. The rotation is applied afterwards to that cut-out, so the numbers you typed never move when you change the angle. Turning by 90 or 270 degrees swaps the width and height of the result; 180 leaves them as they are. The output keeps the source format where the browser can produce it — JPG, PNG or WebP — and otherwise falls back to PNG, with white painted behind the picture for JPG because JPEG has no alpha channel. A rectangle that runs past the edge of the image, a zero-sized side or a non-whole number is refused before anything is drawn.",
+      "example": "An 800 × 600 photo cropped at x 100, y 50 with 400 × 300 fits: 100 + 400 = 500 is inside 800, and 50 + 300 = 350 is inside 600. The cut-out is 400 × 300, and rotating it 90 degrees swaps the sides, so the result row reads 300 × 400 px. Rotating again runs the same crop from the original image, so the rectangle stays 400 × 300 every time instead of shrinking.",
+      "faq": [
+        {
+          "q": "Is my photo uploaded?",
+          "a": "No. The crop and the rotation run on a canvas in this tab, and the result is offered as a download. Nothing is sent anywhere."
+        },
+        {
+          "q": "Which way does it rotate?",
+          "a": "Clockwise: 90 turns the top edge to the right, 180 flips it upside down, 270 turns it to the left. The width and height swap at 90 and 270."
+        },
+        {
+          "q": "Why do my crop numbers stay the same when I rotate?",
+          "a": "Because the crop is measured on the original image and the rotation happens afterwards. Rotating twice therefore gives the same rectangle rather than cutting the picture down each time."
+        },
+        {
+          "q": "What happens to transparency?",
+          "a": "PNG and WebP keep it. When the output is JPG the transparent areas are filled with white, since JPEG cannot store transparency."
+        },
+        {
+          "q": "Is there a size limit?",
+          "a": "30 MB per file and 40 megapixels for the result. Past that the browser would stall while drawing, so the tool refuses with a message instead."
+        }
+      ],
+      "ui": {
+        "file": "Image file",
+        "browse": "Choose an image",
+        "none": "No file chosen",
+        "empty": "Choose a picture to crop or rotate.",
+        "ready": "Ready: {name}",
+        "left": "Left (px)",
+        "top": "Top (px)",
+        "width": "Width (px)",
+        "height": "Height (px)",
+        "rotate": "Rotate",
+        "rot0": "No rotation",
+        "rot90": "90° clockwise",
+        "rot180": "180°",
+        "rot270": "90° counter-clockwise",
+        "apply": "Crop and rotate",
+        "download": "Download image",
+        "working": "Working…",
+        "original": "Original",
+        "result": "Result",
+        "cropUsed": "Rectangle used",
+        "preview": "Preview of the cropped image",
+        "loading": "Reading the image…",
+        "notWhole": "Crop sizes and positions have to be whole numbers of pixels.",
+        "tooSmall": "The width and the height have to be at least one pixel.",
+        "outside": "That rectangle runs past the image: it has to fit inside {w} × {h} px.",
+        "tooBig": "That file is over 30 MB — choose a smaller one.",
+        "tooManyPixels": "That result would be over 40 megapixels — crop a smaller area.",
+        "failed": "That image could not be decoded or encoded in this browser."
+      }
     }
   },
   "business": {

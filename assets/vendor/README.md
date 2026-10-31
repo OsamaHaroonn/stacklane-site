@@ -19,6 +19,8 @@ Both files were verified byte-for-byte against those exact URLs (sha256):
 Used by:
 
 - `assets/tools/merge-pdf.js` → `window.PDFLib` (loaded on `en/merge-pdf.html`, `ar/merge-pdf.html`)
+- `assets/tools/split-pdf.js` → `window.PDFLib` (loaded on `en/split-pdf.html`)
+- `assets/tools/images-to-pdf.js` → `window.PDFLib` (loaded on `en/images-to-pdf.html`)
 - `assets/tools/qr-code-generator.js` → `window.qrcode` (loaded on `en/qr-code-generator.html`, `ar/qr-code-generator.html`)
 
 Licence texts: pdf-lib is MIT; the bundled file also contains Apache-2.0

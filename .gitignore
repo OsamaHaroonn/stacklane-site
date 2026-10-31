@@ -24,3 +24,6 @@ qa-log.json
 
 # Windows artifact (reserved device name created by a redirect to /dev/null)
 nul
+
+# Local browser test fixtures (generated, never committed)
+qa-fixtures/

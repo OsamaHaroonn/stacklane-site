@@ -36,6 +36,10 @@ window.TOOL_CATALOG = [
   { slug: 'url-encoder', category: 'developer', keywords: 'url encoder percent encode decode query string encode uri component' },
   { slug: 'timestamp-converter', category: 'developer', keywords: 'unix timestamp converter epoch date time seconds milliseconds utc' },
   { slug: 'color-converter', category: 'developer', keywords: 'color converter hex to rgb hsl hex code picker color values' },
+  { slug: 'images-to-pdf', category: 'pdf', keywords: 'images to pdf combine photos jpg png into one pdf document' },
+  { slug: 'split-pdf', category: 'pdf', keywords: 'split pdf separate pages extract range take pages out' },
+  { slug: 'image-converter', category: 'images', keywords: 'image converter convert png to jpg webp png jpeg format change' },
+  { slug: 'crop-rotate-image', category: 'images', keywords: 'crop image rotate picture cut resize rectangle turn photo' },
 ];
 
 window.TOOL_CATS = {};
