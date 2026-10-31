@@ -62,6 +62,7 @@ window.TOOL = (function () {
     preview.hidden = true;
     var busy = false;
     var natural = null;   // { w, h } of the chosen file
+    var decodeState = 'idle';   // idle | working | ready | failed
 
     var picker = TK.fileInput({
       id: 'crop-file',
@@ -76,14 +77,16 @@ window.TOOL = (function () {
         out.render([]);
         box.clear();
         var f = picker.input.files && picker.input.files[0];
-        if (!f) { box.show(ui('empty')); return; }
-        if (f.size > MAX_BYTES) { box.show(ui('tooBig'), 'error'); return; }
+        if (!f) { decodeState = 'idle'; box.show(ui('empty')); return; }
+        if (f.size > MAX_BYTES) { decodeState = 'failed'; box.show(ui('tooBig'), 'error'); return; }
+        decodeState = 'working';
         decode(f).then(function (bitmap) {
           var w = bitmap.width || bitmap.naturalWidth;
           var h = bitmap.height || bitmap.naturalHeight;
           if (bitmap.close) bitmap.close();
           if (!w || !h) throw new Error('decode');
           natural = { w: w, h: h };
+          decodeState = 'ready';
           left.input.value = 0;
           top.input.value = 0;
           wField.input.value = w;
@@ -91,6 +94,7 @@ window.TOOL = (function () {
           out.render([[ui('original'), w + ' × ' + h + ' px · ' + TK.bytes(f.size)]]);
           box.show(ui('ready', { name: f.name }), 'ok');
         }).catch(function () {
+          decodeState = 'failed';
           box.show(ui('failed'), 'error');
         });
       }
@@ -153,7 +157,12 @@ window.TOOL = (function () {
 
       var file = picker.input.files && picker.input.files[0];
       if (!file) { box.show(ui('empty'), 'error'); return Promise.resolve(); }
-      if (!natural) { box.show(ui('loading'), 'warn'); return Promise.resolve(); }
+      if (!natural) {
+        // The file never decoded: say so instead of claiming to read it forever.
+        box.show(decodeState === 'working' ? ui('loading') : ui('failed'),
+          decodeState === 'working' ? 'warn' : 'error');
+        return Promise.resolve();
+      }
 
       var x = intOf(left), y = intOf(top), w = intOf(wField), h = intOf(hField);
 
