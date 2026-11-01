@@ -46,6 +46,8 @@ window.TOOL = (function () {
     var box = TK.msg();
     var progress = TK.progressBar();
     var busy = false;
+    var loading = false;    // a file is being read right now
+    var loadFailed = false; // the last file could not be read as a PDF
     var source = null;      // loaded PDFDocument
     var pageCount = 0;
     var fileName = 'document.pdf';
@@ -60,6 +62,8 @@ window.TOOL = (function () {
         var f = picker.input.files && picker.input.files[0];
         source = null;
         pageCount = 0;
+        loadFailed = false;
+        loading = !!f;
         downloadBtn.hidden = true;
         out.render([]);
         if (!f) { box.show(ui('empty')); return; }
@@ -71,12 +75,15 @@ window.TOOL = (function () {
         })
           .then(function (doc) {
             source = doc;
+            loading = false;
             pageCount = doc.getPageCount();
             out.render([[ui('pages'), TK.num(pageCount, 0)]]);
-            box.show(ui('ready'), 'ok');
+            box.show(ui('ready', { name: fileName }), 'ok');
             renderMode();
           })
           .catch(function () {
+            loading = false;
+            loadFailed = true;
             box.show(ui('failed'), 'error');
           });
       }
@@ -152,7 +159,9 @@ window.TOOL = (function () {
       if (busy) return Promise.resolve();
 
       if (!source) {
-        box.show(picker.input.files && picker.input.files[0] ? ui('loading') : ui('empty'), 'error');
+        if (loading) box.show(ui('loading'), 'warn');
+        else if (loadFailed) box.show(ui('failed'), 'error');
+        else box.show(ui('empty'), 'error');
         return Promise.resolve();
       }
       if (!window.PDFLib) { box.show(common('error'), 'error'); return Promise.resolve(); }
@@ -215,10 +224,11 @@ window.TOOL = (function () {
               progress.update(70 + Math.round((i / made.length) * 25),
                 ui('progress', { n: i + 1, total: made.length }));
               return PDFDocument.create()
-                .then(function (target) { return target.copyPages(source, [idx]); })
-                .then(function (copies) {
-                  copies.forEach(function (p) { target.addPage(p); });
-                  return target.save();
+                .then(function (target) {
+                  return target.copyPages(source, [idx]).then(function (copies) {
+                    copies.forEach(function (p) { target.addPage(p); });
+                    return target.save();
+                  });
                 })
                 .then(function (b) {
                   blobs.push(new Blob([b], { type: 'application/pdf' }));
@@ -243,7 +253,7 @@ window.TOOL = (function () {
         })
         .catch(function (e) {
           progress.reset();
-          box.show(ui('failed'), 'error');
+          box.show(common('error'), 'error');
           if (window.console) console.warn('split:', e && e.message);
         })
         .then(function () { busy = false; });
