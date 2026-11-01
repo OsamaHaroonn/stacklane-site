@@ -746,8 +746,15 @@ section { padding: var(--sp-5) 0; }
   border-bottom: 1px dashed var(--line); padding: .45rem 0; font-size: .95rem;
 }
 .tk-row:last-child { border-bottom: none; }
-.tk-row-label { color: var(--ink-soft); }
-.tk-row-value { font-family: var(--mono); font-weight: 600; text-align: end; word-break: break-word; }
+.tk-row-label { color: var(--ink-soft); min-width: 0; }
+/* A long unbroken value (a 128-character hex digest, a data URI) must wrap
+   inside the row instead of widening the page. */
+.tk-row-value {
+  font-family: var(--mono); font-weight: 600; text-align: end;
+  word-break: break-word; overflow-wrap: anywhere; min-width: 0;
+}
+/* Prose can contain a long token too (a hash in a worked example). */
+.tool-section p, .tool-section li, .worked { overflow-wrap: break-word; }
 .tk-row.is-strong .tk-row-value { font-size: 1.15rem; color: var(--accent); }
 
 /* File picker: the label is the visible 44px target, the input is hidden */
