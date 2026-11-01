@@ -117,7 +117,9 @@ window.TOOL = (function () {
     function fromTimestamp() {
       var raw = String(ts.input.value).trim().replace(/\s/g, '');
       if (!raw) {
-        if (!dt.input.value) { out.render([]); box.show(ui('empty'), 'warn'); }
+        dt.input.value = '';
+        out.render([]);
+        box.show(ui('empty'), 'warn');
         return;
       }
       if (!/^-?\d+$/.test(raw)) { fail(ui('notWhole')); return; }
@@ -131,15 +133,21 @@ window.TOOL = (function () {
       if (!isFinite(ms) || isNaN(new Date(ms).getTime())) { fail(ui('outOfRange')); return; }
 
       var d = new Date(ms);
-      dt.input.value = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()) +
-        'T' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+      var y = d.getFullYear();
+      // A datetime-local input only accepts years 1000–9999: leave it empty
+      // for year 1200-style timestamps instead of writing an invalid value.
+      dt.input.value = (y >= 1000 && y <= 9999)
+        ? y + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + 'T' + pad(d.getHours()) + ':' + pad(d.getMinutes())
+        : '';
       show(ms);
     }
 
     function fromDate() {
       var v = dt.input.value;
       if (!v) {
-        if (!ts.input.value) { out.render([]); box.show(ui('empty'), 'warn'); }
+        ts.input.value = '';
+        out.render([]);
+        box.show(ui('empty'), 'warn');
         return;
       }
       var m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2}))?$/.exec(v);
