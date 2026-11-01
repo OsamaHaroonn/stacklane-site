@@ -492,6 +492,110 @@ footer a { display: inline-flex; align-items: center; min-height: 44px; }
 .related a:hover { border-color: var(--accent); color: var(--accent); }
 
 /* ============================================================
+   Phase B — visual system
+   One accent, a neutral palette, a single spacing scale, and a
+   clear order on every page: heading → tool → result → text.
+   ============================================================ */
+
+/* ---------- Hero: headline, one sentence, search, popular ---------- */
+.hero { padding: clamp(1.75rem, 4vw, 3rem) 0 var(--sp-3); }
+.hero h1 { max-width: 22ch; margin-bottom: .3em; }
+.hero .lede { font-size: 1.08rem; max-width: 56ch; margin-bottom: 0; }
+.hero .eyebrow { margin-bottom: .5rem; }
+
+.search-wrap { margin-top: var(--sp-3); max-width: 680px; }
+.search-box { max-width: none; }
+/* Two classes so this beats the later `.tk-field input` rule. */
+.search-wrap .search-box input {
+  min-height: 56px;
+  font-size: 1.05rem;
+  padding-inline-start: 2.5rem;
+  border-color: #cdd5dd;
+  box-shadow: 0 1px 2px rgba(16, 20, 24, .05), 0 10px 30px rgba(16, 20, 24, .07);
+}
+
+/* Footer links live in #site-footer, not a <footer> element. */
+#site-footer a { display: inline-flex; align-items: center; min-height: 44px; }
+.search-count { margin-top: .4rem; }
+
+.popular {
+  display: flex; flex-wrap: wrap; gap: .5rem; align-items: center;
+  margin-top: var(--sp-2); max-width: 760px;
+}
+.popular-label {
+  font-size: .76rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-soft);
+}
+.popular a {
+  display: inline-flex; align-items: center; min-height: 44px;
+  padding: .3rem .9rem; border: 1px solid var(--line); border-radius: 999px;
+  background: #fff; color: var(--ink); font-size: .9rem;
+}
+.popular a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+/* ---------- Trust strip: only what is true ---------- */
+.trust {
+  display: grid; gap: .65rem 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  margin: var(--sp-4) 0 0; padding: var(--sp-3) 0 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+.trust li { display: flex; gap: .55rem; align-items: flex-start; font-size: .9rem; color: var(--ink-soft); }
+.trust svg { flex: none; width: 20px; height: 20px; color: var(--good); margin-top: 2px; }
+
+/* ---------- Section rhythm ---------- */
+section { padding: var(--sp-5) 0; }
+#cat-h2, #tools-h2, #top-h2 { margin-bottom: var(--sp-3); }
+.section-head { margin-bottom: var(--sp-4); }
+
+/* ---------- Category cards: icon, name, count ---------- */
+.cat-card {
+  display: grid; grid-template-columns: 44px 1fr; gap: .3rem .85rem;
+  align-items: start; padding: 1.2rem;
+}
+.cat-icon {
+  grid-row: span 3; width: 44px; height: 44px; border-radius: 12px;
+  background: var(--accent-soft); color: var(--accent);
+  display: grid; place-items: center;
+}
+.cat-icon svg { width: 22px; height: 22px; }
+.cat-card h3 { margin: 0; font-size: 1.02rem; }
+.cat-card p { margin: 0; font-size: .88rem; }
+.cat-card .badge { margin: .3rem 0 0; justify-self: start; }
+
+/* ---------- Tool cards, most useful and grouped ---------- */
+.top-grid, .tool-group .grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.tool-group { margin-top: var(--sp-4); }
+.tool-group > h3 {
+  font-size: .8rem; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); margin: 0 0 var(--sp-2);
+}
+
+/* ---------- Tool page: the tool is the main element ---------- */
+.tool-head { margin-bottom: var(--sp-3); }
+.tool-head h1 { margin-bottom: .3rem; }
+.tool-head .lede { margin-bottom: .75rem; }
+.tool-panel {
+  background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--accent);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+.tool-ui { display: grid; gap: var(--sp-3); }
+.tool-section { border-top: 1px solid var(--line); padding-top: var(--sp-4); }
+
+/* Result areas keep their height so the layout does not jump. */
+.tk-out { min-height: 88px; }
+.tk-preview { display: block; max-width: 100%; max-height: 320px; margin: 0 auto; border-radius: 10px; background: var(--bg-soft); object-fit: contain; }
+.tk-preview[hidden] { display: none; }
+.tk-actions { margin: var(--sp-2) 0 0; }
+
+@media (max-width: 700px) {
+  .tool-panel { padding: .9rem; }
+  .cat-card { grid-template-columns: 40px 1fr; }
+}
+
+/* ============================================================
    RTL — Arabic pages set dir="rtl" on <html>; these flip the
    few places where the layout is not already logical.
    ============================================================ */
