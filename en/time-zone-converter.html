@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Time Zone Converter – Compare Times, Free Online</title>
+<meta name="description" content="Convert a date and time between time zones using your browser&#x27;s own time-zone data, with the UTC offset and daylight saving shown for each zone.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/time-zone-converter.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="Time Zone Converter – Compare Times, Free Online">
+<meta property="og:description" content="Convert a date and time between time zones using your browser&#x27;s own time-zone data, with the UTC offset and daylight saving shown for each zone.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/time-zone-converter.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="time-zone-converter">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.converters.name">Converters</p>
+    <h1 data-i18n="tools.time-zone-converter.title">Time zone converter</h1>
+    <p class="lede" data-i18n="tools.time-zone-converter.lede">Pick a date, a time and a reference zone, then add the zones you want to compare. Each row shows the local time there, its UTC offset and whether daylight saving is in force.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.time-zone-converter.how">The converter takes your date and time in the reference zone, turns it into one moment in time, and formats that moment in every zone you add. Each offset comes from Intl.DateTimeFormat, so it follows the time-zone database built into your browser rather than a table written here. Because that database knows the daylight-saving rules, an offset changes with the date: New York is UTC−5 in January and UTC−4 in July. The UTC offset printed next to each result is the amount added to UTC at that moment. A zone is marked as observing daylight saving when its current offset is larger than the smaller of its January and July offsets. Zones are named by their IANA identifiers, such as Europe/London. Results depend on the database version your browser ships, and nothing is sent anywhere.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.time-zone-converter.example">12:00 on 8 March 2026 in UTC gives 8:00 AM in New York (EDT, UTC−4, because daylight saving started that morning), 12:00 PM in London (GMT, UTC+0) and 9:00 PM in Tokyo (UTC+9). The same date in January would give 7:00 AM in New York, because the offset there is UTC−5 then.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.time-zone-converter.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="converters.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/time-zone-converter.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>
