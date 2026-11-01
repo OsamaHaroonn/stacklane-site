@@ -473,8 +473,11 @@ footer a { display: inline-flex; align-items: center; min-height: 44px; }
 .tool-card .badge { align-self: flex-start; }
 
 /* ---------- Page furniture ---------- */
-.crumbs { font-size: .85rem; color: var(--ink-soft); margin-bottom: 1rem; }
-.crumbs a { color: var(--ink-soft); }
+.crumbs { font-size: .85rem; color: var(--ink-soft); margin-bottom: .5rem; }
+.crumbs a {
+  color: var(--ink-soft); display: inline-flex; align-items: center;
+  min-height: 44px; padding-inline: .15rem;
+}
 .prose h3 { margin-top: 2rem; }
 .prose ul { padding-inline-start: 1.2rem; }
 .prose li { margin-bottom: .4rem; }
@@ -516,6 +519,7 @@ footer a { display: inline-flex; align-items: center; min-height: 44px; }
 
 /* Footer links live in #site-footer, not a <footer> element. */
 #site-footer a { display: inline-flex; align-items: center; min-height: 44px; }
+#back-cat { display: inline-flex; align-items: center; min-height: 44px; }
 .search-count { margin-top: .4rem; }
 
 .popular {
@@ -732,7 +736,7 @@ section { padding: var(--sp-5) 0; }
    so an element hidden with the attribute stayed visible. */
 .tk-field[hidden] { display: none; }
 
-.tk-out { display: grid; gap: .4rem; margin-top: 1rem; min-height: 3.25rem; }
+.tk-out { display: grid; gap: .4rem; margin-top: 1rem; min-height: 7.5rem; align-content: start; }
 .tk-out[hidden] { display: none; }
 /* A preview canvas that is hidden until it has output still holds its box,
    so the page does not jump when the QR code appears. */
