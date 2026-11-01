@@ -1,11 +1,13 @@
-# Stacklane — 30-tool roadmap
+# Stacklane — 60-tool roadmap
 
 Language-neutral slugs. Every visible string lives in
 `assets/i18n/en.json` / `assets/i18n/ar.json` under `tools.<slug>`, so a tool
 exists in a language only when that JSON has an entry for it.
 
-Status: **built** = the page exists in `/en/` and `/ar/` and is tested in a
-browser. **planned** = roadmap only, not built, no page, no JSON entry.
+Status: **built** = the page exists in `/en/` and is tested in a browser.
+**planned** = roadmap only, not built, no page, no JSON entry. Arabic versions
+are parked on `preview-park-ar`; the tools added after that point are English
+only until Arabic is re-enabled.
 
 | # | Slug | Category | Target search phrase | Status |
 |---|---|---|---|---|
@@ -33,7 +35,7 @@ browser. **planned** = roadmap only, not built, no page, no JSON entry.
 | 22 | `loan-calculator` | calculators | loan calculator monthly payment | **built** |
 | 23 | `discount-calculator` | calculators | discount calculator percent off | **built** |
 | 24 | `unit-converter` | converters | unit converter length temperature | **built** |
-| 25 | `time-zone-converter` | converters | time zone converter current time | planned |
+| 25 | `time-zone-converter` | converters | time zone converter current time | **built** |
 | 26 | `roman-numerals` | converters | roman numeral converter | planned |
 | 27 | `json-formatter` | developer | json formatter and validator | **built** |
 | 28 | `base64` | developer | base64 encode decode | **built** |
@@ -48,6 +50,10 @@ browser. **planned** = roadmap only, not built, no page, no JSON entry.
 | 37 | `gpa-calculator` | calculators | gpa calculator grade point average | **built** |
 | 38 | `uuid-generator` | generators | uuid generator version 4 online | **built** |
 | 39 | `timestamp-converter` | developer | unix timestamp to date converter | **built** |
+| 40 | `typing-speed-test` | text | typing speed test wpm | **built** |
+| 41 | `regex-tester` | developer | regex tester online | **built** |
+| 42 | `hash-generator` | developer | sha256 hash generator | **built** |
+| 43 | `lorem-ipsum-generator` | text | lorem ipsum generator | **built** |
 
 ## Category directories
 
@@ -59,11 +65,13 @@ not exist, so no directory ever lists a tool that has no Arabic version.
 
 ## Adding a planned tool (checklist)
 
-1. Add `tools.<slug>` to `assets/i18n/en.json` **and** `ar.json`
-   (title, desc, lede, how, example, 5 FAQs, ui strings) — real text, no filler.
+1. Add `tools.<slug>` to `assets/i18n/en.json` (title, desc, lede, how,
+   example, 5 FAQs, ui strings) — real text, no filler. Add the same entry to
+   `ar.json` only when Arabic is re-enabled.
 2. Add `{ slug, category, keywords }` to `assets/catalog.js`.
 3. Create `assets/tools/<slug>.js` using `assets/tools/shared.js`.
-4. Create `en/<slug>.html` and `ar/<slug>.html` from the tool-page template
+4. Create `en/<slug>.html` from the tool-page template (plus `ar/<slug>.html`
+   when Arabic is re-enabled)
    (copy an existing pair; only the `data-tool` value, text and `data-i18n`
    paths change). Add vendor script tags if the tool needs a library.
 5. Re-run the link audit and the browser checks at 375px.

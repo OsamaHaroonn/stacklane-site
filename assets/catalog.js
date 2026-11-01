@@ -40,6 +40,11 @@ window.TOOL_CATALOG = [
   { slug: 'split-pdf', category: 'pdf', keywords: 'split pdf separate pages extract range take pages out' },
   { slug: 'image-converter', category: 'images', keywords: 'image converter convert png to jpg webp png jpeg format change' },
   { slug: 'crop-rotate-image', category: 'images', keywords: 'crop image rotate picture cut resize rectangle turn photo' },
+  { slug: 'time-zone-converter', category: 'converters', keywords: 'time zone converter world clock meeting time utc offset daylight saving' },
+  { slug: 'typing-speed-test', category: 'text', keywords: 'typing speed test wpm words per minute accuracy typing practice' },
+  { slug: 'regex-tester', category: 'developer', keywords: 'regex tester regular expression javascript matches groups flags debug' },
+  { slug: 'hash-generator', category: 'developer', keywords: 'hash generator sha256 sha512 sha1 checksum hex digest text' },
+  { slug: 'lorem-ipsum-generator', category: 'text', keywords: 'lorem ipsum generator placeholder text paragraphs sentences words dummy' },
 ];
 
 window.TOOL_CATS = {};

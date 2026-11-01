@@ -261,4 +261,29 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://osamaharoonn.github.io/stacklane-site/en/hash-generator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://osamaharoonn.github.io/stacklane-site/en/lorem-ipsum-generator.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://osamaharoonn.github.io/stacklane-site/en/regex-tester.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://osamaharoonn.github.io/stacklane-site/en/time-zone-converter.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://osamaharoonn.github.io/stacklane-site/en/typing-speed-test.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

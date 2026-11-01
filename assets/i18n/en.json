@@ -1779,6 +1779,235 @@
         "tooManyPixels": "That result would be over 40 megapixels — crop a smaller area.",
         "failed": "That image could not be decoded or encoded in this browser."
       }
+    },
+    "time-zone-converter": {
+      "title": "Time zone converter",
+      "desc": "Convert a date and time between time zones using your browser's own time-zone data, with the UTC offset and daylight saving shown for each zone.",
+      "lede": "Pick a date, a time and a reference zone, then add the zones you want to compare. Each row shows the local time there, its UTC offset and whether daylight saving is in force.",
+      "how": "The converter takes your date and time in the reference zone, turns it into one moment in time, and formats that moment in every zone you add. Each offset comes from Intl.DateTimeFormat, so it follows the time-zone database built into your browser rather than a table written here. Because that database knows the daylight-saving rules, an offset changes with the date: New York is UTC−5 in January and UTC−4 in July. The UTC offset printed next to each result is the amount added to UTC at that moment. A zone is marked as observing daylight saving when its current offset is larger than the smaller of its January and July offsets. Zones are named by their IANA identifiers, such as Europe/London. Results depend on the database version your browser ships, and nothing is sent anywhere.",
+      "example": "12:00 on 8 March 2026 in UTC gives 8:00 AM in New York (EDT, UTC−4, because daylight saving started that morning), 12:00 PM in London (GMT, UTC+0) and 9:00 PM in Tokyo (UTC+9). The same date in January would give 7:00 AM in New York, because the offset there is UTC−5 then.",
+      "faq": [
+        {
+          "q": "Which time zones can I choose?",
+          "a": "The picker lists every zone your browser reports, which is the IANA set: names such as Europe/Berlin, America/Sao_Paulo and Asia/Tokyo. UTC is always in the list. The reference zone defaults to the one your browser is set to."
+        },
+        {
+          "q": "Does it handle daylight saving?",
+          "a": "Yes, because the offset is read for the exact date you choose, not fixed per zone. The 8 March example above is a daylight-saving change: the same clock time in New York is four hours behind UTC that day and five hours behind in January."
+        },
+        {
+          "q": "Why might this differ from a clock in that city?",
+          "a": "Two reasons. Your browser's time-zone database has a version, and a government can change its rules after that version shipped. And a city can choose not to follow the zone that carries its name. The identifier in each row tells you which zone was used."
+        },
+        {
+          "q": "What does UTC−04:00 mean?",
+          "a": "It means the local clock is four hours behind Coordinated Universal Time. To get UTC, add four hours to the local time. A positive offset such as UTC+09:00 means the local clock is ahead of UTC."
+        },
+        {
+          "q": "Is the date or the zone list sent anywhere?",
+          "a": "No. The conversion runs with the browser's Intl API in this tab. There is no request, no account and no stored history, so reloading the page clears everything."
+        }
+      ],
+      "ui": {
+        "when": "Date and time",
+        "whenHint": "read in the reference zone",
+        "refZone": "Reference zone",
+        "addLabel": "Add a zone to compare",
+        "add": "Add zone",
+        "empty": "Pick a date and time to convert.",
+        "noDate": "Enter a valid date and time.",
+        "noZones": "Add at least one zone to compare.",
+        "max": "You can compare up to 8 zones at once.",
+        "dup": "That zone is already in the list.",
+        "remove": "Remove {zone}",
+        "dst": "daylight saving",
+        "std": "standard time",
+        "note": "Offsets come from your browser's time-zone database and include daylight saving."
+      }
+    },
+    "typing-speed-test": {
+      "title": "Typing speed test",
+      "desc": "Measure your typing speed in words per minute and your accuracy against a fixed sample, with the formula and a running timer shown.",
+      "lede": "Type the sample text below. The clock starts on your first keystroke and stops when you press Finish; you get words per minute, accuracy and the arithmetic behind both.",
+      "how": "Words per minute here uses the five-character convention: WPM = correct characters ÷ 5 ÷ minutes elapsed. A character counts as correct when your text matches the sample at that position, so a typo costs one character even if the rest lines up. Accuracy = correct characters ÷ characters typed × 100. The clock uses the browser's high-resolution timer and starts on the first keystroke rather than on a button, so the result includes the time spent reading the sample. Nothing is recorded: no history, no cookies, no local storage, so reloading the page clears the attempt. The samples are built in and short enough to finish in well under a minute at an ordinary speed.",
+      "example": "Typing 250 characters in exactly one minute with 25 of them wrong leaves 225 correct. That is 225 ÷ 5 ÷ 1 = 45 words per minute, with 225 ÷ 250 = 90% accuracy. The same 225 characters typed in 30 seconds would read as 90 WPM, because half the time means twice the rate.",
+      "faq": [
+        {
+          "q": "Why five characters per word?",
+          "a": "It is the long-standing typing convention: it treats a word plus the space after it as five characters, so spaces and punctuation count. A five-letter word typed with a trailing space is one word for this measurement."
+        },
+        {
+          "q": "Does fixing a typo count as correct?",
+          "a": "Yes. The comparison uses the final text in the box, position by position, so a corrected character counts as correct. The time you spent fixing it still counts against you, which is why accuracy and speed are reported separately."
+        },
+        {
+          "q": "What if I stop before the end?",
+          "a": "Finish uses whatever you have typed. Accuracy then compares against only those characters, and WPM counts the correct ones. An attempt shorter than a sentence is not a useful measurement."
+        },
+        {
+          "q": "Are my results stored or compared with anyone?",
+          "a": "No. There is no account, no leaderboard and no storage of any kind. The numbers exist in the page until you reload it or type again."
+        },
+        {
+          "q": "How accurate is a very short attempt?",
+          "a": "Short attempts are noisy because the rate is extrapolated to a full minute. A few seconds of typing can read as several hundred WPM. Type for at least 20 to 30 seconds if you want a figure that means something."
+        }
+      ],
+      "ui": {
+        "sample": "Sample text",
+        "choose": "Choose a sample",
+        "typeHere": "Type the sample here",
+        "finish": "Finish",
+        "reset": "Reset",
+        "wpm": "Words per minute",
+        "accuracy": "Accuracy",
+        "correct": "Correct characters",
+        "typed": "Characters typed",
+        "elapsed": "Time elapsed",
+        "formula": "Working",
+        "empty": "The clock starts on your first keystroke and stops when you press Finish.",
+        "running": "Typing — press Finish when you are done.",
+        "tooLong": "That is much longer than the sample, so the test stopped.",
+        "finished": "Finished. Press Reset to try again.",
+        "min": "min",
+        "sec": "s",
+        "sample1": "Everyday words",
+        "sample2": "Short sentences",
+        "sample3": "Numbers and punctuation"
+      }
+    },
+    "regex-tester": {
+      "title": "Regex tester",
+      "desc": "Test a JavaScript regular expression against your own text and see every match, capture group and position, with flags and clear errors for invalid patterns.",
+      "lede": "Enter a pattern, choose flags and paste the text to search. The tool lists each match with its position and capture groups, and explains any pattern that will not compile.",
+      "how": "The pattern is compiled with the RegExp constructor, which is the same engine your browser runs at run time, not a lookalike written for this page. Flags are passed as written: g finds every match, i ignores case, m makes ^ and $ match line ends, s lets a dot match newlines and u enables Unicode mode. Each match is reported with its start and end index plus its text. Capture groups are numbered in the order their opening bracket appears, and named groups are shown under their name. The tool stops after 1,000 matches so a broad pattern cannot hang the tab, and it refuses patterns that nest a quantifier inside a quantified group, such as (a+)+, because those can backtrack exponentially.",
+      "example": "With the pattern \\b(\\w+)@(\\w+)\\.com\\b and the g flag, the text \"ann@example.com and bo@test.com\" gives two matches. Match 1 is ann@example.com at indices 0 to 15, with group 1 ann and group 2 example. Match 2 is bo@test.com at indices 20 to 31, with groups bo and test.",
+      "faq": [
+        {
+          "q": "Which regular-expression flavour is this?",
+          "a": "JavaScript, exactly as your browser implements it. That includes named groups, lookahead, lookbehind and Unicode property escapes in current browsers. PCRE-only syntax such as recursion or branch-reset groups is not available."
+        },
+        {
+          "q": "Why was my pattern refused?",
+          "a": "Two guards. A pattern longer than 300 characters is refused, and so is one that puts a quantifier inside an already quantified group, because that shape can take exponential time on a hostile input. The message names the reason."
+        },
+        {
+          "q": "Do matches update while I type?",
+          "a": "Yes. Every change to the pattern, the flags or the text re-runs the match and replaces the list. Invalid patterns show the engine's error message instead of matches."
+        },
+        {
+          "q": "Why does ^ not match the start of every line?",
+          "a": "Without the m flag, ^ and $ mean the start and end of the whole string. Turn on m to make them match around line breaks, which is what most multi-line text needs."
+        },
+        {
+          "q": "Is the text I paste uploaded?",
+          "a": "No. Matching happens in this tab and nothing is sent. There is no history, so the pattern and text disappear when you reload."
+        }
+      ],
+      "ui": {
+        "pattern": "Pattern",
+        "flags": "Flags",
+        "text": "Text to search",
+        "matches": "Matches",
+        "noMatches": "No match in that text.",
+        "empty": "Enter a pattern and some text to test.",
+        "noText": "Add some text to test the pattern against.",
+        "badPattern": "That pattern is not valid: {message}",
+        "risky": "That pattern puts one quantifier inside another, which can backtrack for a very long time. Simplify it before testing.",
+        "tooLong": "Patterns are limited to 300 characters.",
+        "textTooLong": "The text is limited to 5,000 characters.",
+        "capped": "Showing the first 100 matches.",
+        "match": "Match {n}",
+        "group": "Group {n}",
+        "named": "Named group",
+        "index": "Index {from}–{to}",
+        "note": "Matching runs here with the browser's own regular-expression engine."
+      }
+    },
+    "hash-generator": {
+      "title": "Hash generator",
+      "desc": "Create a SHA-1, SHA-256, SHA-384 or SHA-512 hash of any text using your browser's Web Crypto API. The text never leaves the page.",
+      "lede": "Paste text, choose an algorithm and get the hex digest. Hashing uses the browser's built-in Web Crypto implementation, so nothing is sent anywhere.",
+      "how": "A hash function turns any input into a fixed-length fingerprint. This page calls crypto.subtle.digest over the UTF-8 bytes of your text. SHA-256 always returns 32 bytes, SHA-512 returns 64, SHA-384 returns 48 and SHA-1 returns 20, each printed as two hex digits per byte. Hashing is one-way: you can confirm a suspected input by hashing it again, but you cannot recover the original text from the digest. The same input always produces the same output, and changing one character produces a completely different one. MD5 is deliberately absent, because it is broken for collision resistance and Web Crypto does not expose it. Input is capped at 100,000 characters so the page stays responsive on a slow device.",
+      "example": "The SHA-256 digest of the text abc is ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad, which is 64 hex characters. The SHA-1 digest of the same three characters is a9993e364706816aba3e25717850c26c9cd0d89d, only 40 characters, so the algorithm matters when you compare two digests.",
+      "faq": [
+        {
+          "q": "Can I hash a file here?",
+          "a": "No. This tool hashes text. A file tool would need to read the bytes of the file, and the page does not offer that, so paste text instead or use a dedicated file-checksum tool."
+        },
+        {
+          "q": "Can a hash be reversed?",
+          "a": "Not in practice. The digest does not contain the input, and many different inputs can exist in theory, which is why a hash confirms an input rather than revealing it."
+        },
+        {
+          "q": "Why is MD5 missing?",
+          "a": "MD5 is not collision resistant: different inputs can be crafted to share a digest. Web Crypto does not offer it either, so this page could not run it without a custom implementation."
+        },
+        {
+          "q": "Should I use this for passwords?",
+          "a": "No. A single fast hash is the wrong tool for passwords. Password storage needs a deliberately slow, salted algorithm such as Argon2, scrypt or bcrypt, and that is a server-side design decision."
+        },
+        {
+          "q": "Why does an empty box show a message?",
+          "a": "Empty input does have a valid digest, but a message makes it clear that nothing was hashed. Paste or type text first and the digest appears as you type."
+        }
+      ],
+      "ui": {
+        "text": "Text to hash",
+        "algo": "Algorithm",
+        "empty": "Type or paste some text to hash.",
+        "tooBig": "Text is limited to 100,000 characters.",
+        "unsupported": "This browser does not expose Web Crypto here, so hashing is unavailable.",
+        "result": "digest",
+        "bytes": "Input size",
+        "chars": "Characters",
+        "length": "Digest length",
+        "hex": "hex characters",
+        "note": "Hashing runs in this tab with your browser's Web Crypto API."
+      }
+    },
+    "lorem-ipsum-generator": {
+      "title": "Lorem ipsum generator",
+      "desc": "Generate placeholder text as paragraphs, sentences or single words from a built-in word list, with a chosen amount and the option to start with Lorem ipsum.",
+      "lede": "Choose paragraphs, sentences or words, set how many, and copy the placeholder text. Everything is generated in your browser from a fixed word list.",
+      "how": "The generator draws words from a built-in list of sixty-three Latin-looking words and assembles them into sentences and paragraphs. Sentence mode returns exactly the number you ask for, paragraph mode groups three to five sentences per paragraph, and word mode returns the count directly. The first word of each sentence is capitalised and the sentence ends with a full stop, so the output reads as prose. With the lorem-ipsum switch on, the text begins with the traditional opening instead of a random word. Counts are capped at 10 paragraphs, 30 sentences and 200 words, which keeps the page responsive. There is no network request and no history: the text exists only in this tab until you copy it.",
+      "example": "Asking for three sentences produces three sentences, so the output contains exactly three full stops and ends with one. Asking for five words produces exactly five words, with no full stop unless the five words happen to form a complete sentence. Asking for two paragraphs produces two blocks separated by a blank line, each with three to five sentences.",
+      "faq": [
+        {
+          "q": "Is this real Latin?",
+          "a": "No, it is a scrambled placeholder based on a passage from Cicero. It has no reliable meaning, which is the point: readers notice the layout instead of reading the words."
+        },
+        {
+          "q": "Why is the text different each time?",
+          "a": "Words are picked in random order from the built-in list, so two presses give different results. Only the opening phrase is fixed when you turn that switch on."
+        },
+        {
+          "q": "Can I choose the amount exactly?",
+          "a": "Yes for sentences and words. Paragraphs vary in length by design, three to five sentences each, so a paragraph count gives you that many blocks rather than an exact sentence total."
+        },
+        {
+          "q": "Is the generated text saved?",
+          "a": "No. It is held in the page and copy is the only way out. There is no storage, account or network request."
+        },
+        {
+          "q": "Why is there a maximum?",
+          "a": "The caps keep the tab quick and the output readable. Requests above 10 paragraphs, 30 sentences or 200 words are refused with the allowed range in the message."
+        }
+      ],
+      "ui": {
+        "kind": "What to generate",
+        "paragraphs": "Paragraphs",
+        "sentences": "Sentences",
+        "words": "Words",
+        "count": "How many",
+        "startLorem": "Start with \"Lorem ipsum\"",
+        "generate": "Generate",
+        "empty": "Nothing generated yet. Press Generate.",
+        "badCount": "Enter a whole number from 1 to {max}.",
+        "result": "Text",
+        "chars": "Characters",
+        "note": "Generated here from a built-in word list, never uploaded."
+      }
     }
   },
   "business": {
