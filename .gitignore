@@ -21,6 +21,7 @@ qa-run.html
 qa-page.js
 qa-server.py
 qa-log.json
+qa-batch.html
 
 # Windows artifact (reserved device name created by a redirect to /dev/null)
 nul
