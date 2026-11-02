@@ -2150,6 +2150,53 @@
         "badDigit": "That digit does not exist in the chosen base. Use 0 to 9, then A to Z.",
         "note": "Converted here in your browser: nothing is stored or sent anywhere."
       }
+    },
+    "color-contrast-checker": {
+      "title": "Colour contrast checker",
+      "desc": "Check the WCAG 2 contrast ratio between two colours and see the AA and AAA results for normal and large text. Free, instant and private.",
+      "lede": "Enter a text colour and a background colour as hex values to get the exact WCAG 2 contrast ratio and pass or fail results for AA and AAA text.",
+      "how": "WCAG defines contrast from relative luminance. Each channel of a hex colour is converted from sRGB to a linear value, where a channel c is c/12.92 below 0.03928 and ((c + 0.055) / 1.055)^2.4 above it. The luminance of the colour is 0.2126 times red, plus 0.7152 times green, plus 0.0722 times blue. The ratio is then (lighter + 0.05) divided by (darker + 0.05), which ranges from 1:1 for identical colours to 21:1 for black on white. AA needs 4.5 for normal text and 3 for large text; AAA needs 7 and 4.5. Large text means at least 24 pixels, or 18.66 pixels when bold. Enter hex as #rgb or #rrggbb, with or without the hash.",
+      "example": "Grey #777777 on white #ffffff gives luminance 0.1845 for the grey and 1.0000 for white, so the ratio is (1.0000 + 0.05) divided by (0.1845 + 0.05) = 4.48 to 1. That passes AA for large text at 3:1 but misses the 4.5 requirement for normal text — which is why #777 body copy on white fails an audit.",
+      "faq": [
+        {
+          "q": "What does the ratio mean?",
+          "a": "It is the difference in perceived brightness between the two colours, from 1:1 (identical) to 21:1 (black on white). WCAG sets minimum ratios so text stays readable."
+        },
+        {
+          "q": "Which number do I need to pass?",
+          "a": "4.5:1 for normal text under AA, 3:1 for large text under AA, 7:1 for normal text under AAA and 4.5:1 for large text under AAA. The four rows report each one separately."
+        },
+        {
+          "q": "Why does #777 on white fail?",
+          "a": "Its ratio is 4.48:1, just under the 4.5:1 needed for normal text. Slightly darker grey such as #767676 crosses the threshold and passes."
+        },
+        {
+          "q": "Does it handle three-digit hex?",
+          "a": "Yes. #abc is read as #aabbcc, the usual shorthand. Any other format is refused with a message naming the format expected."
+        },
+        {
+          "q": "Does this check my whole page?",
+          "a": "No, it compares two colours. Use it for text against its background, then repeat for the other pairs such as link text, buttons and placeholder text."
+        }
+      ],
+      "ui": {
+        "fg": "Text colour (hex)",
+        "bg": "Background colour (hex)",
+        "swap": "Swap the colours",
+        "ratio": "Contrast ratio",
+        "working": "Working",
+        "aaNormal": "AA, normal text",
+        "aaLarge": "AA, large text",
+        "aaaNormal": "AAA, normal text",
+        "aaaLarge": "AAA, large text",
+        "pass": "Pass",
+        "fail": "Fail",
+        "lumFg": "Luminance of the text colour",
+        "lumBg": "Luminance of the background",
+        "empty": "Enter both colours to compare them.",
+        "bad": "{which} is not a colour this tool can read: use #rgb or #rrggbb, for example #777.",
+        "note": "Contrast is calculated here in your browser from the WCAG 2 formula. Nothing is stored or sent."
+      }
     }
   },
   "business": {

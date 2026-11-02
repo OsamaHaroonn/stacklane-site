@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Colour Contrast Checker – WCAG AA and AAA Ratios</title>
+<meta name="description" content="Check the WCAG 2 contrast ratio between two colours and see the AA and AAA results for normal and large text. Free, instant and private.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/color-contrast-checker.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="Colour Contrast Checker – WCAG AA and AAA Ratios">
+<meta property="og:description" content="Check the WCAG 2 contrast ratio between two colours and see the AA and AAA results for normal and large text. Free, instant and private.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/color-contrast-checker.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="color-contrast-checker">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.developer.name">Developer</p>
+    <h1 data-i18n="tools.color-contrast-checker.title">Colour contrast checker</h1>
+    <p class="lede" data-i18n="tools.color-contrast-checker.lede">Enter a text colour and a background colour as hex values to get the exact WCAG 2 contrast ratio and pass or fail results for AA and AAA text.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.color-contrast-checker.how">WCAG defines contrast from relative luminance. Each channel of a hex colour is converted from sRGB to a linear value, where a channel c is c/12.92 below 0.03928 and ((c + 0.055) / 1.055)^2.4 above it. The luminance of the colour is 0.2126 times red, plus 0.7152 times green, plus 0.0722 times blue. The ratio is then (lighter + 0.05) divided by (darker + 0.05), which ranges from 1:1 for identical colours to 21:1 for black on white. AA needs 4.5 for normal text and 3 for large text; AAA needs 7 and 4.5. Large text means at least 24 pixels, or 18.66 pixels when bold. Enter hex as #rgb or #rrggbb, with or without the hash.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.color-contrast-checker.example">Grey #777777 on white #ffffff gives luminance 0.1845 for the grey and 1.0000 for white, so the ratio is (1.0000 + 0.05) divided by (0.1845 + 0.05) = 4.48 to 1. That passes AA for large text at 3:1 but misses the 4.5 requirement for normal text — which is why #777 body copy on white fails an audit.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.color-contrast-checker.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="developer.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/color-contrast-checker.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>
