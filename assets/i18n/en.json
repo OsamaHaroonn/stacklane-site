@@ -2285,6 +2285,45 @@
         "note": "Lowercase, accents removed, symbols stripped — your text never leaves this page.",
         "chars": "Characters in the slug"
       }
+    },
+    "html-entity-encoder": {
+      "title": "HTML entity encoder",
+      "desc": "Encode text into HTML entities or decode entities back to plain text. The output stays text, never markup, and everything runs in your browser.",
+      "lede": "Encode special characters as HTML entities, or paste entities and decode them back to readable text. The result is shown as plain text only.",
+      "how": "Encoding handles the five characters that matter in markup, always in the safe order: the ampersand becomes &amp; first, so no entity this tool creates is decoded again by mistake, then < becomes &lt;, > becomes &gt;, the double quote becomes &quot; and the apostrophe becomes &#39;. Decoding runs a single pass over the common named entities (&amp;, &lt;, &gt;, &quot; and &nbsp;) and over decimal and hexadecimal numeric forms, so a sequence such as &amp;lt; decodes exactly one level. Input is capped at 20,000 characters, and the result is written into a read-only text box rather than into the page as markup.",
+      "example": "Encoding the fragment <b>Tom & Jerry's</b> gives &lt;b&gt;Tom &amp; Jerry&#39;s&lt;/b&gt;. Decoding that output returns the original <b>Tom & Jerry's</b> character for character. Encoding a plain string such as hello world returns it unchanged, and an unknown entity such as &foo; is left exactly as typed instead of being silently dropped.",
+      "faq": [
+        {
+          "q": "Which characters are encoded?",
+          "a": "Five: the ampersand, the less-than and greater-than signs, the double quote and the apostrophe. The ampersand is always replaced first so the output cannot mislead a parser."
+        },
+        {
+          "q": "Why is the result plain text?",
+          "a": "The result sits in a text box, so a fragment you encode can be copied without the browser rendering it as markup. User input is never inserted into the page as HTML."
+        },
+        {
+          "q": "Does it decode every named entity?",
+          "a": "It handles the ones that appear on real pages — &amp;, &lt;, &gt;, &quot; and &nbsp; — plus decimal and hexadecimal numeric references. Unknown names are left untouched."
+        },
+        {
+          "q": "Is there a size limit?",
+          "a": "Yes, 20,000 characters. Longer input is refused with a clear message rather than partially converted."
+        },
+        {
+          "q": "Is anything uploaded?",
+          "a": "No. Encoding and decoding are string operations that run in your browser; no request carries your text anywhere."
+        }
+      ],
+      "ui": {
+        "label": "Text",
+        "mode": "Mode",
+        "encMode": "Encode text",
+        "decMode": "Decode entities",
+        "output": "Result",
+        "empty": "Type some text to encode or decode.",
+        "tooLong": "That text is too long: enter at most 20,000 characters.",
+        "note": "Output is plain text in a read-only box: it is never inserted into the page as markup."
+      }
     }
   },
   "business": {
