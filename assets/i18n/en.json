@@ -2409,6 +2409,51 @@
         "objects": "Objects",
         "fields": "Fields"
       }
+    },
+    "sort-lines": {
+      "title": "Sort lines",
+      "desc": "Sort lines of text A to Z, Z to A, numerically or by length, with an option to remove empty lines. Everything runs in your browser and input is capped.",
+      "lede": "Paste a list and sort it A to Z, Z to A, by number or by line length, with an option to drop empty lines. The result is a text block you can copy.",
+      "how": "The text is split on line breaks, and one trailing line break counts as an ending rather than a blank line. A to Z compares whole lines character by character, so digits sort before capitals because the code for 1 is lower than the code for A, and Z to A reverses that order. Numeric sorting parses each line as a number and pushes lines that are not numbers to the end in their original order, with a warning that counts them. Sorting by length compares character counts and keeps the original order between equal lengths. The remove-empty option drops blank lines before any sort. Input is capped at 50,000 characters and 5,000 lines.",
+      "example": "The four lines pear, Apple, 10 and banana sort to 10, Apple, banana, pear from A to Z, because digits are coded lower than capitals, and to pear, banana, Apple, 10 from Z to A. By length they become 10, pear, Apple, banana, since 10 has 2 characters, pear has 4, Apple has 5 and banana has 6. A numeric sort of 10, -2 and 3.5 gives -2, 3.5, 10, and any word left in that list is named in a warning instead of being sorted by mistake.",
+      "faq": [
+        {
+          "q": "Why do numbers sort before letters?",
+          "a": "A to Z compares character codes, and the digit 1 is coded lower than the capital A, so 10 comes first. Use the numeric order when the lines are numbers."
+        },
+        {
+          "q": "What happens to blank lines?",
+          "a": "They keep their place by default. Tick remove empty lines and they are dropped before the sort runs."
+        },
+        {
+          "q": "What about non-numeric lines in a numeric sort?",
+          "a": "They are placed at the end in the order you typed them, and a warning tells you how many there were."
+        },
+        {
+          "q": "Is there a size limit?",
+          "a": "Yes: 50,000 characters and 5,000 lines. Larger input is refused with a clear message rather than freezing the page."
+        },
+        {
+          "q": "Is my list stored?",
+          "a": "No. Sorting happens in the browser, nothing is written to storage and nothing is sent over the network."
+        }
+      ],
+      "ui": {
+        "label": "Lines to sort",
+        "order": "Order",
+        "az": "A to Z",
+        "za": "Z to A",
+        "numeric": "Numeric",
+        "byLength": "By length",
+        "removeEmpty": "Remove empty lines",
+        "output": "Sorted lines",
+        "empty": "Paste some lines to sort.",
+        "tooBig": "That list is too long: enter at most 50,000 characters.",
+        "tooMany": "That list has too many lines: the limit is 5,000 lines.",
+        "nonNumeric": "{n} line(s) are not numbers and were kept at the end in their original order.",
+        "note": "Sorted here in your browser: nothing is stored and nothing is sent.",
+        "chars": "Characters"
+      }
     }
   },
   "business": {
