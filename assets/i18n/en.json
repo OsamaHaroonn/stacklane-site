@@ -2008,6 +2008,55 @@
         "chars": "Characters",
         "note": "Generated here from a built-in word list, never uploaded."
       }
+    },
+    "text-diff-checker": {
+      "title": "Text diff checker",
+      "desc": "Compare two versions of a text line by line. The checker marks added, removed and unchanged lines, runs entirely in your browser and never uploads a word.",
+      "lede": "Paste two versions of a text and see exactly which lines were added, removed or kept. The comparison happens in your browser.",
+      "how": "The tool splits both texts into lines, then builds a longest common subsequence table over the two line arrays. The table finds the largest set of lines that appear in both versions in the same order; everything outside that set is a change. Each line of the result carries a prefix: a space for an unchanged line, a minus for a line only the first version has, and a plus for a line only the second version has. Counts for added, removed and unchanged lines appear with the result, so a large change is obvious at a glance. Both inputs are capped at 40,000 characters and 1,000 lines so a huge paste cannot lock the tab, and the result is rendered as plain text rather than HTML so nothing in your text can become markup.",
+      "example": "Compare a first version with the lines alpha, beta and gamma against a second version with alpha, beta two, gamma and delta. The checker keeps alpha and gamma as unchanged, reports beta as removed, and reports beta two and delta as added: one removed, two added, two unchanged. Comparing a text with itself reports zero changes and says the two versions are identical.",
+      "faq": [
+        {
+          "q": "Does it compare words inside a line?",
+          "a": "No. The comparison is line by line: any change to a line makes the whole line count as one removal and one addition. If you need finer detail, break long lines first."
+        },
+        {
+          "q": "Is my text uploaded?",
+          "a": "No. Both texts stay in the page and the diff runs in your browser with no network request. Nothing is stored between visits."
+        },
+        {
+          "q": "Why is there a size limit?",
+          "a": "The comparison table grows with both inputs, so each side is capped at 40,000 characters and 1,000 lines. Larger input is refused with a message rather than freezing the page."
+        },
+        {
+          "q": "What do the prefixes mean?",
+          "a": "A leading space means the line appears in both versions, a minus means it appears only in the first version, and a plus means it appears only in the second."
+        },
+        {
+          "q": "Can I copy the result?",
+          "a": "Yes. The difference is shown in a read-only text box with a copy button, so the prefixes and line breaks copy with it."
+        }
+      ],
+      "ui": {
+        "sideA": "First version",
+        "sideB": "Second version",
+        "compare": "Compare",
+        "result": "Line-by-line difference",
+        "copy": "Copy result",
+        "copied": "Copied",
+        "copyFailed": "Could not copy — select the text and copy it manually.",
+        "clear": "Clear",
+        "empty": "Paste text in both boxes to compare.",
+        "tooBig": "Each box is limited to 40,000 characters.",
+        "tooMany": "Each side is limited to 1,000 lines.",
+        "identical": "The two versions are identical.",
+        "note": "Lines prefixed − exist only in the first version, + only in the second, and a leading space means the line is unchanged.",
+        "linesA": "Lines in the first version",
+        "linesB": "Lines in the second version",
+        "onlyA": "Lines only in the first version",
+        "onlyB": "Lines only in the second version",
+        "same": "Lines unchanged"
+      }
     }
   },
   "business": {
