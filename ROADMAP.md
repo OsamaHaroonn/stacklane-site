@@ -36,7 +36,7 @@ only until Arabic is re-enabled.
 | 23 | `discount-calculator` | calculators | discount calculator percent off | **built** |
 | 24 | `unit-converter` | converters | unit converter length temperature | **built** |
 | 25 | `time-zone-converter` | converters | time zone converter current time | **built** |
-| 26 | `roman-numerals` | converters | roman numeral converter | planned |
+| 26 | `roman-numerals` | converters | roman numeral converter | **built** |
 | 27 | `json-formatter` | developer | json formatter and validator | **built** |
 | 28 | `base64` | developer | base64 encode decode | **built** |
 | 29 | `color-converter` | developer | hex to rgb color converter | **built** |
@@ -54,6 +54,10 @@ only until Arabic is re-enabled.
 | 41 | `regex-tester` | developer | regex tester online | **built** |
 | 42 | `hash-generator` | developer | sha256 hash generator | **built** |
 | 43 | `lorem-ipsum-generator` | text | lorem ipsum generator | **built** |
+| 44 | `text-diff-checker` | text | text diff checker compare versions | **built** |
+| 45 | `number-base-converter` | converters | number base converter binary hex | **built** |
+| 46 | `color-contrast-checker` | developer | color contrast checker wcag ratio | **built** |
+| 47 | `average-calculator` | calculators | average calculator mean median mode | **built** |
 
 ## Category directories
 

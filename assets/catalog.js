@@ -45,6 +45,11 @@ window.TOOL_CATALOG = [
   { slug: 'regex-tester', category: 'developer', keywords: 'regex tester regular expression javascript matches groups flags debug' },
   { slug: 'hash-generator', category: 'developer', keywords: 'hash generator sha256 sha512 sha1 checksum hex digest text' },
   { slug: 'lorem-ipsum-generator', category: 'text', keywords: 'lorem ipsum generator placeholder text paragraphs sentences words dummy' },
+  { slug: 'text-diff-checker', category: 'text', keywords: 'text diff checker compare two texts line by line differences changed lines' },
+  { slug: 'roman-numerals', category: 'converters', keywords: 'roman numeral converter number to roman numerals mmxxiv history' },
+  { slug: 'number-base-converter', category: 'converters', keywords: 'number base converter binary octal hexadecimal base 2 8 16 36' },
+  { slug: 'color-contrast-checker', category: 'developer', keywords: 'color contrast checker wcag accessibility ratio aa aaa text background' },
+  { slug: 'average-calculator', category: 'calculators', keywords: 'average calculator mean median mode range sum statistics numbers' },
 ];
 
 window.TOOL_CATS = {};
