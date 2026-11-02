@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Number Base Converter – Binary, Hex, Custom Base</title>
+<meta name="description" content="Convert a number between binary, octal, decimal, hexadecimal and any base from 2 to 36, with big values kept exact. Free and private online.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/number-base-converter.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="Number Base Converter – Binary, Hex, Custom Base">
+<meta property="og:description" content="Convert a number between binary, octal, decimal, hexadecimal and any base from 2 to 36, with big values kept exact. Free and private online.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/number-base-converter.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="number-base-converter">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.converters.name">Converters</p>
+    <h1 data-i18n="tools.number-base-converter.title">Number base converter</h1>
+    <p class="lede" data-i18n="tools.number-base-converter.lede">Enter a value in one base and read it in binary, octal, decimal, hexadecimal, base 36 and a custom base of your choice. Large values stay exact.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.number-base-converter.how">A base is the number of digits available. Decimal uses 0 to 9, binary uses 0 and 1, hexadecimal adds A to F, and a custom base up to 36 continues through Z. To read a value, the tool multiplies each digit&#x27;s place from the right: the rightmost digit is worth base to the power 0, the next base to the power 1, and so on. To write it in another base it repeatedly divides and keeps the remainder, which becomes the next digit — 1000 divided by 2 is 500 remainder 0, and so on up to 1111101000. Every digit is parsed into a BigInt, so values far beyond the safe integer range convert without losing precision. Digits that do not belong to the chosen base are rejected with the offending character named.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.number-base-converter.example">The value 1000 in decimal converts to 1111101000 in binary, 1750 in octal, 3E8 in hexadecimal and RS in base 36. Each of those reads back to exactly 1000, which is why the decimal row always repeats your input unchanged.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.number-base-converter.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="converters.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/number-base-converter.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>

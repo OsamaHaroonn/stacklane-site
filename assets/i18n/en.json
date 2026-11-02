@@ -2102,6 +2102,54 @@
         "working": "Working",
         "note": "Converted here in your browser: nothing is stored or sent anywhere."
       }
+    },
+    "number-base-converter": {
+      "title": "Number base converter",
+      "desc": "Convert a number between binary, octal, decimal, hexadecimal and any base from 2 to 36, with big values kept exact. Free and private online.",
+      "lede": "Enter a value in one base and read it in binary, octal, decimal, hexadecimal, base 36 and a custom base of your choice. Large values stay exact.",
+      "how": "A base is the number of digits available. Decimal uses 0 to 9, binary uses 0 and 1, hexadecimal adds A to F, and a custom base up to 36 continues through Z. To read a value, the tool multiplies each digit's place from the right: the rightmost digit is worth base to the power 0, the next base to the power 1, and so on. To write it in another base it repeatedly divides and keeps the remainder, which becomes the next digit — 1000 divided by 2 is 500 remainder 0, and so on up to 1111101000. Every digit is parsed into a BigInt, so values far beyond the safe integer range convert without losing precision. Digits that do not belong to the chosen base are rejected with the offending character named.",
+      "example": "The value 1000 in decimal converts to 1111101000 in binary, 1750 in octal, 3E8 in hexadecimal and RS in base 36. Each of those reads back to exactly 1000, which is why the decimal row always repeats your input unchanged.",
+      "faq": [
+        {
+          "q": "What does a custom base mean?",
+          "a": "Any base from 2 to 36. Digits run 0 to 9 then A to Z, so base 36 uses every character a single digit can hold. The tool validates each digit against the chosen base."
+        },
+        {
+          "q": "How large can the value be?",
+          "a": "The input is limited to 120 characters, and values are held as BigInt rather than JavaScript numbers, so a 100-digit value converts exactly with no rounding."
+        },
+        {
+          "q": "Why are hexadecimal digits uppercase?",
+          "a": "Both cases are accepted on input, and output is shown uppercase because that is the common convention in code, checksums and colour values."
+        },
+        {
+          "q": "Can I enter fractions or minus values?",
+          "a": "No. This is an integer converter: fractions and negative signs are refused with their own message so the answer is never a silently rounded value."
+        },
+        {
+          "q": "Is the conversion private?",
+          "a": "Yes. Parsing and formatting happen in this tab. There is no request, storage or history — the value disappears when you reload."
+        }
+      ],
+      "ui": {
+        "value": "Value to convert",
+        "from": "Base of your value",
+        "binary": "Binary",
+        "octal": "Octal",
+        "decimal": "Decimal",
+        "hex": "Hexadecimal",
+        "custom": "Custom base (2 to 36)",
+        "customBase": "Custom base (2 to 36)",
+        "base": "Base",
+        "base36": "Base 36",
+        "empty": "Enter a value to convert.",
+        "negative": "Enter a positive value without a minus sign.",
+        "fractional": "Enter whole digits only: this tool converts integers, not fractions.",
+        "tooLong": "That value is too long: enter at most {max} characters.",
+        "badBase": "Choose a base from 2 to 36.",
+        "badDigit": "That digit does not exist in the chosen base. Use 0 to 9, then A to Z.",
+        "note": "Converted here in your browser: nothing is stored or sent anywhere."
+      }
     }
   },
   "business": {
