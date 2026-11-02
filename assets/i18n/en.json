@@ -2324,6 +2324,46 @@
         "tooLong": "That text is too long: enter at most 20,000 characters.",
         "note": "Output is plain text in a read-only box: it is never inserted into the page as markup."
       }
+    },
+    "jwt-decoder": {
+      "title": "JWT decoder",
+      "desc": "Decode a JWT header and payload in your browser. The token is never sent, never verified, and a decoded token proves nothing about its validity.",
+      "lede": "Paste a JSON Web Token to see its header and payload as readable JSON. Nothing is verified and the token never leaves this page.",
+      "how": "A JWT is three base64url segments separated by dots: header, payload and signature. The tool splits on the dots, restores the base64url alphabet (dashes back to plus, underscores to slash, padding added) and decodes each segment as UTF-8 JSON. Header and payload are pretty-printed; the signature is shown but never checked, because verifying it needs the secret or public key only the issuer holds. Numeric time claims — iat, exp and nbf — are also listed as UTC dates next to their raw epoch seconds. A segment longer than 6,000 characters, a token that is not two or three parts, or a segment that fails to parse each get a specific message.",
+      "example": "The public sample token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c decodes to a header of alg HS256 with typ JWT, and a payload of sub 1234567890, name John Doe and iat 1516239022, which the tool shows as Thu, 18 Jan 2018 01:30:22 GMT. The third segment is displayed as-is and never verified, and the page states that a decoded token is not proof that it is valid.",
+      "faq": [
+        {
+          "q": "Does this verify the signature?",
+          "a": "No. Verification requires the secret or the public key that the issuer used. This tool only decodes, so it never confirms that the token is genuine or untampered."
+        },
+        {
+          "q": "Is my token sent anywhere?",
+          "a": "No. Decoding is string work done in the page. The token is not stored, logged or transmitted."
+        },
+        {
+          "q": "Why do you say a decoded token is not proof?",
+          "a": "Anyone can edit a payload and re-encode it without a valid signature. Only a server that verifies the signature can trust what the claims say."
+        },
+        {
+          "q": "What happens with a malformed token?",
+          "a": "A token that is not two or three dot-separated parts, a segment that is not valid base64url, or JSON that does not parse each produce their own clear message rather than a blank panel."
+        },
+        {
+          "q": "Why are the dates shown twice?",
+          "a": "iat, exp and nbf hold epoch seconds. The tool shows the raw number and the UTC date so you can read both without converting anything by hand."
+        }
+      ],
+      "ui": {
+        "label": "JSON Web Token",
+        "header": "Header",
+        "payload": "Payload",
+        "signature": "Signature (not verified)",
+        "notVerified": "Decoded only: no signature check was performed, so this token is not proven valid.",
+        "empty": "Paste a token to decode it.",
+        "tooLong": "That token is too long: each segment is limited to 6,000 characters.",
+        "malformed": "That is not a JWT: a token looks like header.payload.signature.",
+        "badJson": "A segment did not decode to valid JSON."
+      }
     }
   },
   "business": {
