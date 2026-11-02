@@ -50,6 +50,11 @@ window.TOOL_CATALOG = [
   { slug: 'number-base-converter', category: 'converters', keywords: 'number base converter binary octal hexadecimal base 2 8 16 36' },
   { slug: 'color-contrast-checker', category: 'developer', keywords: 'color contrast checker wcag accessibility ratio aa aaa text background' },
   { slug: 'average-calculator', category: 'calculators', keywords: 'average calculator mean median mode range sum statistics numbers' },
+  { slug: 'slug-generator', category: 'text', keywords: 'slug generator url slug permalink title to slug lowercase accents clean' },
+  { slug: 'html-entity-encoder', category: 'developer', keywords: 'html entity encoder escape encode decode lt amp special characters' },
+  { slug: 'jwt-decoder', category: 'developer', keywords: 'jwt decoder json web token decode payload header base64 token' },
+  { slug: 'csv-json-converter', category: 'developer', keywords: 'csv to json converter json to csv table spreadsheet rows' },
+  { slug: 'sort-lines', category: 'text', keywords: 'sort lines alphabetically a to z z to a numeric sort by length reorder' },
 ];
 
 window.TOOL_CATS = {};

@@ -58,6 +58,11 @@ only until Arabic is re-enabled.
 | 45 | `number-base-converter` | converters | number base converter binary hex | **built** |
 | 46 | `color-contrast-checker` | developer | color contrast checker wcag ratio | **built** |
 | 47 | `average-calculator` | calculators | average calculator mean median mode | **built** |
+| 48 | `slug-generator` | text | slug generator url slug | **built** |
+| 49 | `html-entity-encoder` | developer | html entity encoder escape | **built** |
+| 50 | `jwt-decoder` | developer | jwt decoder decode token | **built** |
+| 51 | `csv-json-converter` | developer | csv to json converter | **built** |
+| 52 | `sort-lines` | text | sort lines a to z numeric | **built** |
 
 ## Category directories
 
