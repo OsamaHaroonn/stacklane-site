@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Slug Generator – Clean URL Slug from Text</title>
+<meta name="description" content="Turn any heading into a clean URL slug: lowercased, accents removed, symbols stripped and the separator you choose. Runs in your browser and nothing is saved.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/slug-generator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="Slug Generator – Clean URL Slug from Text">
+<meta property="og:description" content="Turn any heading into a clean URL slug: lowercased, accents removed, symbols stripped and the separator you choose. Runs in your browser and nothing is saved.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/slug-generator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="slug-generator">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.text.name">Text</p>
+    <h1 data-i18n="tools.slug-generator.title">Slug generator</h1>
+    <p class="lede" data-i18n="tools.slug-generator.lede">Paste a title or any text and get a URL-safe slug back: lowercased, accents stripped, symbols removed, with the separator you pick.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.slug-generator.how">The text is lowercased first, then Unicode-normalised so accented letters lose their marks: Café becomes cafe and Zürich becomes Zurich, while ß is expanded to ss. Every run of characters that is not a letter or a digit collapses into one separator. Separators are trimmed from both ends, so a title that starts with punctuation still yields a clean slug. The input is capped at 500 characters and anything longer is refused with a clear message rather than silently cut. The result appears as plain text with a copy button, and the conversion runs entirely in this page.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.slug-generator.example">Take the heading &quot;Café Zürich 2026!&quot; with the hyphen separator. Lowercasing gives café zürich 2026!, dropping the accent marks gives cafe zurich 2026, and replacing the space and the exclamation mark with the separator gives cafe-zurich-2026. Switching the separator to an underscore produces cafe_zurich_2026 from the same text. A title made only of symbols such as &quot;###&quot; has nothing to keep, so the tool says so instead of showing an empty or broken slug.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.slug-generator.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="text.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/slug-generator.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>

@@ -2243,6 +2243,48 @@
         "ignored": "{n} token(s) could not be read and were left out: {list}",
         "note": "Every token was read as a number. Nothing was left out."
       }
+    },
+    "slug-generator": {
+      "title": "Slug generator",
+      "desc": "Turn any heading into a clean URL slug: lowercased, accents removed, symbols stripped and the separator you choose. Runs in your browser and nothing is saved.",
+      "lede": "Paste a title or any text and get a URL-safe slug back: lowercased, accents stripped, symbols removed, with the separator you pick.",
+      "how": "The text is lowercased first, then Unicode-normalised so accented letters lose their marks: Café becomes cafe and Zürich becomes Zurich, while ß is expanded to ss. Every run of characters that is not a letter or a digit collapses into one separator. Separators are trimmed from both ends, so a title that starts with punctuation still yields a clean slug. The input is capped at 500 characters and anything longer is refused with a clear message rather than silently cut. The result appears as plain text with a copy button, and the conversion runs entirely in this page.",
+      "example": "Take the heading \"Café Zürich 2026!\" with the hyphen separator. Lowercasing gives café zürich 2026!, dropping the accent marks gives cafe zurich 2026, and replacing the space and the exclamation mark with the separator gives cafe-zurich-2026. Switching the separator to an underscore produces cafe_zurich_2026 from the same text. A title made only of symbols such as \"###\" has nothing to keep, so the tool says so instead of showing an empty or broken slug.",
+      "faq": [
+        {
+          "q": "Why are accents removed?",
+          "a": "URL slugs are usually plain ASCII so they survive copying, sharing and older software. Dropping the marks turns Café into cafe while the word stays readable."
+        },
+        {
+          "q": "Can I choose the separator?",
+          "a": "Yes. Hyphen, underscore and space are offered, and the hyphen is the default because it is the usual choice in URLs."
+        },
+        {
+          "q": "What happens to long text?",
+          "a": "The input is capped at 500 characters. Longer text is refused with a message, so the page stays fast and the slug stays short."
+        },
+        {
+          "q": "Does it check whether the slug already exists?",
+          "a": "No. It converts one piece of text. Checking a database for duplicates is something your site or CMS does when it saves the record."
+        },
+        {
+          "q": "Is my text stored or sent anywhere?",
+          "a": "No. The conversion runs in the browser. Nothing is written to storage and nothing is sent over the network."
+        }
+      ],
+      "ui": {
+        "label": "Text to convert",
+        "sep": "Separator",
+        "hyphen": "Hyphen (-)",
+        "underscore": "Underscore (_)",
+        "space": "Space",
+        "output": "URL slug",
+        "empty": "Type some text to build a slug.",
+        "noWords": "There are no letters or digits to keep, so this text has nothing that can become a slug.",
+        "tooLong": "That text is too long: enter at most 500 characters.",
+        "note": "Lowercase, accents removed, symbols stripped — your text never leaves this page.",
+        "chars": "Characters in the slug"
+      }
     }
   },
   "business": {
