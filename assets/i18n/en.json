@@ -2197,6 +2197,52 @@
         "bad": "{which} is not a colour this tool can read: use #rgb or #rrggbb, for example #777.",
         "note": "Contrast is calculated here in your browser from the WCAG 2 formula. Nothing is stored or sent."
       }
+    },
+    "average-calculator": {
+      "title": "Average calculator",
+      "desc": "Paste any list of numbers to get the mean, median, mode, range, count and sum, with invalid entries ignored and reported. Free and private.",
+      "lede": "Paste numbers separated by commas, spaces or line breaks to get the mean, median, mode, range, count and sum in one step. Tokens that are not numbers are listed so none are missed.",
+      "how": "Enter the numbers in any list form: commas, spaces, semicolons or new lines all separate values. The count is how many numbers were read and the sum adds them all. The mean divides the sum by the count. For the median the list is sorted first, then the middle value is taken, or the average of the two middle values when the count is even. The mode is the value that appears most often, shown as a list when several tie; if nothing repeats, the tool says so instead of inventing one. The range is the largest value minus the smallest. Tokens that are not plain numbers are ignored and listed below the result so you can see exactly what was left out.",
+      "example": "For 4, 8, 15, 16, 23 and 42 the count is 6, the sum is 108 and the mean is 108 divided by 6, which is 18. Sorted, the list puts 15 and 16 in the middle, so the median is (15 + 16) divided by 2, which is 15.5. No value repeats, so there is no mode, and the range is 42 minus 4, which is 38.",
+      "faq": [
+        {
+          "q": "How do I enter the numbers?",
+          "a": "Any way you like: 1, 2, 3 or 1 2 3 or each on its own line. Semicolons work too. Anything that is not a plain number is skipped and listed under the result."
+        },
+        {
+          "q": "What is the difference between mean and median?",
+          "a": "The mean is the sum divided by the count, so one very large value pulls it up. The median is the middle value after sorting, so outliers barely move it."
+        },
+        {
+          "q": "Why does it say there is no mode?",
+          "a": "A mode only exists when a value repeats. When every number appears once, reporting a mode would be misleading, so the tool states that instead."
+        },
+        {
+          "q": "Does it ignore negative numbers?",
+          "a": "No. Minus values are normal numbers and are included in every statistic. Only tokens that are not numbers at all are excluded, and they are shown in the message."
+        },
+        {
+          "q": "How many numbers can I paste?",
+          "a": "Up to 10,000 values in 20,000 characters. Beyond either cap the tool refuses with the limit in the message rather than slowing the page down."
+        }
+      ],
+      "ui": {
+        "value": "Numbers",
+        "count": "Count",
+        "sum": "Sum",
+        "mean": "Mean",
+        "median": "Median",
+        "mode": "Mode",
+        "range": "Range",
+        "noMode": "No value repeats",
+        "invalid": "Ignored tokens",
+        "empty": "Type some numbers, separated by commas, spaces or line breaks.",
+        "none": "None of that could be read as a number.",
+        "tooBig": "That is more than {max} characters. Shorten the list.",
+        "tooMany": "That is more than {max} values. The tool stops at {max}.",
+        "ignored": "{n} token(s) could not be read and were left out: {list}",
+        "note": "Every token was read as a number. Nothing was left out."
+      }
     }
   },
   "business": {
