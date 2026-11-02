@@ -2364,6 +2364,51 @@
         "malformed": "That is not a JWT: a token looks like header.payload.signature.",
         "badJson": "A segment did not decode to valid JSON."
       }
+    },
+    "csv-json-converter": {
+      "title": "CSV to JSON converter",
+      "desc": "Convert CSV to JSON or JSON to CSV in your browser, with quoted fields, embedded commas and line breaks inside quotes handled correctly. Nothing is uploaded.",
+      "lede": "Paste CSV to get JSON, or paste JSON to get CSV. Quoted fields, embedded commas, embedded line breaks and an optional header row are all handled.",
+      "how": "The CSV parser reads character by character: inside double quotes a comma or a newline belongs to the field, and two quotes in a row mean one literal quote. With the header row ticked, the first line supplies the keys and every later line supplies values; short rows are filled with empty strings and a row with more fields than the header is reported by number. Turning JSON back into CSV takes the keys of the first object as the header and quotes any value containing a comma, a quote or a newline, doubling the quotes inside it. Input is capped at 200,000 characters and 2,000 rows, and both directions run locally.",
+      "example": "The three lines name,qty,price then Widget,3,2.50 then \"Bolt, long\",7,0.10 become a JSON array of two objects: name Widget with qty 3 and price 2.50, and name Bolt, long with qty 7 and price 0.10 — the comma inside the quotes stays in the name field. Values stay strings, so 2.50 keeps its trailing zero. Converting that JSON back with the header row ticked reproduces the original three lines exactly.",
+      "faq": [
+        {
+          "q": "Are numbers turned into JSON numbers?",
+          "a": "No. Every value stays a string, so an identifier like 007 or a price like 2.50 survives the round trip exactly as you typed it."
+        },
+        {
+          "q": "How are quotes inside a field handled?",
+          "a": "Two quotes in a row read as one literal quote, and when writing CSV, any value with a comma, quote or newline is wrapped in quotes with its inner quotes doubled."
+        },
+        {
+          "q": "What if rows have different lengths?",
+          "a": "Rows with fewer fields than the header are filled with empty strings. A row with extra fields is reported with its row number and the extra values are dropped."
+        },
+        {
+          "q": "What forms of JSON are accepted?",
+          "a": "An array of objects, an array of arrays, or a single object, which is treated as one row. Anything else gets an invalid JSON message."
+        },
+        {
+          "q": "Is there a size limit?",
+          "a": "Yes: 200,000 characters and 2,000 rows. Larger input is refused with a clear message so the page stays responsive."
+        }
+      ],
+      "ui": {
+        "label": "Data to convert",
+        "direction": "Direction",
+        "c2j": "CSV to JSON",
+        "j2c": "JSON to CSV",
+        "header": "First line is a header row",
+        "output": "Result",
+        "empty": "Paste CSV or JSON to convert it.",
+        "tooLong": "That input is too long: enter at most 200,000 characters.",
+        "tooMany": "That input has too many rows: the limit is 2,000.",
+        "badJson": "That is not valid JSON for this converter.",
+        "ragged": "Row {n} has more fields than the header; the extra values were dropped.",
+        "note": "Converted in your browser: nothing is uploaded and nothing is stored.",
+        "objects": "Objects",
+        "fields": "Fields"
+      }
     }
   },
   "business": {

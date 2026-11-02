@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>CSV to JSON Converter – JSON to CSV Too</title>
+<meta name="description" content="Convert CSV to JSON or JSON to CSV in your browser, with quoted fields, embedded commas and line breaks inside quotes handled correctly. Nothing is uploaded.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/csv-json-converter.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="CSV to JSON Converter – JSON to CSV Too">
+<meta property="og:description" content="Convert CSV to JSON or JSON to CSV in your browser, with quoted fields, embedded commas and line breaks inside quotes handled correctly. Nothing is uploaded.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/csv-json-converter.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="csv-json-converter">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.developer.name">Developer</p>
+    <h1 data-i18n="tools.csv-json-converter.title">CSV to JSON converter</h1>
+    <p class="lede" data-i18n="tools.csv-json-converter.lede">Paste CSV to get JSON, or paste JSON to get CSV. Quoted fields, embedded commas, embedded line breaks and an optional header row are all handled.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.csv-json-converter.how">The CSV parser reads character by character: inside double quotes a comma or a newline belongs to the field, and two quotes in a row mean one literal quote. With the header row ticked, the first line supplies the keys and every later line supplies values; short rows are filled with empty strings and a row with more fields than the header is reported by number. Turning JSON back into CSV takes the keys of the first object as the header and quotes any value containing a comma, a quote or a newline, doubling the quotes inside it. Input is capped at 200,000 characters and 2,000 rows, and both directions run locally.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.csv-json-converter.example">The three lines name,qty,price then Widget,3,2.50 then &quot;Bolt, long&quot;,7,0.10 become a JSON array of two objects: name Widget with qty 3 and price 2.50, and name Bolt, long with qty 7 and price 0.10 — the comma inside the quotes stays in the name field. Values stay strings, so 2.50 keeps its trailing zero. Converting that JSON back with the header row ticked reproduces the original three lines exactly.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.csv-json-converter.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="developer.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/csv-json-converter.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>
