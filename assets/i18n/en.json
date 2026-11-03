@@ -2504,6 +2504,55 @@
         "endBefore": "The end date is before the start date, so there is nothing to count.",
         "note": "Counted in your browser from the dates you typed: nothing is stored and nothing is sent."
       }
+    },
+    "fraction-calculator": {
+      "title": "Fraction calculator",
+      "desc": "Work with fractions step by step: add, subtract, multiply and divide, then see the fraction in lowest terms, the mixed number and the decimal.",
+      "lede": "Enter two fractions and pick an operation. The answer comes back as a fraction in lowest terms, a mixed number and a decimal.",
+      "how": "Addition and subtraction find the lowest common denominator, rewrite both fractions over it and add the numerators. Multiplication multiplies the two numerators and the two denominators directly. Division flips the second fraction and multiplies. The result is then reduced by dividing top and bottom by their greatest common divisor, which also turns a negative denominator positive by moving the sign to the numerator. An improper result is shown as a mixed number as well, and the decimal is the numerator divided by the denominator. Denominators must be whole numbers other than zero.",
+      "example": "Take 6/8 + 3/4. Over the common denominator 8 that is 6/8 + 6/8 = 12/8, which divides by 4 to give 3/2 in lowest terms. As a mixed number that is 1 1/2, and 3 divided by 2 is 1.5. A zero denominator is refused instead of producing an error, because dividing by zero has no answer.",
+      "faq": [
+        {
+          "q": "Why must the denominators be whole numbers?",
+          "a": "A fraction is a ratio of two integers. Enter 3 for three halves rather than 1.5, and the working stays exact instead of drifting into rounding."
+        },
+        {
+          "q": "How is the fraction reduced?",
+          "a": "The numerator and denominator are divided by their greatest common divisor, so 12/8 becomes 3/2 with no approximation involved."
+        },
+        {
+          "q": "What does the mixed number mean?",
+          "a": "It splits an improper fraction into whole parts and a remainder: 3/2 is one whole and one half, written 1 1/2. Proper fractions show the same value as the reduced fraction."
+        },
+        {
+          "q": "What happens with a zero denominator?",
+          "a": "The calculation is refused with a clear message. Dividing by zero has no result, so no number is invented."
+        },
+        {
+          "q": "Is anything stored or sent?",
+          "a": "No. The arithmetic runs in this page with plain numbers; nothing is written to storage or sent over the network."
+        }
+      ],
+      "ui": {
+        "n1": "First numerator",
+        "d1": "First denominator",
+        "n2": "Second numerator",
+        "d2": "Second denominator",
+        "op": "Operation",
+        "add": "Add",
+        "sub": "Subtract",
+        "mul": "Multiply",
+        "div": "Divide",
+        "result": "Result",
+        "simplest": "In lowest terms",
+        "mixed": "Mixed number",
+        "decimal": "Decimal",
+        "empty": "Fill in all four numbers to calculate.",
+        "notInteger": "Numerators and denominators must be whole numbers, for example 3 instead of 1.5.",
+        "zero": "A denominator cannot be zero.",
+        "divZero": "You cannot divide by zero.",
+        "note": "Worked out in your browser: nothing is stored and nothing is sent."
+      }
     }
   },
   "business": {
