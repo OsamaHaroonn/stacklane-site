@@ -2995,6 +2995,51 @@
         "opacityRange": "Opacity must be between 0 and 1.",
         "note": "Built in your browser: the values you type are never sent anywhere."
       }
+    },
+    "color-palette-generator": {
+      "title": "Color palette generator",
+      "desc": "Enter a hex colour to get five swatches: two tints mixed with white, the base, and two shades mixed with black, with hex and rgb values.",
+      "lede": "Type a hex colour and the tool mixes it with white and black to give five swatches with both hex and rgb values, ready to copy.",
+      "how": "Every swatch is a straight mix of the base colour with either white or black, done per channel with the same formula: new channel equals the base channel multiplied by one minus the mix amount, plus the target channel multiplied by the mix amount, rounded to a whole number. Two tints use white at 50% and 25%, the third swatch is the base untouched, and two shades use black at 25% and 50%. Because only the distance to white or black changes, the hue stays in the same family and the swatches step evenly in lightness, which is what a palette needs. Three-digit hex is expanded first, and values outside 0 to 255 cannot occur because the mix is clamped.",
+      "example": "For #336699 the channels are 51, 102 and 153. The 50% tint gives 51 × 0.5 + 255 × 0.5 = 153, 178.5 and 204, which rounds to #99B3CC. The 25% tint gives #668CB3, the base is #336699, the 25% shade gives #264D73 and the 50% shade gives #1A334D. Each swatch also reports its rgb values, for example rgb(153, 179, 204) for the first tint.",
+      "faq": [
+        {
+          "q": "How are the tints calculated?",
+          "a": "Each channel is mixed with 255 at 50% and again at 25%, then rounded. That is a straight linear blend toward white, not a change of hue or saturation."
+        },
+        {
+          "q": "Why exactly five swatches?",
+          "a": "Two tints, the base and two shades give a usable range of contrast steps without producing colours so close together that they are indistinguishable."
+        },
+        {
+          "q": "Can I paste an rgb() value?",
+          "a": "Only hex is accepted: three digits such as #06c or six digits such as #336699. Anything else gets a specific error message."
+        },
+        {
+          "q": "Are these colours accessible together?",
+          "a": "Not necessarily. This tool only mixes colours; check any text and background pair with the contrast checker before using it for text."
+        },
+        {
+          "q": "Does the base colour stay in the list?",
+          "a": "Yes, it is the middle swatch, unchanged, so you can compare every tint and shade against it."
+        }
+      ],
+      "ui": {
+        "base": "Base colour (hex)",
+        "baseName": "Base",
+        "tint50": "Tint 50% white",
+        "tint25": "Tint 25% white",
+        "shade25": "Shade 25% black",
+        "shade50": "Shade 50% black",
+        "output": "Palette values",
+        "copy": "Copy all values",
+        "nothingToCopy": "There is nothing to copy yet.",
+        "copied": "Palette values copied to the clipboard.",
+        "copyFailed": "The browser blocked the clipboard. Select the text and copy it by hand.",
+        "empty": "Enter a base colour to build the palette.",
+        "badHex": "That is not a hex colour. Use three digits such as #06c or six digits such as #336699.",
+        "note": "Mixed in your browser: the colour you type is never sent anywhere."
+      }
     }
   },
   "business": {
