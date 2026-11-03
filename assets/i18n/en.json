@@ -3040,6 +3040,62 @@
         "badHex": "That is not a hex colour. Use three digits such as #06c or six digits such as #336699.",
         "note": "Mixed in your browser: the colour you type is never sent anywhere."
       }
+    },
+    "password-strength-checker": {
+      "title": "Password strength checker",
+      "desc": "Estimate a password's entropy from its length and the character classes it uses. Runs in the page and is never stored, sent or logged.",
+      "lede": "Type a password to see how many bits of entropy it represents, which character classes it uses, and how the estimate is calculated.",
+      "how": "The estimate assumes every character was picked at random from the set the password draws on. That set, the pool, is the sum of the classes in use: 26 for lowercase, 26 for uppercase, 10 for digits, 32 for punctuation and one more for a space. Entropy is the length multiplied by the base-two logarithm of the pool size, which is the same as length × log(pool) ÷ log(2). The bar shows the result against 128 bits and the labels use fixed thresholds printed with the result: under 28 very weak, under 36 weak, under 60 fair, under 80 strong, 80 and above very strong. This is an estimate, not a measurement and not a prediction of how long a guess would take.",
+      "example": "For Tr0ub4dor&3 the length is 11 and all four classes are present, so the pool is 26 + 26 + 10 + 32 = 94. The base-two logarithm of 94 is 6.5546 bits per character, and 11 × 6.5546 = 72.10 bits, which the tool labels strong because it is between 60 and 80.",
+      "faq": [
+        {
+          "q": "Is this a crack-time estimate?",
+          "a": "No. It reports entropy on the assumption that each character was chosen uniformly at random from the pool. A password made of two dictionary words has far less real entropy than its character count suggests."
+        },
+        {
+          "q": "Why 32 symbols?",
+          "a": "That is the count of punctuation characters on a standard US keyboard layout. A space adds one more to the pool because it is a separate, usually unexpected character."
+        },
+        {
+          "q": "What do the labels mean?",
+          "a": "They are this tool's fixed bands: under 28 bits very weak, 28 to 35 weak, 36 to 59 fair, 60 to 79 strong, and 80 or more very strong."
+        },
+        {
+          "q": "Is my password sent anywhere or stored?",
+          "a": "No. It is read in this page, used for the arithmetic and never written to storage, a cookie, the URL or the console. Reloading loses it immediately."
+        },
+        {
+          "q": "Does a long passphrase score well?",
+          "a": "Yes, if it mixes classes. A 20-character phrase in lowercase letters only gives 20 × log₂(26) = 94.01 bits, while a short password using all four classes gains from the larger pool."
+        }
+      ],
+      "ui": {
+        "password": "Password to check",
+        "placeholder": "Type or paste a password",
+        "reveal": "Show password",
+        "hide": "Hide password",
+        "empty": "Type a password to see the estimate.",
+        "tooLong": "That password is longer than {max} characters. The estimate does not need more than that.",
+        "noChars": "That input contains no characters this tool can classify.",
+        "lower": "lowercase",
+        "upper": "uppercase",
+        "digit": "digits",
+        "symbol": "symbols",
+        "space": "spaces",
+        "length": "Length",
+        "classes": "Character classes",
+        "pool": "Pool size",
+        "bitsPerChar": "Bits per character",
+        "entropy": "Estimated entropy",
+        "rating": "Band",
+        "formula": "Working",
+        "veryWeak": "very weak",
+        "weak": "weak",
+        "fair": "fair",
+        "strong": "strong",
+        "veryStrong": "very strong",
+        "note": "Estimated in your browser: the password is never stored, logged or sent anywhere."
+      }
     }
   },
   "business": {
