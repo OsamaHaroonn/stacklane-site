@@ -73,6 +73,10 @@ window.TOOL_CATALOG = [
   { slug: 'user-agent-parser', category: 'developer', keywords: 'user agent parser ua string browser engine operating system device' },
   { slug: 'bmi-calculator', category: 'calculators', keywords: 'bmi calculator body mass index weight height metric' },
   { slug: 'sql-formatter', category: 'developer', keywords: 'sql formatter beautify keywords uppercase query pretty' },
+  { slug: 'coin-flipper', category: 'fun', keywords: 'coin flip heads tails random fair toss virtual' },
+  { slug: 'dice-roller', category: 'fun', keywords: 'dice roller d20 d6 roll dice total random rpg' },
+  { slug: 'decision-wheel', category: 'fun', keywords: 'decision wheel random picker choose option spinner' },
+  { slug: 'bubble-wrap-popper', category: 'fun', keywords: 'bubble wrap popper pop bubbles stress relief click' },
 ];
 
 window.TOOL_CATS = {};

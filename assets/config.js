@@ -21,5 +21,5 @@ window.SITE_CONFIG = {
 
   // Category directories, in the order they appear on the home page.
   // Language-neutral slugs; names and descriptions live in the i18n JSON.
-  categories: ['pdf', 'images', 'text', 'generators', 'calculators', 'converters', 'developer', 'business']
+  categories: ['pdf', 'images', 'text', 'generators', 'calculators', 'converters', 'developer', 'fun', 'business']
 };

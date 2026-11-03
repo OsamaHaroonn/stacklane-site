@@ -1,4 +1,4 @@
-# Stacklane — 73-tool roadmap
+# Stacklane — 80-tool roadmap
 
 Language-neutral slugs. Every visible string lives in
 `assets/i18n/en.json` / `assets/i18n/ar.json` under `tools.<slug>`, so a tool
@@ -82,11 +82,15 @@ only until Arabic is re-enabled.
 | 68 | `user-agent-parser` | developer | user agent parser | **built** |
 | 69 | `bmi-calculator` | calculators | bmi calculator | **built** |
 | 70 | `sql-formatter` | developer | sql formatter | **built** |
+| 71 | `coin-flipper` | fun | flip a coin online | **built** |
+| 72 | `dice-roller` | fun | roll dice online | **built** |
+| 73 | `decision-wheel` | fun | decision wheel picker | **built** |
+| 74 | `bubble-wrap-popper` | fun | bubble wrap popper | **built** |
 ## Category directories
 
 `/en/` and `/ar/` each carry a directory page per category:
 `pdf`, `images`, `text`, `generators`, `calculators`, `converters`,
-`developer`. The eighth category, `business`, exists in **English only** —
+`developer`, `fun`. The last category, `business`, exists in **English only** —
 its seven pages live under `/en/` and `/ar/business.html` deliberately does
 not exist, so no directory ever lists a tool that has no Arabic version.
 
