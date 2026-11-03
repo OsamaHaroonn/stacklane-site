@@ -3495,6 +3495,50 @@
         "soundOffNote": "Sound is off.",
         "note": "Runs entirely in your browser: nothing is stored or sent anywhere."
       }
+    },
+    "fake-hacker-typer": {
+      "title": "Fake hacker typer",
+      "desc": "Press any key and made-up log lines scroll past in a fake terminal. It is a toy: nothing runs, nothing is read from your machine.",
+      "lede": "Start the toy and press any key: invented log lines scroll past in a dark terminal, and Escape ends the session.",
+      "how": "Start focuses a terminal area and writes one greeting line. Every later key press, including Enter, adds one line taken at random from a fixed list of twenty-two invented log lines, and the screen keeps only the newest fourteen so it never grows without limit. Nothing is executed and nothing is inspected: the lines come from that list, not from your keyboard's contents, your files or your system. Escape ends the session and writes a closing line, and the status line above the terminal announces whether the toy is running or finished. The copy button copies exactly the text visible on screen. Sound, animation and typing delays are deliberately absent, so no key press can be swallowed or delayed.",
+      "example": "Starting writes one greeting line. Pressing four keys then adds four lines from the list, one per press, so the screen holds five lines in total and any line older than the newest fourteen would be dropped. Pressing Escape adds a closing line and changes the status to say the session ended, and the copy button then copies those six lines exactly as they appear.",
+      "faq": [
+        {
+          "q": "Is anything actually running?",
+          "a": "No. The lines are printed from a list inside the page. There is no command execution, no file access, no network request and no access to anything on your machine."
+        },
+        {
+          "q": "Why does Escape do anything?",
+          "a": "It ends the pretend session so the terminal stops adding lines and the status line can say it is finished. Start begins a fresh session."
+        },
+        {
+          "q": "How many lines are there?",
+          "a": "Twenty-two invented log lines, chosen at random for each key press, so a long session repeats some of them. That repetition is part of the joke."
+        },
+        {
+          "q": "Does it record what I type?",
+          "a": "No. Key presses only trigger the next line; the characters themselves are never read, stored, logged or sent anywhere. Copy takes the visible text, not your keystrokes."
+        },
+        {
+          "q": "Can I use this for a video?",
+          "a": "Yes, that is what it is for. It looks the part without touching a real system, which is safer than pretending with a real terminal."
+        }
+      ],
+      "ui": {
+        "idle": "Ready. Press Start, then type anything.",
+        "screenLabel": "Pretend terminal output",
+        "pressStart": "press Start to begin",
+        "started": "session started. Press any key, Escape to stop.",
+        "running": "Session running: every key press prints a line. Escape ends it.",
+        "ended": "session ended. Press Start for another.",
+        "stopped": "Session ended. Nothing was run.",
+        "start": "Start",
+        "stop": "Stop",
+        "copy": "Copy screen",
+        "copied": "Terminal text copied.",
+        "copyFailed": "The browser blocked the clipboard. Select the text and copy it by hand.",
+        "note": "A toy: the lines come from a list in this page. Nothing is executed, read or sent anywhere."
+      }
     }
   },
   "business": {
