@@ -2943,6 +2943,58 @@
         "dupes": "Built with duplicates removed: {n} repeated line(s) were skipped.",
         "note": "Built in your browser: the URLs you paste are never sent anywhere."
       }
+    },
+    "css-box-shadow-generator": {
+      "title": "CSS box shadow generator",
+      "desc": "Set offset, blur, spread, colour and opacity to build a box-shadow rule, copy the CSS and see it on a sample card. Inset is supported.",
+      "lede": "Adjust the offset, blur, spread, colour and opacity, watch the shadow on a sample card, then copy the finished declaration.",
+      "how": "A box shadow takes an optional inset keyword, then the horizontal offset, the vertical offset, the blur radius, the spread radius and a colour, all in that order. Offsets move the shadow away from the element: positive x moves it right and positive y moves it down. The blur radius softens the edge and cannot be negative, while the spread grows the shadow before it is blurred and may be negative to shrink it. The colour field takes a hex value, which is converted to rgba so the opacity field can set the alpha channel separately. The tool rejects values outside these ranges with a specific message, and shows the exact declaration it built.",
+      "example": "With x 2, y 4, blur 8, spread 0, the colour #000000 and opacity 0.2, the tool produces box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.2);. That is a black shadow moved 2 pixels right and 4 pixels down, blurred by 8 pixels, with no spread and 20% opacity, so it reads as a soft grey rather than a black edge.",
+      "faq": [
+        {
+          "q": "What order do the values go in?",
+          "a": "Inset first if you want an inner shadow, then the x offset, y offset, blur radius, spread radius and colour. The tool writes them in that order."
+        },
+        {
+          "q": "Why does it refuse a negative blur?",
+          "a": "A negative blur radius is not valid CSS, so the browser would drop the whole declaration. Offsets and spread may be negative; blur may not."
+        },
+        {
+          "q": "What does spread actually change?",
+          "a": "It grows the shadow shape before the blur is applied. A positive spread makes the shadow larger than the element, a negative spread shrinks it, which is how you get a shadow on one side only."
+        },
+        {
+          "q": "Can I use a colour name instead of hex?",
+          "a": "This tool takes hex so it can convert it to rgba and apply the opacity slider. With a named colour there is no separate alpha value to adjust."
+        },
+        {
+          "q": "Where do I paste the result?",
+          "a": "Inside a rule, for example .card { box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.2); }. The declaration is exactly what you copy."
+        }
+      ],
+      "ui": {
+        "x": "Horizontal offset (px)",
+        "y": "Vertical offset (px)",
+        "blur": "Blur radius (px)",
+        "spread": "Spread radius (px)",
+        "color": "Colour (hex)",
+        "opacity": "Opacity (0 to 1)",
+        "inset": "Inset (inner shadow)",
+        "output": "CSS",
+        "copy": "Copy CSS",
+        "nothingToCopy": "There is nothing to copy yet.",
+        "copied": "CSS copied to the clipboard.",
+        "copyFailed": "The browser blocked the clipboard. Select the text and copy it by hand.",
+        "empty": "Fill in every offset, the blur and the spread.",
+        "badNumber": "Offsets, blur and spread must be whole numbers of pixels, for example 4 or -4.",
+        "offsetRange": "An offset must be between -100 and 100 pixels.",
+        "blurRange": "The blur radius must be between 0 and 200 pixels.",
+        "spreadRange": "The spread must be between -100 and 100 pixels.",
+        "badColor": "The colour must be a hex value such as #000000 or #06c.",
+        "badOpacity": "Opacity must be a number between 0 and 1, for example 0.2.",
+        "opacityRange": "Opacity must be between 0 and 1.",
+        "note": "Built in your browser: the values you type are never sent anywhere."
+      }
     }
   },
   "business": {
