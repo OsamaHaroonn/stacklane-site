@@ -3096,6 +3096,54 @@
         "veryStrong": "very strong",
         "note": "Estimated in your browser: the password is never stored, logged or sent anywhere."
       }
+    },
+    "favicon-generator": {
+      "title": "Favicon generator",
+      "desc": "Turn one image into favicon PNGs at 16, 32, 48, 180, 192 and 512 pixels, drawn on a canvas in your browser. Nothing is uploaded.",
+      "lede": "Choose an image and the tool draws it into six square PNG files, with a download button for each size and a progress bar as it works.",
+      "how": "The image is decoded by the browser first, and an image that fails to decode is reported instead of producing blank files. Favicons must be square, so the largest centred square of your image is used and the rest is cropped away. That square is then drawn into a canvas at each size in the list, using the canvas smoothing settings, and each canvas is exported as a PNG blob. Every size gets its own download button, and the file size of each PNG is shown next to it. Uploads are capped at 5 MB and empty files are rejected, because an empty file cannot be decoded. The image never leaves the page: the canvas work happens in your browser.",
+      "example": "Upload a 1024 by 1024 PNG and the tool produces six files: 16, 32, 48, 180, 192 and 512 pixels square. Because the source is already square there is no crop, and the 512 file is exactly 512 by 512 pixels. A 1000 by 800 image would first be cropped to the centre 800 by 800 square, then scaled down to those same six sizes.",
+      "faq": [
+        {
+          "q": "Which size do I need?",
+          "a": "16 and 32 for browser tabs, 48 for Windows shortcuts, 180 for the Apple touch icon, 192 for Android home screens and 512 for stores and web app manifests. The page produces all six."
+        },
+        {
+          "q": "Why was my image cropped?",
+          "a": "A favicon has to be square, so the largest centred square is taken and the edges are dropped. Nothing is stretched, which would distort the artwork."
+        },
+        {
+          "q": "Is my image uploaded?",
+          "a": "No. It is read into an image element and drawn on a canvas inside the page. There is no network request and no storage."
+        },
+        {
+          "q": "Which input formats work?",
+          "a": "Any format the browser can decode, which usually means PNG, JPEG, WebP, GIF and SVG. The output is always PNG regardless of the input."
+        },
+        {
+          "q": "Can it make an .ico file?",
+          "a": "No. It writes PNG files, which browsers and web app manifests accept for these sizes. An .ico is a separate container format and is not produced here."
+        }
+      ],
+      "ui": {
+        "image": "Image file",
+        "browse": "Browse",
+        "none": "No file chosen",
+        "cap": "Images up to 5 MB. The file is read in this tab and never uploaded.",
+        "empty": "Choose an image file first.",
+        "emptyFile": "That file is empty, so there is nothing to draw. Choose an image with content.",
+        "tooBig": "That file is larger than {max}. Use a smaller image.",
+        "notImage": "That is not an image file. Choose a PNG, JPEG, WebP, GIF or SVG.",
+        "working": "Reading the image…",
+        "stepDecode": "Decoding the image",
+        "stepDraw": "Drawing the sizes",
+        "stepDone": "Drew {done} of {total} sizes",
+        "finished": "All six sizes are ready.",
+        "done": "Finished. Download the sizes you need.",
+        "badImage": "That file could not be read as an image. It may be damaged or not really an image.",
+        "download": "Download",
+        "downloaded": "favicon-{size}.png downloaded."
+      }
     }
   },
   "business": {
