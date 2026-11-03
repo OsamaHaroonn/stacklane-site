@@ -28,7 +28,7 @@
 <main id="main" class="no-pad">
 
 <header class="hero">
-  <div class="wrap">
+  <div class="container">
     <span class="eyebrow">No accounts · No uploads</span>
     <h1 data-i18n="home.h1">Free online tools for everyday tasks</h1>
     <p class="lede" data-i18n="home.lede">Every tool runs in your browser. Nothing you type, paste or upload is sent anywhere — there is no account, no tracking and no payment.</p>
@@ -38,36 +38,43 @@
         <input id="tool-search" type="search" autocomplete="off" spellcheck="false"
                data-i18n-ph="home.searchPlaceholder" placeholder="Type to filter — try PDF, QR, percentage">
       </div>
-      <p class="search-count" data-i18n="home.searchNote">Filtering happens as you type, in your browser.</p>
+      <p class="search-count" id="search-count" aria-live="polite">80 tools: 73 browser tools and 7 business pages.</p>
     </div>
     <div id="popular-row" class="popular" aria-label="Popular tools"></div>
   </div>
 </header>
 
-<section>
-  <div class="wrap">
+<section id="search-results" hidden>
+  <div class="container">
+    <h2 id="results-h2" data-i18n="home.toolsH2">All tools</h2>
+    <div id="results-grid" class="card-grid"></div>
+    <p id="search-empty" class="alert alert-warn" hidden data-i18n="home.noResults">No tool matches that word. Try a shorter one.</p>
+  </div>
+</section>
+
+<section id="categories">
+  <div class="container">
     <h2 id="cat-h2" data-i18n="home.categoriesH2">Browse by category</h2>
-    <div id="category-grid" class="grid grid-4 cat-grid"></div>
+    <div id="category-grid" class="card-grid cat-grid"></div>
+  </div>
+</section>
+
+<section id="popular" class="section-soft">
+  <div class="container">
+    <h2 id="popular-h2">Popular tools</h2>
+    <div id="popular-grid" class="card-grid"></div>
+  </div>
+</section>
+
+<div id="cat-sections"></div>
+
+<section id="trust-band" class="section-soft">
+  <div class="container">
     <ul class="trust">
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Every tool runs in your browser.</span></li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>No signup and no account.</span></li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Files you open are never uploaded.</span></li>
     </ul>
-  </div>
-</section>
-
-<section id="top-tools" class="section-soft">
-  <div class="wrap">
-    <h2 id="top-h2">Most useful tools</h2>
-    <div id="top-grid" class="grid top-grid"></div>
-  </div>
-</section>
-
-<section id="tools">
-  <div class="wrap">
-    <h2 id="tools-h2" data-i18n="home.toolsH2">All tools</h2>
-    <div id="tool-grid" class="grid grid-4"></div>
-    <p id="search-empty" class="alert" hidden data-i18n="home.noResults">No tool matches that word. Try a shorter one.</p>
   </div>
 </section>
 
@@ -80,4 +87,5 @@
 <script src="../assets/home.js"></script>
 <script src="../assets/chrome.js"></script>
 </body>
+
 </html>

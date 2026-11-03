@@ -1,7 +1,10 @@
 /* ============================================================
-   Home page — categories, popular row, most useful grid and the
-   full list grouped by category. Everything is rendered from
-   assets/i18n/<lang>.json; search filters in the browser.
+   Home page — centred hero, category cards, 8 popular cards and one
+   compact section per category. Everything is rendered from
+   assets/i18n/<lang>.json and assets/catalog.js.
+
+   The Business category is deliberately absent from this page: it
+   keeps its own category page and is linked from the footer and menu.
    ============================================================ */
 window.HomePage = function (json, h) {
   'use strict';
@@ -10,16 +13,17 @@ window.HomePage = function (json, h) {
   var lang = (document.documentElement.getAttribute('lang') || 'en').toLowerCase();
 
   var searchInput = document.getElementById('tool-search');
+  var searchCount = document.getElementById('search-count');
+  var resultsSec = document.getElementById('search-results');
+  var resultsH2 = document.getElementById('results-h2');
+  var resultsGrid = document.getElementById('results-grid');
   var noResults = document.getElementById('search-empty');
   var catGrid = document.getElementById('category-grid');
-  var toolGrid = document.getElementById('tool-grid');
-  var topGrid = document.getElementById('top-grid');
+  var popularGrid = document.getElementById('popular-grid');
+  var catSections = document.getElementById('cat-sections');
   var popularRow = document.getElementById('popular-row');
-  var toolsH2 = document.getElementById('tools-h2');
-  var catH2 = document.getElementById('cat-h2');
-  if (!toolGrid) return;
 
-  /* Simple line icons, drawn inline — no files, no requests. */
+  /* Line icons, drawn inline — no files, no requests. */
   var ICONS = {
     calculators: '<path d="M6 3h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"/>',
     text: '<path d="M5 6h14M5 10h14M5 14h9M5 18h6"/>',
@@ -28,152 +32,165 @@ window.HomePage = function (json, h) {
     developer: '<path d="m9 8-5 4 5 4M15 8l5 4-5 4"/>',
     generators: '<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h.01M15 9h.01M9 15h.01M15 15h.01M12 12h.01"/>',
     converters: '<path d="M4 8h13l-3-3M20 16H7l3 3"/>',
-    business: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 12h18"/>'
+    business: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 12h18"/>',
+    fun: '<circle cx="12" cy="12" r="9"/><path d="M8.5 14.5a4.5 4.5 0 0 0 7 0M9 9h.01M15 9h.01"/>'
   };
 
-  var POPULAR = ['word-counter', 'merge-pdf', 'qr-code-generator', 'percentage-calculator',
-    'password-generator', 'image-compressor', 'json-formatter', 'loan-calculator'];
-  var TOP = ['merge-pdf', 'word-counter', 'image-compressor', 'qr-code-generator',
-    'percentage-calculator', 'json-formatter'];
+  function icon(slug, cls) {
+    var span = el('span', { class: cls || 'cat-icon', 'aria-hidden': 'true' });
+    span.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" ' +
+      'stroke-linecap="round" stroke-linejoin="round">' + (ICONS[slug] || ICONS.text) + '</svg>';
+    return span;
+  }
 
   function toolTitle(slug) { return get(json, 'tools.' + slug + '.title'); }
   function toolDesc(slug) { return get(json, 'tools.' + slug + '.desc'); }
   function catName(slug) { return get(json, 'categories.' + slug + '.name'); }
 
-  /* ---- category cards ---- */
+  var POPULAR = ['word-counter', 'merge-pdf', 'qr-code-generator', 'percentage-calculator',
+    'password-generator', 'image-compressor', 'json-formatter', 'loan-calculator'];
+
+  /* ---- the searchable index: every tool plus the business pages ---- */
+  var INDEX = [];
+  (window.TOOL_CATALOG || []).forEach(function (t) {
+    var title = toolTitle(t.slug);
+    if (!title) return;
+    INDEX.push({
+      href: t.slug + '.html', title: title, desc: toolDesc(t.slug) || '',
+      cat: catName(t.category) || '',
+      hay: (title + ' ' + (toolDesc(t.slug) || '') + ' ' + t.slug + ' ' + (catName(t.category) || '')).toLowerCase()
+    });
+  });
+  var business = (lang === 'en' && window.BUSINESS_PAGES) ? window.BUSINESS_PAGES : [];
+  business.forEach(function (p) {
+    INDEX.push({
+      href: p.slug + '.html', title: p.name, desc: p.desc || '',
+      cat: catName('business') || '',
+      hay: (p.name + ' ' + (p.desc || '') + ' ' + p.slug).toLowerCase()
+    });
+  });
+
+  if (searchCount) {
+    searchCount.textContent = INDEX.length + ' tools: ' +
+      (INDEX.length - business.length) + ' browser tools and ' + business.length + ' business pages.';
+  }
+
+  /* ---- category cards: no Business on the home page ---- */
   if (catGrid) {
     CATS.forEach(function (slug) {
+      if (slug === 'business') return;
       var name = catName(slug);
-      var desc = get(json, 'categories.' + slug + '.desc');
       if (!name) return;
+      var n = (window.TOOL_CATALOG || []).filter(function (t) { return t.category === slug; }).length;
+      if (!n) return;
 
-      var enOnly = slug === 'business' && lang !== 'en';
-      var href = enOnly ? '../en/business.html' : slug + '.html';
-
-      var card = el('a', { class: 'card cat-card', href: href });
-      var icon = el('span', { class: 'cat-icon', 'aria-hidden': 'true' });
-      icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' +
-        (ICONS[slug] || ICONS.text) + '</svg>';
-      card.appendChild(icon);
+      var card = el('a', { class: 'card cat-card', href: slug + '.html' });
+      card.appendChild(icon(slug, 'cat-icon'));
       card.appendChild(el('h3', {}, name));
-      card.appendChild(el('p', {}, desc));
-      if (enOnly) {
-        card.appendChild(el('span', { class: 'badge' }, get(json, 'category.enOnly')));
-      } else {
-        var n = slug === 'business'
-          ? window.BUSINESS_PAGES.length
-          : window.TOOL_CATALOG.filter(function (t) { return t.category === slug; }).length;
-        var label = n === 1
-          ? get(json, 'category.countOne')
-          : n + ' ' + get(json, 'category.countMany');
-        card.appendChild(el('span', { class: 'badge' }, label));
-      }
-      card.setAttribute('data-search', (name + ' ' + desc + ' ' + slug).toLowerCase());
+      card.appendChild(el('p', {}, get(json, 'categories.' + slug + '.desc') || ''));
+      card.appendChild(el('span', { class: 'badge' }, n + ' ' + (get(json, 'category.countMany') || 'tools')));
       catGrid.appendChild(card);
     });
   }
 
-  /* ---- one card builder, used by both tool grids ---- */
-  function makeCard(slug, title, desc, cat) {
-    var card = el('a', { class: 'card tool-card', href: slug + '.html' });
-    card.appendChild(el('span', { class: 'card-kicker' }, cat));
-    card.appendChild(el('h3', {}, title));
-    card.appendChild(el('p', {}, desc));
-    card.setAttribute('data-search', (slug + ' ' + title + ' ' + desc + ' ' + cat).toLowerCase());
-    return card;
-  }
-
-  var allCards = [];
-  var total = 0; // tools in the grouped list only, not the curated duplicates
-
-  /* ---- popular row: short links under the search box ---- */
+  /* ---- popular chips under the search box ---- */
   if (popularRow) {
     popularRow.appendChild(el('span', { class: 'popular-label' }, 'Popular'));
+    POPULAR.slice(0, 6).forEach(function (slug) {
+      var title = toolTitle(slug);
+      if (!title) return;
+      popularRow.appendChild(el('a', { href: slug + '.html' }, title));
+    });
+  }
+
+  /* ---- eight popular cards ---- */
+  if (popularGrid) {
     POPULAR.forEach(function (slug) {
       var title = toolTitle(slug);
-      if (!title) return;
-      var a = el('a', { href: slug + '.html' }, title);
-      a.setAttribute('data-popular', slug);
-      popularRow.appendChild(a);
+      var cat = window.TOOL_CATS ? window.TOOL_CATS[slug] : null;
+      if (!title || !cat) return;
+      var card = el('a', { class: 'card tool-card', href: slug + '.html' });
+      card.appendChild(icon(cat, 'row-icon'));
+      card.appendChild(el('h3', {}, title));
+      card.appendChild(el('p', {}, toolDesc(slug) || ''));
+      popularGrid.appendChild(card);
     });
   }
 
-  /* ---- most useful tools ---- */
-  if (topGrid) {
-    TOP.forEach(function (slug) {
-      var t = window.TOOL_CATALOG.filter(function (x) { return x.slug === slug; })[0];
-      var title = toolTitle(slug);
-      if (!t || !title) return;
-      var card = makeCard(slug, title, toolDesc(slug), catName(t.category));
-      topGrid.appendChild(card);
-      allCards.push(card);
-    });
-  }
+  /* ---- one compact section per category, six tools each ----
+     A tool appears once on the page: popular entries are skipped here. */
+  if (catSections) {
+    CATS.forEach(function (slug) {
+      if (slug === 'business') return;
+      var name = catName(slug);
+      if (!name) return;
 
-  /* ---- every tool, grouped by category ---- */
-  var groups = [];
-  CATS.forEach(function (slug) {
-    var name = catName(slug);
-    var list = [];
-
-    window.TOOL_CATALOG.forEach(function (t) {
-      if (t.category !== slug) return;
-      var title = toolTitle(t.slug);
-      if (!title) return;
-      list.push([t.slug, title, toolDesc(t.slug)]);
-    });
-
-    if (slug === 'business') {
-      (window.BUSINESS_PAGES || []).forEach(function (p) {
-        list.push([p.slug, p.name, p.desc || get(json, 'categories.business.desc'), true]);
+      var all = (window.TOOL_CATALOG || []).filter(function (t) {
+        return t.category === slug && toolTitle(t.slug);
       });
+      var rest = all.filter(function (t) { return POPULAR.indexOf(t.slug) === -1; });
+      if (!rest.length) return;
+
+      var sec = el('section', { class: 'cat-section', id: 'cat-' + slug });
+      var container = el('div', { class: 'container' });
+      var head = el('header', {});
+      head.appendChild(el('h2', {}, name));
+      var viewAll = el('a', { class: 'view-all', href: slug + '.html' }, 'View all ' + all.length + ' tools');
+      head.appendChild(viewAll);
+      container.appendChild(head);
+
+      var grid = el('div', { class: 'row-grid' });
+      rest.slice(0, 6).forEach(function (t) {
+        var row = el('a', { class: 'tool-row', href: t.slug + '.html' });
+        row.appendChild(icon(slug, 'row-icon'));
+        row.appendChild(el('span', {}, toolTitle(t.slug)));
+        grid.appendChild(row);
+      });
+      container.appendChild(grid);
+      sec.appendChild(container);
+      catSections.appendChild(sec);
+    });
+  }
+
+  /* ---- search: filters the whole catalogue, not only the cards shown ---- */
+  function setHidden(node, hidden) { if (node) node.hidden = hidden; }
+
+  function filter() {
+    var q = (searchInput && searchInput.value ? searchInput.value : '').trim().toLowerCase();
+    var on = q.length > 0;
+
+    setHidden(resultsSec, !on);
+    setHidden(document.getElementById('categories'), on);
+    setHidden(document.getElementById('popular'), on);
+    setHidden(catSections, on);
+    setHidden(document.getElementById('trust-band'), on);
+
+    if (!on) {
+      if (resultsGrid) resultsGrid.textContent = '';
+      return;
     }
 
-    if (!name || !list.length) return;
-
-    var section = el('section', { class: 'tool-group' });
-    section.appendChild(el('h3', {}, name));
-    var grid = el('div', { class: 'grid grid-4' });
-    list.forEach(function (row) {
-      var card = makeCard(row[0], row[1], row[2], name);
-      if (row[3]) card.classList.add('is-en');
-      grid.appendChild(card);
-      allCards.push(card);
-      total++;
-    });
-    section.appendChild(grid);
-    toolGrid.appendChild(section);
-    groups.push(section);
-  });
-
-  if (toolsH2) {
-    toolsH2.textContent = get(json, 'home.toolsH2') + ' (' + total + ')';
-  }
-
-  /* ---- filter: same rules for both grids, headings follow ---- */
-  function filter() {
-    var q = (searchInput.value || '').trim().toLowerCase();
-    var shown = 0;
-
-    allCards.forEach(function (card) {
-      var hit = !q || card.getAttribute('data-search').indexOf(q) !== -1;
-      card.hidden = !hit;
-      if (hit) shown++;
-    });
-
-    groups.forEach(function (section) {
-      var visible = section.querySelector('.tool-card:not([hidden])');
-      section.hidden = q ? !visible : false;
-    });
-
-    if (catGrid) catGrid.parentNode.hidden = !!q;
-    if (catH2) catH2.hidden = !!q;
-    if (toolsH2) toolsH2.hidden = false;
-    if (noResults) noResults.hidden = shown !== 0;
+    var hits = INDEX.filter(function (it) { return it.hay.indexOf(q) !== -1; });
+    if (resultsH2) {
+      resultsH2.textContent = (get(json, 'home.toolsH2') || 'All tools') + ' (' + hits.length + ')';
+    }
+    if (resultsGrid) {
+      resultsGrid.textContent = '';
+      hits.forEach(function (it) {
+        var card = el('a', { class: 'card tool-card', href: it.href });
+        card.appendChild(el('span', { class: 'card-kicker' }, it.cat));
+        card.appendChild(el('h3', {}, it.title));
+        if (it.desc) card.appendChild(el('p', {}, it.desc));
+        resultsGrid.appendChild(card);
+      });
+    }
+    setHidden(noResults, hits.length !== 0);
   }
 
   if (searchInput) {
     searchInput.addEventListener('input', filter);
+    /* Arriving from the header search link should land in the field. */
+    if (location.hash === '#search') searchInput.focus();
     filter();
   }
 };
