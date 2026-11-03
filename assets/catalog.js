@@ -55,6 +55,11 @@ window.TOOL_CATALOG = [
   { slug: 'jwt-decoder', category: 'developer', keywords: 'jwt decoder json web token decode payload header base64 token' },
   { slug: 'csv-json-converter', category: 'developer', keywords: 'csv to json converter json to csv table spreadsheet rows' },
   { slug: 'sort-lines', category: 'text', keywords: 'sort lines alphabetically a to z z to a numeric sort by length reorder' },
+  { slug: 'working-days-calculator', category: 'calculators', keywords: 'working days calculator business days between dates exclude weekends holidays' },
+  { slug: 'fraction-calculator', category: 'converters', keywords: 'fraction calculator add subtract multiply divide simplify mixed number' },
+  { slug: 'ratio-calculator', category: 'converters', keywords: 'ratio calculator simplify scale solve proportion missing value' },
+  { slug: 'stopwatch-timer', category: 'calculators', keywords: 'stopwatch online timer laps start pause reset elapsed' },
+  { slug: 'image-to-base64', category: 'developer', keywords: 'image to base64 data uri encoder convert photo' },
 ];
 
 window.TOOL_CATS = {};

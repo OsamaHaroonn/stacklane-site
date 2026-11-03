@@ -63,6 +63,11 @@ only until Arabic is re-enabled.
 | 50 | `jwt-decoder` | developer | jwt decoder decode token | **built** |
 | 51 | `csv-json-converter` | developer | csv to json converter | **built** |
 | 52 | `sort-lines` | text | sort lines a to z numeric | **built** |
+| 53 | `working-days-calculator` | calculators | working days calculator business days | **built** |
+| 54 | `fraction-calculator` | converters | fraction calculator add subtract | **built** |
+| 55 | `ratio-calculator` | converters | ratio calculator simplify ratio | **built** |
+| 56 | `stopwatch-timer` | calculators | online stopwatch with laps | **built** |
+| 57 | `image-to-base64` | developer | image to base64 converter | **built** |
 
 ## Category directories
 
