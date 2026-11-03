@@ -3539,6 +3539,43 @@
         "copyFailed": "The browser blocked the clipboard. Select the text and copy it by hand.",
         "note": "A toy: the lines come from a list in this page. Nothing is executed, read or sent anywhere."
       }
+    },
+    "compliment-generator": {
+      "title": "Compliment generator",
+      "desc": "Get a kind, specific compliment built from built-in word lists, ask for another at any time and copy the line. Nothing is stored.",
+      "lede": "Ask for a compliment and the tool puts one together from three small lists of kind, specific phrases, with another available on every press.",
+      "how": "Each compliment is assembled from three parts: an opening about you, a verb phrase describing something you do, and a closing that says why it matters. One phrase is drawn from each list with the browser's random source, so the combination is new each time even though every part is a fixed, written phrase. The lists hold seven openings, ten verb phrases and six closings, which gives 7 × 10 × 6 = 420 possible lines. Nothing is inferred about the reader and nothing is personalised: the tool does not ask for a name or read anything from the page. The copy button copies the line currently shown, and a new line replaces it rather than piling up a history.",
+      "example": "With seven openings, ten verb phrases and six closings, the tool can produce 7 × 10 × 6 = 420 different compliments. One draw might give \"What stands out is how you\" plus \"listen properly\" plus \"and that is rarer than people think.\", which reads as one sentence: What stands out is how you listen properly, and that is rarer than people think.",
+      "faq": [
+        {
+          "q": "How are the compliments made?",
+          "a": "One phrase is drawn from each of three written lists: an opening, something you do, and a closing. Every part is a fixed phrase, so nothing is generated word by word."
+        },
+        {
+          "q": "How many different lines are there?",
+          "a": "Seven openings times ten verb phrases times six closings, which is 420 combinations. You may see a shape repeat, but the full sentence usually changes."
+        },
+        {
+          "q": "Are these about me specifically?",
+          "a": "No. The tool knows nothing about you: it does not ask for a name and does not read any other page. Every line is generic and kind by design."
+        },
+        {
+          "q": "Is anything stored or sent?",
+          "a": "No. The line is built in the page and disappears when you reload. There is no storage, no cookie and no network request."
+        },
+        {
+          "q": "Can I use a line in a message?",
+          "a": "Yes, that is what the copy button is for. It copies the exact sentence shown."
+        }
+      ],
+      "ui": {
+        "ready": "Press the button for a compliment.",
+        "another": "Another compliment",
+        "copy": "Copy",
+        "copied": "Compliment copied.",
+        "copyFailed": "The browser blocked the clipboard. Select the text and copy it by hand.",
+        "note": "Built in your browser from written word lists: nothing is stored or sent anywhere."
+      }
     }
   },
   "business": {
