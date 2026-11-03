@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>SQL Formatter – Uppercase Keywords, Line Breaks</title>
+<meta name="description" content="Paste a SQL statement to get it formatted: keywords uppercased, clauses on their own lines, quoted strings untouched. Formatting only.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/sql-formatter.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="SQL Formatter – Uppercase Keywords, Line Breaks">
+<meta property="og:description" content="Paste a SQL statement to get it formatted: keywords uppercased, clauses on their own lines, quoted strings untouched. Formatting only.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/sql-formatter.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="sql-formatter">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.developer.name">Developer</p>
+    <h1 data-i18n="tools.sql-formatter.title">SQL formatter</h1>
+    <p class="lede" data-i18n="tools.sql-formatter.lede">Paste a query and the tool puts each major clause on its own line, uppercases the keywords and leaves quoted strings exactly as they were.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.sql-formatter.how">Quoted text is protected first: single-quoted strings, double-quoted identifiers and backticked names are swapped for placeholders so nothing inside them can be altered. Runs of whitespace then collapse to a single space, and a line break is inserted before each major clause: FROM, WHERE, GROUP BY, ORDER BY, HAVING, LIMIT, OFFSET, UNION, VALUES, SET and the JOIN forms. Finally the known keywords are uppercased, using word boundaries so a column called selected is not turned into SELECTed. The placeholders are restored at the end. Conditions joined by AND or OR stay on the same line to keep the statement readable. The input is capped at 50,000 characters.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.sql-formatter.example">For select id, name from users where active = 1 order by name limit 10; the output is SELECT id, name on the first line, then FROM users, then WHERE active = 1, then ORDER BY name, then LIMIT 10;. The keywords become uppercase and each clause starts a new line, while the column names keep their lower-case spelling.</p>
+  </section>
+
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.sql-formatter.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="developer.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/sql-formatter.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>

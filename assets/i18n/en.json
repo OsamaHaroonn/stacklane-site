@@ -3286,6 +3286,48 @@
         "heightRange": "Height must be between 50 and 250 centimetres.",
         "note": "Calculated in your browser. Arithmetic only, not medical advice: nothing is stored or sent anywhere."
       }
+    },
+    "sql-formatter": {
+      "title": "SQL formatter",
+      "desc": "Paste a SQL statement to get it formatted: keywords uppercased, clauses on their own lines, quoted strings untouched. Formatting only.",
+      "lede": "Paste a query and the tool puts each major clause on its own line, uppercases the keywords and leaves quoted strings exactly as they were.",
+      "how": "Quoted text is protected first: single-quoted strings, double-quoted identifiers and backticked names are swapped for placeholders so nothing inside them can be altered. Runs of whitespace then collapse to a single space, and a line break is inserted before each major clause: FROM, WHERE, GROUP BY, ORDER BY, HAVING, LIMIT, OFFSET, UNION, VALUES, SET and the JOIN forms. Finally the known keywords are uppercased, using word boundaries so a column called selected is not turned into SELECTed. The placeholders are restored at the end. Conditions joined by AND or OR stay on the same line to keep the statement readable. The input is capped at 50,000 characters.",
+      "example": "For select id, name from users where active = 1 order by name limit 10; the output is SELECT id, name on the first line, then FROM users, then WHERE active = 1, then ORDER BY name, then LIMIT 10;. The keywords become uppercase and each clause starts a new line, while the column names keep their lower-case spelling.",
+      "faq": [
+        {
+          "q": "Does it validate the SQL?",
+          "a": "No. It formats text: there is no database connection, no grammar check and no execution. A query with a missing comma comes back formatted and still broken."
+        },
+        {
+          "q": "Will it change text inside my strings?",
+          "a": "No. Single-quoted strings, double-quoted identifiers and backticked names are set aside before any casing or line breaks are applied, then restored unchanged."
+        },
+        {
+          "q": "Why do AND and OR stay on the same line?",
+          "a": "Only major clauses get their own line. Keeping conditions inline avoids turning a short query into a tall column of single words."
+        },
+        {
+          "q": "Which dialect does it follow?",
+          "a": "The keyword list is shared by the common dialects. Anything it does not recognise is left exactly as typed, so dialect-specific syntax survives."
+        },
+        {
+          "q": "Is my query sent anywhere?",
+          "a": "No. The text is formatted in the page and never leaves it. Nothing is stored, logged or uploaded."
+        }
+      ],
+      "ui": {
+        "sql": "SQL to format",
+        "output": "Formatted SQL",
+        "copy": "Copy SQL",
+        "nothingToCopy": "There is nothing to copy yet.",
+        "copied": "SQL copied to the clipboard.",
+        "copyFailed": "The browser blocked the clipboard. Select the text and copy it by hand.",
+        "empty": "Paste a SQL statement to format it.",
+        "tooBig": "That statement is too long for this page. The limit is {max} characters.",
+        "lines": "Lines in the result",
+        "chars": "Characters in the result",
+        "note": "Formatted in your browser and never run against a database: the query is not sent anywhere."
+      }
     }
   },
   "business": {
