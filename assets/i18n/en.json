@@ -2641,6 +2641,52 @@
         "noLaps": "No laps yet: press Lap while the stopwatch is running.",
         "note": "Measured with performance.now() in this tab: no storage, no cookies, nothing sent."
       }
+    },
+    "image-to-base64": {
+      "title": "Image to Base64 encoder",
+      "desc": "Turn an image into a Base64 data URI in your browser. The file is never uploaded, the size limit is stated, and the result comes with a copy button.",
+      "lede": "Choose an image and get a data URI back, with the file name, size and type shown alongside a copy button. The file never leaves this page.",
+      "how": "The file is read with the FileReader API as a data URL, which is the raw bytes of the image encoded in Base64 behind a prefix such as data:image/png;base64,. A progress bar shows the read while it happens, so a larger file does not look like a stalled page. Only files whose type starts with image are accepted, and anything over 5 MB is refused with a message that states the limit. The result is written into a read-only text box you can copy straight into an HTML file or a stylesheet.",
+      "example": "A 1 KB PNG of 1,024 bytes becomes a data URI of about 1,372 characters, because Base64 turns every three bytes into four characters and adds a short prefix. Choosing a text file such as notes.txt does not produce an encoding at all: the tool says the file is not an image and stops before reading it, and a file over 5 MB is refused with the limit in the message.",
+      "faq": [
+        {
+          "q": "Is my image uploaded?",
+          "a": "No. The file is read by the browser itself with FileReader and never sent anywhere. Nothing is stored between visits."
+        },
+        {
+          "q": "What is the size limit?",
+          "a": "5 MB. Larger files are refused with a message stating the limit, so the page never freezes while encoding something huge."
+        },
+        {
+          "q": "Which file types are accepted?",
+          "a": "Anything the browser reports as an image: PNG, JPEG, GIF, WebP, SVG and the rest. Other files are refused before they are read."
+        },
+        {
+          "q": "Why is the data URI longer than the file?",
+          "a": "Base64 encodes three bytes as four characters, so the text grows by about a third plus the short data prefix. That is the format, not an overhead added by the tool."
+        },
+        {
+          "q": "Can I use the result directly?",
+          "a": "Yes. Paste the data URI into a src attribute, a CSS url() or a fetch body. For anything larger than a few hundred kilobytes a real file is usually the better choice."
+        }
+      ],
+      "ui": {
+        "label": "Choose an image, up to 5 MB",
+        "browse": "Browse",
+        "none": "No file chosen",
+        "fileName": "File",
+        "fileSize": "Size",
+        "fileType": "Type",
+        "dataLength": "Data URI length",
+        "output": "Data URI",
+        "empty": "Choose an image to encode.",
+        "notImage": "That file is not an image: choose a PNG, JPEG, GIF, WebP, SVG or another image file.",
+        "tooBig": "That file is larger than the 5 MB limit.",
+        "readFailed": "The file could not be read. Try choosing it again.",
+        "note": "Read in your browser: the file is never uploaded, stored or sent.",
+        "emptyFile": "That file is empty (0 bytes). Choose an image with content.",
+        "badImage": "That file could not be decoded as an image. Choose a valid PNG, JPEG, GIF, WebP or SVG file."
+      }
     }
   },
   "business": {
