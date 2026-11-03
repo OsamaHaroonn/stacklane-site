@@ -2602,6 +2602,45 @@
         "note": "Calculated in your browser: nothing is stored and nothing is sent.",
         "tooBig": "That value is too large to simplify exactly. Use numbers below 9,007,199,254,740,991."
       }
+    },
+    "stopwatch-timer": {
+      "title": "Stopwatch and timer",
+      "desc": "A stopwatch with start, pause, reset and laps, measured with performance.now() in this tab. No storage, no cookies, nothing sent anywhere.",
+      "lede": "Start, pause, reset and record laps. The time is measured with performance.now() in this tab and never written anywhere.",
+      "how": "The display reads the clock with performance.now(), which counts in milliseconds from a fixed point and is not affected by the wall clock changing. While running, the reading is the accumulated time from earlier runs plus the time since the current start, so pausing and resuming never loses or double-counts a millisecond. The display refreshes on a short interval that recomputes the total instead of adding ticks, so a throttled or hidden tab still shows the right time when you come back. A lap stores the reading at the moment you press it.",
+      "example": "Start the stopwatch, wait about a second and press Lap: the first lap shows the elapsed time at that moment. Press Lap again after another two seconds and the second lap reads about three seconds in total, because laps record the total running time, not the gap. Pause and the reading freezes exactly where it is; reset returns everything to 00:00.00 and clears the laps.",
+      "faq": [
+        {
+          "q": "What happens when the tab is in the background?",
+          "a": "The reading is always recomputed from performance.now(), so browser throttling cannot make the stopwatch drift. The value you see after switching back is correct."
+        },
+        {
+          "q": "Are laps kept when I close the page?",
+          "a": "No. Nothing is stored in cookies or storage, so laps and the current time live only in the page while it is open."
+        },
+        {
+          "q": "How precise is the display?",
+          "a": "It shows tenths of a second, while the underlying measurement is in milliseconds. It is a stopwatch for everyday timing, not an instrument."
+        },
+        {
+          "q": "Can I pause and continue?",
+          "a": "Yes. Pause freezes the reading, and starting again continues from that point rather than from zero."
+        },
+        {
+          "q": "Is any data sent anywhere?",
+          "a": "No. The stopwatch makes no requests and stores nothing; it is pure timing code in this page."
+        }
+      ],
+      "ui": {
+        "start": "Start",
+        "pause": "Pause",
+        "reset": "Reset",
+        "lap": "Lap",
+        "elapsed": "Elapsed",
+        "laps": "Laps",
+        "noLaps": "No laps yet: press Lap while the stopwatch is running.",
+        "note": "Measured with performance.now() in this tab: no storage, no cookies, nothing sent."
+      }
     }
   },
   "business": {
