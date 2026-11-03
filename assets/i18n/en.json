@@ -3237,6 +3237,55 @@
         "approx": "Matched in your browser from the text above: these results are approximate.",
         "note": "Parsed in your browser: the string is never stored or sent anywhere."
       }
+    },
+    "bmi-calculator": {
+      "title": "BMI calculator",
+      "desc": "Work out BMI from weight in kilograms and height in centimetres, with the WHO bands and the healthy weight range for that height.",
+      "lede": "Enter weight in kilograms and height in centimetres to get the body mass index, the band it falls in and the weight range usually called healthy for that height.",
+      "how": "Body mass index is weight in kilograms divided by height in metres squared, so the height is converted from centimetres by dividing by one hundred before it is squared. A 70 kg adult at 1.75 m gives 70 ÷ 3.0625 = 22.86. The band comes from the adult cut-offs used by the World Health Organization: below 18.5 underweight, 18.5 to under 25 healthy, 25 to under 30 overweight, and 30 or above obese. The healthy weight range is the same formula rearranged, multiplying the squared height by 18.5 and by 24.9. The result is rounded to one decimal place. This is arithmetic, not a diagnosis.",
+      "example": "For 70 kg and 175 cm the height in metres is 1.75, and 1.75 squared is 3.0625. Dividing 70 by 3.0625 gives 22.86, which displays as 22.9 and falls in the healthy band. The healthy weight range for that height runs from 18.5 × 3.0625 = 56.7 kg to 24.9 × 3.0625 = 76.3 kg.",
+      "faq": [
+        {
+          "q": "What formula does it use?",
+          "a": "Weight in kilograms divided by height in metres squared. Height is entered in centimetres and divided by 100 first, so 175 cm becomes 1.75 m before squaring."
+        },
+        {
+          "q": "Where do the bands come from?",
+          "a": "The adult cut-offs published by the World Health Organization: under 18.5, 18.5 to 24.9, 25 to 29.9 and 30 or above. The link is on the page so you can read the source rather than take this summary on trust."
+        },
+        {
+          "q": "Is BMI a diagnosis?",
+          "a": "No. It is a single ratio that takes no account of muscle, bone, age, sex, pregnancy or body shape, and it is not medical advice. Talk to a clinician about what a number means for you."
+        },
+        {
+          "q": "Why might my doctor's figure differ?",
+          "a": "Rounding, the units used, and whether the measurement was taken at the same time of day. This tool rounds to one decimal place from the values you type."
+        },
+        {
+          "q": "Does it work for children?",
+          "a": "No. Children and teenagers are assessed against age-and-sex percentile charts rather than the adult cut-offs, so this calculator would give a misleading band for them."
+        }
+      ],
+      "ui": {
+        "weight": "Weight (kg)",
+        "height": "Height (cm)",
+        "bmi": "BMI",
+        "band": "Band",
+        "range": "Healthy weight for this height",
+        "formula": "Working",
+        "under": "underweight",
+        "healthy": "healthy range",
+        "over": "overweight",
+        "obese": "obese",
+        "empty": "Enter a weight and a height to see the BMI.",
+        "badWeight": "Weight must be a number in kilograms, for example 70 or 70.5.",
+        "weightZero": "Weight must be more than zero.",
+        "weightRange": "That weight is outside the range this calculator handles, which is up to 500 kg.",
+        "badHeight": "Height must be a number in centimetres, for example 175.",
+        "heightZero": "Height must be more than zero.",
+        "heightRange": "Height must be between 50 and 250 centimetres.",
+        "note": "Calculated in your browser. Arithmetic only, not medical advice: nothing is stored or sent anywhere."
+      }
     }
   },
   "business": {
