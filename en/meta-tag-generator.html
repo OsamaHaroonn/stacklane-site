@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Meta Tag Generator – Title, OG and Twitter</title>
+<meta name="description" content="Build a title, description, canonical, Open Graph and Twitter card block as plain text, with length counters as you type. Nothing is uploaded.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/meta-tag-generator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="Meta Tag Generator – Title, OG and Twitter">
+<meta property="og:description" content="Build a title, description, canonical, Open Graph and Twitter card block as plain text, with length counters as you type. Nothing is uploaded.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/meta-tag-generator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="meta-tag-generator">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.developer.name">Developer</p>
+    <h1 data-i18n="tools.meta-tag-generator.title">Meta tag generator</h1>
+    <p class="lede" data-i18n="tools.meta-tag-generator.lede">Fill in the page details and copy a ready block of head tags, with a live character count for the title and the description.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.meta-tag-generator.how">The tool assembles the tags in a fixed order: the title element, the description, the canonical link, the Open Graph tags, then the Twitter card tags. Open Graph and Twitter tags repeat the title, description and image under different attribute names because each service reads a different set. Attribute values are escaped, so an ampersand becomes &amp;amp; and a double quote becomes &amp;quot;, which keeps the block valid HTML. The two counters show the title and description lengths against 60 and 160 characters, the usual display lengths in search results; going over them is allowed but may be truncated. Optional fields are skipped when left empty, so a page with no image simply gets no image tags. Everything is produced in the browser as text.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.meta-tag-generator.example">With the title &quot;Blue mug — Stacklane&quot; (20 characters), the description &quot;A 350 ml ceramic mug.&quot; (21 characters), the URL https://YOURDOMAIN.com/mug.html, the image https://YOURDOMAIN.com/mug.png and the site name Stacklane, the tool prints thirteen lines. The first three are &lt;title&gt;Blue mug — Stacklane&lt;/title&gt;, then &lt;meta name=&quot;description&quot; content=&quot;A 350 ml ceramic mug.&quot;&gt;, then &lt;link rel=&quot;canonical&quot; href=&quot;https://YOURDOMAIN.com/mug.html&quot;&gt;. The block ends with the Twitter card and image tags for the same page.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.meta-tag-generator.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="developer.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/meta-tag-generator.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>

@@ -2785,6 +2785,59 @@
         "topWord": "Most frequent",
         "note": "Counted in your browser: the text is never sent anywhere."
       }
+    },
+    "meta-tag-generator": {
+      "title": "Meta tag generator",
+      "desc": "Build a title, description, canonical, Open Graph and Twitter card block as plain text, with length counters as you type. Nothing is uploaded.",
+      "lede": "Fill in the page details and copy a ready block of head tags, with a live character count for the title and the description.",
+      "how": "The tool assembles the tags in a fixed order: the title element, the description, the canonical link, the Open Graph tags, then the Twitter card tags. Open Graph and Twitter tags repeat the title, description and image under different attribute names because each service reads a different set. Attribute values are escaped, so an ampersand becomes &amp; and a double quote becomes &quot;, which keeps the block valid HTML. The two counters show the title and description lengths against 60 and 160 characters, the usual display lengths in search results; going over them is allowed but may be truncated. Optional fields are skipped when left empty, so a page with no image simply gets no image tags. Everything is produced in the browser as text.",
+      "example": "With the title \"Blue mug — Stacklane\" (20 characters), the description \"A 350 ml ceramic mug.\" (21 characters), the URL https://YOURDOMAIN.com/mug.html, the image https://YOURDOMAIN.com/mug.png and the site name Stacklane, the tool prints thirteen lines. The first three are <title>Blue mug — Stacklane</title>, then <meta name=\"description\" content=\"A 350 ml ceramic mug.\">, then <link rel=\"canonical\" href=\"https://YOURDOMAIN.com/mug.html\">. The block ends with the Twitter card and image tags for the same page.",
+      "faq": [
+        {
+          "q": "Where do these tags go?",
+          "a": "Inside the head element of the page, before the closing </head>. Paste the whole block as it is; the order inside head does not matter to browsers."
+        },
+        {
+          "q": "Will this improve my ranking?",
+          "a": "No claim is made about rankings. A title and description are what a search engine may show for the page, and whether it uses them is its decision, not something this tool can guarantee."
+        },
+        {
+          "q": "Why is twitter:card always summary_large_image?",
+          "a": "Because it tells the service to use a wide image. If your image is small or square, change that value to \"summary\" by hand after pasting."
+        },
+        {
+          "q": "Are the 60 and 160 counters hard limits?",
+          "a": "They are the lengths usually shown in results before truncation, not limits on what HTML accepts. Text over them is valid; it may simply be cut off in a preview."
+        },
+        {
+          "q": "Does the generator escape special characters?",
+          "a": "Yes. Ampersands, angle brackets and double quotes in your text are written as entities, so a title containing an ampersand still produces valid HTML."
+        }
+      ],
+      "ui": {
+        "title": "Page title",
+        "titlePh": "Blue mug — Stacklane",
+        "description": "Description",
+        "descPh": "A short sentence describing the page.",
+        "url": "Canonical URL",
+        "image": "Social image URL",
+        "siteName": "Site name",
+        "sitePh": "Stacklane",
+        "type": "Open Graph type",
+        "typeWebsite": "website",
+        "typeArticle": "article",
+        "output": "Generated tags",
+        "copy": "Copy tags",
+        "nothingToCopy": "There is nothing to copy yet.",
+        "copied": "Tags copied to the clipboard.",
+        "copyFailed": "The browser blocked the clipboard. Select the text and copy it by hand.",
+        "tooLong": "That text is too long for this tool. The limit is {max} characters.",
+        "badUrl": "The URL must start with http:// or https:// and include a domain, for example https://YOURDOMAIN.com/page.html.",
+        "badImage": "The image URL must start with http:// or https:// and include a domain.",
+        "empty": "Enter a page title to generate the tags.",
+        "counts": "Title {t} / 60 characters · description {d} / 160 characters",
+        "note": "Built in your browser: the details you type are never sent anywhere."
+      }
     }
   },
   "business": {
