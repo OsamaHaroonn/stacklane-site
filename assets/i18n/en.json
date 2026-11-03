@@ -3576,6 +3576,44 @@
         "copyFailed": "The browser blocked the clipboard. Select the text and copy it by hand.",
         "note": "Built in your browser from written word lists: nothing is stored or sent anywhere."
       }
+    },
+    "shakespearean-insult-generator": {
+      "title": "Shakespearean insult generator",
+      "desc": "Build a mild, original stage-villain insult from archaic word lists. Playful only, and not a quotation from Shakespeare.",
+      "lede": "Press once for a mild, old-fashioned insult assembled from archaic words in one of four sentence shapes, ready to copy for a play or a joke.",
+      "how": "The line is built from four shapes: thou art a single two-word insult, a longer version with two of them, a version with a verb, and one that compares your wit to something. Words come from three lists of mild archaic terms: twenty adjectives such as addle-pated and pottle-deep, twenty-six nouns such as flap-dragon and whey-face, and eight verbs such as prate and cavil. The shape and one word from each slot it uses are drawn separately, so the combinations run into hundreds of thousands. The phrasings are assembled by this page and are not quotations: no line here is taken from a play, and nothing is stored or sent anywhere.",
+      "example": "The simplest shape takes one adjective and one noun, and 20 × 26 = 520 such pairs exist, for instance \"Thou art a knotty-pated flap-dragon.\" Across the four shapes the count is 520 + 270,400 + 4,160 + 270,400 = 545,480 possible lines, all built from the same three mild lists.",
+      "faq": [
+        {
+          "q": "Are these real Shakespeare quotes?",
+          "a": "No. They are original combinations of archaic words in old-fashioned sentence shapes, made by this page. Nothing here is quoted from a play, and the page says so under the result."
+        },
+        {
+          "q": "Are the insults offensive?",
+          "a": "They are deliberately mild and theatrical, using words like flap-dragon and addle-pated. There are no slurs, no profanity and no references to real people."
+        },
+        {
+          "q": "How many combinations are there?",
+          "a": "545,480 across the four shapes, from 20 adjectives, 26 nouns and 8 verbs. The simplest shape alone gives 520 two-word insults."
+        },
+        {
+          "q": "Can I use one in a script?",
+          "a": "Yes. Copy takes the exact line shown, and because the words are original combinations there is no attribution to worry about."
+        },
+        {
+          "q": "Does it remember what it made?",
+          "a": "No. Only the current line is kept, and it is gone after a reload. Nothing is stored, logged or sent."
+        }
+      ],
+      "ui": {
+        "ready": "Press the button for an insult.",
+        "another": "Another insult",
+        "copy": "Copy",
+        "copied": "Insult copied.",
+        "copyFailed": "The browser blocked the clipboard. Select the text and copy it by hand.",
+        "original": "These lines are original combinations of archaic words, not quotations from Shakespeare.",
+        "note": "Built in your browser from written word lists: nothing is stored or sent anywhere."
+      }
     }
   },
   "business": {
