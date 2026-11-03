@@ -2553,6 +2553,55 @@
         "divZero": "You cannot divide by zero.",
         "note": "Worked out in your browser: nothing is stored and nothing is sent."
       }
+    },
+    "ratio-calculator": {
+      "title": "Ratio calculator",
+      "desc": "Simplify a ratio, scale it by a factor or solve a missing value in a proportion, with every step shown. Runs in your browser, nothing is stored.",
+      "lede": "Three jobs in one tool: reduce a ratio to its simplest form, scale it by a factor, or solve for the missing value in a proportion.",
+      "how": "Simplifying divides both sides by their greatest common divisor until they share no common factor, so 42:58 becomes 21:29. Scaling multiplies both sides by the factor and leaves the ratio in the same relationship, so 3:5 times 4 is 12:20. Solving a proportion uses the cross product: from a:b as c:x the missing value is x = b times c divided by a. Zero is refused in any position because a ratio with a zero side carries no relationship, and a zero scale factor would collapse the ratio to 0:0.",
+      "example": "The ratio 42:58 simplifies to 21:29 because both sides divide by 2. Scaling 3:5 by a factor of 4 gives 12:20, which still simplifies back to 3:5. Solving 3:5 = 18:x uses x = 5 times 18 divided by 3, so the missing value is 30 and the finished proportion reads 3:5 = 18:30.",
+      "faq": [
+        {
+          "q": "Which form of the ratio is shown?",
+          "a": "The simplest form using whole numbers, plus the total number of parts, which is useful when splitting something between sides."
+        },
+        {
+          "q": "Why is zero refused?",
+          "a": "A side of zero means the two quantities are not in proportion, and a scale factor of zero would produce 0:0, which tells you nothing."
+        },
+        {
+          "q": "How is the missing value calculated?",
+          "a": "By the cross product: in a:b as c:x, x equals b times c divided by a. The finished proportion is printed next to the answer so you can check it."
+        },
+        {
+          "q": "Can I use decimals?",
+          "a": "Yes. Decimals and negatives are accepted for the values and the scale factor; only zero is rejected."
+        },
+        {
+          "q": "Is my calculation stored?",
+          "a": "No. The numbers stay in the page while you use the tool, and nothing is saved or transmitted."
+        }
+      ],
+      "ui": {
+        "mode": "What would you like to do",
+        "simplify": "Simplify a ratio",
+        "scale": "Scale a ratio",
+        "solve": "Solve a proportion",
+        "a": "Left value",
+        "b": "Right value",
+        "factor": "Scale factor",
+        "c": "Third value, the c in a:b = c:x",
+        "simplest": "Simplest form",
+        "totalParts": "Total parts",
+        "scaled": "Scaled ratio",
+        "missing": "Missing value x",
+        "proportion": "Finished proportion",
+        "empty": "Fill in both values of the ratio.",
+        "zero": "A ratio cannot contain zero, and the scale factor cannot be zero either.",
+        "notNumber": "That is not a number. Enter digits, a decimal point or a minus sign.",
+        "note": "Calculated in your browser: nothing is stored and nothing is sent.",
+        "tooBig": "That value is too large to simplify exactly. Use numbers below 9,007,199,254,740,991."
+      }
     }
   },
   "business": {
