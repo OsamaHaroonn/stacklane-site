@@ -1885,7 +1885,7 @@
       "desc": "Test a JavaScript regular expression against your own text and see every match, capture group and position, with flags and clear errors for invalid patterns.",
       "lede": "Enter a pattern, choose flags and paste the text to search. The tool lists each match with its position and capture groups, and explains any pattern that will not compile.",
       "how": "The pattern is compiled with the RegExp constructor, which is the same engine your browser runs at run time, not a lookalike written for this page. Flags are passed as written: g finds every match, i ignores case, m makes ^ and $ match line ends, s lets a dot match newlines and u enables Unicode mode. Each match is reported with its start and end index plus its text. Capture groups are numbered in the order their opening bracket appears, and named groups are shown under their name. The tool stops after 1,000 matches so a broad pattern cannot hang the tab, and it refuses patterns that nest a quantifier inside a quantified group, such as (a+)+, because those can backtrack exponentially.",
-      "example": "With the pattern \\b(\\w+)@(\\w+)\\.com\\b and the g flag, the text \"ann@example.com and bo@test.com\" gives two matches. Match 1 is ann@example.com at indices 0 to 15, with group 1 ann and group 2 example. Match 2 is bo@test.com at indices 20 to 31, with groups bo and test.",
+      "example": "With the pattern \\b(\\w+)-(\\d+)\\b and the g flag, the text \"build-42 and patch-7\" gives two matches. Match 1 is build-42 at indices 0 to 8, with group 1 build and group 2 42. Match 2 is patch-7 at indices 13 to 20, with groups patch and 7.",
       "faq": [
         {
           "q": "Which regular-expression flavour is this?",
