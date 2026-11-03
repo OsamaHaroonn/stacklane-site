@@ -69,6 +69,10 @@ window.TOOL_CATALOG = [
   { slug: 'color-palette-generator', category: 'developer', keywords: 'color palette generator tints shades hex rgb swatches' },
   { slug: 'password-strength-checker', category: 'developer', keywords: 'password strength checker entropy bits estimate secure' },
   { slug: 'favicon-generator', category: 'generators', keywords: 'favicon generator png sizes icon apple touch android pwa' },
+  { slug: 'html-to-markdown', category: 'developer', keywords: 'html to markdown converter md headings links lists code table' },
+  { slug: 'user-agent-parser', category: 'developer', keywords: 'user agent parser ua string browser engine operating system device' },
+  { slug: 'bmi-calculator', category: 'calculators', keywords: 'bmi calculator body mass index weight height metric' },
+  { slug: 'sql-formatter', category: 'developer', keywords: 'sql formatter beautify keywords uppercase query pretty' },
 ];
 
 window.TOOL_CATS = {};

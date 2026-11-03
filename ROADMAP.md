@@ -78,6 +78,10 @@ only until Arabic is re-enabled.
 | 64 | `color-palette-generator` | developer | color palette generator | **built** |
 | 65 | `password-strength-checker` | developer | password strength checker | **built** |
 | 66 | `favicon-generator` | generators | favicon generator | **built** |
+| 67 | `html-to-markdown` | developer | html to markdown converter | **built** |
+| 68 | `user-agent-parser` | developer | user agent parser | **built** |
+| 69 | `bmi-calculator` | calculators | bmi calculator | **built** |
+| 70 | `sql-formatter` | developer | sql formatter | **built** |
 ## Category directories
 
 `/en/` and `/ar/` each carry a directory page per category:
