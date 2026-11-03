@@ -86,6 +86,9 @@ only until Arabic is re-enabled.
 | 72 | `dice-roller` | fun | roll dice online | **built** |
 | 73 | `decision-wheel` | fun | decision wheel picker | **built** |
 | 74 | `bubble-wrap-popper` | fun | bubble wrap popper | **built** |
+| 75 | `fake-hacker-typer` | fun | fake hacker typer | **built** |
+| 76 | `compliment-generator` | fun | compliment generator | **built** |
+| 77 | `shakespearean-insult-generator` | fun | shakespearean insult generator | **built** |
 ## Category directories
 
 `/en/` and `/ar/` each carry a directory page per category:

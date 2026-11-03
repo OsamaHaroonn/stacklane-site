@@ -77,6 +77,9 @@ window.TOOL_CATALOG = [
   { slug: 'dice-roller', category: 'fun', keywords: 'dice roller d20 d6 roll dice total random rpg' },
   { slug: 'decision-wheel', category: 'fun', keywords: 'decision wheel random picker choose option spinner' },
   { slug: 'bubble-wrap-popper', category: 'fun', keywords: 'bubble wrap popper pop bubbles stress relief click' },
+  { slug: 'fake-hacker-typer', category: 'fun', keywords: 'hacker typer fake terminal typing toy keyboard movie' },
+  { slug: 'compliment-generator', category: 'fun', keywords: 'compliment generator nice random kind message say something' },
+  { slug: 'shakespearean-insult-generator', category: 'fun', keywords: 'shakespearean insult generator elizabethan words theatre playful' },
 ];
 
 window.TOOL_CATS = {};
