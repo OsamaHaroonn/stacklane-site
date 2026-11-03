@@ -2896,6 +2896,53 @@
         "explainSitemapText": "Points crawlers at your sitemap XML. It is a full URL and sits outside any user-agent group.",
         "note": "Built in your browser: the paths and addresses you type are never sent anywhere."
       }
+    },
+    "xml-sitemap-generator": {
+      "title": "XML sitemap generator",
+      "desc": "Paste page URLs to get a valid sitemap.xml: escaped characters, duplicates removed, and your chosen change frequency and priority.",
+      "lede": "Paste one URL per line and the tool writes a complete sitemap XML file, escaping special characters and dropping duplicates on the way.",
+      "how": "Each non-empty line is checked as a URL that starts with http or https and contains a domain. Lines that fail are reported with the text that caused the problem, and duplicates are removed with a count. The surviving URLs are written as url entries inside a urlset element, each with a loc element, the change frequency you picked and the priority you picked. Five characters are escaped as XML entities: ampersands, angle brackets, double quotes and apostrophes, because an unescaped ampersand makes the file invalid. The result is capped at 5,000 URLs. You can copy it or download it as sitemap.xml. The file is assembled in the browser and nothing is uploaded.",
+      "example": "Pasting https://YOURDOMAIN.com/ and https://YOURDOMAIN.com/list.html?tag=a&sort=2 with monthly frequency and priority 0.7 produces a file that starts with the XML declaration and the urlset element, then two url blocks. In the second block the loc line reads https://YOURDOMAIN.com/list.html?tag=a&amp;sort=2, because the ampersand must be escaped for the XML to be valid. The file closes with the urlset end tag.",
+      "faq": [
+        {
+          "q": "What is a sitemap actually for?",
+          "a": "It is a list of URLs you want crawlers to know about. It helps them find pages, but it does not guarantee that a page is crawled, indexed or ranked."
+        },
+        {
+          "q": "Why is the ampersand replaced with &amp;?",
+          "a": "XML reserves the ampersand, so a raw one makes the document invalid and a parser will reject it. Writing &amp; is the correct way to include an ampersand in a URL inside XML."
+        },
+        {
+          "q": "How many URLs can I add?",
+          "a": "This page accepts 5,000. The sitemap format itself allows up to 50,000 URLs and 50 MB per file, beyond which you split into several files and an index."
+        },
+        {
+          "q": "Do changefreq and priority matter?",
+          "a": "They are hints. Major crawlers have said they ignore both, so the file is still useful without them; keep the values honest rather than optimistic."
+        },
+        {
+          "q": "Where should the file go?",
+          "a": "At the site root as sitemap.xml, and reference it in robots.txt with a Sitemap line so crawlers can find it."
+        }
+      ],
+      "ui": {
+        "urls": "Page URLs, one per line",
+        "changefreq": "Change frequency",
+        "priority": "Priority",
+        "output": "sitemap.xml",
+        "copy": "Copy XML",
+        "download": "Download sitemap.xml",
+        "nothingToCopy": "There is nothing to copy yet.",
+        "copied": "Copied to the clipboard.",
+        "copyFailed": "The browser blocked the clipboard. Select the text and copy it by hand.",
+        "downloaded": "sitemap.xml downloaded.",
+        "empty": "Paste at least one page URL to build a sitemap.",
+        "tooMany": "That is more than {max} URLs. Split the list and create a second sitemap.",
+        "tooLong": "One line is too long. Keep each URL under 2,000 characters.",
+        "badUrl": "That is not a full URL: {value}. Each line needs http:// or https:// and a domain.",
+        "dupes": "Built with duplicates removed: {n} repeated line(s) were skipped.",
+        "note": "Built in your browser: the URLs you paste are never sent anywhere."
+      }
     }
   },
   "business": {
