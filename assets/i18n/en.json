@@ -2741,6 +2741,50 @@
         "formula": "Working",
         "note": "Calculated in your browser from the numbers you typed: nothing is stored and nothing is sent."
       }
+    },
+    "keyword-density-analyzer": {
+      "title": "Keyword density analyzer",
+      "desc": "Paste text to see how often each word appears, with counts and percentages from a stated formula. Up to 50,000 characters, nothing uploaded.",
+      "lede": "Paste an article or a page of copy to see which words repeat and what share of the text each one takes, with the formula printed beside the result.",
+      "how": "The text is split into words: runs of letters and digits, keeping apostrophes and hyphens that sit inside a word, so \"don't\" counts once. Every word is lowercased, then counted. Density for a word is its count divided by the total number of words, multiplied by one hundred, and that number is what the percentage column shows. Ties are listed alphabetically. Ticking the option to ignore common words removes a built-in list of function words such as \"the\" and \"and\" from both the count and the total, so the percentages then describe only the remaining words. The input is capped at 50,000 characters and 20,000 words, and the twelve most frequent words are shown.",
+      "example": "For \"The cat sat on the mat. The cat slept.\" the tool reads nine words: the, cat, sat, on, the, mat, the, cat and slept. \"the\" appears three times, so its density is 3 ÷ 9 × 100 = 33.33%. \"cat\" appears twice, so 2 ÷ 9 × 100 = 22.22%. The four remaining words appear once each, which is 11.11% each, and there are six different words in total.",
+      "faq": [
+        {
+          "q": "What counts as a word here?",
+          "a": "A run of letters and digits. Apostrophes and hyphens are kept when they sit between characters, so \"don't\" and \"e-mail\" each count once. Punctuation on its own is ignored."
+        },
+        {
+          "q": "Why do the percentages change when I ignore common words?",
+          "a": "The option removes the stop words from both the count and the total, so the percentages are recalculated over the remaining words. They will not add up to the same totals as the full text."
+        },
+        {
+          "q": "Does keyword density affect search rankings?",
+          "a": "I cannot tell you a ranking effect from this tool, and it makes no such claim. It reports how often words repeat in the text you paste, which is all the numbers measure."
+        },
+        {
+          "q": "Is my text uploaded anywhere?",
+          "a": "No. The counting runs in the page with JavaScript. Nothing is sent, stored or written to a cookie."
+        },
+        {
+          "q": "How many words are listed?",
+          "a": "The twelve most frequent, highest first, with ties in alphabetical order. The totals above the list cover the whole input, not just those twelve."
+        }
+      ],
+      "ui": {
+        "text": "Text to analyse",
+        "placeholder": "Paste an article, a product description or a page of copy…",
+        "ignoreCommon": "Ignore common words such as the, and, of",
+        "empty": "Paste some text to see the word counts.",
+        "tooBig": "That text is too long for this page. The limit is {max} characters.",
+        "noWords": "No words found. Paste text that contains letters or digits.",
+        "tooMany": "That is more than {max} words. Shorten the text and try again.",
+        "allCommon": "Every word in that text is on the common-word list, so there is nothing left to count. Untick the option to see them.",
+        "totalWords": "Words in total",
+        "unique": "Different words",
+        "countedInline": "Words counted",
+        "topWord": "Most frequent",
+        "note": "Counted in your browser: the text is never sent anywhere."
+      }
     }
   },
   "business": {
