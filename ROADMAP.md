@@ -1,4 +1,4 @@
-# Stacklane — 60-tool roadmap
+# Stacklane — 73-tool roadmap
 
 Language-neutral slugs. Every visible string lives in
 `assets/i18n/en.json` / `assets/i18n/ar.json` under `tools.<slug>`, so a tool
@@ -69,6 +69,11 @@ only until Arabic is re-enabled.
 | 56 | `stopwatch-timer` | calculators | online stopwatch with laps | **built** |
 | 57 | `image-to-base64` | developer | image to base64 converter | **built** |
 
+| 58 | `salary-to-hourly` | calculators | salary to hourly calculator | **built** |
+| 59 | `keyword-density-analyzer` | text | keyword density checker | **built** |
+| 60 | `meta-tag-generator` | developer | meta tag generator | **built** |
+| 61 | `robots-txt-generator` | developer | robots txt generator | **built** |
+| 62 | `xml-sitemap-generator` | developer | xml sitemap generator | **built** |
 ## Category directories
 
 `/en/` and `/ar/` each carry a directory page per category:

@@ -60,6 +60,11 @@ window.TOOL_CATALOG = [
   { slug: 'ratio-calculator', category: 'converters', keywords: 'ratio calculator simplify scale solve proportion missing value' },
   { slug: 'stopwatch-timer', category: 'calculators', keywords: 'stopwatch online timer laps start pause reset elapsed' },
   { slug: 'image-to-base64', category: 'developer', keywords: 'image to base64 data uri encoder convert photo' },
+  { slug: 'salary-to-hourly', category: 'calculators', keywords: 'salary hourly wage pay rate annual income per hour convert' },
+  { slug: 'keyword-density-analyzer', category: 'text', keywords: 'keyword density word frequency counter repetition percentage text' },
+  { slug: 'meta-tag-generator', category: 'developer', keywords: 'meta tags title description open graph twitter card canonical html head seo' },
+  { slug: 'robots-txt-generator', category: 'developer', keywords: 'robots txt generator crawler allow disallow sitemap crawl rules' },
+  { slug: 'xml-sitemap-generator', category: 'developer', keywords: 'xml sitemap generator urls crawl seo loc urlset changefreq priority' },
 ];
 
 window.TOOL_CATS = {};
