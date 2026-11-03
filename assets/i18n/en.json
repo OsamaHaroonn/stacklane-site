@@ -3144,6 +3144,48 @@
         "download": "Download",
         "downloaded": "favicon-{size}.png downloaded."
       }
+    },
+    "html-to-markdown": {
+      "title": "HTML to Markdown converter",
+      "desc": "Paste HTML to get Markdown: headings, bold, italics, links, lists, quotes, code and tables, written as text only. Nothing is executed.",
+      "lede": "Paste an HTML fragment and the tool writes the Markdown equivalent as text you can copy, with tags turned into headings, links, lists and code blocks.",
+      "how": "The HTML is parsed with the browser's DOMParser into a separate, inert document, so scripts in the input never run and images never load. Elements are then walked in order and each one is translated: headings become hash marks, strong and bold become double asterisks, italics become single asterisks, links become brackets with the address in parentheses, images become an exclamation mark and alt text, lists become dashes or numbers, quotes get a leading angle bracket and pre blocks become fenced code. Attributes other than a link or image address are dropped because Markdown has nowhere to put them. Whitespace is collapsed, then blank lines are normalised so the output reads as Markdown rather than a wall of text.",
+      "example": "For <h2>Notes</h2><p>Hello <strong>world</strong> and <a href=\"https://YOURDOMAIN.com/x\">link</a>.</p><ul><li>One</li><li>Two</li></ul> the output is four blocks: ## Notes, then Hello **world** and [link](https://YOURDOMAIN.com/x)., then a bullet for One and a bullet for Two. The heading level comes from the h2 tag, the bold text is wrapped in double asterisks, and the link keeps both its label and its address.",
+      "faq": [
+        {
+          "q": "Is the HTML I paste executed?",
+          "a": "No. It is parsed into an inert document that has no browsing context, so scripts do not run and external images are never fetched. The result is written into a textarea as plain text."
+        },
+        {
+          "q": "Which elements are converted?",
+          "a": "Headings h1 to h6, paragraphs, strong and b, em and i, inline code, pre blocks, links, images, line breaks, horizontal rules, ordered and unordered lists, blockquotes and simple tables. Anything else keeps its text content."
+        },
+        {
+          "q": "What happens to class names and styles?",
+          "a": "They are dropped. Markdown has no equivalent for classes, ids or inline CSS, so only the structure survives the conversion."
+        },
+        {
+          "q": "Why is my table flattened?",
+          "a": "Cells become pipe-separated columns with a separator row after the first row. Merged cells, nested tables and captions cannot be represented in basic Markdown, so their text is kept and the structure is lost."
+        },
+        {
+          "q": "Are the original line breaks kept?",
+          "a": "Not from the source formatting: runs of whitespace collapse into one space. Line breaks in the output come from the structure, meaning separate paragraphs, list items and br tags."
+        }
+      ],
+      "ui": {
+        "html": "HTML to convert",
+        "output": "Markdown",
+        "copy": "Copy Markdown",
+        "nothingToCopy": "There is nothing to copy yet.",
+        "copied": "Markdown copied to the clipboard.",
+        "copyFailed": "The browser blocked the clipboard. Select the text and copy it by hand.",
+        "empty": "Paste some HTML to convert.",
+        "tooBig": "That HTML is too long for this page. The limit is {max} characters.",
+        "noText": "That HTML contains no text to convert.",
+        "badHtml": "That could not be parsed as HTML. Check for an unclosed tag or a broken attribute.",
+        "note": "Parsed in your browser: the HTML you paste is never sent anywhere and its scripts never run."
+      }
     }
   },
   "business": {

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>HTML to Markdown Converter – Plain Text</title>
+<meta name="description" content="Paste HTML to get Markdown: headings, bold, italics, links, lists, quotes, code and tables, written as text only. Nothing is executed.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/html-to-markdown.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="HTML to Markdown Converter – Plain Text">
+<meta property="og:description" content="Paste HTML to get Markdown: headings, bold, italics, links, lists, quotes, code and tables, written as text only. Nothing is executed.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/html-to-markdown.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="html-to-markdown">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.developer.name">Developer</p>
+    <h1 data-i18n="tools.html-to-markdown.title">HTML to Markdown converter</h1>
+    <p class="lede" data-i18n="tools.html-to-markdown.lede">Paste an HTML fragment and the tool writes the Markdown equivalent as text you can copy, with tags turned into headings, links, lists and code blocks.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.html-to-markdown.how">The HTML is parsed with the browser's DOMParser into a separate, inert document, so scripts in the input never run and images never load. Elements are then walked in order and each one is translated: headings become hash marks, strong and bold become double asterisks, italics become single asterisks, links become brackets with the address in parentheses, images become an exclamation mark and alt text, lists become dashes or numbers, quotes get a leading angle bracket and pre blocks become fenced code. Attributes other than a link or image address are dropped because Markdown has nowhere to put them. Whitespace is collapsed, then blank lines are normalised so the output reads as Markdown rather than a wall of text.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.html-to-markdown.example">For &lt;h2&gt;Notes&lt;/h2&gt;&lt;p&gt;Hello &lt;strong&gt;world&lt;/strong&gt; and &lt;a href=&quot;https://YOURDOMAIN.com/x&quot;&gt;link&lt;/a&gt;.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;One&lt;/li&gt;&lt;li&gt;Two&lt;/li&gt;&lt;/ul&gt; the output is four blocks: ## Notes, then Hello **world** and [link](https://YOURDOMAIN.com/x)., then a bullet for One and a bullet for Two. The heading level comes from the h2 tag, the bold text is wrapped in double asterisks, and the link keeps both its label and its address.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.html-to-markdown.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="developer.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/html-to-markdown.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>
