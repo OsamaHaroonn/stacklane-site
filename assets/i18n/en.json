@@ -3371,6 +3371,47 @@
         "cleared": "Counts reset to zero.",
         "note": "Flipped in your browser with the Web Crypto API: nothing is stored or sent anywhere."
       }
+    },
+    "dice-roller": {
+      "title": "Dice roller",
+      "desc": "Roll 1 to 10 dice with 4, 6, 8, 10, 12 or 20 sides, see every die and the total. Uniform results from browser crypto, no storage.",
+      "lede": "Pick a die from d4 to d20, choose how many to roll, and see each face plus the total, drawn with the browser's own random source.",
+      "how": "Every die is a separate random draw from one to the number of sides, so a roll of several dice is several independent results rather than one number split up. The draw uses 32 random bits per die, discards values above the largest exact multiple of the side count, and then takes the remainder, which keeps every face equally likely. Faces are added one to the offset so a d6 gives 1 to 6, never 0. The values are shown in the order they were drawn, and the total is their plain sum with no modifier applied. Between one and ten dice can be rolled at once; the limit keeps the row of results readable on a phone.",
+      "example": "Rolling two six-sided dice and getting 5 and 3 gives each 5, 3, a total of 5 + 3 = 8, and the summary line 2 × d6. Each face of a d6 has a 1 in 6 chance, so the expected value of one die is 3.5 and the expected total of two dice is 7.",
+      "faq": [
+        {
+          "q": "Are all faces equally likely?",
+          "a": "Yes. Each die uses rejection sampling, which throws away the small range at the top that would otherwise make low faces slightly more likely."
+        },
+        {
+          "q": "Are the dice independent of each other?",
+          "a": "Yes, every die is a separate draw, so one high roll has no effect on the next."
+        },
+        {
+          "q": "Why is the maximum ten dice?",
+          "a": "It keeps every result visible in one row on a narrow screen. The randomness does not depend on the count, so the same method would work for more."
+        },
+        {
+          "q": "Does it add modifiers like +2?",
+          "a": "No. The total is the plain sum of the faces, so add any modifier yourself after rolling."
+        },
+        {
+          "q": "Is anything stored?",
+          "a": "No. Nothing is written to storage, no cookie is set, and the results disappear when you reload."
+        }
+      ],
+      "ui": {
+        "sides": "Die",
+        "count": "How many dice (1 to 10)",
+        "roll": "Roll",
+        "empty": "Enter how many dice to roll.",
+        "badCount": "The number of dice must be a whole number, for example 2.",
+        "countRange": "Roll between 1 and {max} dice.",
+        "each": "Each die",
+        "total": "Total",
+        "dice": "Rolling",
+        "note": "Rolled in your browser with the Web Crypto API: nothing is stored or sent anywhere."
+      }
     }
   },
   "business": {
