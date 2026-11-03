@@ -2838,6 +2838,64 @@
         "counts": "Title {t} / 60 characters · description {d} / 160 characters",
         "note": "Built in your browser: the details you type are never sent anywhere."
       }
+    },
+    "robots-txt-generator": {
+      "title": "Robots.txt generator",
+      "desc": "Write a robots.txt in plain text: allow everything, block everything or list your own paths, then add a sitemap line. Free, in your browser.",
+      "lede": "Choose what crawlers may fetch, list any paths of your own, and copy a finished robots.txt with each directive explained.",
+      "how": "The file is built from directives, one per line. User-agent names the crawler the following rules apply to, and an asterisk means all of them. Disallow lists paths that must not be fetched, and an empty Disallow means nothing is blocked, which is how a file allows everything. A line starting with a bang in the paths box becomes an Allow line instead, so you can block a folder and reopen one file inside it. Blank lines separate groups and are ignored. The optional Sitemap line takes a full URL and points crawlers at the sitemap; it is not part of any group. Paths must start with a slash. The output is plain text you can copy or download as robots.txt.",
+      "example": "With \"allow everything\" selected and the sitemap https://YOURDOMAIN.com/sitemap.xml, the tool writes three lines: User-agent: * then Disallow: with nothing after it, then a blank line and Sitemap: https://YOURDOMAIN.com/sitemap.xml. The empty Disallow is deliberate: it means no path is blocked, which is the usual way to say everything is allowed.",
+      "faq": [
+        {
+          "q": "Does robots.txt remove a page from search results?",
+          "a": "Not reliably. It asks crawlers not to fetch a URL, but a blocked page can still appear in results if other sites link to it. To keep a page out of results, let it be crawled and send a noindex robots meta tag instead."
+        },
+        {
+          "q": "Where does robots.txt have to live?",
+          "a": "At the root of the domain, so the address is https://YOURDOMAIN.com/robots.txt. A copy in a subfolder is not read for that domain."
+        },
+        {
+          "q": "What does an empty Disallow line mean?",
+          "a": "Nothing is disallowed, so every path may be fetched. That is the standard way to allow a whole site while still naming the user agent."
+        },
+        {
+          "q": "Can I block a folder but allow one file inside it?",
+          "a": "Yes, in custom mode. Add a line for the folder and prefix the file's line with an exclamation mark to make it an Allow rule; most crawlers then use the longest matching rule."
+        },
+        {
+          "q": "Do all crawlers follow these rules?",
+          "a": "Most well-known search crawlers do. Any crawler is free to ignore the file, so it is a request rather than a lock."
+        }
+      ],
+      "ui": {
+        "mode": "What should crawlers do?",
+        "modeAllow": "Allow everything",
+        "modeBlock": "Block everything",
+        "modeCustom": "My own rules",
+        "agent": "User-agent",
+        "paths": "Paths, one per line",
+        "sitemap": "Sitemap URL (optional)",
+        "output": "robots.txt",
+        "copy": "Copy",
+        "download": "Download robots.txt",
+        "nothingToCopy": "There is nothing to copy yet.",
+        "copied": "Copied to the clipboard.",
+        "copyFailed": "The browser blocked the clipboard. Select the text and copy it by hand.",
+        "downloaded": "robots.txt downloaded.",
+        "badSitemap": "The sitemap address must start with http:// or https:// and include a domain.",
+        "tooManyPaths": "That is more than {max} path lines. Shorten the list and try again.",
+        "tooLongPath": "One path is too long. Keep each path under 200 characters.",
+        "badPath": "A path must start with a slash, for example /private/. This one does not: {value}",
+        "explainAgent": "User-agent",
+        "explainAgentText": "Names the crawler the next rules apply to. An asterisk means every crawler.",
+        "explainDisallow": "Disallow",
+        "explainDisallowText": "Paths that must not be fetched. Empty means nothing is blocked; a single slash blocks the whole site.",
+        "explainAllow": "Allow",
+        "explainAllowText": "Reopens a path inside a blocked folder. Most crawlers use the longest matching rule.",
+        "explainSitemap": "Sitemap",
+        "explainSitemapText": "Points crawlers at your sitemap XML. It is a full URL and sits outside any user-agent group.",
+        "note": "Built in your browser: the paths and addresses you type are never sent anywhere."
+      }
     }
   },
   "business": {
