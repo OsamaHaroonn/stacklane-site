@@ -74,6 +74,10 @@ only until Arabic is re-enabled.
 | 60 | `meta-tag-generator` | developer | meta tag generator | **built** |
 | 61 | `robots-txt-generator` | developer | robots txt generator | **built** |
 | 62 | `xml-sitemap-generator` | developer | xml sitemap generator | **built** |
+| 63 | `css-box-shadow-generator` | developer | css box shadow generator | **built** |
+| 64 | `color-palette-generator` | developer | color palette generator | **built** |
+| 65 | `password-strength-checker` | developer | password strength checker | **built** |
+| 66 | `favicon-generator` | generators | favicon generator | **built** |
 ## Category directories
 
 `/en/` and `/ar/` each carry a directory page per category:

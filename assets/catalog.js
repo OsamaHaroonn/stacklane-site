@@ -65,6 +65,10 @@ window.TOOL_CATALOG = [
   { slug: 'meta-tag-generator', category: 'developer', keywords: 'meta tags title description open graph twitter card canonical html head seo' },
   { slug: 'robots-txt-generator', category: 'developer', keywords: 'robots txt generator crawler allow disallow sitemap crawl rules' },
   { slug: 'xml-sitemap-generator', category: 'developer', keywords: 'xml sitemap generator urls crawl seo loc urlset changefreq priority' },
+  { slug: 'css-box-shadow-generator', category: 'developer', keywords: 'box shadow css generator shadow blur spread rgba inset' },
+  { slug: 'color-palette-generator', category: 'developer', keywords: 'color palette generator tints shades hex rgb swatches' },
+  { slug: 'password-strength-checker', category: 'developer', keywords: 'password strength checker entropy bits estimate secure' },
+  { slug: 'favicon-generator', category: 'generators', keywords: 'favicon generator png sizes icon apple touch android pwa' },
 ];
 
 window.TOOL_CATS = {};
