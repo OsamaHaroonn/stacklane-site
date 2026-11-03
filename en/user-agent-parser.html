@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>User Agent Parser – Browser, Engine, OS</title>
+<meta name="description" content="Paste a user agent string or read your own to see the browser, version, engine, operating system and device type. Results are approximate.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/user-agent-parser.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="User Agent Parser – Browser, Engine, OS">
+<meta property="og:description" content="Paste a user agent string or read your own to see the browser, version, engine, operating system and device type. Results are approximate.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/user-agent-parser.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="user-agent-parser">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.developer.name">Developer</p>
+    <h1 data-i18n="tools.user-agent-parser.title">User agent parser</h1>
+    <p class="lede" data-i18n="tools.user-agent-parser.lede">Paste a user agent string, or read the one your browser sends, to see the browser, version, rendering engine, operating system and device type.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.user-agent-parser.how">The string is matched against a fixed set of patterns in order, because browsers copy each other's tokens: Edge keeps Chrome and Safari tokens, and Chrome keeps Safari's. The order is Edge first, then Opera, Firefox, Chrome and Safari, so the most specific marker wins. The engine follows from the browser family, with Firefox using Gecko, the Chromium family using Blink and Safari using WebKit. The operating system comes from Windows NT version numbers, Android and iOS markers, or macOS and Linux tokens. The device is a tablet when an iPad or tablet marker is present, a mobile when a mobile or Android marker is, and a desktop otherwise. A string containing a bot, crawler, spider or headless marker is flagged.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.user-agent-parser.example">For Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 the tool reports Chrome, version 120.0, engine Blink, operating system Windows 10 or 11, device desktop, and automated no. The Safari token in the same string is ignored because the Chrome marker is checked first.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.user-agent-parser.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="developer.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/user-agent-parser.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>

@@ -3186,6 +3186,57 @@
         "badHtml": "That could not be parsed as HTML. Check for an unclosed tag or a broken attribute.",
         "note": "Parsed in your browser: the HTML you paste is never sent anywhere and its scripts never run."
       }
+    },
+    "user-agent-parser": {
+      "title": "User agent parser",
+      "desc": "Paste a user agent string or read your own to see the browser, version, engine, operating system and device type. Results are approximate.",
+      "lede": "Paste a user agent string, or read the one your browser sends, to see the browser, version, rendering engine, operating system and device type.",
+      "how": "The string is matched against a fixed set of patterns in order, because browsers copy each other's tokens: Edge keeps Chrome and Safari tokens, and Chrome keeps Safari's. The order is Edge first, then Opera, Firefox, Chrome and Safari, so the most specific marker wins. The engine follows from the browser family, with Firefox using Gecko, the Chromium family using Blink and Safari using WebKit. The operating system comes from Windows NT version numbers, Android and iOS markers, or macOS and Linux tokens. The device is a tablet when an iPad or tablet marker is present, a mobile when a mobile or Android marker is, and a desktop otherwise. A string containing a bot, crawler, spider or headless marker is flagged.",
+      "example": "For Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 the tool reports Chrome, version 120.0, engine Blink, operating system Windows 10 or 11, device desktop, and automated no. The Safari token in the same string is ignored because the Chrome marker is checked first.",
+      "faq": [
+        {
+          "q": "Why is the result only approximate?",
+          "a": "A user agent is a self-reported string, and browsers include each other's tokens for compatibility. The parser therefore matches known patterns in a deliberate order rather than identifying anything for certain."
+        },
+        {
+          "q": "Why does Edge show Chrome in its string?",
+          "a": "Edge is built on Chromium and keeps the Chrome token so older sites behave. The Edg marker is what identifies it, which is why that pattern is checked before Chrome."
+        },
+        {
+          "q": "What does the automated flag mean?",
+          "a": "The string contains a bot, crawler, spider, preview or headless marker. Many automated clients no longer announce themselves, so a no does not prove a person is using the browser."
+        },
+        {
+          "q": "Is the string stored anywhere?",
+          "a": "No. It is read in the page, matched against patterns and discarded. Nothing is written to storage, a cookie or the network."
+        },
+        {
+          "q": "Can I check a phone's string on my computer?",
+          "a": "Yes. Paste any string into the box and the result is derived only from that text, not from the device you are using."
+        }
+      ],
+      "ui": {
+        "agent": "User agent string",
+        "useMine": "Use this browser's string",
+        "filled": "Filled in with this browser's user agent.",
+        "browser": "Browser",
+        "version": "Version",
+        "engine": "Engine",
+        "os": "Operating system",
+        "device": "Device type",
+        "automated": "Automated client",
+        "yes": "yes",
+        "no": "no",
+        "length": "String length",
+        "desktop": "desktop",
+        "mobile": "mobile",
+        "tablet": "tablet",
+        "unknown": "not recognised",
+        "empty": "Paste a user agent string, or use the button to read this browser's.",
+        "tooLong": "That string is longer than {max} characters, which is not a real user agent.",
+        "approx": "Matched in your browser from the text above: these results are approximate.",
+        "note": "Parsed in your browser: the string is never stored or sent anywhere."
+      }
     }
   },
   "business": {
