@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Working Days Calculator – Business Days Between Dates</title>
+<meta name="description" content="Count working days between two dates with your own holiday list and your own weekend days. Runs in your browser and stores nothing.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/working-days-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="Working Days Calculator – Business Days Between Dates">
+<meta property="og:description" content="Count working days between two dates with your own holiday list and your own weekend days. Runs in your browser and stores nothing.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/working-days-calculator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="working-days-calculator">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.calculators.name">Calculators</p>
+    <h1 data-i18n="tools.working-days-calculator.title">Working days calculator</h1>
+    <p class="lede" data-i18n="tools.working-days-calculator.lede">Pick two dates, tick the days that make up your weekend and list your holidays. The tool counts the working days, the weekend days and the holidays in between.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.working-days-calculator.how">The tool reads both dates as plain calendar dates, then walks every day from the start up to and including the end. Each day is checked in order: if its weekday is ticked as a weekend day it is counted as weekend, if its date appears in your holiday list it is counted as a holiday, and otherwise it counts as a working day. The three counts always add up to the calendar days in the range, so the arithmetic is visible. Weekend days default to Saturday and Sunday but any of the seven weekdays can be ticked. Holidays are one yyyy-mm-dd date per line, and an empty list is fine.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.working-days-calculator.example">From Monday 2 March 2026 to Friday 13 March 2026, with Saturday and Sunday as the weekend and no holidays, the tool counts 10 working days and 2 weekend days across 12 calendar days: the first week contributes Monday to Friday, the weekend takes two days, and the second week contributes Monday to Friday again. Adding Tuesday 10 March 2026 to the holiday list drops the working total to 9 while the calendar total stays at 12.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.working-days-calculator.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="calculators.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/working-days-calculator.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>

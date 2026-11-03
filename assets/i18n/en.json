@@ -2454,6 +2454,56 @@
         "note": "Sorted here in your browser: nothing is stored and nothing is sent.",
         "chars": "Characters"
       }
+    },
+    "working-days-calculator": {
+      "title": "Working days calculator",
+      "desc": "Count working days between two dates with your own holiday list and your own weekend days. Runs in your browser and stores nothing.",
+      "lede": "Pick two dates, tick the days that make up your weekend and list your holidays. The tool counts the working days, the weekend days and the holidays in between.",
+      "how": "The tool reads both dates as plain calendar dates, then walks every day from the start up to and including the end. Each day is checked in order: if its weekday is ticked as a weekend day it is counted as weekend, if its date appears in your holiday list it is counted as a holiday, and otherwise it counts as a working day. The three counts always add up to the calendar days in the range, so the arithmetic is visible. Weekend days default to Saturday and Sunday but any of the seven weekdays can be ticked. Holidays are one yyyy-mm-dd date per line, and an empty list is fine.",
+      "example": "From Monday 2 March 2026 to Friday 13 March 2026, with Saturday and Sunday as the weekend and no holidays, the tool counts 10 working days and 2 weekend days across 12 calendar days: the first week contributes Monday to Friday, the weekend takes two days, and the second week contributes Monday to Friday again. Adding Tuesday 10 March 2026 to the holiday list drops the working total to 9 while the calendar total stays at 12.",
+      "faq": [
+        {
+          "q": "Are the dates local or UTC?",
+          "a": "They are the calendar dates you typed, compared by year, month and day, so no time zone can push a day across the boundary."
+        },
+        {
+          "q": "Can I choose which days count as the weekend?",
+          "a": "Yes. All seven weekdays are tickable, so a Saturday-Sunday weekend, a Friday-Sunday weekend or a six-day week all work."
+        },
+        {
+          "q": "How do I add holidays?",
+          "a": "Paste one date per line as yyyy-mm-dd, for example 2026-03-10. A line that is not a valid date is reported and left out of the count."
+        },
+        {
+          "q": "What if the end date is before the start date?",
+          "a": "The tool says so and counts nothing, instead of returning a negative or backwards number."
+        },
+        {
+          "q": "Is my holiday list stored?",
+          "a": "No. The dates live in the page while you use it. Nothing is written to storage and nothing is sent over the network."
+        }
+      ],
+      "ui": {
+        "start": "Start date",
+        "end": "End date",
+        "holidays": "Holidays, one per line",
+        "weekend": "Days that count as the weekend",
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun",
+        "workingDays": "Working days",
+        "weekendDays": "Weekend days",
+        "holidayDays": "Holidays in range",
+        "calendarDays": "Calendar days",
+        "empty": "Choose a start date and an end date to count.",
+        "badDates": "{n} holiday line(s) are not valid yyyy-mm-dd dates and were left out: {list}",
+        "endBefore": "The end date is before the start date, so there is nothing to count.",
+        "note": "Counted in your browser from the dates you typed: nothing is stored and nothing is sent."
+      }
     }
   },
   "business": {
