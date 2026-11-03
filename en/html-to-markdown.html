@@ -27,6 +27,8 @@
 
 <main id="main" class="wrap">
   <nav id="crumbs" class="crumbs"></nav>
+  <div class="tool-layout">
+  <div class="tool-main">
 
   <header class="tool-head">
     <p class="card-kicker" data-i18n="categories.developer.name">Developer</p>
@@ -38,6 +40,7 @@
   <div class="tool-panel">
     <div id="tool-ui" class="tool-ui"></div>
   </div>
+  <div class="ad-slot" data-slot="A" hidden></div>
 
   <section class="tool-section">
     <h2 data-i18n="tool.how">How it works</h2>
@@ -46,7 +49,7 @@
 
   <section class="tool-section">
     <h2 data-i18n="tool.example">Worked example</h2>
-    <p data-i18n="tools.html-to-markdown.example">For &lt;h2&gt;Notes&lt;/h2&gt;&lt;p&gt;Hello &lt;strong&gt;world&lt;/strong&gt; and &lt;a href=&quot;https://YOURDOMAIN.com/x&quot;&gt;link&lt;/a&gt;.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;One&lt;/li&gt;&lt;li&gt;Two&lt;/li&gt;&lt;/ul&gt; the output is four blocks: ## Notes, then Hello **world** and [link](https://YOURDOMAIN.com/x)., then a bullet for One and a bullet for Two. The heading level comes from the h2 tag, the bold text is wrapped in double asterisks, and the link keeps both its label and its address.</p>
+    <p class="worked" data-i18n="tools.html-to-markdown.example">For &lt;h2&gt;Notes&lt;/h2&gt;&lt;p&gt;Hello &lt;strong&gt;world&lt;/strong&gt; and &lt;a href=&quot;https://YOURDOMAIN.com/x&quot;&gt;link&lt;/a&gt;.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;One&lt;/li&gt;&lt;li&gt;Two&lt;/li&gt;&lt;/ul&gt; the output is four blocks: ## Notes, then Hello **world** and [link](https://YOURDOMAIN.com/x)., then a bullet for One and a bullet for Two. The heading level comes from the h2 tag, the bold text is wrapped in double asterisks, and the link keeps both its label and its address.</p>
   </section>
 
   <section class="tool-section">
@@ -54,10 +57,18 @@
     <dl class="faq-list" data-faq="tools.html-to-markdown.faq"></dl>
   </section>
 
+  <div class="ad-slot" data-slot="B" hidden></div>
+
+  </div><!-- /.tool-main -->
+
+  <aside class="tool-side">
   <section class="tool-section" id="related-sec">
     <h2 data-i18n="tool.related">Related tools</h2>
-    <div id="related" class="grid grid-4"></div>
+    <div id="related" class="grid"></div>
   </section>
+  <div class="ad-slot" data-slot="C" hidden></div>
+  </aside>
+  </div><!-- /.tool-layout -->
 
   <p><a id="back-cat" href="developer.html"></a></p>
   <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>

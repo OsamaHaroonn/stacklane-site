@@ -27,6 +27,8 @@
 
 <main id="main" class="wrap">
   <nav id="crumbs" class="crumbs"></nav>
+  <div class="tool-layout">
+  <div class="tool-main">
 
   <header class="tool-head">
     <p class="card-kicker" data-i18n="categories.calculators.name">Calculators</p>
@@ -38,6 +40,7 @@
   <div class="tool-panel">
     <div id="tool-ui" class="tool-ui"></div>
   </div>
+  <div class="ad-slot" data-slot="A" hidden></div>
 
   <section class="tool-section">
     <h2 data-i18n="tool.how">How it works</h2>
@@ -46,7 +49,7 @@
 
   <section class="tool-section">
     <h2 data-i18n="tool.example">Worked example</h2>
-    <p data-i18n="tools.stopwatch-timer.example">Start the stopwatch, wait about a second and press Lap: the first lap shows the elapsed time at that moment. Press Lap again after another two seconds and the second lap reads about three seconds in total, because laps record the total running time, not the gap. Pause and the reading freezes exactly where it is; reset returns everything to 00:00.00 and clears the laps.</p>
+    <p class="worked" data-i18n="tools.stopwatch-timer.example">Start the stopwatch, wait about a second and press Lap: the first lap shows the elapsed time at that moment. Press Lap again after another two seconds and the second lap reads about three seconds in total, because laps record the total running time, not the gap. Pause and the reading freezes exactly where it is; reset returns everything to 00:00.00 and clears the laps.</p>
   </section>
 
   <section class="tool-section">
@@ -54,10 +57,18 @@
     <dl class="faq-list" data-faq="tools.stopwatch-timer.faq"></dl>
   </section>
 
+  <div class="ad-slot" data-slot="B" hidden></div>
+
+  </div><!-- /.tool-main -->
+
+  <aside class="tool-side">
   <section class="tool-section" id="related-sec">
     <h2 data-i18n="tool.related">Related tools</h2>
-    <div id="related" class="grid grid-4"></div>
+    <div id="related" class="grid"></div>
   </section>
+  <div class="ad-slot" data-slot="C" hidden></div>
+  </aside>
+  </div><!-- /.tool-layout -->
 
   <p><a id="back-cat" href="calculators.html"></a></p>
   <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
