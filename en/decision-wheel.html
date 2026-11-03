@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Decision Wheel – Pick One Option at Random</title>
+<meta name="description" content="Type your options, one per line, and spin to pick one at random. The result is shown as text and marked in the list. Up to 20 options.">
+<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/decision-wheel.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="Decision Wheel – Pick One Option at Random">
+<meta property="og:description" content="Type your options, one per line, and spin to pick one at random. The result is shown as text and marked in the list. Up to 20 options.">
+<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/decision-wheel.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-tool="decision-wheel">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs"></nav>
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.fun.name">Fun</p>
+    <h1 data-i18n="tools.decision-wheel.title">Decision wheel</h1>
+    <p class="lede" data-i18n="tools.decision-wheel.lede">List the options you are choosing between, spin, and get one of them back as plain text with the chosen row marked in the list.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.decision-wheel.how">The text box is split on line breaks, each line is trimmed, and empty lines are dropped, so the options are exactly the lines you typed. A spin draws one random integer from zero up to the number of options minus one, using 32 random bits with rejection sampling so no option is favoured. Every option therefore has the same chance, one divided by the number of options. The chosen option is written into a live region as text and its row in the list is highlighted and marked as current, so a screen reader announces the result without a visual animation. Entries are capped at twenty options of sixty characters each, and the result is never treated as HTML.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p data-i18n="tools.decision-wheel.example">With the three options Walk, Bus and Train, each has a 1 ÷ 3 chance, which is 33.33%. One spin returns exactly one of the three, for example Bus, and that row is the only one marked as current; the next spin is a fresh draw and is not affected by the last result.</p>
+  </section>
+
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <dl class="faq-list" data-faq="tools.decision-wheel.faq"></dl>
+  </section>
+
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid grid-4"></div>
+  </section>
+
+  <p><a id="back-cat" href="fun.html"></a></p>
+  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/decision-wheel.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>
