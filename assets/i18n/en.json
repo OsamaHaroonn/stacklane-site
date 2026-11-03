@@ -85,6 +85,10 @@
       "name": "Developer",
       "desc": "Format, validate and encode data you are working with."
     },
+    "fun": {
+      "name": "Fun",
+      "desc": "Small browser toys: coins, dice, a decision wheel, bubble wrap and word mixers. Nothing is saved."
+    },
     "business": {
       "name": "Business",
       "desc": "Pricing, invoicing, late-payment and leakage calculators for small businesses. English only for now."
@@ -3327,6 +3331,45 @@
         "lines": "Lines in the result",
         "chars": "Characters in the result",
         "note": "Formatted in your browser and never run against a database: the query is not sent anywhere."
+      }
+    },
+    "coin-flipper": {
+      "title": "Coin flipper",
+      "desc": "Flip a virtual coin with browser crypto randomness, see heads or tails, and keep a running count for this visit. No storage, no bias.",
+      "lede": "Flip a coin as many times as you like and watch the heads and tails counts build up, with the share of each side shown as it goes.",
+      "how": "Each flip asks the browser for 32 random bits and reduces that number to one of two outcomes. A plain remainder would favour one side slightly, because 2 does not divide the range of a 32-bit number, so values above the largest exact multiple of two are thrown away and drawn again. Every accepted value is therefore mapped to heads or tails with exactly equal chance, and every flip is independent of the ones before it. The counters live in this page only: they start at zero, change as you flip, and go back to zero when you press reset or reload. The percentages are each count divided by the total flips so far.",
+      "example": "If the first four flips came out heads, tails, heads, heads, the counter would read heads 3, which is 3 ÷ 4 × 100 = 75.0%, tails 1, which is 25.0%, and a total of 4. Each flip is independent, so that 75% is just what happened in those four flips, not a prediction for the next one.",
+      "faq": [
+        {
+          "q": "Is it really 50/50?",
+          "a": "Each flip uses rejection sampling on 32 random bits, so heads and tails are mapped from equal-sized ranges. No side benefits from rounding, which is what a simple modulo would cause."
+        },
+        {
+          "q": "Does it remember my previous flips?",
+          "a": "Only for this visit, in the page's memory. Reloading or pressing reset clears the counts, and nothing is written to storage or sent anywhere."
+        },
+        {
+          "q": "Are the flips independent?",
+          "a": "Yes. No flip looks at the ones before it, so a run of heads does not change the chance of the next result."
+        },
+        {
+          "q": "Is this a physics simulation?",
+          "a": "No. It does not model a real coin's spin or weighting; it draws a random outcome with equal probability, which is the property you want from a coin toss."
+        },
+        {
+          "q": "What does reset do?",
+          "a": "Sets both counters back to zero and clears the last result, so the next flip starts a fresh run."
+        }
+      ],
+      "ui": {
+        "ready": "Press Flip to start.",
+        "flip": "Flip coin",
+        "reset": "Reset counts",
+        "heads": "Heads",
+        "tails": "Tails",
+        "total": "Flips this visit",
+        "cleared": "Counts reset to zero.",
+        "note": "Flipped in your browser with the Web Crypto API: nothing is stored or sent anywhere."
       }
     }
   },
