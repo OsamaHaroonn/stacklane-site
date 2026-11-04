@@ -795,6 +795,9 @@ textarea { resize: vertical; min-height: 120px; }
   padding: var(--sp-2) var(--sp-4);
   border-radius: 0 0 var(--r-sm) 0;
   font-weight: 600;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 .skip-link:focus { inset-inline-start: 0; }
 
@@ -1210,3 +1213,442 @@ main#main.no-pad { padding-block: 0; }
 
 /* Nothing on the page is set below 14px. */
 .badge, .card-kicker, .popular-label { font-size: .875rem; }
+/* ============================================================
+   Home polish — hero, cards, section rhythm and motion.
+   Visual only: no tool markup is involved.
+   ============================================================ */
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  text-align: center;
+  padding-block: var(--sp-7);
+}
+@media (min-width: 768px) { .hero { padding-block: var(--sp-8); } }
+
+.hero-shapes { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.hero-shapes::before,
+.hero-shapes::after {
+  content: "";
+  position: absolute;
+  width: 46vw;
+  height: 46vw;
+  max-width: 560px;
+  max-height: 560px;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: .55;
+  will-change: transform;
+}
+.hero-shapes::before {
+  top: -18%;
+  left: -8%;
+  background: radial-gradient(circle at 30% 30%, #dbe6ff, #eef3ff 60%, transparent 72%);
+  animation: drift-a 28s ease-in-out infinite alternate;
+}
+.hero-shapes::after {
+  top: -24%;
+  right: -10%;
+  background: radial-gradient(circle at 60% 40%, #e2ecff, #f1f5ff 60%, transparent 74%);
+  animation: drift-b 34s ease-in-out infinite alternate;
+}
+.hero .container { position: relative; z-index: 1; }
+
+.hero-icons { position: absolute; inset: 0; z-index: 0; pointer-events: none; display: none; }
+@media (min-width: 900px) {
+  .hero-icons { display: block; }
+  .hero-icons svg {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    color: var(--blue-600);
+    opacity: .12;
+    stroke-width: 1.4;
+  }
+  .hero-icons svg:nth-child(1) { top: 16%; left: 7%; }
+  .hero-icons svg:nth-child(2) { top: 30%; right: 9%; width: 38px; height: 38px; }
+  .hero-icons svg:nth-child(3) { bottom: 18%; left: 12%; width: 36px; height: 36px; }
+  .hero-icons svg:nth-child(4) { bottom: 26%; right: 6%; width: 40px; height: 40px; }
+}
+
+.hero h1 { font-size: clamp(2.25rem, 4.8vw, 2.75rem); max-width: 20ch; }
+.hero .lede { font-size: 1.125rem; }
+
+/* Enough room for the magnifier; the focus ring grows smoothly. */
+.search-wrap .search-box input {
+  padding-inline-start: 52px;
+  padding-inline-end: var(--sp-4);
+  min-height: 56px;
+  font-size: 1.0625rem;
+  border-color: var(--line-2);
+  box-shadow: var(--shadow-1);
+  transition: box-shadow .16s ease, border-color .16s ease;
+}
+.search-wrap .search-box::before { inset-inline-start: 18px; width: 18px; height: 18px; }
+.search-wrap .search-box:focus-within input {
+  border-color: var(--blue-600);
+  box-shadow: 0 0 0 4px rgba(29, 78, 216, .12);
+}
+.search-wrap .search-box::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: var(--r-pill);
+  border: 2px solid var(--blue-600);
+  opacity: 0;
+  transform: scale(.985);
+  transition: opacity .16s ease, transform .16s ease;
+  pointer-events: none;
+}
+.search-wrap .search-box:focus-within::after { opacity: .35; transform: none; }
+
+/* Hero entrance: five elements, 60ms apart, under 600ms in total. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+.hero .eyebrow,
+.hero h1,
+.hero .lede,
+.hero .search-wrap,
+.hero .popular { animation: rise .26s ease-out both; }
+.hero .eyebrow { animation-delay: 0ms; }
+.hero h1 { animation-delay: 60ms; }
+.hero .lede { animation-delay: 120ms; }
+.hero .search-wrap { animation-delay: 180ms; }
+.hero .popular { animation-delay: 240ms; }
+
+@keyframes drift-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(28px, 18px, 0) scale(1.06); }
+}
+@keyframes drift-b {
+  from { transform: translate3d(0, 0, 0) scale(1.04); }
+  to { transform: translate3d(-24px, 22px, 0) scale(1); }
+}
+
+/* Trust strip sits directly under the hero. */
+.trust-band { padding-block: var(--sp-5); border-bottom: 1px solid var(--line); background: var(--surface); }
+.trust-band .trust { margin: 0; }
+
+/* The popular chips are appended to #popular-row after first paint.
+   Reserving the row keeps the trust band from jumping when they land. */
+.hero .popular { min-height: 44px; }
+
+/* ---------- Header ---------- */
+.head-nav > a { white-space: nowrap; }
+.head-search input { padding-inline-start: 36px; }
+.head-search input::placeholder { opacity: .85; }
+.head-results { animation: fade-in .15s ease-out both; }
+.menu[open] .menu-panel { animation: fade-in .15s ease-out both; }
+@keyframes fade-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Buttons ---------- */
+.btn:active, button:active { transform: scale(.98); }
+
+/* ---------- Category cards: eight muted tints ---------- */
+.cat-card {
+  position: relative;
+  overflow: hidden;
+  --tint: #eef3ff;
+  --tint-ink: #1b3fa0;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.cat-card::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 3px;
+  background: var(--tint-ink);
+  opacity: .55;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .18s ease, opacity .18s ease;
+}
+.cat-card:hover::before,
+.cat-card:focus-visible::before { transform: scaleX(1); }
+.cat-card[data-cat="pdf"] { --tint: #eef1fb; --tint-ink: #33417a; }
+.cat-card[data-cat="images"] { --tint: #eef6f1; --tint-ink: #2c5c45; }
+.cat-card[data-cat="text"] { --tint: #f2f1fa; --tint-ink: #443c72; }
+.cat-card[data-cat="generators"] { --tint: #f7f2ea; --tint-ink: #6b4a22; }
+.cat-card[data-cat="calculators"] { --tint: #eef4f8; --tint-ink: #24546e; }
+.cat-card[data-cat="converters"] { --tint: #f0f5f3; --tint-ink: #2e5a52; }
+.cat-card[data-cat="developer"] { --tint: #edf2fb; --tint-ink: #1d4ed8; }
+.cat-card[data-cat="fun"] { --tint: #f8eff3; --tint-ink: #7a3350; }
+
+/* Icon and name share the first row; the blurb then gets the full
+   card width, so a short one-line summary is never squeezed by the
+   icon column and never needs an ellipsis. */
+.cat-card {
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: var(--sp-2) var(--sp-3);
+  align-items: center;
+}
+.cat-card p { grid-column: 1 / -1; font-size: .875rem; line-height: 1.45; }
+.cat-card .badge { grid-column: 1 / -1; justify-self: start; }
+
+.cat-card .cat-icon {
+  grid-row: 1;
+  grid-column: 1;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-md);
+  background: var(--tint);
+  color: var(--tint-ink);
+  transition: transform .18s ease;
+}
+.cat-card h3 { grid-row: 1; grid-column: 2; }
+.cat-card:hover .cat-icon, .cat-card:focus-visible .cat-icon { transform: scale(1.05); }
+.cat-card .cat-icon svg { width: 24px; height: 24px; }
+.cat-card h3 { color: var(--ink); }
+.cat-card p { -webkit-line-clamp: 1; }
+.cat-card .badge {
+  background: var(--tint);
+  color: var(--tint-ink);
+  font-size: .875rem;
+  letter-spacing: .03em;
+  text-transform: none;
+  font-weight: 700;
+}
+
+/* ---------- Cards and rows: arrows, icon lift ---------- */
+/* The arrow sits in the card's top-right corner so a hidden arrow
+   never reserves a hole at the bottom of an equal-height card. */
+.card { position: relative; }
+.card-arrow {
+  position: absolute;
+  top: calc(var(--sp-4) + 2px);
+  inset-inline-end: var(--sp-4);
+  color: var(--blue-600);
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity .18s ease, transform .18s ease;
+}
+.card:hover .card-arrow,
+.card:focus-visible .card-arrow,
+.tool-row:hover .card-arrow,
+.tool-row:focus-visible .card-arrow { opacity: 1; transform: none; }
+
+.card .row-icon,
+.tool-row .row-icon { transition: transform .18s ease; }
+.card:hover .row-icon,
+.card:focus-visible .row-icon,
+.tool-row:hover .row-icon,
+.tool-row:focus-visible .row-icon { transform: scale(1.05); }
+a.card:hover, .tool-card:hover { transform: translateY(-2px); }
+a.card:active, .tool-card:active { transform: translateY(0); }
+
+.tool-row { position: relative; transition: border-color .18s ease, color .18s ease; }
+.tool-row .row-title { flex: 1 1 auto; min-width: 0; }
+/* Inside a row the arrow is part of the flex line, not pinned. */
+.tool-row .card-arrow { position: static; inset: auto; margin: 0; }
+
+/* ---------- Section rhythm: eyebrows, bands, no dividers ---------- */
+.section-kicker {
+  display: block;
+  font-size: .875rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--blue-600);
+  margin-bottom: var(--sp-2);
+}
+.section-intro { color: var(--ink-2); font-size: 1rem; max-width: 60ch; margin: var(--sp-2) 0 0; }
+#popular .section-head { margin-bottom: var(--sp-5); }
+#popular .section-head h2 { margin-bottom: 0; }
+
+.cat-section { border-top: none; }
+#cat-sections .cat-section:nth-child(even) { background: var(--band); }
+.cat-section > .container > header { align-items: flex-end; }
+.cat-section .sec-titles { display: flex; flex-direction: column; }
+.cat-section .sec-titles .section-kicker { margin-bottom: var(--sp-1); }
+.cat-section h2 { margin: 0; }
+.view-all .arrow {
+  display: inline-block;
+  margin-inline-start: var(--sp-2);
+  transition: transform .18s ease;
+}
+.view-all:hover .arrow, .view-all:focus-visible .arrow { transform: translateX(4px); }
+.view-all:hover { text-decoration: none; }
+
+/* ---------- Footer ---------- */
+@media (min-width: 768px) {
+  .foot-cats ul { grid-template-columns: 1fr 1fr; column-gap: var(--sp-5); }
+}
+.foot-cats ul { gap: var(--sp-2); }
+.foot-cats a { min-height: 44px; }
+.foot-copy { text-align: start; }
+
+/* ---------- Scroll reveal (class added by home.js only) ---------- */
+.will-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+.will-reveal.is-in { opacity: 1; transform: none; }
+
+/* ---------- Phone: four tools per category section ---------- */
+@media (max-width: 639px) {
+  .cat-section .is-extra { display: none; }
+  .hero-icons { display: none; }
+  .hero { padding-block: var(--sp-6); }
+  .hero h1 { font-size: clamp(2rem, 8vw, 2.25rem); }
+  .trust-band { padding-block: var(--sp-4); }
+  .cat-card .cat-icon { width: 28px; height: 28px; }
+  .cat-card .cat-icon svg { width: 16px; height: 16px; }
+  .cat-card p { display: block; -webkit-line-clamp: 2; font-size: .875rem; }
+  .card-arrow { display: none; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .hero .eyebrow, .hero h1, .hero .lede, .hero .search-wrap, .hero .popular,
+  .head-results, .menu[open] .menu-panel {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero-shapes::before, .hero-shapes::after { animation: none !important; transform: none !important; }
+  .will-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  a.card:hover, .tool-card:hover, a.card:active, .tool-card:active,
+  .view-all:hover .arrow, .view-all:focus-visible .arrow,
+  .card:hover .card-arrow, .tool-row:hover .card-arrow,
+  .card:hover .row-icon, .tool-row:hover .row-icon,
+  .btn:active, button:active,
+  .cat-card:hover .cat-icon { transform: none !important; }
+  .card-arrow { transition: opacity .01s; }
+}
+
+/* The header is built by chrome.js after first paint. Reserving its
+   height here keeps the page from shifting when it appears. */
+#site-header { min-height: 65px; }
+@media (max-width: 899px) { #site-header { min-height: 65px; } }
+
+/* Phone: count badges stay at 14px, and the two card sections go
+   two-up so the page does not become a single tall column. */
+@media (max-width: 639px) {
+  .cat-card .badge { font-size: .875rem; }
+  .cat-section .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-3); }
+  .cat-section .card-grid .card { padding: var(--sp-3); }
+  .cat-section .card-grid .card p { display: none; }
+  .cat-section .card-grid .card h3 { font-size: .9375rem; }
+}
+
+/* Phone: compact everything above the fold and keep each section short.
+   44px minimum targets are preserved; only padding and descriptions go. */
+@media (max-width: 639px) {
+  .hero { padding-block: var(--sp-5); }
+  .hero h1 { margin-bottom: var(--sp-2); }
+  .hero .lede { font-size: 1rem; margin-bottom: var(--sp-3); }
+  .search-wrap { margin-top: var(--sp-3); }
+  .popular { margin-top: var(--sp-3); }
+  #trust-band { padding-block: var(--sp-3); }
+  .trust li { font-size: .875rem; }
+  #categories { padding-block: var(--sp-5); }
+  #categories h2 { margin-bottom: var(--sp-2); }
+  .cat-card { padding: var(--sp-2) var(--sp-3); }
+  .cat-card p { display: none; }
+  .cat-card h3 { font-size: .9375rem; }
+  #popular { padding-block: var(--sp-5); }
+  #popular .section-head { margin-bottom: var(--sp-3); }
+  #popular .section-intro { display: none; }
+  .cat-section { padding-block: var(--sp-3); }
+  .cat-section > .container > header { margin-bottom: var(--sp-1); }
+  .cat-section .section-kicker { display: none; }
+  .cat-section h2 { font-size: 1.0625rem; }
+  .view-all { font-size: .875rem; }
+  /* Cards rendered as compact rows on a phone. */
+  .cat-section .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-1) var(--sp-3); }
+  .cat-section .card-grid .card {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--sp-2);
+    min-height: 44px;
+    padding: var(--sp-1) 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+  .cat-section .card-grid .card h3 { font-size: .875rem; margin: 0; line-height: 1.3; }
+  .cat-section .card-grid .card .row-icon { width: 24px; height: 24px; }
+  .cat-section .card-grid .card .row-icon svg { width: 15px; height: 15px; }
+  .cat-section .card-grid .card .card-arrow { display: none; }
+  .cat-section .card-grid .card p { display: none; }
+}
+
+/* Footer categories in two columns on a phone too, which keeps the
+   whole page shorter without shrinking any target below 44px. */
+@media (max-width: 767px) {
+  .foot-grid { gap: var(--sp-5); }
+  .foot-cats ul { grid-template-columns: 1fr 1fr; column-gap: var(--sp-4); }
+  .foot-copy { margin-top: var(--sp-5); }
+}
+
+/* Standalone links in a note are real targets, not inline prose. */
+.note > a, p.note a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* ---------- Phone compression (home) ----------
+   Keeps every target at 44px or more and hides only padding and
+   optional descriptions, so the phone page does not run to five
+   screens of scrolling. */
+@media (max-width: 640px) {
+  .hero { padding-block: var(--sp-4) var(--sp-5); }
+  .hero h1 { font-size: clamp(1.75rem, 7.2vw, 2rem); line-height: 1.18; max-width: 26ch; }
+  .hero .lede { font-size: .9375rem; line-height: 1.45; }
+  .hero .eyebrow { margin-bottom: var(--sp-2); }
+  .search-wrap { margin-top: var(--sp-3); }
+  .hero .popular { margin-top: var(--sp-2); }
+  /* Three chips on a phone; the rest stay in the DOM. */
+  .popular a:nth-of-type(n+4) { display: none; }
+  .popular a { min-height: 44px; }
+
+  /* Category cards: icon and name on line one, count on line two. */
+  .cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-2) var(--sp-3); }
+  .cat-card {
+    padding: var(--sp-2) 0;
+    gap: 0 var(--sp-2);
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    min-height: 44px;
+  }
+  .cat-card::before { display: none; }
+  .cat-card .cat-icon { width: 24px; height: 24px; margin: 0; }
+  .cat-card .cat-icon svg { width: 15px; height: 15px; }
+  .cat-card h3 { font-size: .9375rem; line-height: 1.25; }
+  .cat-card .badge { padding: 0; background: none; color: var(--ink-3); font-weight: 600; }
+
+  /* Popular: compact rows, two per line. */
+  #popular-grid { gap: var(--sp-1) var(--sp-3); }
+  #popular-grid .card {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--sp-2);
+    min-height: 44px;
+    padding: var(--sp-1) 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+  #popular-grid .card h3 { font-size: .9375rem; line-height: 1.25; margin: 0; }
+  #popular-grid .row-icon { width: 22px; height: 22px; }
+  #popular-grid .row-icon svg { width: 14px; height: 14px; }
+  #popular .section-kicker { display: none; }
+  #popular .section-head { margin-bottom: var(--sp-3); }
+
+  /* Footer: two columns under a full-width about block. */
+  footer, .site-foot { padding-block: var(--sp-5) var(--sp-4); }
+  .foot-grid { grid-template-columns: 1fr 1fr; gap: var(--sp-4) var(--sp-4); }
+  .foot-grid > div:first-child { grid-column: 1 / -1; }
+  .foot-head { margin-bottom: var(--sp-1); }
+  .foot-cats ul { grid-template-columns: 1fr 1fr; column-gap: var(--sp-3); }
+  .foot-copy { margin-top: var(--sp-4); padding-top: var(--sp-3); }
+}
