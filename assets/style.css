@@ -409,6 +409,7 @@ section, .band {
 .cat-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
 
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   background: var(--surface);
@@ -2163,6 +2164,59 @@ a.card:active, .tool-card:active { transform: translateY(0); }
   background: var(--danger-soft);
 }
 .tool-panel .tk-out .tk-row.is-bad .tk-row-value { color: var(--danger); }
+
+/* ---- Category pages: the cards that list a category's tools ---- */
+/* A shared icon tile so every card starts the same way, the tool's own
+   category icon rather than a decorative shape. */
+.tool-panel .tool-icon,
+.card .tool-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin: 0 0 var(--sp-3);
+  border-radius: var(--r-md);
+  background: var(--blue-50);
+  color: var(--blue-600);
+}
+.card .tool-icon svg { width: 20px; height: 20px; }
+
+/* The card is the link, so the arrow is a hover cue only: it never
+   takes a tap target of its own and never shifts the text. */
+.card .card-arrow {
+  position: absolute;
+  inset-block-start: var(--sp-4);
+  inset-inline-end: var(--sp-4);
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--blue-50);
+  color: var(--blue-700);
+  font-size: .875rem;
+  line-height: 1;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity .18s ease, transform .18s ease;
+}
+.card.tool-card:hover .card-arrow,
+.card.tool-card:focus-visible .card-arrow { opacity: 1; transform: none; }
+
+/* The count of tools in this category, beside the heading. */
+.count-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  margin-inline-start: var(--sp-3);
+  padding: 0 var(--sp-3);
+  border-radius: 999px;
+  background: var(--blue-50);
+  color: var(--blue-700);
+  font-size: .875rem;
+  font-weight: 600;
+  vertical-align: middle;
+}
 
 /* The chosen-file list. Its markup (index, name, size, actions) existed
    with no stylesheet at all, so the spans ran together as
