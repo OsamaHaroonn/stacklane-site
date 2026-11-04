@@ -314,7 +314,15 @@
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') { input.value = ''; close(); }
     });
-    input.addEventListener('blur', function () { setTimeout(close, 150); });
+    /* Closing on blur shut the list before the keyboard could reach it.
+       Close only once focus has left the whole search box, so Tab from
+       the field into a result keeps the list open. */
+    var box = input.parentNode;
+    box.addEventListener('focusout', function () {
+      setTimeout(function () {
+        if (!box.contains(document.activeElement)) close();
+      }, 150);
+    });
     list.addEventListener('mousedown', function (e) { e.preventDefault(); });
   }
 
