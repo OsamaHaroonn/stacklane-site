@@ -1598,6 +1598,16 @@ a.card:active, .tool-card:active { transform: translateY(0); }
 /* Standalone links in a note are real targets, not inline prose. */
 .note > a, p.note a { display: inline-flex; align-items: center; min-height: 44px; }
 
+/* The "Back to …" link under a tool is a real target too. The negative
+   block margin absorbs the extra height, so the text keeps its exact
+   position and the paragraph below does not move. */
+#back-cat {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-block: calc((44px - 1.5em) / -2);
+}
+
 /* ---------- Phone compression (home) ----------
    Keeps every target at 44px or more and hides only padding and
    optional descriptions, so the phone page does not run to five
