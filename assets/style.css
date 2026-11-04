@@ -1683,3 +1683,199 @@ a.card:active, .tool-card:active { transform: translateY(0); }
   .foot-grid > div:last-of-type ul { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--sp-3); }
   .foot-copy { margin-top: var(--sp-3); padding-top: var(--sp-2); }
 }
+
+/* ============================================================
+   Tool page polish
+
+   Visual layer for the shared tool card and its controls. Every
+   rule here changes paint only — radius, border and outline colour,
+   shadows, gradients, state colours, transform and opacity motion.
+   No padding, margin, min-height or font-size is touched, so no
+   control moves and the zero-shift rule for #back-cat still holds.
+   ============================================================ */
+
+/* The tool card: a soft top light, a hairline, and a layered shadow
+   that reads as elevation without a heavy drop. */
+.tool-panel {
+  background-image: linear-gradient(180deg, #fbfcff 0, var(--surface) 140px);
+  box-shadow:
+    0 1px 2px rgba(17, 24, 39, .05),
+    0 10px 24px -12px rgba(17, 24, 39, .18),
+    0 28px 64px -36px rgba(29, 78, 216, .22);
+}
+
+/* Fields: a quiet inset surface that lifts on hover and rings on
+   focus. The ring is a box-shadow, so nothing around it moves. */
+.tool-panel .tk-field input,
+.tool-panel .tk-field select,
+.tool-panel .tk-field textarea {
+  border-radius: var(--r-md);
+  box-shadow: inset 0 1px 2px rgba(17, 24, 39, .04);
+  transition: border-color .16s ease, box-shadow .16s ease, background-color .16s ease;
+}
+.tool-panel .tk-field input:hover,
+.tool-panel .tk-field select:hover,
+.tool-panel .tk-field textarea:hover { border-color: #b9c6e4; }
+.tool-panel .tk-field input:focus,
+.tool-panel .tk-field select:focus,
+.tool-panel .tk-field textarea:focus {
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(29, 78, 216, .13);
+}
+.tool-panel .tk-field input:disabled,
+.tool-panel .tk-field select:disabled,
+.tool-panel .tk-field textarea:disabled {
+  background: var(--band);
+  color: var(--ink-3);
+  border-color: var(--line);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+.tool-panel .tk-field input::placeholder,
+.tool-panel .tk-field textarea::placeholder { color: var(--ink-3); }
+.tool-panel .tk-field > label { letter-spacing: .005em; }
+
+/* Buttons: 12px corners inside the tool card, a lift on hover, a
+   press-down on :active and a real disabled state. */
+.tool-panel .btn {
+  border-radius: var(--r-md);
+  box-shadow: 0 1px 2px rgba(17, 24, 39, .08), 0 6px 14px -8px rgba(29, 78, 216, .55);
+  transition: background-color .16s ease, border-color .16s ease,
+              box-shadow .2s ease, transform .12s ease;
+}
+.tool-panel .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(17, 24, 39, .10), 0 12px 24px -12px rgba(29, 78, 216, .6);
+}
+.tool-panel .btn-secondary {
+  box-shadow: 0 1px 2px rgba(17, 24, 39, .06), 0 6px 14px -10px rgba(17, 24, 39, .35);
+}
+.tool-panel .btn:active,
+.tool-panel .btn:hover:active {
+  transform: translateY(0);
+  box-shadow: inset 0 1px 3px rgba(17, 24, 39, .22);
+}
+.tool-panel .btn:focus-visible {
+  outline: 2px solid var(--blue-600);
+  outline-offset: 2px;
+}
+.tool-panel .btn:disabled,
+.tool-panel .btn[aria-disabled="true"] {
+  background: var(--band);
+  color: var(--ink-3);
+  border-color: var(--line);
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
+}
+
+/* File picker as a drop zone. The dashed line is an outline, so it
+   costs no height at all. */
+.tool-panel .tk-file {
+  border-radius: var(--r-md);
+  outline: 1px dashed var(--line-2);
+  outline-offset: 6px;
+  transition: outline-color .18s ease, background-color .18s ease;
+}
+.tool-panel .tk-file:hover { outline-color: #b9c6e4; }
+.tool-panel .tk-file:focus-within {
+  outline-color: var(--blue-600);
+  background: var(--blue-50);
+}
+.tool-panel .tk-file-btn:focus-visible {
+  outline: 2px solid var(--blue-600);
+  outline-offset: 2px;
+}
+.tool-panel .tk-file-name.has-files { color: var(--good); }
+
+/* Results: when the output stops being hidden it tints, rings and
+   fades in, so the eye lands there first. */
+.tool-panel .tk-out:not([hidden]) {
+  border-radius: var(--r-md);
+  background: linear-gradient(180deg, rgba(29, 78, 216, .05), rgba(29, 78, 216, .015));
+  box-shadow: inset 0 0 0 1px rgba(29, 78, 216, .10);
+  animation: tk-result-in .22s cubic-bezier(.2, .7, .3, 1) both;
+}
+.tool-panel .tk-out .tk-row {
+  transition: background-color .16s ease;
+}
+.tool-panel .tk-out .tk-row-value {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.01em;
+}
+.tool-panel .tk-out .tk-row.is-strong .tk-row-value {
+  text-shadow: 0 1px 0 rgba(29, 78, 216, .08);
+}
+@keyframes tk-result-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Status line: a soft card that slides in from the top. */
+.tool-panel .tk-msg {
+  border-radius: var(--r-md);
+  box-shadow: 0 1px 2px rgba(17, 24, 39, .05);
+  animation: tk-msg-in .18s ease-out both;
+}
+@keyframes tk-msg-in {
+  from { opacity: 0; transform: translateY(-3px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Groups and checkboxes. */
+.tool-panel .tk-modes {
+  border-radius: var(--r-md);
+  background: #fcfdff;
+}
+.tool-panel .tk-modes legend { color: var(--ink); }
+.tool-panel .tk-check {
+  border-radius: var(--r-sm);
+  transition: color .16s ease;
+}
+.tool-panel .tk-check:hover { color: var(--blue-700); }
+.tool-panel .tk-check input { accent-color: var(--blue-600); }
+.tool-panel .tk-check input:focus-visible {
+  outline: 2px solid var(--blue-600);
+  outline-offset: 2px;
+}
+
+/* Progress: rounded track, sheen while it runs, green when done. */
+.tool-panel .tk-progress {
+  border-radius: var(--r-md);
+  box-shadow: inset 0 1px 2px rgba(17, 24, 39, .06);
+}
+.tool-panel .tk-progress-bar {
+  border-radius: var(--r-md);
+  background-image: linear-gradient(90deg, var(--blue-600), #3b6fe8, var(--blue-600));
+  background-size: 200% 100%;
+  transition: width .28s ease;
+  animation: tk-sheen 1.6s linear infinite;
+}
+.tool-panel .tk-progress.is-done .tk-progress-bar {
+  background-image: none;
+  background-color: var(--good);
+  animation: none;
+}
+@keyframes tk-sheen {
+  from { background-position: 0% 0; }
+  to   { background-position: 200% 0; }
+}
+
+/* The worked example already carries a blue edge; give it the same
+   soft depth as the cards around it. */
+.worked { box-shadow: 0 1px 2px rgba(17, 24, 39, .04); }
+
+/* Reduced motion: no travel, no sheen, no fade — just the colour and
+   shadow states, which carry no movement. */
+@media (prefers-reduced-motion: reduce) {
+  .tool-panel .btn,
+  .tool-panel .btn:hover,
+  .tool-panel .btn:active,
+  .tool-panel .btn:hover:active { transform: none; }
+  .tool-panel .tk-out:not([hidden]),
+  .tool-panel .tk-msg { animation: none !important; }
+  .tool-panel .tk-progress-bar {
+    animation: none !important;
+    transition: none;
+  }
+}
