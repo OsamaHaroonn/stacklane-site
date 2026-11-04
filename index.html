@@ -20,56 +20,35 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <link rel="stylesheet" href="assets/style.css">
-<style>
-  .lang-pick { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 2rem; }
-  .lang-card { display: block; padding: 1.75rem 1.5rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg); box-shadow: var(--shadow); text-decoration: none; color: inherit; min-height: 44px; transition: border-color .15s, transform .15s; }
-  .lang-card:hover, .lang-card:focus-visible { border-color: var(--accent); transform: translateY(-2px); }
-  .lang-card h2 { margin: 0 0 .35rem; font-size: 1.5rem; }
-  .lang-card p { margin: 0; color: var(--ink-soft); font-size: .95rem; }
-  .lang-code { display: inline-block; font-family: var(--mono); font-size: .8rem; color: var(--accent); margin-bottom: .5rem; letter-spacing: .05em; }
-  .lang-card[dir="rtl"] h2 { font-family: "Segoe UI", Tahoma, "Noto Naskh Arabic", sans-serif; }
-</style>
 </head>
-<body>
+<body data-root>
 
-<nav class="nav">
-  <div class="wrap nav-inner">
-    <a class="brand" href="index.html">Stack<span>lane</span></a>
-    <div class="nav-links">
-      <a href="en/index.html" class="hide-sm">Tools</a>
-      <a href="privacy.html" class="hide-sm">Privacy</a>
-      <a href="terms.html" class="hide-sm">Terms</a>
-    </div>
-  </div>
-</nav>
+<header id="site-header"></header>
+
+<main id="main">
 
 <header class="hero">
-  <div class="wrap">
+  <div class="container">
     <span class="eyebrow">Free · No accounts · Nothing uploaded</span>
     <h1>Everyday browser tools, free and in your browser.</h1>
     <p class="lede">Every tool runs in your own browser: your files and text are never sent anywhere, and there is nothing to sign up for.</p>
 
-    <div class="lang-pick">
-      <a class="lang-card" href="en/index.html" hreflang="en" lang="en">
-        <span class="lang-code">EN</span>
-        <h2>Open the tools</h2>
-        <p>PDF, images, text, generators, calculators, converters, developer and business tools.</p>
-      </a>
+    <div class="btn-row">
+      <a class="btn" href="en/index.html" hreflang="en" lang="en">Open the tools</a>
+      <a class="btn btn-secondary" href="en/business.html">Business tools</a>
     </div>
 
-    <div class="hero-note">
-      <span class="dot"></span> Everything is processed on your device — no upload, no tracking, no cookies.
-    </div>
+    <p class="note">Everything is processed on your device — no upload, no tracking, no cookies.</p>
   </div>
 </header>
 
 <section class="section-soft">
-  <div class="wrap">
+  <div class="container">
     <div class="section-head">
       <span class="eyebrow">Categories</span>
       <h2>What you can do here</h2>
     </div>
-    <div class="grid grid-4">
+    <div class="card-grid">
       <article class="card"><h3>PDF</h3><p>Merge documents and turn images into PDFs.</p><a class="btn btn-secondary btn-block" href="en/pdf.html">Open</a></article>
       <article class="card"><h3>Images</h3><p>Compress and resize pictures without uploading them.</p><a class="btn btn-secondary btn-block" href="en/images.html">Open</a></article>
       <article class="card"><h3>Text</h3><p>Count words and characters as you type.</p><a class="btn btn-secondary btn-block" href="en/text.html">Open</a></article>
@@ -82,18 +61,13 @@
   </div>
 </section>
 
-<footer>
-  <div class="wrap footer-inner">
-    <div>© <span data-year>2026</span> Stacklane · Free tools. Nothing collected.</div>
-    <div>
-      <a href="en/index.html">Tools</a> ·
-      <a href="privacy.html">Privacy</a> ·
-      <a href="terms.html">Terms</a>
-    </div>
-  </div>
-</footer>
+</main>
+
+<div id="site-footer"></div>
 
 <script src="assets/config.js"></script>
+<script src="assets/i18n.js"></script>
+<script src="assets/catalog.js"></script>
 <script src="assets/chrome.js"></script>
 </body>
 </html>

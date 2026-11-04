@@ -23,6 +23,11 @@
   var lang = (document.documentElement.getAttribute('lang') || 'en').toLowerCase();
   var body = document.body;
   var CATS = C.categories || [];
+  /* Pages at the site root (the language picker, privacy, terms, 404)
+     link into the English tools instead of to a sibling index.html. */
+  var atRoot = body.hasAttribute('data-root');
+  var rootPrefix = atRoot ? '' : '../';
+  var toolPrefix = atRoot ? 'en/' : '';
 
   /* ---------- 1. Year ---------- */
   [].forEach.call(document.querySelectorAll('[data-year], #year'), function (el) {
@@ -64,7 +69,7 @@
   }
 
   /* ---------- 3-5. Everything visible, from the i18n JSON ---------- */
-  var needsI18n = document.querySelector('[data-i18n], [data-tool], [data-home], [data-category]');
+  var needsI18n = document.querySelector('[data-i18n], [data-tool], [data-home], [data-category], [data-root]');
   if (!needsI18n || !window.I18N) return;
 
   function get(json, path) { return I18N.get(json, path); }
@@ -144,8 +149,8 @@
     var nav = get(json, 'nav') || {};
     var ul = el('ul', {});
     ul.appendChild(el('li', {}, el('a', { href: homeHref }, nav.home || 'Home')));
-    ul.appendChild(el('li', {}, el('a', { href: '../privacy.html' }, nav.privacy || 'Privacy')));
-    ul.appendChild(el('li', {}, el('a', { href: '../terms.html' }, nav.terms || 'Terms')));
+    ul.appendChild(el('li', {}, el('a', { href: rootPrefix + 'privacy.html' }, nav.privacy || 'Privacy')));
+    ul.appendChild(el('li', {}, el('a', { href: rootPrefix + 'terms.html' }, nav.terms || 'Terms')));
     return ul;
   }
 
@@ -172,7 +177,7 @@
       'aria-label': get(json, 'home.categoriesH2') || 'Categories'
     }, lang === 'en' ? 'Categories' : (get(json, 'home.categoriesH2') || 'Categories')));
     if (lang === 'en') {
-      headNav.appendChild(el('a', { href: 'business.html' }, get(json, 'categories.business.name') || 'Business'));
+      headNav.appendChild(el('a', { href: toolPrefix + 'business.html' }, get(json, 'categories.business.name') || 'Business'));
     }
     var alts = document.querySelectorAll('link[rel="alternate"][hreflang]');
     var alt = null;
@@ -205,8 +210,8 @@
       list.appendChild(el('li', {}, el('a', { href: homeHref.replace(/index\.html$/, '') + slug + '.html' }, name)));
     });
     list.appendChild(el('li', { class: 'menu-sep', 'aria-hidden': 'true' }, ''));
-    list.appendChild(el('li', {}, el('a', { href: '../privacy.html' }, nav.privacy || 'Privacy')));
-    list.appendChild(el('li', {}, el('a', { href: '../terms.html' }, nav.terms || 'Terms')));
+    list.appendChild(el('li', {}, el('a', { href: rootPrefix + 'privacy.html' }, nav.privacy || 'Privacy')));
+    list.appendChild(el('li', {}, el('a', { href: rootPrefix + 'terms.html' }, nav.terms || 'Terms')));
     if (alt) {
       list.appendChild(el('li', {}, el('a', {
         href: alt.getAttribute('href'), lang: alt.getAttribute('hreflang'),
@@ -255,8 +260,8 @@
     legal.appendChild(el('span', { class: 'foot-head' }, 'Stacklane'));
     var ul = el('ul', {});
     ul.appendChild(el('li', {}, el('a', { href: homeHref }, nav.home || 'Home')));
-    ul.appendChild(el('li', {}, el('a', { href: '../privacy.html' }, nav.privacy || 'Privacy')));
-    ul.appendChild(el('li', {}, el('a', { href: '../terms.html' }, nav.terms || 'Terms')));
+    ul.appendChild(el('li', {}, el('a', { href: rootPrefix + 'privacy.html' }, nav.privacy || 'Privacy')));
+    ul.appendChild(el('li', {}, el('a', { href: rootPrefix + 'terms.html' }, nav.terms || 'Terms')));
     legal.appendChild(ul);
     grid.appendChild(legal);
 
@@ -277,7 +282,7 @@
       var title = get(json, 'tools.' + t.slug + '.title');
       if (!title) return;
       items.push({
-        href: t.slug + '.html',
+        href: toolPrefix + t.slug + '.html',
         hay: (title + ' ' + (get(json, 'tools.' + t.slug + '.desc') || '') + ' ' +
           (get(json, 'categories.' + t.category + '.name') || '')).toLowerCase(),
         title: title
@@ -286,7 +291,7 @@
     if (lang === 'en') {
       (window.BUSINESS_PAGES || []).forEach(function (p) {
         items.push({
-          href: p.slug + '.html',
+          href: toolPrefix + p.slug + '.html',
           hay: (p.name + ' ' + (p.desc || '')).toLowerCase(),
           title: p.name
         });
@@ -331,8 +336,9 @@
     var isHome = body.hasAttribute('data-home');
     var category = body.getAttribute('data-category');
     // Every i18n page lives one level below the root (en/…, ar/…), so the
-    // language home is always a sibling index.html.
-    var homeHref = 'index.html';
+    // language home is a sibling index.html there. Root pages link into
+    // the English tools instead.
+    var homeHref = atRoot ? 'en/index.html' : 'index.html';
 
     applyText(document, json);
     buildHeader(json, homeHref);

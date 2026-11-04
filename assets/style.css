@@ -318,6 +318,11 @@ section, .band {
 .hero .eyebrow { margin-bottom: var(--sp-3); }
 .hero h1 { max-width: 22ch; margin-inline: auto; margin-bottom: var(--sp-3); }
 .hero .lede { max-width: 58ch; margin-inline: auto; font-size: 1.125rem; }
+/* Hero call-to-action rows: centred, so a hero with buttons reads as one
+   block (the root language picker uses this). */
+.hero .btn-row { justify-content: center; margin-top: var(--sp-5); }
+.hero .note { margin-top: var(--sp-3); }
+
 .search-wrap { margin: var(--sp-6) auto 0; max-width: 620px; text-align: start; }
 .search-box { position: relative; }
 .search-box input {
