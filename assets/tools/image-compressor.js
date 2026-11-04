@@ -48,7 +48,7 @@ window.TOOL = (function () {
     if (!host) return;
 
     var box = TK.msg();
-    var out = TK.rows();
+    var out = TK.rows({ note: ui('working') });
     var progress = TK.progressBar();
     var preview = TK.el('img', { class: 'tk-preview', alt: ui('preview') });
     preview.hidden = true;

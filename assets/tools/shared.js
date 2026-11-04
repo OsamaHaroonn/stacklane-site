@@ -155,14 +155,33 @@ window.ToolKit = (function () {
     return wrap;
   }
 
-  /* Output as label/value rows rebuilt from an array of pairs. */
-  function rows() {
+  /* Output as label/value rows rebuilt from an array of pairs.
+
+     Passing `{ note: ui('working') }` marks the formula row: it is drawn
+     as fine print instead of competing with the figures. A lone row is
+     promoted to the hero tile (single-output tools need no marking); any
+     other tool marks its own answer `is-strong`. A value too long for a
+     tile is flagged `is-long` so the stylesheet drops it to a wrapped
+     readout. All three are classes only — no logic or text changes. */
+  function rows(opts) {
+    var notes = !opts || !opts.note ? [] : [].concat(opts.note);
     var box = el('div', { class: 'tk-out' });
     box.render = function (pairs) {
       box.textContent = '';
-      pairs.forEach(function (p) {
+      var hasStrong = pairs.some(function (p) {
+        return p && String(p[2] || '').indexOf('is-strong') > -1;
+      });
+      pairs.forEach(function (p, i) {
         if (!p || p[1] == null || p[1] === '') return;
-        var row = el('div', { class: 'tk-row' + (p[2] ? ' ' + p[2] : '') });
+        var isNote = notes.indexOf(p[0]) > -1;
+        var cls = p[2] ? ' ' + p[2] : '';
+        if (isNote && cls.indexOf('is-note') < 0) cls += ' is-note';
+        // Only a lone row is safe to promote by guess: with two or more
+        // rows the tool itself has to say which one is the answer (a
+        // counter's first row is a bucket, not a result).
+        else if (!cls && i === 0 && !hasStrong && pairs.length === 1) cls = ' is-strong';
+        if (!isNote && String(p[1]).length > 24) cls += ' is-long';
+        var row = el('div', { class: 'tk-row' + cls });
         row.appendChild(el('span', { class: 'tk-row-label' }, p[0]));
         row.appendChild(el('span', { class: 'tk-row-value' }, p[1]));
         box.appendChild(row);

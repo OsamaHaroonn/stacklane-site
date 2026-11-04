@@ -18,7 +18,7 @@ window.TOOL = (function () {
     if (!host) return;
 
     var box = TK.msg();
-    var out = TK.rows();
+    var out = TK.rows({ note: ui('working') });
 
     var price = TK.field({ id: 'mort-price', label: ui('price'), type: 'text', inputmode: 'decimal' });
     var down = TK.field({ id: 'mort-down', label: ui('down'), type: 'text', inputmode: 'decimal' });

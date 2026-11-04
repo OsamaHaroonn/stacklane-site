@@ -19,7 +19,7 @@ window.TOOL = (function () {
     if (!host) return;
 
     var box = TK.msg();
-    var out = TK.rows();
+    var out = TK.rows({ note: ui('working') });
 
     var rowsBox = TK.el('div', { class: 'tk-rows' });
     var rows = [];

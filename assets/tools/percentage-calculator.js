@@ -15,7 +15,7 @@ window.TOOL = (function () {
     if (!host) return;
 
     var box = TK.msg();
-    var out = TK.rows();
+    var out = TK.rows({ note: ui('working') });
     var mode = 'm1';
 
     var modes = TK.el('fieldset', { class: 'tk-modes' });

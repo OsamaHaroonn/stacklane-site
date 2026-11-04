@@ -20,7 +20,7 @@ window.TOOL = (function () {
     if (!host) return;
 
     var box = TK.msg();
-    var out = TK.rows();
+    var out = TK.rows({ note: ui('formula') });
 
     var weight = TK.field({
       id: 'bw-weight', label: ui('weight'), inputmode: 'decimal',

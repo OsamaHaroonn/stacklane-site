@@ -18,7 +18,7 @@ window.TOOL = (function () {
     if (!host) return;
 
     var box = TK.msg();
-    var out = TK.rows();
+    var out = TK.rows({ note: ui('working') });
 
     var input = TK.textarea({
       id: 'dedupe-in', label: ui('input'), rows: 9,

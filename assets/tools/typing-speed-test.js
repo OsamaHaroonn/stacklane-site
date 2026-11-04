@@ -19,7 +19,7 @@ window.TOOL = (function () {
     if (!host) return;
 
     var box = TK.msg();
-    var out = TK.rows();
+    var out = TK.rows({ note: ui('formula') });
 
     var picker = TK.select({
       id: 'typing-sample', label: ui('choose'),

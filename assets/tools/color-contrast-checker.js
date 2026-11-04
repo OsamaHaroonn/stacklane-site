@@ -31,7 +31,7 @@ window.TOOL = (function () {
     if (!host) return;
 
     var box = TK.msg();
-    var out = TK.rows();
+    var out = TK.rows({ note: ui('working') });
 
     var fg = TK.field({ id: 'cc-fg', label: ui('fg'), value: '#777777', onInput: render });
     var bg = TK.field({ id: 'cc-bg', label: ui('bg'), value: '#ffffff', onInput: render });

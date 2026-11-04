@@ -20,7 +20,7 @@ window.TOOL = (function () {
     if (!host) return;
 
     var box = TK.msg();
-    var out = TK.rows();
+    var out = TK.rows({ note: ui('working') });
 
     var target = TK.field({ id: 'sg-target', label: ui('target'), type: 'text', inputmode: 'decimal' });
     var current = TK.field({ id: 'sg-current', label: ui('current'), type: 'text', inputmode: 'decimal', value: '0' });

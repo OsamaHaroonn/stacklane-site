@@ -15,7 +15,7 @@ window.TOOL = (function () {
     if (!host) return;
 
     var box = TK.msg();
-    var out = TK.rows();
+    var out = TK.rows({ note: ui('working') });
 
     var principal = TK.field({ id: 'ci-principal', label: ui('principal'), type: 'text', inputmode: 'decimal' });
     var rate = TK.field({ id: 'ci-rate', label: ui('rate'), type: 'text', inputmode: 'decimal' });

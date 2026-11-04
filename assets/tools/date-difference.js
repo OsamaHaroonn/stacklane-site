@@ -19,7 +19,7 @@ window.TOOL = (function () {
     if (!host) return;
 
     var box = TK.msg();
-    var out = TK.rows();
+    var out = TK.rows({ note: ui('working') });
 
     var start = TK.field({ id: 'dd-start', label: ui('start'), type: 'date' });
     var end = TK.field({ id: 'dd-end', label: ui('end'), type: 'date' });

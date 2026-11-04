@@ -50,7 +50,7 @@ window.TOOL = (function () {
     if (!host) return;
 
     var box = TK.msg();
-    var out = TK.rows();
+    var out = TK.rows({ note: ui('formula') });
 
     var cat = TK.select({
       id: 'uc-cat',

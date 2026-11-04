@@ -16,7 +16,7 @@ window.TOOL = (function () {
     if (!host) return;
 
     var box = TK.msg();
-    var out = TK.rows();
+    var out = TK.rows({ note: ui('working') });
 
     var amount = TK.field({ id: 'vat-amount', label: ui('amount'), type: 'text', inputmode: 'decimal' });
     var rate = TK.field({ id: 'vat-rate', label: ui('rate'), type: 'text', inputmode: 'decimal' });

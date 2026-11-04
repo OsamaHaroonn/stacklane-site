@@ -28,7 +28,7 @@ window.TOOL = (function () {
     if (!host) return;
 
     var box = TK.msg();
-    var out = TK.rows();
+    var out = TK.rows({ note: ui('formula') });
     var barWrap = TK.el('div', {
       style: 'height:10px;background:#e6e9ef;border-radius:999px;overflow:hidden;margin:10px 0',
       'aria-hidden': 'true'

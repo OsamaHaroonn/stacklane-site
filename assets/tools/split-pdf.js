@@ -105,7 +105,7 @@ window.TOOL = (function () {
       placeholder: ui('rangePh'), onInput: function () { renderMode(); }
     });
 
-    var out = TK.rows();
+    var out = TK.rows({ note: ui('working') });
     var downloadBtn = TK.btn(ui('download'), function () {
       if (downloadBtn._blob) TK.download(downloadBtn._blob, outName());
     }, { secondary: true });

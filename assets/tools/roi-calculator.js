@@ -19,7 +19,7 @@ window.TOOL = (function () {
     if (!host) return;
 
     var box = TK.msg();
-    var out = TK.rows();
+    var out = TK.rows({ note: ui('working') });
 
     var initial = TK.field({ id: 'roi-in', label: ui('initial'), type: 'text', inputmode: 'decimal' });
     var finalV = TK.field({ id: 'roi-out', label: ui('final'), type: 'text', inputmode: 'decimal' });
