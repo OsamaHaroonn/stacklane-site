@@ -68,7 +68,6 @@ only until Arabic is re-enabled.
 | 55 | `ratio-calculator` | converters | ratio calculator simplify ratio | **built** |
 | 56 | `stopwatch-timer` | calculators | online stopwatch with laps | **built** |
 | 57 | `image-to-base64` | developer | image to base64 converter | **built** |
-
 | 58 | `salary-to-hourly` | calculators | salary to hourly calculator | **built** |
 | 59 | `keyword-density-analyzer` | text | keyword density checker | **built** |
 | 60 | `meta-tag-generator` | developer | meta tag generator | **built** |
@@ -89,6 +88,7 @@ only until Arabic is re-enabled.
 | 75 | `fake-hacker-typer` | fun | fake hacker typer | **built** |
 | 76 | `compliment-generator` | fun | compliment generator | **built** |
 | 77 | `shakespearean-insult-generator` | fun | shakespearean insult generator | **built** |
+
 ## Category directories
 
 `/en/` and `/ar/` each carry a directory page per category:
