@@ -2763,7 +2763,7 @@
         },
         {
           "q": "Does keyword density affect search rankings?",
-          "a": "I cannot tell you a ranking effect from this tool, and it makes no such claim. It reports how often words repeat in the text you paste, which is all the numbers measure."
+          "a": "This tool does not measure a ranking effect and makes no such claim. It reports how often words repeat in the text you paste, which is all the numbers measure."
         },
         {
           "q": "Is my text uploaded anywhere?",
@@ -2799,7 +2799,7 @@
       "faq": [
         {
           "q": "Where do these tags go?",
-          "a": "Inside the head element of the page, before the closing </head>. Paste the whole block as it is; the order inside head does not matter to browsers."
+          "a": "Inside the head element of the page, before the closing </head>. Paste the whole block as it is."
         },
         {
           "q": "Will this improve my ranking?",
@@ -2922,7 +2922,7 @@
         },
         {
           "q": "Do changefreq and priority matter?",
-          "a": "They are hints. Major crawlers have said they ignore both, so the file is still useful without them; keep the values honest rather than optimistic."
+          "a": "They are hints. Google says it ignores both; other search engines may differ. The file is still useful without them, so keep the values honest rather than optimistic."
         },
         {
           "q": "Where should the file go?",
@@ -3070,7 +3070,7 @@
         },
         {
           "q": "Does a long passphrase score well?",
-          "a": "Yes, if it mixes classes. A 20-character phrase in lowercase letters only gives 20 × log₂(26) = 94.01 bits, while a short password using all four classes gains from the larger pool."
+          "a": "The figure is an estimate that assumes each character is picked at random. A phrase built from real words is far weaker than its length suggests, because the words come from a small dictionary an attacker can try first. For reference, 20 characters drawn at random from 26 lowercase letters would give 20 × log₂(26) = 94.01 bits; a 20-character sentence of ordinary words does not."
         }
       ],
       "ui": {
