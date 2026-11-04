@@ -1735,6 +1735,50 @@ a.card:active, .tool-card:active { transform: translateY(0); }
 .tool-panel .tk-field textarea::placeholder { color: var(--ink-3); }
 .tool-panel .tk-field > label { letter-spacing: .005em; }
 
+/* Writing surfaces. A text tool is mostly one big box, so the box has to
+   look like paper: a soft hairline, a faint inset, and a focus ring that
+   grows without touching the layout. Nothing here sets font-size,
+   line-height or height — a textarea's height is rows × line-height, so
+   changing either would move the page. */
+.tool-panel .tk-field textarea {
+  border-color: #dfe5ee;
+  background-color: var(--surface);
+  caret-color: var(--blue-600);
+}
+.tool-panel .tk-field textarea:focus {
+  border-color: var(--blue-600);
+  background-color: #fff;
+}
+
+/* Output boxes read as read-only paper rather than a second input: a
+   tinted band, the same inset, and mono because most of them hold code,
+   markdown, CSV or a converted document. */
+.tool-panel textarea[id$="-out"],
+.tool-panel pre {
+  background-color: var(--band);
+  border-color: var(--line);
+  font-family: var(--mono);
+  box-shadow: inset 0 1px 3px rgba(17, 24, 39, .05);
+}
+.tool-panel textarea[id$="-out"]:focus {
+  background-color: #fff;
+  border-color: var(--blue-600);
+}
+
+/* Secondary buttons step back so the primary action is unmistakable:
+   no blue cast, a hairline edge, and the shadow only on hover. */
+.tool-panel .btn-secondary:not(.tk-file-btn) {
+  background: var(--surface);
+  border-color: var(--line-2);
+  box-shadow: none;
+  color: var(--ink);
+}
+.tool-panel .btn-secondary:not(.tk-file-btn):hover {
+  background: var(--band);
+  border-color: #b9c6e4;
+  box-shadow: 0 1px 2px rgba(17, 24, 39, .07);
+}
+
 /* Buttons: 12px corners inside the tool card, a lift on hover, a
    press-down on :active and a real disabled state. */
 .tool-panel .btn {
