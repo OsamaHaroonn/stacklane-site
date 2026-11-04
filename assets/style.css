@@ -1879,3 +1879,172 @@ a.card:active, .tool-card:active { transform: translateY(0); }
     transition: none;
   }
 }
+
+/* ============================================================
+   loan-calculator — the numeric result matrix
+
+   Scoped to this one tool. The inputs keep their boxes and every
+   metric they had; only the OUTPUT is re-framed: the payment becomes
+   a hero tile, the other figures become equal metric tiles, and the
+   arithmetic drops to a fine-print strip. Because all of it lives
+   inside .tk-out, which is display:none until a result exists, the
+   empty page is byte-identical in height to before this section.
+   ============================================================ */
+
+/* Field labels read as instrument markings: micro-caps, tracked. */
+body[data-tool="loan-calculator"] .tk-field > label {
+  text-transform: uppercase;
+  letter-spacing: .055em;
+  font-size: .875rem;
+  color: var(--ink-2);
+}
+
+/* The amount carries the most weight, so it gets the strongest digit
+   treatment. The line box stays under the 44px input height, so the
+   box cannot grow. */
+body[data-tool="loan-calculator"] #loan-amount,
+body[data-tool="loan-calculator"] #loan-rate,
+body[data-tool="loan-calculator"] #loan-years {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .01em;
+  font-weight: 600;
+}
+body[data-tool="loan-calculator"] #loan-amount {
+  font-size: 1.125rem;
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+/* The matrix itself. Rows only exist once a result is rendered. */
+body[data-tool="loan-calculator"] .tool-panel .tk-out:not([hidden]) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-3);
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  animation: none;
+}
+/* Three figure tiles sit in one even KPI row; the hero and the formula
+   strip always take the full width, so no cell is ever left empty. */
+@media (min-width: 720px) {
+  body[data-tool="loan-calculator"] .tool-panel .tk-out:not([hidden]) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+body[data-tool="loan-calculator"] .tk-out .tk-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--sp-1);
+  min-width: 0;
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow:
+    0 1px 2px rgba(17, 24, 39, .04),
+    0 8px 20px -16px rgba(17, 24, 39, .35);
+  animation: loan-tile-in .32s cubic-bezier(.22, .61, .36, 1) both;
+  transition: transform .16s ease, box-shadow .2s ease, border-color .16s ease;
+}
+body[data-tool="loan-calculator"] .tk-out .tk-row:hover {
+  border-color: #c7d6fb;
+  transform: translateY(-1px);
+  box-shadow:
+    0 2px 4px rgba(17, 24, 39, .05),
+    0 14px 28px -18px rgba(29, 78, 216, .45);
+}
+
+/* The hero: the one number the page exists for. */
+body[data-tool="loan-calculator"] .tk-out .tk-row.is-strong {
+  grid-column: 1 / -1;
+  border-color: transparent;
+  background-image: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-700) 100%);
+  box-shadow:
+    0 2px 6px rgba(17, 24, 39, .10),
+    0 22px 44px -24px rgba(29, 78, 216, .75);
+  animation:
+    loan-tile-in .32s cubic-bezier(.22, .61, .36, 1) both,
+    loan-hero-ring .9s ease-out .12s 1;
+}
+body[data-tool="loan-calculator"] .tk-out .tk-row.is-strong .tk-row-label {
+  color: rgba(255, 255, 255, .88);
+}
+body[data-tool="loan-calculator"] .tk-out .tk-row.is-strong .tk-row-value {
+  font-size: clamp(1.5rem, 4.6vw, 2rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(9, 20, 60, .35);
+}
+body[data-tool="loan-calculator"] .tk-out .tk-row.is-strong:hover {
+  border-color: transparent;
+}
+
+/* The fine print: the formula, demoted out of the figure grid. */
+body[data-tool="loan-calculator"] .tk-out .tk-row:last-child {
+  grid-column: 1 / -1;
+  border-style: dashed;
+  border-color: var(--line);
+  background: var(--band);
+  box-shadow: none;
+  font-size: .875rem;
+}
+body[data-tool="loan-calculator"] .tk-out .tk-row:last-child .tk-row-value {
+  font-size: .875rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  text-align: start;
+}
+body[data-tool="loan-calculator"] .tk-out .tk-row:last-child:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--line);
+}
+
+/* Figures: tabular so columns line up and digits never jitter. */
+body[data-tool="loan-calculator"] .tk-out .tk-row-value {
+  font-variant-numeric: tabular-nums;
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+body[data-tool="loan-calculator"] .tk-out .tk-row-label {
+  font-size: .875rem;
+  line-height: 1.3;
+}
+
+/* Stagger: each tile lands 45ms after the one before it. */
+body[data-tool="loan-calculator"] .tk-out .tk-row:nth-child(1) { animation-delay: 0ms; }
+body[data-tool="loan-calculator"] .tk-out .tk-row:nth-child(2) { animation-delay: 45ms; }
+body[data-tool="loan-calculator"] .tk-out .tk-row:nth-child(3) { animation-delay: 90ms; }
+body[data-tool="loan-calculator"] .tk-out .tk-row:nth-child(4) { animation-delay: 135ms; }
+body[data-tool="loan-calculator"] .tk-out .tk-row:nth-child(5) { animation-delay: 180ms; }
+
+@keyframes loan-tile-in {
+  from { opacity: 0; transform: translateY(8px) scale(.99); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes loan-hero-ring {
+  0%   { box-shadow: 0 2px 6px rgba(17, 24, 39, .10), 0 0 0 0 rgba(29, 78, 216, .38); }
+  100% { box-shadow: 0 2px 6px rgba(17, 24, 39, .10), 0 0 0 14px rgba(29, 78, 216, 0); }
+}
+
+/* The estimate notice reads as a fine-print tray, not a warning wall. */
+body[data-tool="loan-calculator"] .tk-msg.warn {
+  border-inline-start: 3px solid var(--warn);
+  background: var(--warn-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-tool="loan-calculator"] .tk-out .tk-row,
+  body[data-tool="loan-calculator"] .tk-out .tk-row.is-strong {
+    animation: none !important;
+    transition: none;
+  }
+  body[data-tool="loan-calculator"] .tk-out .tk-row:hover { transform: none; }
+}
