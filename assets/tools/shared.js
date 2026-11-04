@@ -104,6 +104,9 @@ window.ToolKit = (function () {
         : n === 1 ? input.files[0].name
         : n + ' × ' + input.files[0].name;
       name.classList.toggle('has-files', !!n);
+      // The whole zone changes state once a file is in it, not just the
+      // filename: the stylesheet keys the tinted "ready" look off this.
+      wrap.classList.toggle('has-files', !!n);
       if (opts.onChange) opts.onChange();
     });
     return { row: wrap, input: input };

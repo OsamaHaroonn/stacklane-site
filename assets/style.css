@@ -1769,24 +1769,57 @@ a.card:active, .tool-card:active { transform: translateY(0); }
   cursor: not-allowed;
 }
 
-/* File picker as a drop zone. The dashed line is an outline, so it
-   costs no height at all. */
+/* File picker as a drop zone. Every state here is an outline plus a
+   background tint, both of which cost exactly zero layout, so the zone
+   keeps the height it had before this rule. There is no drag handling
+   underneath, so the copy never promises a drag and drop it cannot do. */
 .tool-panel .tk-file {
   border-radius: var(--r-md);
-  outline: 1px dashed var(--line-2);
-  outline-offset: 6px;
-  transition: outline-color .18s ease, background-color .18s ease;
+  padding-inline: 0;
+  background: linear-gradient(180deg, rgba(29, 78, 216, .035), rgba(29, 78, 216, .012));
+  outline: 2px dashed #c3d2ee;
+  outline-offset: 5px;
+  transition: outline-color .18s ease, background-color .18s ease, box-shadow .2s ease;
 }
-.tool-panel .tk-file:hover { outline-color: #b9c6e4; }
-.tool-panel .tk-file:focus-within {
+.tool-panel .tk-file:hover {
+  background: linear-gradient(180deg, rgba(29, 78, 216, .06), rgba(29, 78, 216, .02));
   outline-color: var(--blue-600);
-  background: var(--blue-50);
 }
+.tool-panel .tk-file:focus-within {
+  background: var(--blue-50);
+  outline-color: var(--blue-600);
+  outline-style: solid;
+  box-shadow: 0 0 0 4px rgba(29, 78, 216, .12);
+}
+/* A file is in the zone: the whole area reads as ready, not just the
+   filename. Green only ever means "chosen", never "uploaded" — nothing
+   is uploaded. */
+.tool-panel .tk-file.has-files {
+  background: linear-gradient(180deg, rgba(15, 123, 82, .06), rgba(15, 123, 82, .02));
+  outline-color: #9ed3ba;
+}
+.tool-panel .tk-file.has-files:hover { outline-color: var(--good); }
+.tool-panel .tk-file.has-files:focus-within {
+  outline-color: var(--good);
+  box-shadow: 0 0 0 4px rgba(15, 123, 82, .12);
+}
+.tool-panel .tk-file-btn {
+  color: var(--blue-700);
+  border-color: #c3d2ee;
+  background: var(--surface);
+  transition: background-color .16s ease, border-color .16s ease, color .16s ease, transform .12s ease;
+}
+.tool-panel .tk-file-btn:hover {
+  background: var(--blue-50);
+  border-color: var(--blue-600);
+}
+.tool-panel .tk-file-btn:active { transform: translateY(1px); }
 .tool-panel .tk-file-btn:focus-visible {
   outline: 2px solid var(--blue-600);
   outline-offset: 2px;
 }
-.tool-panel .tk-file-name.has-files { color: var(--good); }
+.tool-panel .tk-file-name { transition: color .18s ease; }
+.tool-panel .tk-file-name.has-files { color: var(--good); font-weight: 600; }
 
 /* Results: when the output stops being hidden it tints, rings and
    fades in, so the eye lands there first. */
@@ -1910,6 +1943,9 @@ a.card:active, .tool-card:active { transform: translateY(0); }
   background: none;
   box-shadow: none;
   border-radius: 0;
+  /* The tiles animate themselves; a fade on the container as well would
+     double up on the same 220ms. */
+  animation: none;
 }
 
 /* One tile. Three to a row from 720px up, full width below; the basis
@@ -2083,6 +2119,75 @@ a.card:active, .tool-card:active { transform: translateY(0); }
   background: var(--danger-soft);
 }
 .tool-panel .tk-out .tk-row.is-bad .tk-row-value { color: var(--danger); }
+
+/* The chosen-file list. Its markup (index, name, size, actions) existed
+   with no stylesheet at all, so the spans ran together as
+   "1report.pdf8 B". The rows only exist after a file is chosen, so this
+   cannot shift an empty page. */
+.tool-panel .tk-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin: 0 0 var(--sp-4);
+  padding: 0;
+  list-style: none;
+}
+/* display:flex above would otherwise outrank the [hidden] rule the
+   browser applies, leaving an empty list's margin in the panel. */
+.tool-panel .tk-list[hidden] { display: none; }
+.tool-panel .tk-list-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--sp-2) var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface);
+}
+.tool-panel .tk-list-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--blue-50);
+  color: var(--blue-700);
+  font-size: .875rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.tool-panel .tk-list-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+}
+.tool-panel .tk-list-size {
+  color: var(--ink-2);
+  font-size: .875rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.tool-panel .tk-list-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+/* Wide enough for the actions to sit beside the file instead of under
+   it: one compact row per file. */
+@media (min-width: 720px) {
+  .tool-panel .tk-list-row {
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+  }
+  .tool-panel .tk-list-actions {
+    grid-column: auto;
+    flex-wrap: nowrap;
+  }
+}
 
 /* Notices read as trays with a coloured edge, not warning walls. */
 .tool-panel .tk-msg.warn {
