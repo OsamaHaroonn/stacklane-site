@@ -128,7 +128,9 @@
     var box = el('div', { class: 'head-search' });
     var input = el('input', {
       id: 'head-q', type: 'search', autocomplete: 'off', spellcheck: 'false',
-      placeholder: get(json, 'home.searchPlaceholder') || 'Search the tools',
+      /* Short enough not to be clipped in the header; English only so
+         the Arabic pages keep their own translated text. */
+      placeholder: lang === 'en' ? 'Search tools' : (get(json, 'home.searchPlaceholder') || 'Search tools'),
       'aria-label': get(json, 'home.searchLabel') || 'Search the tools'
     });
     var list = el('ul', { id: 'head-results', class: 'head-results' });
@@ -165,7 +167,10 @@
 
     var headNav = el('nav', { class: 'head-nav', 'aria-label': site });
     headNav.appendChild(headSearch(json));
-    headNav.appendChild(el('a', { href: homeHref + '#categories' }, get(json, 'home.categoriesH2') || 'Categories'));
+    headNav.appendChild(el('a', {
+      href: homeHref + '#categories',
+      'aria-label': get(json, 'home.categoriesH2') || 'Categories'
+    }, lang === 'en' ? 'Categories' : (get(json, 'home.categoriesH2') || 'Categories')));
     if (lang === 'en') {
       headNav.appendChild(el('a', { href: 'business.html' }, get(json, 'categories.business.name') || 'Business'));
     }

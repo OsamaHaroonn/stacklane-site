@@ -1,10 +1,13 @@
 /* ============================================================
-   Home page — centred hero, category cards, 8 popular cards and one
-   compact section per category. Everything is rendered from
+   Home page — centred hero, category cards, eight popular cards and
+   one section per category. Everything is rendered from
    assets/i18n/<lang>.json and assets/catalog.js.
 
    The Business category is deliberately absent from this page: it
    keeps its own category page and is linked from the footer and menu.
+
+   Layout rhythm: the first two categories use full cards, the rest
+   use compact rows, so the page does not read as one long list.
    ============================================================ */
 window.HomePage = function (json, h) {
   'use strict';
@@ -43,9 +46,26 @@ window.HomePage = function (json, h) {
     return span;
   }
 
+  function arrow() {
+    return el('span', { class: 'card-arrow', 'aria-hidden': 'true' }, '\u2192');
+  }
+
   function toolTitle(slug) { return get(json, 'tools.' + slug + '.title'); }
   function toolDesc(slug) { return get(json, 'tools.' + slug + '.desc'); }
   function catName(slug) { return get(json, 'categories.' + slug + '.name'); }
+
+  /* English-only section eyebrows. Each one is unique, factual and
+     short; they are not shown on the Arabic pages. */
+  var EYEBROWS = {
+    pdf: 'Documents, handled locally',
+    images: 'Pictures, no upload',
+    text: 'Words and lines',
+    generators: 'Make something new',
+    calculators: 'Numbers, with the working',
+    converters: 'One format to another',
+    developer: 'Everyday dev chores',
+    fun: 'Five-minute distractions'
+  };
 
   var POPULAR = ['word-counter', 'merge-pdf', 'qr-code-generator', 'percentage-calculator',
     'password-generator', 'image-compressor', 'json-formatter', 'loan-calculator'];
@@ -85,6 +105,7 @@ window.HomePage = function (json, h) {
       if (!n) return;
 
       var card = el('a', { class: 'card cat-card', href: slug + '.html' });
+      card.setAttribute('data-cat', slug);
       card.appendChild(icon(slug, 'cat-icon'));
       card.appendChild(el('h3', {}, name));
       card.appendChild(el('p', {}, get(json, 'categories.' + slug + '.desc') || ''));
@@ -110,16 +131,20 @@ window.HomePage = function (json, h) {
       var cat = window.TOOL_CATS ? window.TOOL_CATS[slug] : null;
       if (!title || !cat) return;
       var card = el('a', { class: 'card tool-card', href: slug + '.html' });
+      card.setAttribute('data-cat', cat);
       card.appendChild(icon(cat, 'row-icon'));
       card.appendChild(el('h3', {}, title));
       card.appendChild(el('p', {}, toolDesc(slug) || ''));
+      card.appendChild(arrow());
       popularGrid.appendChild(card);
     });
   }
 
-  /* ---- one compact section per category, six tools each ----
-     A tool appears once on the page: popular entries are skipped here. */
+  /* ---- one section per category, up to six tools each ----
+     A tool may appear in Popular and again in its own category: the
+     popular row is a shortcut, not a filter. */
   if (catSections) {
+    var order = 0;
     CATS.forEach(function (slug) {
       if (slug === 'business') return;
       var name = catName(slug);
@@ -128,27 +153,69 @@ window.HomePage = function (json, h) {
       var all = (window.TOOL_CATALOG || []).filter(function (t) {
         return t.category === slug && toolTitle(t.slug);
       });
-      var rest = all.filter(function (t) { return POPULAR.indexOf(t.slug) === -1; });
-      if (!rest.length) return;
+      if (!all.length) return;
 
       var sec = el('section', { class: 'cat-section', id: 'cat-' + slug });
       var container = el('div', { class: 'container' });
       var head = el('header', {});
-      head.appendChild(el('h2', {}, name));
-      var viewAll = el('a', { class: 'view-all', href: slug + '.html' }, 'View all ' + all.length + ' tools');
+      var titles = el('div', { class: 'sec-titles' });
+      if (lang === 'en' && EYEBROWS[slug]) {
+        titles.appendChild(el('span', { class: 'section-kicker' }, EYEBROWS[slug]));
+      }
+      titles.appendChild(el('h2', {}, name));
+      head.appendChild(titles);
+      var viewAll = el('a', { class: 'view-all', href: slug + '.html' },
+        'View all ' + all.length + ' tools');
+      viewAll.appendChild(el('span', { class: 'arrow', 'aria-hidden': 'true' }, '\u2192'));
       head.appendChild(viewAll);
       container.appendChild(head);
 
-      var grid = el('div', { class: 'row-grid' });
-      rest.slice(0, 6).forEach(function (t) {
-        var row = el('a', { class: 'tool-row', href: t.slug + '.html' });
-        row.appendChild(icon(slug, 'row-icon'));
-        row.appendChild(el('span', {}, toolTitle(t.slug)));
-        grid.appendChild(row);
+      /* First two categories get full cards, the rest compact rows. */
+      var asCards = order < 2;
+      var grid = el('div', { class: asCards ? 'card-grid' : 'row-grid' });
+      all.slice(0, 6).forEach(function (t, i) {
+        if (asCards) {
+          var card = el('a', { class: 'card tool-card' + (i > 3 ? ' is-extra' : ''), href: t.slug + '.html' });
+          card.setAttribute('data-cat', slug);
+          card.appendChild(icon(slug, 'row-icon'));
+          card.appendChild(el('h3', {}, toolTitle(t.slug)));
+          card.appendChild(el('p', {}, toolDesc(t.slug) || ''));
+          card.appendChild(arrow());
+          grid.appendChild(card);
+        } else {
+          var row = el('a', { class: 'tool-row' + (i > 3 ? ' is-extra' : ''), href: t.slug + '.html' });
+          row.setAttribute('data-cat', slug);
+          row.appendChild(icon(slug, 'row-icon'));
+          row.appendChild(el('span', { class: 'row-title' }, toolTitle(t.slug)));
+          row.appendChild(arrow());
+          grid.appendChild(row);
+        }
       });
       container.appendChild(grid);
       sec.appendChild(container);
       catSections.appendChild(sec);
+      order++;
+    });
+  }
+
+  /* ---- one small observer for the popular and category sections ----
+     The hidden starting state is added here, so the page is complete
+     without JavaScript and when IntersectionObserver is missing. */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce && 'IntersectionObserver' in window) {
+    var targets = [document.getElementById('popular')].concat(
+      [].slice.call(document.querySelectorAll('.cat-section')));
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-in');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    targets.forEach(function (node) {
+      if (!node) return;
+      node.classList.add('will-reveal');
+      observer.observe(node);
     });
   }
 

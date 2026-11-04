@@ -59,39 +59,39 @@
   "categories": {
     "pdf": {
       "name": "PDF",
-      "desc": "Merge, split and convert PDF files. The files stay on your device."
+      "desc": "Merge, split and build PDFs."
     },
     "images": {
       "name": "Images",
-      "desc": "Compress, resize and convert pictures without uploading them."
+      "desc": "Compress and resize images."
     },
     "text": {
       "name": "Text",
-      "desc": "Count, check and transform text you paste in."
+      "desc": "Count, clean and change text."
     },
     "generators": {
       "name": "Generators",
-      "desc": "Create QR codes and strong passwords in your browser."
+      "desc": "QR codes and strong passwords."
     },
     "calculators": {
       "name": "Calculators",
-      "desc": "Age, percentage, discount and loan maths with the working shown."
+      "desc": "Maths with the working shown."
     },
     "converters": {
       "name": "Converters",
-      "desc": "Convert units, time zones and formats locally."
+      "desc": "Units, bases and time zones."
     },
     "developer": {
       "name": "Developer",
-      "desc": "Format, validate and encode data you are working with."
+      "desc": "JSON, regex and hashing."
     },
     "fun": {
       "name": "Fun",
-      "desc": "Small browser toys: coins, dice, a decision wheel, bubble wrap and word mixers. Nothing is saved."
+      "desc": "Coins, dice and quick toys."
     },
     "business": {
       "name": "Business",
-      "desc": "Pricing, invoicing, late-payment and leakage calculators for small businesses. English only for now."
+      "desc": "Pricing, invoices and cash flow."
     }
   },
   "units": {

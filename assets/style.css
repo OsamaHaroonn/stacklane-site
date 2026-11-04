@@ -1604,9 +1604,12 @@ a.card:active, .tool-card:active { transform: translateY(0); }
   .hero .eyebrow { margin-bottom: var(--sp-2); }
   .search-wrap { margin-top: var(--sp-3); }
   .hero .popular { margin-top: var(--sp-2); }
-  /* Three chips on a phone; the rest stay in the DOM. */
+  /* Three chips on a phone; the rest stay in the DOM. The label and
+     the chips take two rows, so the whole block is reserved here
+     and the sections below never jump when the chips are added. */
   .popular a:nth-of-type(n+4) { display: none; }
   .popular a { min-height: 44px; }
+  .hero .popular { min-height: 132px; }
 
   /* Category cards: icon and name on line one, count on line two. */
   .cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-2) var(--sp-3); }
@@ -1644,11 +1647,13 @@ a.card:active, .tool-card:active { transform: translateY(0); }
   #popular .section-kicker { display: none; }
   #popular .section-head { margin-bottom: var(--sp-3); }
 
-  /* Footer: two columns under a full-width about block. */
+  /* Footer: each block full width, so the category links get real
+     columns instead of 72px slivers, and the legal links sit three
+     across on one line. */
   footer, .site-foot { padding-block: var(--sp-5) var(--sp-4); }
-  .foot-grid { grid-template-columns: 1fr 1fr; gap: var(--sp-4) var(--sp-4); }
-  .foot-grid > div:first-child { grid-column: 1 / -1; }
+  .foot-grid { grid-template-columns: 1fr; gap: var(--sp-4); }
   .foot-head { margin-bottom: var(--sp-1); }
-  .foot-cats ul { grid-template-columns: 1fr 1fr; column-gap: var(--sp-3); }
+  .foot-cats ul { grid-template-columns: 1fr 1fr; column-gap: var(--sp-4); }
+  .foot-grid > div:last-of-type ul { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--sp-3); }
   .foot-copy { margin-top: var(--sp-4); padding-top: var(--sp-3); }
 }
