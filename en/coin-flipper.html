@@ -44,7 +44,7 @@
 
   <section class="tool-section">
     <h2 data-i18n="tool.how">How it works</h2>
-    <p data-i18n="tools.coin-flipper.how">Each flip asks the browser for 32 random bits and reduces that number to one of two outcomes. A plain remainder would favour one side slightly, because 2 does not divide the range of a 32-bit number, so values above the largest exact multiple of two are thrown away and drawn again. Every accepted value is therefore mapped to heads or tails with exactly equal chance, and every flip is independent of the ones before it. The counters live in this page only: they start at zero, change as you flip, and go back to zero when you press reset or reload. The percentages are each count divided by the total flips so far.</p>
+    <p data-i18n="tools.coin-flipper.how">Each flip asks the browser for one 32-bit random number and takes it modulo 2: an even number is heads, an odd number is tails. A 32-bit number has 2^32 possible values, and 2^32 is even, so the two outcomes split the range exactly in half, with 2^31 values each. Nothing is discarded and neither side is favoured. The helper this page uses also contains a guard that would redraw values for a range that does not divide 2^32 evenly, but with two outcomes that guard can never fire. Every flip is independent of the ones before it. The counters live in this page only: they start at zero and go back to zero when you press reset or reload. Each percentage is that count divided by the total flips so far.</p>
   </section>
 
   <section class="tool-section">

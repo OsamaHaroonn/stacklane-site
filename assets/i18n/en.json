@@ -3337,12 +3337,12 @@
       "title": "Coin flipper",
       "desc": "Flip a virtual coin with browser crypto randomness, see heads or tails, and keep a running count for this visit. No storage, no bias.",
       "lede": "Flip a coin as many times as you like and watch the heads and tails counts build up, with the share of each side shown as it goes.",
-      "how": "Each flip asks the browser for 32 random bits and reduces that number to one of two outcomes. A plain remainder would favour one side slightly, because 2 does not divide the range of a 32-bit number, so values above the largest exact multiple of two are thrown away and drawn again. Every accepted value is therefore mapped to heads or tails with exactly equal chance, and every flip is independent of the ones before it. The counters live in this page only: they start at zero, change as you flip, and go back to zero when you press reset or reload. The percentages are each count divided by the total flips so far.",
+      "how": "Each flip asks the browser for one 32-bit random number and takes it modulo 2: an even number is heads, an odd number is tails. A 32-bit number has 2^32 possible values, and 2^32 is even, so the two outcomes split the range exactly in half, with 2^31 values each. Nothing is discarded and neither side is favoured. The helper this page uses also contains a guard that would redraw values for a range that does not divide 2^32 evenly, but with two outcomes that guard can never fire. Every flip is independent of the ones before it. The counters live in this page only: they start at zero and go back to zero when you press reset or reload. Each percentage is that count divided by the total flips so far.",
       "example": "If the first four flips came out heads, tails, heads, heads, the counter would read heads 3, which is 3 ÷ 4 × 100 = 75.0%, tails 1, which is 25.0%, and a total of 4. Each flip is independent, so that 75% is just what happened in those four flips, not a prediction for the next one.",
       "faq": [
         {
           "q": "Is it really 50/50?",
-          "a": "Each flip uses rejection sampling on 32 random bits, so heads and tails are mapped from equal-sized ranges. No side benefits from rounding, which is what a simple modulo would cause."
+          "a": "Yes, exactly. Each flip takes one 32-bit random number modulo 2. Because 2^32 divides evenly by 2, heads and tails each come from exactly 2^31 of the possible values, so nothing is rounded away and no value is discarded. The flips are independent, so earlier results do not change the next one."
         },
         {
           "q": "Does it remember my previous flips?",
