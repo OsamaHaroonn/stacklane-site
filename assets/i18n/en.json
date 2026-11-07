@@ -2898,7 +2898,8 @@
         "explainAllowText": "Reopens a path inside a blocked folder. Most crawlers use the longest matching rule.",
         "explainSitemap": "Sitemap",
         "explainSitemapText": "Points crawlers at your sitemap XML. It is a full URL and sits outside any user-agent group.",
-        "note": "Built in your browser: the paths and addresses you type are never sent anywhere."
+        "note": "Built in your browser: the paths and addresses you type are never sent anywhere.",
+        "empty": "Nothing is blocked yet: this file lets every crawler reach the whole site. Choose Custom rules to add a path that must stay out of the index."
       }
     },
     "xml-sitemap-generator": {

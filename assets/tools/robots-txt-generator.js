@@ -146,7 +146,10 @@ window.TOOL = (function () {
         [ui('explainAllow'), ui('explainAllowText')],
         [ui('explainSitemap'), ui('explainSitemapText')]
       ]);
-      box.show(ui('note'), '');
+      /* With no paths and no sitemap the file is two lines that allow
+         everything, which looks like a failure. Say so instead of leaving
+         the reader to decode an empty Disallow. */
+      box.show(!list.length && !sm ? ui('empty') : ui('note'), '');
     }
 
     render();
