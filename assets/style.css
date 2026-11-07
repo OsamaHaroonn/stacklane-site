@@ -2467,8 +2467,9 @@ body[data-tool="loan-calculator"] #loan-amount {
 
    Nothing here changes a box that holds text: colour, border-colour,
    shadow, background, font-variant and pseudo-elements only. The
-   loan-calculator guard (3452px / 2848.7639px at innerWidth 376) is
-   re-measured after every type.
+   loan-calculator guard is re-measured after every type and compared with
+   the same page at commit aef2433 in the same browser, because the absolute
+   numbers move with the window's pixel ratio.
    ============================================================ */
 
 /* calculators */
