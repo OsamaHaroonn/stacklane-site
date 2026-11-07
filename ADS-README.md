@@ -33,8 +33,8 @@ Two pieces of code make the switch work, and both are already in place:
 
 | Slot | Position | Reserved height |
 |---|---|---|
-| `A` | Below the tool card, at least 32px from every button and input | 280px desktop, 100px below 720px |
-| `B` | After the FAQ, before "Related tools" | 280px desktop, 100px below 720px |
+| `A` | Below the tool card, at least 32px from every button and input | 90px desktop (728×90), 100px below 720px (320×100) |
+| `B` | After the FAQ, before "Related tools" | 90px desktop (728×90), 100px below 720px (320×100) |
 | `C` | Desktop sidebar, below the related-tools list | 250px |
 
 Only the 73 tool pages and the seven Business tool pages carry slots. The home

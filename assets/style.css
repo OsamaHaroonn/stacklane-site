@@ -897,8 +897,11 @@ html[data-ads="on"] .ad-slot {
 html[data-ads="on"] .ad-slot[data-slot="A"],
 html[data-ads="on"] .ad-slot[data-slot="B"] {
   /* 728x90 on desktop, 320x100 on a phone. Reserved here, in CSS, so a
-     late-loading ad cannot move a single pixel of the page. */
-  min-height: 280px;
+     late-loading ad cannot move a single pixel of the page. The reserved
+     height is the height of the unit itself, not a guess above it: a slot
+     that reserves more than its ad leaves a hole, and one that reserves
+     less lets the ad push the page down. */
+  min-height: 90px;
   margin-block: var(--sp-6);
 }
 html[data-ads="on"] .ad-slot[data-slot="C"] { min-height: 250px; margin-top: var(--sp-5); }
