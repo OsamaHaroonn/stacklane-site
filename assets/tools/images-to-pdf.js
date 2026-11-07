@@ -143,7 +143,12 @@ window.TOOL = (function () {
       if (!files.length) { box.show(ui('empty'), 'error'); return Promise.resolve(); }
       if (files.length > MAX_FILES) { box.show(ui('tooMany'), 'error'); return Promise.resolve(); }
       if (totalBytes() > MAX_BYTES) { box.show(ui('tooBig'), 'error'); return Promise.resolve(); }
-      if (!window.PDFLib) { box.show(common('error'), 'error'); return Promise.resolve(); }
+      /* pdf-lib is fetched when the PDF is first built, not with the page. */
+      if (!window.PDFLib) {
+        return TK.pdfLib().then(create).catch(function () {
+          box.show(common('error'), 'error');
+        });
+      }
 
       busy = true;
       box.clear();

@@ -67,12 +67,16 @@ window.TOOL = (function () {
         downloadBtn.hidden = true;
         out.render([]);
         if (!f) { box.show(ui('empty')); return; }
-        if (!window.PDFLib) { box.show(common('error'), 'error'); return; }
         fileName = f.name;
         box.show(ui('loading'));
-        TK.readFile(f).then(function (bytes) {
-          return window.PDFLib.PDFDocument.load(bytes, { ignoreEncryption: false });
-        })
+        /* pdf-lib arrives on first use: the file is read straight away and
+           the parse waits for the library. */
+        TK.pdfLib()
+          .then(function (lib) {
+            return TK.readFile(f).then(function (bytes) {
+              return lib.PDFDocument.load(bytes, { ignoreEncryption: false });
+            });
+          })
           .then(function (doc) {
             source = doc;
             loading = false;
@@ -84,7 +88,8 @@ window.TOOL = (function () {
           .catch(function () {
             loading = false;
             loadFailed = true;
-            box.show(ui('failed'), 'error');
+            // A library that never arrived is not the file's fault.
+            box.show(window.PDFLib ? ui('failed') : common('error'), 'error');
           });
       }
     });
@@ -164,7 +169,12 @@ window.TOOL = (function () {
         else box.show(ui('empty'), 'error');
         return Promise.resolve();
       }
-      if (!window.PDFLib) { box.show(common('error'), 'error'); return Promise.resolve(); }
+      /* pdf-lib is fetched on the first split, not with the page. */
+      if (!window.PDFLib) {
+        return TK.pdfLib().then(split).catch(function () {
+          box.show(common('error'), 'error');
+        });
+      }
 
       var want = mode.select.value;
       var indices;

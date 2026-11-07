@@ -104,9 +104,12 @@ window.TOOL = (function () {
         box.show(files.length ? ui('oneOnly') : ui('empty'), 'error');
         return Promise.resolve();
       }
+      /* pdf-lib is fetched on the first merge, not with the page. Once it
+         lands, merge() runs again from the top and takes the normal path. */
       if (!window.PDFLib) {
-        box.show(common('error'), 'error');
-        return Promise.resolve();
+        return TK.pdfLib().then(merge).catch(function () {
+          box.show(common('error'), 'error');
+        });
       }
 
       busy = true;

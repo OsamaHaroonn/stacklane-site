@@ -292,12 +292,37 @@ window.ToolKit = (function () {
     return new Promise(function (r) { setTimeout(r, 16); });
   }
 
+  /* pdf-lib is 525 KB. It used to be a <script> on the page, which meant
+     every visitor downloaded it before touching anything — even to read
+     the page. It is now fetched the first time a tool actually needs it:
+     the first call injects the tag and returns the same promise to every
+     later caller, so it is fetched once and never twice.
+
+     Arabic pages still carry the eager tag, so there window.PDFLib is
+     already present and this resolves without a request. */
+  var pdfLibPromise = null;
+  function pdfLib() {
+    if (window.PDFLib) return Promise.resolve(window.PDFLib);
+    if (pdfLibPromise) return pdfLibPromise;
+    pdfLibPromise = new Promise(function (resolve, reject) {
+      var s = document.createElement('script');
+      s.src = new URL('../assets/vendor/pdf-lib.min.js', document.baseURI).href;
+      s.onload = function () {
+        if (window.PDFLib) resolve(window.PDFLib);
+        else reject(new Error('pdf-lib loaded but defined nothing'));
+      };
+      s.onerror = function () { pdfLibPromise = null; reject(new Error('pdf-lib failed to load')); };
+      document.head.appendChild(s);
+    });
+    return pdfLibPromise;
+  }
+
   return {
     el: el, field: field, select: select, checkbox: checkbox,
     textarea: textarea, fileInput: fileInput, btn: btn,
     msg: msg, progressBar: progressBar, rows: rows,
     bytes: bytes, num: num, download: download, copy: copy,
     parseDate: parseDate, today: today, readFile: readFile,
-    guard: guard, yieldTab: yieldTab
+    guard: guard, yieldTab: yieldTab, pdfLib: pdfLib
   };
 })();
