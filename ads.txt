@@ -1,0 +1,11 @@
+# ads.txt — PLACEHOLDER, not a valid authorisation file.
+#
+# Nothing in this repository serves ads, so this file authorises nobody.
+# Before ads go live:
+#   1. replace PUB-0000000000000000 with the publisher ID your network issues,
+#   2. replace the domain below with that network's real ad-system domain,
+#   3. keep the exact line format from the network's own documentation —
+#      do not copy it from another site.
+# Remove this comment block once the real line is in.
+#
+# google.com, PUB-0000000000000000, DIRECT, f08c47fec0942fa0

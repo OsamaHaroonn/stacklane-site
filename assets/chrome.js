@@ -18,6 +18,16 @@
 (function () {
   'use strict';
 
+  /* Ad slots are structure only and off by default: the markup carries
+     them empty and `hidden`, so a page with ads off has no ad height at
+     all. One switch, <html data-ads="on">, turns every slot on; this is
+     the only script involved. Nothing here loads a network, a cookie or
+     a tracker. See ADS-README.md. */
+  if (document.documentElement.getAttribute('data-ads') === 'on') {
+    var adSlots = document.querySelectorAll('.ad-slot[hidden]');
+    for (var ai = 0; ai < adSlots.length; ai++) adSlots[ai].removeAttribute('hidden');
+  }
+
   var C = window.SITE_CONFIG || {};
   var base = String(C.siteUrl || '').trim().replace(/\/+$/, '');
   var lang = (document.documentElement.getAttribute('lang') || 'en').toLowerCase();

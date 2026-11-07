@@ -875,26 +875,36 @@ textarea { resize: vertical; min-height: 120px; }
 .tool-side h2 { font-size: 1.125rem; margin-bottom: var(--sp-3); }
 
 /* ---------- Ad slots: structure only, no ads ----------
-   Empty, hidden containers. While [hidden] they take no space and
-   paint nothing. The one documented switch below reserves height so a
-   loaded ad cannot move the layout; a future ads batch must re-check
-   the network's current size and placement rules. */
+   Empty, hidden containers. While [hidden] they take no space and paint
+   nothing: no border, no background, no label, no text.
+
+   THE SWITCH: add data-ads="on" to <html> and every slot on the page
+   turns on at once (chrome.js then drops the hidden attribute, and the
+   rules below reserve a fixed size). Nothing else is needed, and no
+   script, cookie, tracker or network call lives in this block. A future
+   ads batch must re-check the network's current size and placement
+   rules before anything is inserted. */
 .ad-slot { display: none; }
 .ad-slot[hidden] { display: none !important; height: 0; margin: 0; padding: 0; border: 0; }
-.ads-on .ad-slot[data-slot="A"],
-.ads-on .ad-slot[data-slot="B"] {
-  display: block;
+html[data-ads="on"] .ad-slot {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+  border-radius: var(--r-md);
+}
+html[data-ads="on"] .ad-slot[data-slot="A"],
+html[data-ads="on"] .ad-slot[data-slot="B"] {
+  /* 728x90 on desktop, 320x100 on a phone. Reserved here, in CSS, so a
+     late-loading ad cannot move a single pixel of the page. */
   min-height: 280px;
   margin-block: var(--sp-6);
-  border-radius: var(--r-md);
-  background: var(--band);
 }
-.ads-on .ad-slot[data-slot="C"] {
-  display: block;
-  min-height: 250px;
-  margin-top: var(--sp-5);
-  border-radius: var(--r-md);
-  background: var(--band);
+html[data-ads="on"] .ad-slot[data-slot="C"] { min-height: 250px; margin-top: var(--sp-5); }
+@media (max-width: 719px) {
+  html[data-ads="on"] .ad-slot[data-slot="A"],
+  html[data-ads="on"] .ad-slot[data-slot="B"] { min-height: 100px; }
 }
 /* Slot A must sit at least 32px from any control. */
 .tool-main > .ad-slot[data-slot="A"] { margin-top: var(--sp-6); }
