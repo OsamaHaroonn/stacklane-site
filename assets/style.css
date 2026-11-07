@@ -2060,10 +2060,16 @@ a.card:active, .tool-card:active { transform: translateY(0); }
   .tool-panel .btn:hover:active { transform: none; }
   .tool-panel .tk-out:not([hidden]),
   .tool-panel .tk-msg { animation: none !important; }
+  /* The tiles rise 8px and the hero tile pulses a ring: both are
+     movement, so both are switched off, not just shortened. */
+  .tool-panel .tk-out .tk-row,
+  .tool-panel .tk-out .tk-row.is-strong { animation: none !important; }
+  .tool-panel .tk-out .tk-row:hover { transform: none; }
   .tool-panel .tk-progress-bar {
     animation: none !important;
     transition: none;
   }
+  .tool-panel .tk-out .tk-row { transition: background-color .16s ease; }
 }
 
 /* ============================================================
