@@ -343,6 +343,13 @@
 
   I18N.load().then(function (json) {
     var bodyTool = body.getAttribute('data-tool');
+
+    /* Give a tool page the same data-category its directory page carries,
+       so the per-type accent and icon in the stylesheet can key off one
+       attribute. An attribute changes no geometry. */
+    if (bodyTool && window.TOOL_CATS && window.TOOL_CATS[bodyTool] && !body.getAttribute('data-category')) {
+      body.setAttribute('data-category', window.TOOL_CATS[bodyTool]);
+    }
     var isHome = body.hasAttribute('data-home');
     var category = body.getAttribute('data-category');
     // Every i18n page lives one level below the root (en/…, ar/…), so the
