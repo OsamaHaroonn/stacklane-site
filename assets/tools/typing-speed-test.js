@@ -98,8 +98,8 @@ window.TOOL = (function () {
         [ui('correct'), TK.num(c.correct, 0)],
         [ui('typed'), TK.num(c.typed, 0)],
         [ui('elapsed'), TK.num(elapsedMs() / 1000, 1) + ' ' + ui('sec')],
-        [ui('formula'), TK.num(c.correct, 0) + ' \u00f7 5 \u00f7 ' +
-          TK.num(minutes, 2) + ' ' + ui('min') + ' = ' + TK.num(wpm, 1) + ' WPM \u00b7 ' +
+        [ui('formula'), TK.num(c.correct, 0) + ' \u00f7 5 \u00d7 60 \u00f7 ' +
+          TK.num(elapsedMs() / 1000, 1) + ' ' + ui('sec') + ' = ' + TK.num(wpm, 1) + ' WPM \u00b7 ' +
           TK.num(c.correct, 0) + ' \u00f7 ' + TK.num(c.typed, 0) + ' = ' + TK.num(acc, 1) + '%']
       ]);
       if (!finished) box.show(ui('running'), '');
