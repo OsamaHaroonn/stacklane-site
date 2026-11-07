@@ -588,7 +588,7 @@ textarea { resize: vertical; min-height: 120px; }
 .table { width: 100%; border-collapse: collapse; font-size: .9375rem; }
 .table th {
   text-align: start;
-  font-size: .75rem;
+  font-size: .875rem;
   text-transform: uppercase;
   letter-spacing: .06em;
   color: var(--ink-3);
@@ -618,7 +618,7 @@ textarea { resize: vertical; min-height: 120px; }
   .table td[data-label]::before {
     content: attr(data-label);
     display: block;
-    font-size: .75rem;
+    font-size: .875rem;
     font-weight: 700;
     letter-spacing: .06em;
     text-transform: uppercase;
@@ -644,9 +644,67 @@ textarea { resize: vertical; min-height: 120px; }
   font-weight: 700;
 }
 .totals .row.grand span:last-child { color: var(--blue-600); }
+
+/* ---------- Business pages: card, field and answer treatment ----------
+   .panel, .field and .totals are used by the seven hand-written
+   Business pages only, so nothing here can reach a tool page. Every
+   rule below changes colour, border-colour, radius, shadow or an
+   absolutely positioned pseudo-element — never a box that carries
+   text, so no field or panel changes size. */
+.panel {
+  background-color: var(--surface);
+  background-image: linear-gradient(180deg, #fbfcff 0, var(--surface) 180px);
+  border-color: var(--line);
+  box-shadow:
+    0 1px 2px rgba(16, 24, 40, .05),
+    0 12px 28px -16px rgba(16, 24, 40, .18),
+    0 32px 64px -42px rgba(29, 78, 216, .22);
+}
+.field input,
+.field select,
+.field textarea {
+  border-radius: var(--r-md);
+  border-color: #dfe5ee;
+  box-shadow: inset 0 1px 2px rgba(16, 24, 40, .04);
+  transition: border-color .16s ease, box-shadow .16s ease, background-color .16s ease;
+}
+.field input:hover,
+.field select:hover,
+.field textarea:hover { border-color: #b9c6e4; }
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--blue-600);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(29, 78, 216, .13), inset 0 1px 2px rgba(16, 24, 40, .04);
+}
+.field input:disabled,
+.field select:disabled,
+.field textarea:disabled { background-color: #f3f5f9; color: var(--ink-3); box-shadow: none; }
+/* The total is the answer on these pages: a blue tile painted behind the
+   row by a pseudo-element, so the row keeps its exact geometry. */
+.totals .row.grand {
+  position: relative;
+  border-top-color: transparent;
+  color: #fff;
+}
+.totals .row.grand::before {
+  content: "";
+  position: absolute;
+  inset: -6px -14px;
+  border-radius: var(--r-md);
+  background-image: linear-gradient(135deg, var(--blue-600), var(--blue-700));
+  box-shadow: 0 10px 22px -14px rgba(21, 58, 168, .85), inset 0 1px 0 rgba(255, 255, 255, .16);
+}
+.totals .row.grand > span { position: relative; z-index: 1; }
+.totals .row.grand span:first-child { color: rgba(255, 255, 255, .9); }
+.totals .row.grand span:last-child { color: #fff; }
 @media (max-width: 899px) {
   .app { grid-template-columns: 1fr; }
   .app-side { position: static; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .field input, .field select, .field textarea { transition: none; }
 }
 
 .icon-btn {
