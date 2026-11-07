@@ -60,7 +60,7 @@ window.TOOL = (function () {
       role: 'group',
       'aria-label': ui('screenLabel'),
       style: 'font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;' +
-        'font-size:13px;line-height:1.5;background:#0d1117;color:#7ee787;' +
+        'font-size:14px;line-height:1.5;background:#0d1117;color:#7ee787;' +
         'border-radius:10px;padding:12px;min-height:220px;max-height:320px;' +
         'overflow:auto;white-space:pre-wrap;word-break:break-word;margin:10px 0'
     });

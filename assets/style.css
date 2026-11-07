@@ -1060,11 +1060,11 @@ footer, .site-foot { border-top: 1px solid var(--line); background: var(--surfac
 .tk-file { position: relative; }
 .tk-file-label { font-weight: 600; font-size: .9375rem; }
 .tk-file-input { position: absolute; width: 1px; height: 1px; opacity: 0; }
-.tk-file-btn { display: inline-flex; align-items: center; justify-content: center; }
-.tk-file-name {
+.tk-file-btn { display: inline-flex; align-items: center; justify-content: center; }.tk-file-name {
   font-size: .875rem;
   color: var(--ink-2);
   font-family: var(--mono);
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1089,7 +1089,7 @@ footer, .site-foot { border-top: 1px solid var(--line); background: var(--surfac
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: .8125rem;
+  font-size: .875rem;
   font-weight: 600;
 }
 .tk-chars { font-size: .875rem; color: var(--ink-2); margin: 0 0 var(--sp-3); }
@@ -1149,7 +1149,7 @@ footer, .site-foot { border-top: 1px solid var(--line); background: var(--surfac
   font-size: .9375rem;
 }
 .itemlist .item-name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.itemlist .item-meta { color: var(--ink-3); font-family: var(--mono); font-size: .8125rem; flex: none; }
+.itemlist .item-meta { color: var(--ink-3); font-family: var(--mono); font-size: .875rem; flex: none; }
 .checks { display: grid; gap: var(--sp-1); }
 .check-row { display: flex; align-items: center; gap: var(--sp-2); font-size: .9375rem; padding: var(--sp-1) 0; cursor: pointer; }
 .check-row input { flex: none; }
@@ -1929,6 +1929,11 @@ a.card:active, .tool-card:active { transform: translateY(0); }
 .tool-panel .tk-file {
   border-radius: var(--r-md);
   padding-inline: 0;
+  /* A grid item will not shrink below its content by default, and the
+     "no file chosen" sentence is set in one line. Without these two
+     lines a long sentence made the whole column 346px wide inside a
+     275px panel and pushed the page sideways at 375px. */
+  min-width: 0;
   background: linear-gradient(180deg, rgba(29, 78, 216, .035), rgba(29, 78, 216, .012));
   outline: 2px dashed #c3d2ee;
   outline-offset: 5px;

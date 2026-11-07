@@ -35,7 +35,7 @@ window.TOOL = (function () {
     });
     var swatch = TK.el('div', {
       style: 'width:120px;height:90px;border-radius:10px;background:#ffffff;' +
-        'display:flex;align-items:center;justify-content:center;font-size:13px;color:#5b6373',
+        'display:flex;align-items:center;justify-content:center;font-size:14px;color:#5b6373',
       'aria-hidden': 'true'
     }, 'shadow');
     preview.appendChild(swatch);

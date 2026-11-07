@@ -89,7 +89,7 @@ window.TOOL = (function () {
           style: 'height:74px;background:' + hex,
           'aria-hidden': 'true'
         }));
-        var meta = TK.el('div', { style: 'padding:8px;font-size:13px;line-height:1.35' });
+        var meta = TK.el('div', { style: 'padding:8px;font-size:14px;line-height:1.35' });
         meta.appendChild(TK.el('div', { style: 'font-weight:600' }, hex));
         meta.appendChild(TK.el('div', {}, d[0]));
         cell.appendChild(meta);
