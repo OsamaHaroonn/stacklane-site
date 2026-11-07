@@ -771,11 +771,28 @@ textarea { resize: vertical; min-height: 120px; }
 .tool-section h2 { margin-bottom: var(--sp-3); }
 .tool-section p:last-child { margin-bottom: 0; }
 .tool-section .note { color: var(--ink-2); }
+/* Section rhythm: a short accent rule sits in the space above each h2.
+   It is an absolutely positioned pseudo-element, so no heading moves.
+   No step numbers are drawn: the generated copy is a single paragraph,
+   not a list of steps, and numbering it would invent structure. */
+.tool-section > h2 { position: relative; }
+.tool-section > h2::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: -14px;
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--blue-600);
+  opacity: .85;
+}
 
 /* Worked example as a highlighted box. */
 .tool-section .worked,
 .worked {
   background: var(--blue-50);
+  background-image: linear-gradient(180deg, #f2f6ff 0, var(--blue-50) 70%);
   border: 1px solid #cfdcfb;
   border-inline-start: 4px solid var(--blue-600);
   border-radius: var(--r-md);
@@ -783,6 +800,7 @@ textarea { resize: vertical; min-height: 120px; }
   font-size: .9375rem;
   color: var(--ink);
   white-space: pre-wrap;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 10px 24px -18px rgba(29, 78, 216, .45);
 }
 
 .faq-list { margin: 0; }
@@ -804,9 +822,29 @@ textarea { resize: vertical; min-height: 120px; }
   gap: var(--sp-3);
   list-style: none;
 }
-.faq-item summary::-webkit-details-marker { display: none; }
-.faq-item summary::after { content: "+"; color: var(--blue-600); font-weight: 700; }
-.faq-item[open] summary::after { content: "−"; }
+.faq-item[open] summary::-webkit-details-marker { display: none; }
+/* The marker is drawn with borders rather than a "+" glyph, so it can
+   rotate on open with a transform only. Its box is the same size as
+   the glyph it replaces, so no summary changes height. */
+.faq-item summary::after {
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  margin-top: -3px;
+  border-right: 2px solid var(--blue-600);
+  border-bottom: 2px solid var(--blue-600);
+  transform: rotate(45deg);
+  transition: transform .18s cubic-bezier(.22, .61, .36, 1);
+}
+.faq-item[open] summary::after { transform: rotate(225deg); margin-top: 3px; }
+.faq-item { transition: border-color .16s ease, box-shadow .16s ease; }
+.faq-item:hover { border-color: #cfd8e8; }
+.faq-item[open] { border-color: #cfdcfb; box-shadow: 0 1px 2px rgba(16, 24, 40, .04); }
+@media (prefers-reduced-motion: reduce) {
+  .faq-item summary::after { transition: none; }
+  .faq-item { transition: none; }
+}
 .faq-item p { color: var(--ink-2); font-size: .9375rem; margin: 0 0 var(--sp-4); max-width: 68ch; }
 
 .related { display: grid; gap: var(--sp-2); }
@@ -819,8 +857,20 @@ textarea { resize: vertical; min-height: 120px; }
   border-radius: var(--r-sm);
   color: var(--ink);
   font-size: .9375rem;
+  background-image: linear-gradient(180deg, #fff 0, #fbfcfe 100%);
+  transition: border-color .16s ease, box-shadow .16s ease, transform .16s ease;
 }
-.related a:hover { border-color: var(--blue-600); color: var(--blue-600); text-decoration: none; }
+.related a:hover, .related a:focus-visible {
+  border-color: #c3d2f4;
+  color: var(--blue-700);
+  text-decoration: none;
+  box-shadow: 0 8px 18px -14px rgba(16, 24, 40, .5), 0 1px 2px rgba(16, 24, 40, .05);
+  transform: translateY(-2px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .related a:hover, .related a:focus-visible { transform: none; }
+  .related a { transition: none; }
+}
 #related.grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
 .tool-side h2 { font-size: 1.125rem; margin-bottom: var(--sp-3); }
 
