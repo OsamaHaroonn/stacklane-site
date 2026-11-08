@@ -213,6 +213,7 @@
     var list = el('ul', {});
     list.appendChild(el('li', {}, el('a', { href: homeHref }, nav.home || 'Home')));
     list.appendChild(el('li', {}, el('a', { href: homeHref + '#categories' }, get(json, 'home.categoriesH2') || 'Categories')));
+    list.appendChild(el('li', {}, el('a', { href: rootPrefix + 'all-tools.html' }, nav.allTools || 'All tools')));
     CATS.forEach(function (slug) {
       var name = get(json, 'categories.' + slug + '.name');
       if (!name) return;
