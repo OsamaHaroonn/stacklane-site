@@ -5,6 +5,10 @@
 exclude:
   - product-source
   - _dev   # build helpers and old docs; the _ prefix already hides them
+  # Arabic is deferred to its own later round: 18 of 90 pages exist, so
+  # serving them now would publish a half-finished translation. The files
+  # stay in the repository untouched; deleting this line publishes them again.
+  - ar
   - .sass-cache
   - .jekyll-cache
   - .git

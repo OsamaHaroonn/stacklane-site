@@ -64,6 +64,38 @@ sitemap line), `404.html` (`<base href>` and its `base-uri` in the CSP), and
 `assets/config.js`. Change all of them in one commit, then re-run the link
 check and the sitemap check.
 
+## Arabic is excluded from this publish
+
+English only for now. 18 of the 90 English pages have an Arabic counterpart;
+the other 72 do not, and the 18 that exist are not finished. So that a
+half-finished translation is not served, Arabic is closed off in the build,
+not in the files — nothing under `ar/` and nothing in `assets/i18n/ar.json`
+was edited or deleted.
+
+What was changed, exactly:
+
+| file | change |
+|---|---|
+| `_config.yml` | `ar` added to `exclude:` with a comment saying why |
+| `robots.txt` | `Disallow: /ar/` plus a comment (the paths 404, so this only stops crawlers retrying old URLs) |
+| `sitemap.xml` | no change needed — it never contained an `/ar/` URL (0 of 92) |
+| English pages | no change needed — no English page carries a `hreflang="ar"` alternate or any `/ar/` link, so `chrome.js` renders no language switch for it |
+
+Verify after publishing: `/ar/` and `/ar/index.html` must return **404**, and
+no English page may show a language link.
+
+To bring Arabic back in a later round:
+
+1. Delete the `- ar` line from `_config.yml` (and the `/ar/` block from
+   `robots.txt`) in one commit.
+2. Add `<link rel="alternate" hreflang="ar" …>` and the matching `x-default`
+   to each English page that has an Arabic twin; `chrome.js` builds the header
+   and menu switch from those tags alone, so no JavaScript changes are needed.
+3. Add the Arabic URLs to `sitemap.xml` and set each Arabic page's canonical to
+   its own `/ar/` URL.
+4. Finish the remaining 72 pages, or point the switch only at the 18 that
+   exist — a switch that offers a page that is not there is worse than none.
+
 ## Verify after publishing
 
 1. `/` loads and links to the tools.

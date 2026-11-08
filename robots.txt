@@ -4,4 +4,9 @@ Allow: /
 # Source files for the paid product, if the folder is ever present locally.
 Disallow: /product-source/
 
+# Arabic is deferred to a later round and excluded from the build, so these
+# paths return 404. They are listed here so a crawler that still remembers an
+# old Arabic URL stops retrying it.
+Disallow: /ar/
+
 Sitemap: https://osamaharoonn.github.io/stacklane-site/sitemap.xml
