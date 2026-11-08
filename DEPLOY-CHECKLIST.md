@@ -20,6 +20,12 @@ dependencies. The site is a static folder.
    `qa-shots/`, `_*.py`, `_*.md`, `DESIGN-AUDIT.md`, `WORK-LOG.md`,
    `FINAL-REPORT.md`, `TEXT-AUDIT.md`, `__pycache__/`. The `.gitignore`
    already covers the Python cache.
+6. **Keep build helpers under `_dev/`.** There is no `.nojekyll`, so Pages
+   builds with Jekyll, and Jekyll skips any file or directory whose name
+   begins with `_`. `_dev/_gen.py` (the page generator) and `_dev/AUDIT.md`
+   (the pre-redesign audit) therefore stay in the repository and are never
+   served. Anything that must not be public belongs in `_dev/`, not at the
+   repository root.
 
 ## Publish
 

@@ -4,6 +4,7 @@
 # `exclude` is the second belt (the first is that it is never committed).
 exclude:
   - product-source
+  - _dev   # build helpers and old docs; the _ prefix already hides them
   - .sass-cache
   - .jekyll-cache
   - .git

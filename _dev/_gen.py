@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Generate tool pages + en.json entries + catalog rows + sitemap URLs.
 
-Temporary build helper for this branch. Never committed.
-Usage: python _gen.py <spec.json> page|entry|meta  [slug ...]
+Build helper, kept out of the published root: `_dev/` is excluded from the
+GitHub Pages build, the same way a leading underscore protects any path.
+Paths below are relative to the repository root, so run it from there:
+
+    python _dev/_gen.py <spec.json> page|entry|meta  [slug ...]
 """
 import io
 import json
