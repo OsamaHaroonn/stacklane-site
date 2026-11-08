@@ -431,6 +431,14 @@
        so the first paint is the finished page, not a skeleton. */
     document.documentElement.classList.remove('home-boot');
 
+    /* An in-page link (#tools, #categories) is jumped to while those
+       containers are still empty, so the browser scrolls to the wrong place.
+       Re-apply the hash once the content exists. */
+    if (location.hash.length > 1) {
+      var anchor = document.getElementById(location.hash.slice(1));
+      if (anchor && anchor.scrollIntoView) anchor.scrollIntoView();
+    }
+
     if (bodyTool && window.TOOL && typeof window.TOOL.mount === 'function') {
       window.TOOL.mount(json, {
         slug: bodyTool,
