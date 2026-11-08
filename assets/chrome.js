@@ -427,6 +427,9 @@
 
     if (isHome && window.HomePage) window.HomePage(json, { el: el, get: get, fill: fill, CATS: CATS });
     if (category && window.CategoryPage) window.CategoryPage(json, { category: category, el: el, get: get, fill: fill });
+    /* The home page ships empty containers; reveal them now they are filled
+       so the first paint is the finished page, not a skeleton. */
+    document.documentElement.classList.remove('home-boot');
 
     if (bodyTool && window.TOOL && typeof window.TOOL.mount === 'function') {
       window.TOOL.mount(json, {
@@ -440,7 +443,9 @@
       });
     }
   }).catch(function (err) {
-    // A failed i18n load must never leave a silent blank page.
+    // A failed i18n load must never leave a silent blank page: drop the boot
+    // class first, or the note below would be hidden along with main.
+    document.documentElement.classList.remove('home-boot');
     var main = document.getElementById('main') || body;
     var note = el('p', { class: 'load-error' },
       'This page could not load its text file. Please reload. (' + err.message + ')');

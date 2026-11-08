@@ -6,6 +6,15 @@
    no external font or image. See DESIGN.md for the rules.
    ============================================================ */
 
+/* The home page is built from JSON after load, so its containers are
+   empty at first paint. Painting that skeleton and then filling it moved
+   everything below it by a measured 0.199 CLS at 375px. While the boot
+   class is on the root, main is not painted; chrome.js removes it as soon
+   as the content exists. Only the home page sets the class, and only
+   visibility changes, so no box is ever resized. */
+.home-boot main { visibility: hidden; }
+@media (scripting: none) { .home-boot main { visibility: visible; } }
+
 :root {
   /* Colour */
   --blue-700: #1b3fa0;
