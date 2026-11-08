@@ -1,18 +1,22 @@
-# Stacklane — free browser tools, in English and Arabic
+# Stacklane — free browser tools
 
-A dependency-free static site: **standalone tool pages grouped by category**,
-bilingual from day one. No ads, no accounts, no payments, no analytics, no
-tracking — and nothing a visitor types, pastes or uploads ever leaves their
-own browser.
+A dependency-free static site: **standalone tool pages grouped by category**.
+No ads, no accounts, no payments, no analytics, no tracking — and nothing a
+visitor types, pastes or uploads ever leaves their own browser.
+
+This branch publishes **English only**. The Arabic pages exist (18 of them) but
+are incomplete, so they are excluded from the build and listed as a later
+round — see [Deferred: Arabic](#deferred-arabic).
 
 | Layer | What it is | Where |
 |---|---|---|
-| 10 i18n tools | word counter, QR code, password, image compressor, image resizer, merge PDF, age, percentage, unit converter, JSON formatter | `en/<slug>.html`, `ar/<slug>.html` |
-| 7 Business pages | invoice, job pricing, margin, break-even, late payment, leak calculator, website audit | `en/<slug>.html` (English only for now) |
-| Category directories | one index page per category | `en/<category>.html`, `ar/<category>.html` |
-| Home pages | category grid + client-side search box | `en/index.html`, `ar/index.html` |
-| Roadmap | the full 30-tool plan with slugs and target search phrases | [ROADMAP.md](ROADMAP.md) |
-| Legal | privacy and terms, rewritten for a site that collects nothing | `privacy.html`, `terms.html` |
+| 73 tool pages | calculators, text tools, converters, generators, image and PDF tools, developer utilities, small games | `en/<slug>.html` |
+| 9 category pages | one index per category, every card carrying icon, count and description | `en/<category>.html` |
+| 7 Business pages | invoice, job pricing, margin, break-even, late payment, leak calculator, website audit | `en/<slug>.html` |
+| Home page | hero, search over all 80 entries, category grid, popular tools | `en/index.html` |
+| Site pages | about, contact, privacy, terms, a 404 that links back into the tools | `about.html`, `contact.html`, `privacy.html`, `terms.html`, `404.html` |
+| Roadmap | the tool plan with slugs and target search phrases | [ROADMAP.md](ROADMAP.md) |
+| Publishing | exact publish steps, headers, domain change, ad switch | [DEPLOY-CHECKLIST.md](DEPLOY-CHECKLIST.md) |
 
 **No build step, no framework, no npm install.** Plain HTML, CSS and
 JavaScript. Strict CSP on every page: `script-src 'self'`, no inline scripts,
@@ -78,6 +82,21 @@ any depth, so its assets and links resolve against `<base>` rather than the
 URL you were on. Change the `<base href="…">` there to match `siteUrl`
 (with a trailing slash).
 
+## Deferred: Arabic
+
+18 of the 90 English pages have an Arabic counterpart in `ar/`, and
+`assets/i18n/ar.json` holds 365 of the English file's 1,920 keys. Nothing was
+deleted or edited; the half-finished translation is simply not served:
+`_config.yml` excludes `ar/` from the GitHub Pages build and `robots.txt`
+disallows it, so those URLs return 404.
+
+Bringing it back is four steps, written out in
+[DEPLOY-CHECKLIST.md](DEPLOY-CHECKLIST.md#arabic-is-excluded-from-this-publish):
+delete the exclude line, re-add the `hreflang` alternates that chrome.js reads
+to build the language switch, add the URLs to the sitemap, and finish the
+remaining pages. No JavaScript change is needed, because the switch is built
+from the alternate tags.
+
 ### Adding a language (one JSON file + one folder)
 
 1. Create `assets/i18n/<code>.json` — copy `en.json`, translate the values,
@@ -92,35 +111,6 @@ URL you were on. Change the `<base href="…">` there to match `siteUrl`
 5. Add the new URLs to `sitemap.xml`.
 
 Nothing else moves: templates, scripts and CSS are shared.
-
-### Re-enabling Arabic (the version is parked, not deleted)
-
-The Arabic site is complete and still in the repository — every `ar/` page,
-`ar/index.html` and `assets/i18n/ar.json` are untouched. It is only
-*unlinked* and *noindexed* so the site ships English-only for now. To turn
-it back on, reverse those four things:
-
-1. Delete the `<meta name="robots" content="noindex, nofollow">` line from
-   every `ar/*.html` file (one line each, directly under the charset meta).
-2. Re-add the `hreflang` alternate links that were removed from the `en/`
-   pages. One block per page in `<head>`:
-   ```html
-   <link rel="alternate" hreflang="en" href="https://osamaharoonn.github.io/stacklane-site/en/<slug>.html">
-   <link rel="alternate" hreflang="ar" href="https://osamaharoonn.github.io/stacklane-site/ar/<slug>.html">
-   <link rel="alternate" hreflang="x-default" href="https://osamaharoonn.github.io/stacklane-site/en/<slug>.html">
-   ```
-   chrome.js reads these tags to build the header language switcher, so the
-   switcher returns by itself once the tags are back.
-3. Re-add the Arabic links that were removed: the second language card and
-   the `العربية` footer link on [`index.html`](index.html), and the two
-   Arabic links in [`404.html`](404.html).
-4. Put the `ar/` URLs back in [`sitemap.xml`](sitemap.xml) (18 of them when
-   they were removed).
-
-No file was deleted to park the Arabic version, so nothing has to be
-rewritten — only relinked.
-
----
 
 ## Libraries
 
@@ -150,11 +140,15 @@ No other dependency may be added without asking the owner first.
 ## File map
 
 ```
-index.html                Language chooser (noindex)
-en/  ar/                  Home + category directories + tool pages
-  <slug>.html             one page per tool, per language
-  <category>.html         one directory per category (no /ar/business.html)
-  invoice.html … audit.html   the seven Business pages (English only)
+index.html                Landing page, noindex, links the categories
+en/                       Home, category directories, tool and business pages
+  <slug>.html             one page per tool
+  <category>.html         one directory per category
+  invoice.html … audit.html   the seven Business pages
+ar/                       Arabic pages, excluded from the build (see above)
+_dev/_gen.py              page generator; _dev/ is excluded from the build
+_dev/AUDIT.md             pre-redesign audit, kept out of the published root
+about.html contact.html   what the site is; how to report a problem
 assets/config.js          ← single configuration value: siteUrl + languages
 assets/i18n.js            ← JSON loader (same-origin only)
 assets/chrome.js          ← header, footer, breadcrumbs, FAQ, related, canonical
@@ -169,9 +163,27 @@ assets/style.css          ← all styles, including RTL
 privacy.html · terms.html ← legal, for a site that collects nothing
 404.html                  Custom not-found page
 sitemap.xml · robots.txt  ← crawlers (update URLs here on a domain change)
-ROADMAP.md                ← 30 tools: slug, category, target search phrase
+_config.yml               Pages build rules: excludes ar/, _dev/, product-source/
+ROADMAP.md                ← tool plan: slug, category, target search phrase
+DEPLOY-CHECKLIST.md       ← publish, domain, headers, ads, Arabic
+ADS-README.md             ← the one switch that turns ad slots on
+NEEDS-FROM-OWNER.md       ← facts only the owner can supply (contact address)
+PAGE-REVIEW.md            ← per-page review notes (untracked)
 product-source/           ← local-only, git-ignored, never deployed
 ```
+
+## Rebuilding pages
+
+New tool pages are generated, not hand-written:
+
+```bash
+python _dev/_gen.py <spec.json> page <slug>   # write en/<slug>.html
+python _dev/_gen.py <spec.json> entry <slug>  # add its en.json block
+python _dev/_gen.py <spec.json> meta <slug>   # catalog row + sitemap URL
+```
+
+Run it from the repository root; it resolves every path from there. It is a
+build helper, so it lives under `_dev/`, which the Pages build skips.
 
 ---
 

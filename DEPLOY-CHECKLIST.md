@@ -104,11 +104,39 @@ To bring Arabic back in a later round:
    that each gives a result for a real input.
 4. A missing path, for example `/no-such-page`, returns the 404 page with
    HTTP 404.
-5. `/sitemap.xml` and `/robots.txt` load and name the correct host.
+5. `/sitemap.xml` and `/robots.txt` load, name the correct host, and list only
+   English pages. The sitemap should hold **94** URLs (90 English pages +
+   privacy + terms + about + contact).
 6. In the browser network panel, a tool page makes **no request to any other
    origin**.
 7. The console is empty on load.
 8. At 375 px wide, nothing scrolls sideways.
+9. `/about.html` and `/contact.html` load and are reachable from the home page's
+   trust band, privacy, terms and the 404 page.
+
+### Files that must not be served
+
+Check these return 404 on the live host — if any returns 200, the build rules
+are not being applied:
+
+```bash
+curl -sI https://osamaharoonn.github.io/stacklane-site/AUDIT.md   | head -1   # want 404
+curl -sI https://osamaharoonn.github.io/stacklane-site/_dev/_gen.py | head -1 # want 404
+curl -sI https://osamaharoonn.github.io/stacklane-site/ar/        | head -1    # want 404
+curl -sI https://osamaharoonn.github.io/stacklane-site/en/        | head -1    # want 200
+curl -sI https://osamaharoonn.github.io/stacklane-site/sitemap.xml | head -1   # want 200
+```
+
+Arabic returns 404 because `_config.yml` excludes `ar/`; `_dev/` and any
+underscore-prefixed file are skipped by Jekyll. If `AUDIT.md` still answers
+200, the build is not picking up `_config.yml` — check that Pages is deploying
+from this branch's root folder and not from a prebuilt artifact.
+
+### On a phone
+
+One real device or one emulated 375 px viewport: open `/en/`, search for
+`pdf`, open a result, run the tool, and check the result is readable and no
+button is cut off. Check the browser bar shows the theme colour (`#1d4ed8`).
 
 ## When ads are switched on (not now)
 
