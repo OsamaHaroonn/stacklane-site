@@ -1,0 +1,43 @@
+# Cloudflare Pages response headers.
+#
+# Cloudflare applies these at the edge for the deployed site. The pages also
+# carry the same policy in a <meta http-equiv="Content-Security-Policy"> tag,
+# so the CSP still applies when the files are opened from any other static
+# host that cannot send headers. This file is the stronger of the two: it
+# covers responses that never reach the HTML, and adds frame-ancestors,
+# which browsers ignore in a meta tag.
+#
+# base-uri is 'self' here, not 'none', because 404.html carries a <base>
+# element pointing at this origin so that every link on a deep missing URL
+# still resolves. On normal pages the meta tag remains base-uri 'none'.
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'; frame-ancestors 'none'
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: no-referrer
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=(), magnetometer=(), gyroscope=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+
+# Documentation kept in the repository but not part of the public site.
+/*.md
+  X-Robots-Tag: noindex
+  Cache-Control: public, max-age=300
+
+# Pages: always revalidate so a deploy is visible immediately.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Static assets keep their names across deploys (no content hash), so they
+# must not be cached as immutable. One hour is long enough to help and short
+# enough that a corrected stylesheet or script reaches visitors the same day.
+/assets/*
+  Cache-Control: public, max-age=3600
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Cache-Control: public, max-age=3600

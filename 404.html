@@ -3,26 +3,66 @@
 <head>
 <meta charset="utf-8">
 <!--
-  This page is served by GitHub Pages for ANY missing URL, including deep
-  paths like /en/some/tool. A relative href would resolve against that deep
-  path and break, so every relative URL below resolves against <base> —
-  the one site-wide address (SITE_URL in assets/config.js). Change this
-  value together with siteUrl when the domain changes; README →
-  "Changing the domain".
+  This page is served by the static host for ANY missing URL, including
+  deep paths like /en/some/tool. A relative href would resolve against that
+  deep path and break, so every relative URL below resolves against <base> —
+  the one site-wide address. Change this value together with siteUrl in
+  assets/config.js when the domain changes; README → "Changing the domain".
 -->
-<base href="https://osamaharoonn.github.io/stacklane-site/">
+<base href="https://stacklanetools.com/">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#1d4ed8">
 <meta name="referrer" content="no-referrer">
 <title>Page not found — Stacklane</title>
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri https://osamaharoonn.github.io/stacklane-site/; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri https://stacklanetools.com/; form-action 'none'; object-src 'none'">
 <link rel="stylesheet" href="assets/style.css">
+<!-- stacklane:jsonld:start -->
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "Organization", "name": "Stacklane Tools", "url": "https://stacklanetools.com/", "logo": "https://stacklanetools.com/assets/og.png", "description": "Free browser-based tools for PDFs, images, text, developers and everyday calculations."}
+  </script>
+<!-- stacklane:jsonld:end -->
 </head>
 <body data-root>
 
-<header id="site-header"></header>
+<header id="site-header">
+  <!-- stacklane:header:start -->
+    <div class="container head-in">
+      <a class="brand" href="en/index.html"><svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7.5 12 3l8 4.5-8 4.5-8-4.5Z"></path><path d="M4 12.5 12 17l8-4.5"></path><path d="M4 17.5 12 22l8-4.5"></path></svg><span class="brand-word">Stacklane Tools</span></a>
+      <nav class="head-nav" aria-label="Stacklane Tools">
+        <div class="head-search">
+          <input id="head-q" type="search" autocomplete="off" spellcheck="false" placeholder="Search tools" aria-label="Search the tools">
+          <ul id="head-results" class="head-results" hidden></ul>
+        </div>
+        <a href="en/index.html#categories" aria-label="Browse by category">Categories</a>
+        <a href="en/business.html">Business</a>
+        <details class="menu">
+          <summary>Menu</summary>
+          <div class="menu-panel">
+            <ul>
+              <li><a href="en/index.html">Home</a></li>
+              <li><a href="en/index.html#categories">Browse by category</a></li>
+              <li><a href="all-tools.html">All tools</a></li>
+              <li><a href="en/pdf.html">PDF</a></li>
+              <li><a href="en/images.html">Images</a></li>
+              <li><a href="en/text.html">Text</a></li>
+              <li><a href="en/generators.html">Generators</a></li>
+              <li><a href="en/calculators.html">Calculators</a></li>
+              <li><a href="en/converters.html">Converters</a></li>
+              <li><a href="en/developer.html">Developer</a></li>
+              <li><a href="en/fun.html">Fun</a></li>
+              <li><a href="en/business.html">Business</a></li>
+              <li class="menu-sep" aria-hidden="true"></li>
+              <li><a href="privacy.html">Privacy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+            </ul>
+          </div>
+        </details>
+      </nav>
+    </div>
+  <!-- stacklane:header:end -->
+</header>
 
 <main id="main">
 
@@ -64,7 +104,42 @@
 
 </main>
 
-<div id="site-footer"></div>
+<div id="site-footer">
+  <!-- stacklane:footer:start -->
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <strong>Stacklane Tools</strong>
+          <p class="foot-tagline note">Free browser tools. No accounts, no tracking, no uploads.</p>
+          <p class="note">Everything runs locally in your browser.</p>
+        </div>
+        <nav class="foot-cats" aria-label="Categories">
+          <span class="foot-head">Categories</span>
+          <ul>
+            <li><a href="en/pdf.html">PDF</a></li>
+            <li><a href="en/images.html">Images</a></li>
+            <li><a href="en/text.html">Text</a></li>
+            <li><a href="en/generators.html">Generators</a></li>
+            <li><a href="en/calculators.html">Calculators</a></li>
+            <li><a href="en/converters.html">Converters</a></li>
+            <li><a href="en/developer.html">Developer</a></li>
+            <li><a href="en/fun.html">Fun</a></li>
+            <li><a href="en/business.html">Business</a></li>
+          </ul>
+        </nav>
+        <div>
+          <span class="foot-head">Stacklane</span>
+          <ul>
+            <li><a href="en/index.html">Home</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="foot-copy">© <span data-year>2026</span> Stacklane Tools</p>
+    </div>
+  <!-- stacklane:footer:end -->
+</div>
 
 <script src="assets/config.js"></script>
 <script src="assets/i18n.js"></script>

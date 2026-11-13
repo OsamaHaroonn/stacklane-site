@@ -1,12 +1,15 @@
 User-agent: *
 Allow: /
 
-# Source files for the paid product, if the folder is ever present locally.
+# Local source for the paid product. It is git-ignored and is not part of the
+# deployment; listed in case a copy is ever placed beside the site.
 Disallow: /product-source/
 
-# Arabic is deferred to a later round and excluded from the build, so these
-# paths return 404. They are listed here so a crawler that still remembers an
-# old Arabic URL stops retrying it.
+# Repository documentation (README.md and friends) is not part of the site.
+Disallow: /*.md
+
+# Arabic pages are not published in this release: the folder is not in the
+# deployment, so these paths return 404. Listed so an old URL is not retried.
 Disallow: /ar/
 
-Sitemap: https://osamaharoonn.github.io/stacklane-site/sitemap.xml
+Sitemap: https://stacklanetools.com/sitemap.xml

@@ -6,24 +6,65 @@
 <meta name="referrer" content="no-referrer">
 <title>About Stacklane — free browser tools, nothing uploaded</title>
 <meta name="description" content="What Stacklane is: 73 browser tools and 7 calculators for small businesses, all running on your device with no account, no upload and no tracking.">
-<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/about.html">
+<link rel="canonical" href="https://stacklanetools.com/about.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Stacklane">
 <meta property="og:title" content="About Stacklane — free browser tools, nothing uploaded">
 <meta property="og:description" content="73 browser tools and 7 small-business calculators, all running on your device with no account, no upload and no tracking.">
-<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/about.html">
+<meta property="og:url" content="https://stacklanetools.com/about.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image" content="https://stacklanetools.com/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="theme-color" content="#1d4ed8">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <link rel="stylesheet" href="assets/style.css">
+<!-- stacklane:jsonld:start -->
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "Organization", "name": "Stacklane Tools", "url": "https://stacklanetools.com/", "logo": "https://stacklanetools.com/assets/og.png", "description": "Free browser-based tools for PDFs, images, text, developers and everyday calculations."}
+  </script>
+<!-- stacklane:jsonld:end -->
 </head>
 <body data-root>
 
-<header id="site-header"></header>
+<header id="site-header">
+  <!-- stacklane:header:start -->
+    <div class="container head-in">
+      <a class="brand" href="en/index.html"><svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7.5 12 3l8 4.5-8 4.5-8-4.5Z"></path><path d="M4 12.5 12 17l8-4.5"></path><path d="M4 17.5 12 22l8-4.5"></path></svg><span class="brand-word">Stacklane Tools</span></a>
+      <nav class="head-nav" aria-label="Stacklane Tools">
+        <div class="head-search">
+          <input id="head-q" type="search" autocomplete="off" spellcheck="false" placeholder="Search tools" aria-label="Search the tools">
+          <ul id="head-results" class="head-results" hidden></ul>
+        </div>
+        <a href="en/index.html#categories" aria-label="Browse by category">Categories</a>
+        <a href="en/business.html">Business</a>
+        <details class="menu">
+          <summary>Menu</summary>
+          <div class="menu-panel">
+            <ul>
+              <li><a href="en/index.html">Home</a></li>
+              <li><a href="en/index.html#categories">Browse by category</a></li>
+              <li><a href="all-tools.html">All tools</a></li>
+              <li><a href="en/pdf.html">PDF</a></li>
+              <li><a href="en/images.html">Images</a></li>
+              <li><a href="en/text.html">Text</a></li>
+              <li><a href="en/generators.html">Generators</a></li>
+              <li><a href="en/calculators.html">Calculators</a></li>
+              <li><a href="en/converters.html">Converters</a></li>
+              <li><a href="en/developer.html">Developer</a></li>
+              <li><a href="en/fun.html">Fun</a></li>
+              <li><a href="en/business.html">Business</a></li>
+              <li class="menu-sep" aria-hidden="true"></li>
+              <li><a href="privacy.html">Privacy</a></li>
+              <li><a href="terms.html">Terms</a></li>
+            </ul>
+          </div>
+        </details>
+      </nav>
+    </div>
+  <!-- stacklane:header:end -->
+</header>
 
 <main id="main">
 
@@ -48,7 +89,7 @@
     <p>Two pages save a draft on your device so a refresh does not erase your work: the invoice generator and the website audit checklist. That data stays in your browser's local storage, is never sent anywhere, and the invoice draft expires after seven days. The <a href="privacy.html">privacy policy</a> sets this out in full.</p>
 
     <h2>How it is built</h2>
-    <p>Static files, no framework and no build step for the published pages. Styles come from one stylesheet, icons are inline SVG, and the pages load no external fonts, images, libraries or fonts from other origins. That is why a tool page makes no request to any other site.</p>
+    <p>Static files, no framework and no build step for the published pages. Styles come from one stylesheet, icons are inline SVG, and the two libraries the PDF and QR tools need (pdf-lib and qrcode) are served from this site rather than a CDN. The pages load no font, image or script from another origin, which is why a tool page makes no request to any other site.</p>
 
     <h2>Limits worth knowing</h2>
     <p>The calculators do arithmetic on the numbers you enter. They do not know your lender's fees, your tax rules, your contract terms or your own costs, and they are not financial, legal or medical advice. Each tool states its own assumptions, and the <a href="terms.html">terms of use</a> ask you to check any figure before you rely on it.</p>
@@ -66,7 +107,42 @@
 
 </main>
 
-<div id="site-footer"></div>
+<div id="site-footer">
+  <!-- stacklane:footer:start -->
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <strong>Stacklane Tools</strong>
+          <p class="foot-tagline note">Free browser tools. No accounts, no tracking, no uploads.</p>
+          <p class="note">Everything runs locally in your browser.</p>
+        </div>
+        <nav class="foot-cats" aria-label="Categories">
+          <span class="foot-head">Categories</span>
+          <ul>
+            <li><a href="en/pdf.html">PDF</a></li>
+            <li><a href="en/images.html">Images</a></li>
+            <li><a href="en/text.html">Text</a></li>
+            <li><a href="en/generators.html">Generators</a></li>
+            <li><a href="en/calculators.html">Calculators</a></li>
+            <li><a href="en/converters.html">Converters</a></li>
+            <li><a href="en/developer.html">Developer</a></li>
+            <li><a href="en/fun.html">Fun</a></li>
+            <li><a href="en/business.html">Business</a></li>
+          </ul>
+        </nav>
+        <div>
+          <span class="foot-head">Stacklane</span>
+          <ul>
+            <li><a href="en/index.html">Home</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="foot-copy">© <span data-year>2026</span> Stacklane Tools</p>
+    </div>
+  <!-- stacklane:footer:end -->
+</div>
 
 <script src="assets/config.js"></script>
 <script src="assets/i18n.js"></script>

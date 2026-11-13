@@ -69,6 +69,14 @@ window.CategoryPage = function (json, h) {
     return;
   }
 
+  /* The count pill is a runtime nicety; add it before bailing out on a
+     prerendered grid so the heading stays consistent either way. */
+  var h1 = document.querySelector('.tool-head h1');
+  if (h1 && !h1.querySelector('.count-pill')) h1.appendChild(countPill(items.length));
+
+  /* tools/prerender.py wrote the same cards into the page. */
+  if (grid.children.length) return;
+
   items.forEach(function (item) {
     var card = el('a', { class: 'card tool-card', href: item.href });
     card.appendChild(iconSpan());
@@ -78,7 +86,4 @@ window.CategoryPage = function (json, h) {
     card.appendChild(el('span', { class: 'card-arrow', 'aria-hidden': 'true' }, '\u2192'));
     grid.appendChild(card);
   });
-
-  var h1 = document.querySelector('.tool-head h1');
-  if (h1) h1.appendChild(countPill(items.length));
 };

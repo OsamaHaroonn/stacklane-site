@@ -282,20 +282,24 @@ a:hover { text-decoration: underline; }
   min-height: 44px;
   padding: 0 var(--sp-5);
   border-radius: var(--r-pill);
-  background: var(--blue-600);
-  color: var(--accent-ink);
-  border: 1px solid transparent;
+  border: 1px solid var(--line-2);
   font: inherit;
   font-size: .9375rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background .12s ease;
+  transition: background .12s ease, border-color .12s ease, transform .12s ease;
 }
-.btn:hover { background: var(--blue-700); text-decoration: none; }
+.btn:hover { background: var(--blue-50); border-color: var(--blue-600); color: var(--blue-600); text-decoration: none; }
 .btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--blue-600); color: var(--accent-ink); border-color: var(--blue-600); }
+.btn-primary:hover { background: var(--blue-700); border-color: var(--blue-700); }
+.btn-primary:active { background: var(--blue-700); }
 .btn-secondary { background: var(--surface); color: var(--ink); border-color: var(--line-2); }
 .btn-secondary:hover { background: var(--band); color: var(--ink); }
+.btn-secondary:active { background: var(--band); }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line-2); }
+.btn-ghost:hover { background: var(--blue-50); }
+.btn-ghost:active { background: var(--blue-50); }
 .btn-block { display: flex; width: 100%; }
 .btn-row { display: flex; gap: var(--sp-3); flex-wrap: wrap; margin-top: var(--sp-5); }
 
@@ -800,11 +804,10 @@ textarea { resize: vertical; min-height: 120px; }
   opacity: .85;
 }
 
+
 /* Worked example as a highlighted box. */
-.tool-section .worked,
 .worked {
   background: var(--blue-50);
-  background-image: linear-gradient(180deg, #f2f6ff 0, var(--blue-50) 70%);
   border: 1px solid #cfdcfb;
   border-inline-start: 4px solid var(--blue-600);
   border-radius: var(--r-md);
@@ -812,7 +815,6 @@ textarea { resize: vertical; min-height: 120px; }
   font-size: .9375rem;
   color: var(--ink);
   white-space: pre-wrap;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 10px 24px -18px rgba(29, 78, 216, .45);
 }
 
 .faq-list { margin: 0; }
@@ -834,30 +836,16 @@ textarea { resize: vertical; min-height: 120px; }
   gap: var(--sp-3);
   list-style: none;
 }
-.faq-item[open] summary::-webkit-details-marker { display: none; }
-/* The marker is drawn with borders rather than a "+" glyph, so it can
-   rotate on open with a transform only. Its box is the same size as
-   the glyph it replaces, so no summary changes height. */
-.faq-item summary::after {
-  content: "";
-  flex: none;
-  width: 8px;
-  height: 8px;
-  margin-top: -3px;
-  border-right: 2px solid var(--blue-600);
-  border-bottom: 2px solid var(--blue-600);
-  transform: rotate(45deg);
-  transition: transform .18s cubic-bezier(.22, .61, .36, 1);
-}
-.faq-item[open] summary::after { transform: rotate(225deg); margin-top: 3px; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; color: var(--blue-600); font-weight: 700; }
+.faq-item[open] summary::after { content: "−"; }
 .faq-item { transition: border-color .16s ease, box-shadow .16s ease; }
 .faq-item:hover { border-color: #cfd8e8; }
 .faq-item[open] { border-color: #cfdcfb; box-shadow: 0 1px 2px rgba(16, 24, 40, .04); }
-@media (prefers-reduced-motion: reduce) {
-  .faq-item summary::after { transition: none; }
-  .faq-item { transition: none; }
-}
 .faq-item p { color: var(--ink-2); font-size: .9375rem; margin: 0 0 var(--sp-4); max-width: 68ch; }
+
+.how-it-works p { color: var(--ink-2); font-size: .9375rem; margin: 0 0 var(--sp-4); }
+.how-it-works { margin-bottom: var(--sp-6); }
 
 .related { display: grid; gap: var(--sp-2); }
 .related a {
@@ -1058,7 +1046,7 @@ footer, .site-foot { border-top: 1px solid var(--line); background: var(--surfac
 .tk-msg.warn { background: var(--warn-soft); border-color: var(--warn); color: var(--warn); }
 .tk-msg.ok { background: var(--good-soft); border-color: var(--good); color: var(--good); }
 
-.tk-out { display: grid; gap: var(--sp-1); margin-top: var(--sp-4); min-height: 7.5rem; align-content: start; }
+.tk-out { display: grid; gap: var(--sp-1); margin-top: var(--sp-4); min-height: 7.5rem; align-content: start; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--sp-4); box-shadow: var(--shadow-1); }
 .tk-out[hidden] { display: none; }
 #tool-ui canvas.qr-canvas[hidden] { display: block; visibility: hidden; min-height: 220px; }
 .tk-row {
@@ -1082,10 +1070,28 @@ footer, .site-foot { border-top: 1px solid var(--line); background: var(--surfac
 .tk-row.is-strong .tk-row-value { font-size: 1.125rem; color: var(--blue-600); }
 .tool-section p, .tool-section li, .worked { overflow-wrap: break-word; }
 
-.tk-file { position: relative; }
-.tk-file-label { font-weight: 600; font-size: .9375rem; }
+.tk-file { position: relative; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); overflow: hidden; min-height: 180px; transition: border-color .16s ease, background-color .16s ease; }
+.tk-file:hover { border-color: var(--blue-600); background: var(--blue-50); }
+.tk-file:focus-within { border-color: var(--blue-600); background: var(--blue-50); outline: 2px solid var(--blue-600); outline-offset: -2px; }
+.tk-file.has-files { border-color: var(--good); background: var(--good-soft); color: var(--good); }
+.tk-file-label { font-weight: 600; font-size: .9375rem; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
 .tk-file-input { position: absolute; width: 1px; height: 1px; opacity: 0; }
-.tk-file-btn { display: inline-flex; align-items: center; justify-content: center; }.tk-file-name {
+.tk-file-btn { display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+.tk-file-name { font-size: .875rem; color: var(--ink-2); font-family: var(--mono); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: var(--sp-2) 0 0; }
+.tk-file-name.has-files { color: var(--ink); }
+
+.drop {
+  border: 2px dashed var(--line-2);
+  border-radius: var(--r-lg);
+  padding: var(--sp-6) var(--sp-4);
+  text-align: center;
+  color: var(--ink-2);
+  font-size: .9375rem;
+  background: var(--band);
+  margin: var(--sp-4) 0;
+  cursor: default; }
+.drop.is-over { border-color: var(--blue-600); background: var(--blue-50); color: var(--blue-700); }
+.drop.has-files { border-color: var(--good); background: var(--good-soft); color: var(--good); }.tk-file-name {
   font-size: .875rem;
   color: var(--ink-2);
   font-family: var(--mono);
@@ -1624,6 +1630,42 @@ a.card:active, .tool-card:active { transform: translateY(0); }
 .foot-copy { text-align: start; }
 
 /* ---------- Scroll reveal (class added by home.js only) ---------- */
+.will-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+.will-reveal.is-in { opacity: 1; transform: none; }
+
+/* Empty state for tool pages - shown before any input */
+.tool-empty {
+  position: relative;
+  padding: var(--sp-8) var(--sp-5);
+  text-align: center;
+  color: var(--ink-2);
+}
+.tool-empty::before {
+  content: "\”;\";
+  font-size: 4rem;
+  line-height: 1;
+  opacity: .2;
+  margin-bottom: var(--sp-4);
+  display: block;
+}
+.tool-empty h3 { margin: var(--sp-2) 0 0; font-size: 1.25rem; color: var(--ink); }
+.tool-empty p { margin: var(--sp-3) 0 0; font-size: .9375rem; }
+
+/* State when tool has no result yet but has had input */
+.tool-empty.has-input { border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--sp-5); }
+.tool-empty.has-input::after {
+  content: "\"Try adjusting the inputs above\"";
+  display: block;
+  margin: var(--sp-4) 0;
+  font-size: .9375rem;
+  color: var(--ink-2);
+}
+
+/* Home page reveal */
 .will-reveal {
   opacity: 0;
   transform: translateY(16px);
@@ -2610,3 +2652,13 @@ body[data-category="images"] .tk-file:hover,
 body[data-category="images"] .tk-file:focus-within,
 body[data-category="pdf"] .tk-file:hover,
 body[data-category="pdf"] .tk-file:focus-within { background: var(--blue-50); }
+
+/* ---------- Category intro and related categories (prerendered) ---------- */
+.cat-intro { max-width: 70ch; margin: 0 0 2rem; }
+.cat-intro h2 { font-size: 1.05rem; margin-bottom: .5rem; }
+.cat-intro p { color: var(--ink-2); }
+.cat-related { margin-top: 2.5rem; }
+.cat-related h2 { font-size: 1.05rem; margin-bottom: .5rem; }
+.cat-related ul { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; margin: 0; }
+.cat-related a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 .9rem; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; }
+.cat-related a:hover, .cat-related a:focus-visible { background: var(--blue-50); }

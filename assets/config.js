@@ -9,7 +9,7 @@
  * Tracked on purpose: it holds no secrets and no personal data.
  */
 window.SITE_CONFIG = {
-  siteUrl: 'https://osamaharoonn.github.io/stacklane-site',
+  siteUrl: 'https://stacklanetools.com',
 
   // Languages the site is published in. Adding one means:
   //   1. assets/i18n/<code>.json

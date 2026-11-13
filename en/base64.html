@@ -7,27 +7,76 @@
 <meta name="referrer" content="no-referrer">
 <title>Base64 encoder and decoder — text in, Base64 out</title>
 <meta name="description" content="Encode text as Base64 or decode Base64 back to text in your browser, with the character counts shown and nothing sent over the network. Nothing is uploaded.">
-<link rel="canonical" href="https://osamaharoonn.github.io/stacklane-site/en/base64.html">
+<link rel="canonical" href="https://stacklanetools.com/en/base64.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Stacklane Tools">
 <meta property="og:title" content="Base64 encoder and decoder — text in, Base64 out">
 <meta property="og:description" content="Encode text as Base64 or decode Base64 back to text in your browser, with the character counts shown and nothing sent over the network. Nothing is uploaded.">
-<meta property="og:url" content="https://osamaharoonn.github.io/stacklane-site/en/base64.html">
+<meta property="og:url" content="https://stacklanetools.com/en/base64.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:image" content="https://osamaharoonn.github.io/stacklane-site/assets/og.png">
+<meta property="og:image" content="https://stacklanetools.com/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Stacklane Tools">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <link rel="stylesheet" href="../assets/style.css">
+<!-- stacklane:jsonld:start -->
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stacklanetools.com/en/"}, {"@type": "ListItem", "position": 2, "name": "Developer", "item": "https://stacklanetools.com/en/developer.html"}, {"@type": "ListItem", "position": 3, "name": "Base64 encoder", "item": "https://stacklanetools.com/en/base64.html"}]}, {"@type": "SoftwareApplication", "name": "Base64 encoder", "description": "Encode text to Base64 and decode it back, with UTF-8 handled correctly in both directions.", "url": "https://stacklanetools.com/en/base64.html", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any modern browser", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}]}
+  </script>
+<!-- stacklane:jsonld:end -->
 </head>
 <body data-tool="base64">
 <a class="skip-link" href="#main">Skip to content</a>
-<div id="site-header"></div>
+<div id="site-header">
+  <!-- stacklane:header:start -->
+    <div class="container head-in">
+      <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7.5 12 3l8 4.5-8 4.5-8-4.5Z"></path><path d="M4 12.5 12 17l8-4.5"></path><path d="M4 17.5 12 22l8-4.5"></path></svg><span class="brand-word">Stacklane Tools</span></a>
+      <nav class="head-nav" aria-label="Stacklane Tools">
+        <div class="head-search">
+          <input id="head-q" type="search" autocomplete="off" spellcheck="false" placeholder="Search tools" aria-label="Search the tools">
+          <ul id="head-results" class="head-results" hidden></ul>
+        </div>
+        <a href="index.html#categories" aria-label="Browse by category">Categories</a>
+        <a href="business.html">Business</a>
+        <details class="menu">
+          <summary>Menu</summary>
+          <div class="menu-panel">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#categories">Browse by category</a></li>
+              <li><a href="../all-tools.html">All tools</a></li>
+              <li><a href="pdf.html">PDF</a></li>
+              <li><a href="images.html">Images</a></li>
+              <li><a href="text.html">Text</a></li>
+              <li><a href="generators.html">Generators</a></li>
+              <li><a href="calculators.html">Calculators</a></li>
+              <li><a href="converters.html">Converters</a></li>
+              <li><a href="developer.html">Developer</a></li>
+              <li><a href="fun.html">Fun</a></li>
+              <li><a href="business.html">Business</a></li>
+              <li class="menu-sep" aria-hidden="true"></li>
+              <li><a href="../privacy.html">Privacy</a></li>
+              <li><a href="../terms.html">Terms</a></li>
+            </ul>
+          </div>
+        </details>
+      </nav>
+    </div>
+  <!-- stacklane:header:end -->
+</div>
 
 <main id="main" class="wrap">
-  <nav id="crumbs" class="crumbs"></nav>
+  <nav id="crumbs" class="crumbs">
+    <!-- stacklane:crumbs:start -->
+      <a href="index.html">Home</a>
+      <span class="sep" aria-hidden="true">›</span>
+      <a href="developer.html">Developer</a>
+      <span class="sep" aria-hidden="true">›</span>
+      <span>Base64 encoder</span>
+    <!-- stacklane:crumbs:end -->
+  </nav>
   <div class="tool-layout">
   <div class="tool-main">
 
@@ -55,7 +104,30 @@
 
   <section class="tool-section">
     <h2 data-i18n="tool.faq">Questions and answers</h2>
-    <dl class="faq-list" data-faq="tools.base64.faq"></dl>
+    <div class="faq-list" data-faq="tools.base64.faq">
+      <!-- stacklane:faq:start -->
+        <details class="faq-item">
+          <summary>Is Base64 encryption?</summary>
+          <p>No. It is an encoding: anyone can reverse it without a key, so never use it for passwords, tokens or anything secret. It exists so binary data can travel through channels that only accept text.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why does my Arabic or emoji text come out as letters I do not recognise?</summary>
+          <p>Because Base64 works on bytes, and UTF-8 stores non-Latin characters as several bytes each. The tool converts to UTF-8 before encoding and back again on decode, so a proper round trip returns your original text.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why is there an equals sign at the end?</summary>
+          <p>Padding. The input length is not always a multiple of three, and = marks the missing bytes so every decoder reads the same result.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can another language decode this?</summary>
+          <p>Yes. This is standard Base64 (RFC 4648), the same format used everywhere. Remember the text was UTF-8, so decode the bytes as UTF-8 on the other side.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is my text sent anywhere?</summary>
+          <p>No. Encoding happens in this browser tab with the browser&#x27;s own functions. Nothing is uploaded, logged or stored.</p>
+        </details>
+      <!-- stacklane:faq:end -->
+    </div>
   </section>
 
   <div class="ad-slot" data-slot="B" hidden></div>
@@ -65,17 +137,85 @@
   <aside class="tool-side">
   <section class="tool-section" id="related-sec">
     <h2 data-i18n="tool.related">Related tools</h2>
-    <div id="related" class="grid"></div>
+    <div id="related" class="grid">
+      <!-- stacklane:related:start -->
+        <a class="card tool-card" href="json-formatter.html">
+          <span class="card-kicker">Developer</span>
+          <h3>JSON formatter</h3>
+          <p>Format, minify and validate JSON in your browser, with a clear error message when the syntax is wrong.</p>
+        </a>
+        <a class="card tool-card" href="url-encoder.html">
+          <span class="card-kicker">Developer</span>
+          <h3>URL encoder</h3>
+          <p>Percent-encode text for a URL or query string, and decode it back again.</p>
+        </a>
+        <a class="card tool-card" href="timestamp-converter.html">
+          <span class="card-kicker">Developer</span>
+          <h3>Timestamp converter</h3>
+          <p>Turn a Unix timestamp into a readable date and time, and a date and time back into a timestamp.</p>
+        </a>
+        <a class="card tool-card" href="color-converter.html">
+          <span class="card-kicker">Developer</span>
+          <h3>Color converter</h3>
+          <p>Convert a hex colour code to RGB and HSL, with the working shown and a swatch to check it.</p>
+        </a>
+      <!-- stacklane:related:end -->
+    </div>
   </section>
   <div class="ad-slot" data-slot="C" hidden></div>
   </aside>
   </div><!-- /.tool-layout -->
 
   <p><a id="back-cat" href="developer.html"></a></p>
-  <p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+    <!-- stacklane:toolcats:start -->
+      <nav class="cat-related" aria-label="Related categories">
+        <h2>Other categories</h2>
+        <ul>
+          <li><a href="text.html">Text</a></li>
+          <li><a href="converters.html">Converters</a></li>
+          <li><a href="pdf.html">PDF</a></li>
+        </ul>
+      </nav>
+    <!-- stacklane:toolcats:end -->
+<p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
 </main>
 
-<div id="site-footer"></div>
+<div id="site-footer">
+  <!-- stacklane:footer:start -->
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <strong>Stacklane Tools</strong>
+          <p class="foot-tagline note">Free browser tools. No accounts, no tracking, no uploads.</p>
+          <p class="note">Everything runs locally in your browser.</p>
+        </div>
+        <nav class="foot-cats" aria-label="Categories">
+          <span class="foot-head">Categories</span>
+          <ul>
+            <li><a href="pdf.html">PDF</a></li>
+            <li><a href="images.html">Images</a></li>
+            <li><a href="text.html">Text</a></li>
+            <li><a href="generators.html">Generators</a></li>
+            <li><a href="calculators.html">Calculators</a></li>
+            <li><a href="converters.html">Converters</a></li>
+            <li><a href="developer.html">Developer</a></li>
+            <li><a href="fun.html">Fun</a></li>
+            <li><a href="business.html">Business</a></li>
+          </ul>
+        </nav>
+        <div>
+          <span class="foot-head">Stacklane</span>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="../privacy.html">Privacy</a></li>
+            <li><a href="../terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="foot-copy">© <span data-year>2026</span> Stacklane Tools</p>
+    </div>
+  <!-- stacklane:footer:end -->
+</div>
 <script src="../assets/config.js"></script>
 <script src="../assets/i18n.js"></script>
 <script src="../assets/catalog.js"></script>

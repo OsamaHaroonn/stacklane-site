@@ -170,6 +170,9 @@
     var host = document.getElementById('site-header');
     if (!host) return;
     host.className = 'site-head';
+    /* tools/prerender.py already wrote the same markup into the page, so a
+       crawler and a no-JS visitor see it. Never build a second copy. */
+    if (host.children.length) return;
     var nav = get(json, 'nav') || {};
     var site = get(json, 'meta.siteName') || 'Stacklane';
 
@@ -242,6 +245,7 @@
     var host = document.getElementById('site-footer');
     if (!host) return;
     host.className = 'site-foot';
+    if (host.children.length) return;
     var f = get(json, 'footer') || {};
     var nav = get(json, 'nav') || {};
     var site = get(json, 'meta.siteName') || 'Stacklane';
@@ -365,7 +369,7 @@
 
     /* Breadcrumb: Home / Category / (tool) */
     var crumbs = document.getElementById('crumbs');
-    if (crumbs && (bodyTool || category)) {
+    if (crumbs && (bodyTool || category) && !crumbs.children.length) {
       var catSlug = category || (window.TOOL_CATS && window.TOOL_CATS[bodyTool]);
       crumbs.appendChild(el('a', { href: 'index.html' }, get(json, 'nav.home')));
       if (catSlug) {
@@ -381,6 +385,7 @@
 
     /* FAQ blocks: <dl data-faq="tools.<slug>.faq"></dl> */
     [].forEach.call(document.querySelectorAll('[data-faq]'), function (list) {
+      if (list.children.length) return; // statically prerendered
       var items = get(json, list.getAttribute('data-faq'));
       if (!Array.isArray(items)) return;
       items.forEach(function (item) {
@@ -403,7 +408,7 @@
                !!get(json, 'tools.' + t.slug + '.title');
       }) : [];
 
-      if (relHost) {
+      if (relHost && !relHost.children.length) {
         siblings.slice(0, 4).forEach(function (t) {
           var card = el('a', { class: 'card tool-card', href: t.slug + '.html' });
           card.appendChild(el('span', { class: 'card-kicker' },

@@ -95,8 +95,10 @@ window.HomePage = function (json, h) {
       (INDEX.length - business.length) + ' browser tools and ' + business.length + ' business pages.';
   }
 
-  /* ---- category cards: no Business on the home page ---- */
-  if (catGrid) {
+  /* ---- category cards: no Business on the home page ----
+     tools/prerender.py fills these four hosts at build time; only build a
+     block when it is still empty. ---- */
+  if (catGrid && !catGrid.children.length) {
     CATS.forEach(function (slug) {
       if (slug === 'business') return;
       var name = catName(slug);
@@ -115,7 +117,7 @@ window.HomePage = function (json, h) {
   }
 
   /* ---- popular chips under the search box ---- */
-  if (popularRow) {
+  if (popularRow && !popularRow.children.length) {
     popularRow.appendChild(el('span', { class: 'popular-label' }, 'Popular'));
     POPULAR.slice(0, 6).forEach(function (slug) {
       var title = toolTitle(slug);
@@ -125,7 +127,7 @@ window.HomePage = function (json, h) {
   }
 
   /* ---- eight popular cards ---- */
-  if (popularGrid) {
+  if (popularGrid && !popularGrid.children.length) {
     POPULAR.forEach(function (slug) {
       var title = toolTitle(slug);
       var cat = window.TOOL_CATS ? window.TOOL_CATS[slug] : null;
@@ -143,7 +145,7 @@ window.HomePage = function (json, h) {
   /* ---- one section per category, up to six tools each ----
      A tool may appear in Popular and again in its own category: the
      popular row is a shortcut, not a filter. */
-  if (catSections) {
+  if (catSections && !catSections.children.length) {
     var order = 0;
     CATS.forEach(function (slug) {
       if (slug === 'business') return;

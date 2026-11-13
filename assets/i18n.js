@@ -23,7 +23,10 @@
   function load(lang) {
     lang = (lang || LANG).toLowerCase();
     if (cache[lang]) return Promise.resolve(cache[lang]);
-    return fetch(jsonUrl(lang), { cache: 'no-cache' })
+    /* Let the HTTP cache work: _headers gives /assets/* a one-hour lifetime,
+       so moving between pages normally reuses the file instead of
+       revalidating it on every navigation. */
+    return fetch(jsonUrl(lang))
       .then(function (r) {
         if (!r.ok) throw new Error('i18n HTTP ' + r.status + ' for ' + lang);
         return r.json();
