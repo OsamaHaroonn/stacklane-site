@@ -1,0 +1,77 @@
+<body data-home>
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header"></div>
+
+<main id="main" class="no-pad">
+
+<header class="hero">
+  <div class="hero-shapes" aria-hidden="true"></div>
+  <div class="hero-icons" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7Z"/><path d="M14 3v4h4M9 13h6M9 17h4"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6h14M5 10h14M5 14h9M5 18h6"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="8.5" cy="10" r="1.5"/><path d="m21 16-5-5-4 4-2-2-4 4"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 8-5 4 5 4M15 8l5 4-5 4"/></svg>
+  </div>
+  <div class="container">
+    <span class="eyebrow">No accounts · No uploads</span>
+    <h1 data-i18n="home.h1">Free online tools for everyday tasks</h1>
+    <p class="lede" data-i18n="home.lede">Every tool runs in your browser. Nothing you type, paste or upload is sent anywhere — there is no account, no tracking and no payment.</p>
+    <div class="tk-field search-wrap">
+      <label for="tool-search" data-i18n="home.searchLabel">Search the tools</label>
+      <div class="search-box">
+        <input id="tool-search" type="search" autocomplete="off" spellcheck="false"
+               data-i18n-ph="home.searchPlaceholder" placeholder="Type to filter — try PDF, QR, percentage">
+      </div>
+      <p class="search-count" id="search-count" aria-live="polite">80 tools: 73 browser tools and 7 business pages.</p>
+    </div>
+    <div id="popular-row" class="popular" aria-label="Popular tools"></div>
+  </div>
+</header>
+
+<section id="trust-band" class="trust-band">
+  <div class="container">
+    <ul class="trust">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Every tool runs in your browser.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>No signup and no account.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Files you open are never uploaded.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="search-results" hidden>
+  <div class="container">
+    <h2 id="results-h2" data-i18n="home.toolsH2">All tools</h2>
+    <div id="results-grid" class="card-grid"></div>
+    <p id="search-empty" class="alert alert-warn" hidden data-i18n="home.noResults">No tool matches that word. Try a shorter one.</p>
+  </div>
+</section>
+
+<section id="categories">
+  <div class="container">
+    <h2 id="cat-h2" data-i18n="home.categoriesH2">Browse by category</h2>
+    <div id="category-grid" class="card-grid cat-grid"></div>
+  </div>
+</section>
+
+<section id="popular" class="section-soft">
+  <div class="container">
+    <header class="section-head">
+      <span class="section-kicker">Start here</span>
+      <h2 id="popular-h2">Popular tools</h2>
+      <p class="section-intro">A quick way in: eight tools, each one running in your browser with nothing uploaded.</p>
+    </header>
+    <div id="popular-grid" class="card-grid"></div>
+  </div>
+</section>
+
+<div id="cat-sections"></div>
+
+</main>
+
+<div id="site-footer"></div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/home.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>

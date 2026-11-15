@@ -1,0 +1,647 @@
+{
+ "word-counter": {
+  "set": {
+   "wc-text": "The quick brown fox jumps over the lazy dog."
+  }
+ },
+ "qr-code-generator": {
+  "set": {
+   "qr-text": "https://example.com"
+  },
+  "click": [
+   "Generate"
+  ],
+  "wait": 800
+ },
+ "password-generator": {
+  "set": {
+   "pw-length": "16"
+  }
+ },
+ "age-calculator": {
+  "set": {
+   "age-birth": "1990-05-15",
+   "age-asof": "2026-11-08"
+  }
+ },
+ "percentage-calculator": {
+  "set": {
+   "pct-x": "200",
+   "pct-y": "15"
+  }
+ },
+ "unit-converter": {
+  "selects": {
+   "uc-cat": "length",
+   "uc-from": "m",
+   "uc-to": "km"
+  },
+  "set": {
+   "uc-value": "1000"
+  }
+ },
+ "json-formatter": {
+  "set": {
+   "json-in": "{\"a\":1,\"b\":[2,3]}"
+  },
+  "click": [
+   "Format"
+  ]
+ },
+ "loan-calculator": {
+  "set": {
+   "loan-amount": "200000",
+   "loan-rate": "6",
+   "loan-years": "30"
+  }
+ },
+ "mortgage-calculator": {
+  "set": {
+   "mort-price": "400000",
+   "mort-down": "80000",
+   "mort-rate": "5",
+   "mort-years": "30"
+  }
+ },
+ "compound-interest-calculator": {
+  "set": {
+   "ci-principal": "10000",
+   "ci-rate": "5",
+   "ci-years": "10"
+  },
+  "selects": {
+   "ci-freq": "1"
+  }
+ },
+ "discount-calculator": {
+  "set": {
+   "disc-price": "100",
+   "disc-first": "20"
+  }
+ },
+ "vat-calculator": {
+  "set": {
+   "vat-amount": "100",
+   "vat-rate": "20"
+  },
+  "selects": {
+   "vat-mode": "add"
+  }
+ },
+ "date-difference": {
+  "set": {
+   "dd-start": "2026-01-01",
+   "dd-end": "2026-01-31"
+  }
+ },
+ "tip-split-calculator": {
+  "set": {
+   "tip-bill": "100",
+   "tip-pct": "15",
+   "tip-people": "4"
+  }
+ },
+ "roi-calculator": {
+  "set": {
+   "roi-in": "1000",
+   "roi-out": "1500"
+  }
+ },
+ "savings-goal-calculator": {
+  "set": {
+   "sg-target": "10000",
+   "sg-current": "0",
+   "sg-rate": "0",
+   "sg-years": "5"
+  }
+ },
+ "gpa-calculator": {
+  "set": {
+   "gpa-l1": "Math",
+   "gpa-p1": "4.0",
+   "gpa-u1": "3",
+   "gpa-l2": "History",
+   "gpa-p2": "3.0",
+   "gpa-u2": "3"
+  },
+  "wait": 500
+ },
+ "case-converter": {
+  "set": {
+   "case-in": "Hello World"
+  },
+  "selects": {
+   "case-mode": "upper"
+  }
+ },
+ "character-counter": {
+  "set": {
+   "chars-in": "abc de"
+  }
+ },
+ "remove-duplicate-lines": {
+  "set": {
+   "dedupe-in": "a\nb\na"
+  }
+ },
+ "random-number": {
+  "set": {
+   "rnd-min": "1",
+   "rnd-max": "10",
+   "rnd-count": "1"
+  }
+ },
+ "uuid-generator": {
+  "set": {
+   "uuid-count": "3"
+  }
+ },
+ "base64": {
+  "set": {
+   "b64-in": "hello"
+  },
+  "selects": {
+   "b64-mode": "encode"
+  }
+ },
+ "url-encoder": {
+  "set": {
+   "url-in": "a b&c"
+  },
+  "selects": {
+   "url-mode": "encode"
+  }
+ },
+ "timestamp-converter": {
+  "set": {
+   "ts-value": "0"
+  },
+  "selects": {
+   "ts-unit": "s"
+  }
+ },
+ "color-converter": {
+  "set": {
+   "colour-in": "#ff0000"
+  }
+ },
+ "time-zone-converter": {
+  "wait": 400
+ },
+ "typing-speed-test": {
+  "set": {
+   "typing-text": "hello"
+  },
+  "click": [
+   "Finish"
+  ]
+ },
+ "regex-tester": {
+  "set": {
+   "re-pattern": "\\d+",
+   "re-text": "abc 123 456"
+  }
+ },
+ "hash-generator": {
+  "selects": {
+   "hash-algo": "SHA-256"
+  },
+  "set": {
+   "hash-text": "abc"
+  }
+ },
+ "lorem-ipsum-generator": {
+  "selects": {
+   "lorem-kind": "words"
+  },
+  "set": {
+   "lorem-count": "5"
+  },
+  "click": [
+   "Generate"
+  ]
+ },
+ "text-diff-checker": {
+  "set": {
+   "diff-a": "one\ntwo",
+   "diff-b": "one\nthree"
+  },
+  "click": [
+   "Compare"
+  ]
+ },
+ "roman-numerals": {
+  "selects": {
+   "rn-mode": "n2r"
+  },
+  "set": {
+   "rn-value": "2026"
+  }
+ },
+ "number-base-converter": {
+  "set": {
+   "nb-value": "255"
+  },
+  "selects": {
+   "nb-from": "10"
+  }
+ },
+ "color-contrast-checker": {
+  "set": {
+   "cc-fg": "#000000",
+   "cc-bg": "#ffffff"
+  }
+ },
+ "average-calculator": {
+  "set": {
+   "avg-input": "1 2 3 4"
+  }
+ },
+ "slug-generator": {
+  "set": {
+   "slug-input": "Hello World!"
+  }
+ },
+ "html-entity-encoder": {
+  "selects": {
+   "he-mode": "enc"
+  },
+  "set": {
+   "he-input": "<a&b>"
+  }
+ },
+ "csv-json-converter": {
+  "set": {
+   "cv-input": "a,b\n1,2"
+  }
+ },
+ "sort-lines": {
+  "selects": {
+   "sl-order": "az"
+  },
+  "set": {
+   "sl-input": "c\na\nb"
+  }
+ },
+ "working-days-calculator": {
+  "set": {
+   "wd-start": "2026-01-01",
+   "wd-end": "2026-01-31"
+  }
+ },
+ "fraction-calculator": {
+  "set": {
+   "fr-n1": "1",
+   "fr-d1": "2",
+   "fr-n2": "1",
+   "fr-d2": "3"
+  },
+  "selects": {
+   "fr-op": "add"
+  }
+ },
+ "ratio-calculator": {
+  "set": {
+   "ra-a": "4",
+   "ra-b": "6"
+  },
+  "selects": {
+   "ra-mode": "simplify"
+  }
+ },
+ "salary-to-hourly": {
+  "set": {
+   "sh-salary": "60000",
+   "sh-hours": "40",
+   "sh-weeks": "52"
+  }
+ },
+ "keyword-density-analyzer": {
+  "set": {
+   "kd-input": "the cat and the dog"
+  }
+ },
+ "meta-tag-generator": {
+  "set": {
+   "mt-title": "Blue mug",
+   "mt-desc": "A mug.",
+   "mt-url": "https://example.com/mug.html",
+   "mt-site": "Stacklane"
+  }
+ },
+ "robots-txt-generator": {
+  "selects": {
+   "rb-mode": "allow"
+  },
+  "set": {
+   "rb-sitemap": "https://example.com/sitemap.xml"
+  }
+ },
+ "xml-sitemap-generator": {
+  "set": {
+   "sm-urls": "https://example.com/\nhttps://example.com/a.html"
+  }
+ },
+ "css-box-shadow-generator": {
+  "set": {
+   "bs-x": "0",
+   "bs-y": "4",
+   "bs-blur": "12",
+   "bs-spread": "0"
+  },
+  "wait": 400
+ },
+ "color-palette-generator": {
+  "set": {
+   "cp-base": "#1d4ed8"
+  }
+ },
+ "password-strength-checker": {
+  "set": {
+   "ps-input": "Tr0ub4dor&3xample!long"
+  }
+ },
+ "html-to-markdown": {
+  "set": {
+   "hm-input": "<h2>Notes</h2><p>Hello <strong>world</strong>.</p>"
+  }
+ },
+ "user-agent-parser": {
+  "set": {
+   "ua-input": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
+  }
+ },
+ "bmi-calculator": {
+  "set": {
+   "bw-weight": "70",
+   "bw-height": "175"
+  }
+ },
+ "sql-formatter": {
+  "set": {
+   "sq-input": "select a,b from t where a=1 order by b"
+  }
+ },
+ "coin-flipper": {
+  "click": [
+   "Flip coin"
+  ],
+  "wait": 500
+ },
+ "dice-roller": {
+  "set": {
+   "dr-sides": "6",
+   "dr-count": "2"
+  },
+  "click": [
+   "Roll"
+  ],
+  "wait": 500
+ },
+ "decision-wheel": {
+  "set": {
+   "dw-options": "Walk\nBus\nTrain"
+  },
+  "click": [
+   "Spin"
+  ],
+  "wait": 1200
+ },
+ "bubble-wrap-popper": {
+  "wait": 300
+ },
+ "fake-hacker-typer": {
+  "click": [
+   "Start"
+  ],
+  "wait": 600
+ },
+ "compliment-generator": {
+  "click": [
+   "Another compliment"
+  ],
+  "wait": 300
+ },
+ "shakespearean-insult-generator": {
+  "click": [
+   "Another insult"
+  ],
+  "wait": 300
+ },
+ "merge-pdf": {
+  "files": [
+   {
+    "id": "pdf-files",
+    "kind": "pdf",
+    "name": "a.pdf",
+    "many": 2
+   }
+  ],
+  "click": [
+   "Merge"
+  ],
+  "wait": 2500
+ },
+ "split-pdf": {
+  "files": [
+   {
+    "id": "split-file",
+    "kind": "pdf",
+    "name": "b.pdf"
+   }
+  ],
+  "click": [
+   "Split"
+  ],
+  "wait": 2500
+ },
+ "images-to-pdf": {
+  "files": [
+   {
+    "id": "i2p-files",
+    "kind": "png",
+    "name": "c.png",
+    "many": 2
+   }
+  ],
+  "click": [
+   "Create PDF"
+  ],
+  "wait": 2500
+ },
+ "image-compressor": {
+  "files": [
+   {
+    "id": "cmp-file",
+    "kind": "png",
+    "name": "d.png"
+   }
+  ],
+  "click": [
+   "Compress"
+  ],
+  "wait": 1500
+ },
+ "image-resizer": {
+  "files": [
+   {
+    "id": "rsz-file",
+    "kind": "png",
+    "name": "e.png"
+   }
+  ],
+  "set": {
+   "rsz-w": "20",
+   "rsz-h": "15"
+  },
+  "click": [
+   "Resize"
+  ],
+  "wait": 1500
+ },
+ "image-converter": {
+  "files": [
+   {
+    "id": "conv-file",
+    "kind": "png",
+    "name": "f.png"
+   }
+  ],
+  "click": [
+   "Convert"
+  ],
+  "wait": 1500
+ },
+ "crop-rotate-image": {
+  "files": [
+   {
+    "id": "crop-file",
+    "kind": "png",
+    "name": "g.png"
+   }
+  ],
+  "click": [
+   "Crop and rotate"
+  ],
+  "wait": 1500
+ },
+ "favicon-generator": {
+  "files": [
+   {
+    "id": "fv-file",
+    "kind": "png",
+    "name": "h.png"
+   }
+  ],
+  "wait": 1200
+ },
+ "image-to-base64": {
+  "files": [
+   {
+    "id": "img-file",
+    "kind": "png",
+    "name": "i.png"
+   }
+  ],
+  "wait": 1200
+ },
+ "jwt-decoder": {
+  "set": {
+   "jwt-input": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+  }
+ },
+ "stopwatch-timer": {
+  "steps": [
+   {
+    "click": "Start",
+    "wait": 800
+   },
+   {
+    "click": "Pause",
+    "wait": 200
+   }
+  ]
+ },
+ "calculator": {
+  "set": {
+   "hours": "10",
+   "rate": "50",
+   "materials": "100",
+   "overhead": "50",
+   "margin": "20",
+   "competitor": "0"
+  },
+  "wait": 400
+ },
+ "margin-calculator": {
+  "set": {
+   "cost": "60",
+   "price": "100",
+   "target": "30",
+   "discount": "10"
+  },
+  "wait": 400
+ },
+ "break-even-calculator": {
+  "set": {
+   "fixed": "1000",
+   "vcost": "20",
+   "price": "30",
+   "capacity": "200"
+  },
+  "wait": 400
+ },
+ "late-payment-calculator": {
+  "set": {
+   "amount": "1000",
+   "days": "30",
+   "rate": "10",
+   "late": "5",
+   "fee": "0",
+   "weekly": "0"
+  },
+  "wait": 400
+ },
+ "loss-calculator": {
+  "set": {
+   "hours": "8",
+   "rate": "60",
+   "enquiries": "6",
+   "value": "400",
+   "conversion": "20",
+   "weeks": "4.33"
+  },
+  "wait": 500
+ },
+ "audit": {
+  "set": {
+   "c1": true,
+   "c2": true,
+   "c3": true
+  },
+  "wait": 400
+ },
+ "invoice": {
+  "set": {
+   "from-name": "Doe Plumbing Ltd",
+   "from-contact": "jane@example.com",
+   "to-name": "Acme Retail",
+   "to-contact": "accounts@acme.com",
+   "inv-number": "INV-001",
+   "notes": "Payment due within 14 days.",
+   "discount": "0",
+   "tax": "20"
+  },
+  "steps": [
+   {
+    "set": {
+     ".i-desc": "Design work",
+     ".i-qty": "2",
+     ".i-rate": "500"
+    },
+    "wait": 300
+   }
+  ],
+  "wait": 450
+ }
+}

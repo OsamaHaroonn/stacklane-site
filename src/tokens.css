@@ -1,0 +1,142 @@
+/* ============================================================
+   Stacklane design tokens
+   Source of truth for assets/style.css (single deployed stylesheet,
+   no build step, no @import in production).
+   ============================================================ */
+
+:root {
+  /* Colour */
+  --blue-700: #1b3fa0;
+  --blue-600: #1d4ed8;
+  --blue-50: #eef3ff;
+  --ink: #111827;
+  --ink-2: #4b5563;
+  --ink-3: #6b7280;
+  --line: #e5e7eb;
+  --line-2: #d1d5db;
+  --surface: #ffffff;
+  --band: #f7f9fc;
+  --good: #0f7b52;
+  --good-soft: #e8f5ef;
+  --warn: #8a5a00;
+  --warn-soft: #fff6e5;
+  --danger: #b3261e;
+  --danger-soft: #fdecea;
+
+  --accent: var(--blue-600);
+  --accent-ink: #ffffff;
+  --accent-soft: var(--blue-50);
+  --ink-soft: var(--ink-2);
+  --bg: var(--surface);
+  --bg-soft: var(--band);
+
+  /* Spacing scale: 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+
+  /* Radius and shadow */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-pill: 999px;
+  --radius: var(--r-lg);
+  --shadow-1: 0 1px 2px rgba(17, 24, 39, .05), 0 1px 3px rgba(17, 24, 39, .04);
+  --shadow-2: 0 1px 2px rgba(17, 24, 39, .06), 0 12px 32px rgba(17, 24, 39, .08);
+  --shadow: var(--shadow-2);
+
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --container: 1120px;
+}
+
+/* ============================================================
+   Buttons — one hierarchy, not four
+   Primary = accent; secondary = outline on surface; ghost = edgeless
+   hint; danger = red accent for destructive actions. All share the same
+   min-height, padding, radius, font and focus ring.
+   ============================================================ */
+
+.btn,
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-height: 44px;
+  padding: 0 var(--sp-5);
+  border-radius: var(--r-pill);
+  border: 1px solid transparent;
+  background: var(--blue-600);
+  color: var(--accent-ink);
+  font: inherit;
+  font-size: .9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .12s ease, transform .12s ease, box-shadow .12s ease;
+}
+
+.btn:hover,
+.btn-primary:hover {
+  background: var(--blue-700);
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+
+.btn:active,
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line-2);
+}
+
+.btn-secondary:hover {
+  background: var(--band);
+  border-color: var(--line-2);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: transparent;
+}
+
+.btn-ghost:hover {
+  background: var(--blue-50);
+  color: var(--blue-600);
+  text-decoration: none;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: var(--accent-ink);
+}
+
+.btn-danger:hover {
+  background: #9a1f17;
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+
+.btn:disabled,
+.btn-secondary:disabled,
+.btn-ghost:disabled,
+.btn-danger:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-block { display: flex; width: 100%; }
+.btn-row { display: flex; gap: var(--sp-3); flex-wrap: wrap; margin-top: var(--sp-5); }

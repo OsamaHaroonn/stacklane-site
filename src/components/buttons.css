@@ -1,0 +1,108 @@
+/* ============================================================
+   Buttons — component layer
+   All buttons share min-height, padding, radius, font, cursor and focus
+   ring. Modifiers only change surface, colour and border.
+   ============================================================ */
+
+button,
+.icon-btn,
+summary,
+label[for] { min-height: 44px; }
+button { font: inherit; }
+
+.btn,
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  min-height: 44px;
+  padding: 0 var(--sp-5);
+  border-radius: var(--r-pill);
+  border: 1px solid transparent;
+  background: var(--blue-600);
+  color: var(--accent-ink);
+  font: inherit;
+  font-size: .9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .12s ease, transform .12s ease, box-shadow .12s ease;
+}
+
+.btn:hover,
+.btn-primary:hover {
+  background: var(--blue-700);
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+
+.btn:active,
+.btn-primary:active { transform: translateY(1px); }
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line-2);
+}
+.btn-secondary:hover {
+  background: var(--band);
+  border-color: var(--line-2);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: transparent;
+}
+.btn-ghost:hover {
+  background: var(--blue-50);
+  color: var(--blue-600);
+  text-decoration: none;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: var(--accent-ink);
+}
+.btn-danger:hover {
+  background: #9a1f17;
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+
+.btn:disabled,
+.btn-secondary:disabled,
+.btn-ghost:disabled,
+.btn-danger:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-block { display: flex; width: 100%; }
+.btn-row { display: flex; gap: var(--sp-3); flex-wrap: wrap; margin-top: var(--sp-5); }
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 var(--sp-2);
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line-2);
+  background: var(--surface);
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background .12s ease, color .12s ease, border-color .12s ease;
+}
+.icon-btn:hover {
+  background: var(--blue-50);
+  border-color: var(--blue-600);
+  color: var(--blue-600);
+  text-decoration: none;
+}
+.icon-btn svg { width: 18px; height: 18px; }

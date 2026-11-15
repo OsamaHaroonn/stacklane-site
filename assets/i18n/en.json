@@ -3615,6 +3615,244 @@
         "original": "These lines are original combinations of archaic words, not quotations from Shakespeare.",
         "note": "Built in your browser from written word lists: nothing is stored or sent anywhere."
       }
+    },
+    "pdfpage-counter": {
+      "title": "PDF page counter",
+      "desc": "Read the page count, file size, title and producer of a PDF in your browser. The document is never uploaded.",
+      "lede": "Choose a PDF and read its page count, byte size, document title and producer. The document never leaves your browser.",
+      "how": "The file is read into memory and parsed with pdf-lib, which is loaded only when you pick a file. The page count comes from the PDF's own page tree, so it matches what a PDF reader shows. Size is the raw byte length of the file. Title and producer are the optional metadata fields the creating application wrote; many PDFs leave them empty, in which case the report says so. Encrypted PDFs are opened with decryption ignored, so page counts still work but their content cannot be altered.",
+      "example": "A 24-page catalogue exported from a design tool reports 24 pages, 1.8 MB, the title set by the exporter and the producing application. A scan with no metadata reports the page count and size with title and producer marked unknown.",
+      "faq": [
+        {
+          "q": "Is my PDF uploaded to a server?",
+          "a": "No. The file is read by JavaScript in this tab and discarded when you close the page or choose another file. Nothing is transmitted and nothing is stored."
+        },
+        {
+          "q": "Which PDFs can it read?",
+          "a": "Any well-formed PDF, including ones made by common office and design tools. Password-protected files are opened with decryption ignored, so the page count is read but their contents stay encrypted. A damaged file that no reader can open will be reported as unreadable."
+        },
+        {
+          "q": "Why is the page count different from what I expected?",
+          "a": "The count is the number of pages stored in the file. Blank pages, cover pages and pages hidden by an unusual viewer setting are all included, because they are all pages in the document."
+        },
+        {
+          "q": "Can it count pages in several files at once?",
+          "a": "This tool reads one file at a time. Splitting a PDF into separate files is a separate tool on the site."
+        }
+      ],
+      "ui": {
+        "file": "PDF file",
+        "browse": "Choose a PDF",
+        "emptyFile": "No file chosen yet",
+        "analyze": "Read this PDF",
+        "notPdf": "That file is not a PDF. Choose a file ending in .pdf.",
+        "chooseFirst": "Choose a PDF first.",
+        "zeroBytes": "That file is empty (0 bytes), so there is nothing to read.",
+        "reading": "Reading the file…",
+        "pages": "Pages",
+        "size": "File size",
+        "name": "File name",
+        "title": "Document title",
+        "producer": "Producer",
+        "untitled": "No title in the file",
+        "unknown": "Not recorded",
+        "done": "Page count read. The file stayed on this device.",
+        "failed": "That file could not be read as a PDF. It may be damaged or password-protected.",
+        "note": "Read from the file's page tree.",
+        "working": "Parsed with pdf-lib"
+      }
+    },
+    "text-statistician": {
+      "title": "Text statistician",
+      "desc": "Measure words, sentences, paragraphs, average sentence length, Flesch reading ease and the most frequent words in any text.",
+      "lede": "Paste any text for a statistical breakdown: counts, average sentence length, a Flesch reading ease score and the words that carry the most weight.",
+      "how": "Words are runs of letters and numbers, so hyphenated and apostrophised forms count once. Sentences are split on . ! ? and the ellipsis. Paragraphs are split on blank lines. Average sentence length is words divided by sentences. Flesch reading ease is 206.835 minus 1.015 times the average sentence length minus 84.6 times syllables per word: higher is easier, and a score in the sixties is plain English. The word ranking ignores closed-class words such as “the” and “of”, which appear in almost every sentence and say nothing about the subject.",
+      "example": "A 120-word paragraph of eight sentences averages 15 words per sentence. With about 180 syllables it scores roughly 62 on Flesch, which reads as plain English. Its ranking might lead with “invoice”, “payment” and “client”.",
+      "faq": [
+        {
+          "q": "Is the text sent anywhere?",
+          "a": "No. Everything is counted in this tab and nothing is stored. Closing the page discards the text."
+        },
+        {
+          "q": "What does the Flesch score mean?",
+          "a": "It estimates how easy a passage is to read on a 0–100 scale: 90–100 is very easy, 60–70 plain English, 30–50 difficult and below 30 very difficult. It was built for English and is only a rough guide for other languages."
+        },
+        {
+          "q": "Why are common words missing from the ranking?",
+          "a": "Words like “the”, “and” and “of” are excluded on purpose. They are the most frequent words in almost any English text, so including them would hide the words that actually describe the subject. They still count towards every total."
+        },
+        {
+          "q": "Do the counts work for non-Latin scripts?",
+          "a": "Character and word counts use Unicode letter and number properties, so Arabic, Cyrillic and Greek are counted correctly. The syllable estimate behind Flesch assumes Latin spelling, so treat that score as indicative only outside English."
+        }
+      ],
+      "ui": {
+        "label": "Your text",
+        "placeholder": "Paste or type the text to measure…",
+        "empty": "Nothing entered yet — paste some text above.",
+        "words": "Words",
+        "characters": "Characters",
+        "noSpaces": "Characters without spaces",
+        "sentences": "Sentences",
+        "paragraphs": "Paragraphs",
+        "avgSentence": "Average sentence length",
+        "unitWords": "words",
+        "unitSyllables": "syllables",
+        "flesch": "Flesch reading ease",
+        "fleschScale": "0–100, higher is easier",
+        "unique": "Distinct content words",
+        "longest": "Longest word",
+        "topWords": "Most frequent words",
+        "note": "Counted in this tab. Nothing was uploaded.",
+        "working": "Words · syllables"
+      }
+    },
+    "percentage-change-calculator": {
+      "title": "Percentage change calculator",
+      "desc": "Find the percentage change between two numbers, with the absolute difference, the direction and a plain-English summary.",
+      "lede": "Enter an original value and a new value to get the percentage change, the absolute difference and whether it went up or down.",
+      "how": "Percentage change is the difference divided by the size of the original value, times 100. Dividing by the size of the original means the sign always describes the movement: a change from −50 to −40 is an increase, not a decrease. A change from zero has no meaningful percentage, because every percentage of zero is zero, so it is reported as undefined with the absolute difference instead. The result is rounded to two decimals for display and the unrounded value is used in the summary.",
+      "example": "From 50 to 60 the change is +20%, the difference is +10 and the direction is an increase. From 80 to 60 the change is −25%, the difference is −20 and the direction is a decrease.",
+      "faq": [
+        {
+          "q": "What is the difference between percentage change and percentage points?",
+          "a": "Percentage change compares two values relative to the first. Percentage points describe the gap between two percentages: a rate moving from 5% to 7% rose by 2 percentage points, which is a 40% change. This tool reports the percentage change."
+        },
+        {
+          "q": "Why is the change undefined when the original is zero?",
+          "a": "Percentage change is a ratio to the original value. With an original of zero there is no base to compare against, so any percentage would be misleading. The tool shows the absolute difference and says the percentage is undefined."
+        },
+        {
+          "q": "Does it work with negative numbers?",
+          "a": "Yes. The calculation divides by the size of the original, so the direction is always reported correctly even when both values are below zero."
+        },
+        {
+          "q": "Are the results rounded?",
+          "a": "Displayed percentages use two decimals. The summary sentence is built from the same rounded figure so the numbers on screen never disagree with each other."
+        }
+      ],
+      "ui": {
+        "original": "Original value",
+        "new": "New value",
+        "swap": "Swap values",
+        "calculate": "Calculate",
+        "empty": "Enter both values to calculate the change.",
+        "badNumber": "Both values must be numbers. Letters, currency symbols and spaces are not accepted.",
+        "change": "Percentage change",
+        "difference": "Absolute difference",
+        "direction": "Direction",
+        "increase": "Increase",
+        "decrease": "Decrease",
+        "noChange": "No change",
+        "zeroBase": "Undefined — the original value is zero",
+        "zeroBaseNote": "A percentage of zero has no meaning, so only the absolute difference is reported.",
+        "summary": "In a sentence",
+        "sentence": "{phrase} of {pct} from {old} to {new}.",
+        "formula": "(new − original) ÷ |original| × 100",
+        "formulaZero": "new − original",
+        "note": "Calculated as you type.",
+        "phraseIncrease": "an increase",
+        "phraseDecrease": "a decrease",
+        "phraseNoChange": "no change"
+      }
+    },
+    "css-gradient-generator": {
+      "title": "CSS gradient generator",
+      "desc": "Add colour stops, pick an angle and copy the exact CSS linear-gradient rule, with a live preview on the page.",
+      "lede": "Build a CSS linear-gradient from any number of colour stops, preview it on the page and copy the exact rule it produces.",
+      "how": "Colour stops are separated by commas or new lines and are normalised before use: three-digit hex is expanded to six, colour names are converted to hex, and rgb() or rgba() values are checked to be in range. The tool then writes linear-gradient(angle, stop, stop, …) and applies that same string to the preview, so the sample and the copied rule cannot drift apart. Angles are degrees, measured clockwise from the bottom of the element, which is how CSS defines them; “to right” and similar keywords are passed through unchanged.",
+      "example": "Stops #1d4ed8, #7c3aed and #f59e0b at 135 degrees produce background-image: linear-gradient(135deg, #1d4ed8, #7c3aed, #f59e0b); which runs from the top-left toward the bottom-right.",
+      "faq": [
+        {
+          "q": "Which colour formats are accepted?",
+          "a": "Six-digit and three-digit hex with or without the leading #, the common CSS colour names, and rgb() or rgba() with channels between 0 and 255. Anything else is rejected with a message naming the value that failed."
+        },
+        {
+          "q": "Can I generate a radial gradient?",
+          "a": "Not with this tool. It writes linear gradients only, because the angle control and preview are specific to them."
+        },
+        {
+          "q": "Is the copied CSS vendor-prefixed?",
+          "a": "No. linear-gradient has been supported unprefixed in every current browser for years, so the copyable rule is the standard property only."
+        },
+        {
+          "q": "Where does the preview come from?",
+          "a": "The preview element has the generated rule applied directly, so what you see is the browser rendering the same CSS you copy."
+        }
+      ],
+      "ui": {
+        "preview": "Live preview",
+        "colors": "Colour stops",
+        "hint": "Separate stops with commas or new lines. Hex, a colour name, rgb() or rgba() all work.",
+        "angle": "Angle or direction",
+        "deg0": "0° — bottom to top",
+        "deg45": "45° — lower left to upper right",
+        "deg90": "90° — left to right",
+        "deg135": "135° — top left to bottom right",
+        "deg180": "180° — top to bottom",
+        "deg225": "225° — top right to bottom left",
+        "deg270": "270° — right to left",
+        "deg315": "315° — bottom right to top left",
+        "toRight": "to right",
+        "toBottom": "to bottom",
+        "toBottomRight": "to bottom right",
+        "toBottomLeft": "to bottom left",
+        "output": "Generated CSS",
+        "copy": "Copy CSS",
+        "nothingToCopy": "There is no valid gradient to copy yet.",
+        "copied": "CSS copied to the clipboard.",
+        "copyFailed": "The clipboard was blocked. Select the rule and copy it manually.",
+        "badColor": "“{value}” is not a colour this tool understands. Use hex, a colour name, rgb() or rgba().",
+        "needTwo": "Add at least two colour stops to make a gradient.",
+        "note": "The preview uses this exact rule."
+      }
+    },
+    "barcode-generator": {
+      "title": "Barcode generator",
+      "desc": "Encode text or numbers as a Code 128 barcode drawn as SVG, with the checksum calculated in your browser. Download or copy it.",
+      "lede": "Encode text or numbers as a Code 128 barcode, preview it on the page, then download the SVG or copy the markup. Everything is computed locally.",
+      "how": "This is Code 128, code set B, which covers printable ASCII: letters, digits and common punctuation. The symbol is built as a start character, one value per character (the character code minus 32), a checksum, then the stop pattern. The checksum is the start value plus each data value multiplied by its position, all modulo 103, which is what a scanner uses to confirm it read the symbol correctly. Bars are drawn from the standard element-width table, each symbol eleven modules wide and the stop pattern thirteen, with a ten-module quiet zone either side. No network request is made and no library is loaded.",
+      "example": "The text “ABC” becomes start B, 33, 34, 35, then the checksum (104 + 33 + 68 + 105) mod 103 = 1, then stop — five symbols and 57 modules of ink, plus quiet zones.",
+      "faq": [
+        {
+          "q": "Will the barcode scan?",
+          "a": "The encoding follows the Code 128 specification: correct element widths, quiet zones and modulo-103 checksum, drawn as sharp SVG rectangles. Whether a particular scanner reads it depends on print size and contrast, so print at the module width you previewed rather than scaling the image down afterwards."
+        },
+        {
+          "q": "Why are some characters rejected?",
+          "a": "Code set B only encodes printable ASCII (codes 32 to 126). Accented letters, emoji and other scripts need a different code set or a different symbology, so they are reported instead of being silently replaced."
+        },
+        {
+          "q": "What are the numbers in the status line?",
+          "a": "The module count is the total width of the symbol in modules, including the quiet zones. The checksum is the value a scanner recomputes to verify the read."
+        },
+        {
+          "q": "Can I use the SVG in a label or a document?",
+          "a": "Yes. SVG is vector, so it stays sharp at any size. Keep the aspect ratio, and avoid editing the shapes: changing bar widths by even one pixel can make the symbol unreadable."
+        }
+      ],
+      "ui": {
+        "value": "Text or numbers",
+        "valueHint": "Printable ASCII only — letters, digits and common punctuation.",
+        "height": "Bar height (px)",
+        "moduleWidth": "Module width",
+        "mw1": "1 px — smallest",
+        "mw2": "2 px — default",
+        "mw3": "3 px — larger",
+        "mw4": "4 px — largest",
+        "showText": "Print the text under the bars",
+        "output": "SVG markup",
+        "download": "Download SVG",
+        "copy": "Copy SVG",
+        "nothing": "There is no barcode to export yet.",
+        "copied": "SVG markup copied to the clipboard.",
+        "copyFailed": "The clipboard was blocked. Select the markup and copy it manually.",
+        "empty": "Type something to encode.",
+        "tooLong": "That is longer than {max} characters. Shorten it — a very long value makes an impractically wide barcode.",
+        "badChar": "“{char}” cannot be encoded in code set B. Use printable ASCII letters, digits and punctuation.",
+        "badHeight": "Bar height must be between 40 and 240 pixels.",
+        "note": "{modules} modules wide · checksum {checksum}"
+      }
     }
   },
   "business": {

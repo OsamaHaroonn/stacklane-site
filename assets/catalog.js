@@ -8,13 +8,16 @@
  */
 window.TOOL_CATALOG = [
   { slug: 'merge-pdf',              category: 'pdf',         keywords: 'combine join merge pdf files document' },
+  { slug: 'pdfpage-counter',        category: 'pdf',         keywords: 'pdf page counter count pages document' },
   { slug: 'image-compressor',       category: 'images',      keywords: 'compress shrink resize photo jpg png webp smaller' },
   { slug: 'image-resizer',          category: 'images',      keywords: 'resize image width height pixels photo picture' },
   { slug: 'word-counter',           category: 'text',        keywords: 'word counter character count essay words' },
   { slug: 'qr-code-generator',      category: 'generators',  keywords: 'qr code generator qr code link url wifi' },
+  { slug: 'barcode-generator', category: 'generators', keywords: 'barcode code 128 svg product label inventory scan generate' },
   { slug: 'password-generator',     category: 'generators',  keywords: 'password generator strong random secure' },
   { slug: 'age-calculator',         category: 'calculators', keywords: 'age calculator birthday date of birth' },
   { slug: 'percentage-calculator',  category: 'calculators', keywords: 'percentage calculator percent increase discount' },
+  { slug: 'percentage-change-calculator', category: 'calculators', keywords: 'percentage change calculator increase decrease difference' },
   { slug: 'unit-converter',         category: 'converters',  keywords: 'unit converter metric imperial length temperature' },
   { slug: 'json-formatter',         category: 'developer',   keywords: 'json formatter validator minify pretty print' },
   { slug: 'loan-calculator',        category: 'calculators', keywords: 'loan calculator monthly payment interest amortisation borrowing' },
@@ -29,6 +32,8 @@ window.TOOL_CATALOG = [
   { slug: 'gpa-calculator', category: 'calculators', keywords: 'gpa calculator grade point average credits units transcript' },
   { slug: 'case-converter', category: 'text', keywords: 'case converter uppercase lowercase title camel snake kebab sentence case' },
   { slug: 'character-counter', category: 'text', keywords: 'character counter characters words lines sentences length limit' },
+  { slug: 'text-statistician',     category: 'text',        keywords: 'text statistician word frequency readability stats analysis' },
+
   { slug: 'remove-duplicate-lines', category: 'text', keywords: 'remove duplicate lines dedupe unique lines text clean' },
   { slug: 'random-number', category: 'generators', keywords: 'random number generator crypto secure pick number between range' },
   { slug: 'uuid-generator', category: 'generators', keywords: 'uuid generator v4 unique id random identifier rfc 4122' },
@@ -67,6 +72,7 @@ window.TOOL_CATALOG = [
   { slug: 'xml-sitemap-generator', category: 'developer', keywords: 'xml sitemap generator urls crawl seo loc urlset changefreq priority' },
   { slug: 'css-box-shadow-generator', category: 'developer', keywords: 'box shadow css generator shadow blur spread rgba inset' },
   { slug: 'color-palette-generator', category: 'developer', keywords: 'color palette generator tints shades hex rgb swatches' },
+  { slug: 'css-gradient-generator', category: 'developer', keywords: 'css gradient generator linear-gradient color stops angle preview' },
   { slug: 'password-strength-checker', category: 'developer', keywords: 'password strength checker entropy bits estimate secure' },
   { slug: 'favicon-generator', category: 'generators', keywords: 'favicon generator png sizes icon apple touch android pwa' },
   { slug: 'html-to-markdown', category: 'developer', keywords: 'html to markdown converter md headings links lists code table' },

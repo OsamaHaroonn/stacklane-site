@@ -1,0 +1,56 @@
+/* ============================================================
+   Related tools — shared section
+   A small heading plus a row of tool links. Each link is a compact
+   tool card with a description, so the section reads consistently with
+   the rest of the site.
+   ============================================================ */
+
+.related {
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--line);
+}
+
+.related h3 {
+  font-size: 1.0625rem;
+  margin: 0 0 var(--sp-3);
+  color: var(--ink);
+}
+
+.related .related-links {
+  display: grid;
+  gap: var(--sp-2);
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.related .related-link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color .15s ease, background .15s ease;
+}
+
+.related .related-link:hover {
+  border-color: var(--blue-600);
+  background: var(--blue-50);
+  color: var(--blue-600);
+  text-decoration: none;
+}
+
+.related .related-link strong {
+  display: block;
+  font-size: .9375rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.related .related-link span {
+  font-size: .8125rem;
+  color: var(--ink-2);
+}

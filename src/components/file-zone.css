@@ -1,0 +1,73 @@
+/* ============================================================
+   File input zone — shared picker
+   A tinted dashed well that asks the pointer to drop a file. States are
+   mutually exclusive and only the active state paints, so an empty page
+   never shifts: the well only gains a ring, text and background when a
+   file is chosen or the zone is in a distinct state.
+   ============================================================ */
+
+.tk-file {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  min-height: 44px;
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px dashed var(--line-2);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  cursor: pointer;
+  transition: border-color .16s ease, background .16s ease, box-shadow .16s ease;
+}
+
+.tk-file:hover,
+.tk-file:focus-within {
+  border-color: var(--blue-600);
+  background: var(--blue-50);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, .12);
+}
+
+.tk-file input[type="file"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 44px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.tk-file-label {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: 44px;
+  font-size: .9375rem;
+  color: var(--ink);
+}
+
+.tk-file-label svg {
+  width: 20px;
+  height: 20px;
+  color: var(--blue-600);
+  flex: none;
+}
+
+.tk-file-state {
+  font-size: .8125rem;
+  color: var(--ink-2);
+  min-height: 18px;
+}
+
+.tk-file.has-files {
+  border-style: solid;
+  border-color: var(--line-2);
+  background: var(--band);
+  cursor: default;
+}
+
+.tk-file.has-files input[type="file"] { cursor: default; }

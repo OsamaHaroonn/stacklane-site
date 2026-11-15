@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>QA type check (local only)</title>
+<!-- Local-only harness. Never committed. -->
+</head>
+<body>
+<pre id="out">idle</pre>
+<div id="stage"></div>
+<script>
+/* ============================================================
+   Local-only checker for the per-type design work.
+
+   One page at a time in an iframe of an exact CSS width. Reads are
+   grouped so the frame lays out once, not once per element: the first
+   version called getComputedStyle and getBoundingClientRect for every
+   node and could block the tab for ten seconds on a long page.
+
+   Reports: innerWidth inside the frame, horizontal overflow, visible
+   text under 14px, tap targets under 44px, hidden ad-slot height, and
+   uncaught errors raised inside the frame.
+   ============================================================ */
+(function () {
+  'use strict';
+  var stage = document.getElementById('stage');
+  var out = document.getElementById('out');
+  var TEXTY = 'p,li,dt,dd,a,span,button,label,td,th,summary,h1,h2,h3,h4,h5,strong,em,small,option,legend,figcaption,time,cite';
+  var TAPPY = 'a[href],button,input,select,textarea,summary,label[for]';
+
+  function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  window.checkPage = async function (path, width) {
+    var frame = document.createElement('iframe');
+    frame.style.cssText = 'width:' + width + 'px;height:900px;border:0;display:block';
+    stage.textContent = '';
+    stage.appendChild(frame);
+
+    var errors = [];
+    var loaded = new Promise(function (resolve) {
+      frame.onload = function () { setTimeout(resolve, 300); };
+    });
+    frame.src = path;
+    await loaded;
+
+    var w = frame.contentWindow, d = frame.contentDocument;
+    w.addEventListener('error', function (e) { errors.push(String(e.message)); });
+    w.addEventListener('unhandledrejection', function (e) {
+      errors.push('rejection: ' + String((e.reason && e.reason.message) || e.reason));
+    });
+    await sleep(120);
+
+    var iw = w.innerWidth;
+    var res = {
+      path: path, asked: width, innerWidth: iw,
+      docH: d.documentElement.scrollHeight,
+      overflow: d.documentElement.scrollWidth - iw, smallCount: 0, tapCount: 0,
+      smallText: [], tapUnder44: [], adSlots: [], errors: errors
+    };
+
+    /* one pass: read every box first, then classify */
+    var nodes = [].slice.call(d.querySelectorAll(TEXTY + ',' + TAPPY), 0, 900);
+    var boxes = nodes.map(function (n) {
+      var cs = w.getComputedStyle(n);
+      return { n: n, fs: parseFloat(cs.fontSize), disp: cs.display, vis: cs.visibility };
+    });
+    boxes.forEach(function (b) {
+      if (b.disp === 'none' || b.vis === 'hidden') return;
+      if (b.n.closest('[hidden]') || b.n.closest('.ad-slot')) return;
+      var direct = false;
+      for (var i = 0; i < b.n.childNodes.length; i++) {
+        var c = b.n.childNodes[i];
+        if (c.nodeType === 3 && c.textContent.trim()) { direct = true; break; }
+      }
+      if (direct && b.fs < 14) {
+        res.smallCount++;
+        if (res.smallText.length < 5) {
+          res.smallText.push(b.n.tagName.toLowerCase() + (b.n.id ? '#' + b.n.id : '') + ' ' + b.fs + 'px');
+        }
+      }
+    });
+
+    [].forEach.call(d.querySelectorAll(TAPPY), function (n) {
+      if (n.closest('[hidden]') || n.type === 'hidden') return;
+      var r = n.getBoundingClientRect();
+      if (r.width > 0 && r.height > 0 && r.height < 43.5) {
+        res.tapCount++;
+        if (res.tapUnder44.length < 5) {
+          res.tapUnder44.push((n.tagName + (n.id ? '#' + n.id : '')).toLowerCase() + ' ' + r.height.toFixed(1) + 'px');
+        }
+      }
+    });
+
+    res.adSlots = [].map.call(d.querySelectorAll('.ad-slot'), function (s) {
+      return s.getAttribute('data-slot') + ':' + s.getBoundingClientRect().height + 'px';
+    });
+
+    frame.remove();
+    return res;
+  };
+
+  window.checkBatch = async function (paths, width) {
+    var rows = [];
+    for (var i = 0; i < paths.length; i++) {
+      try { rows.push(await window.checkPage(paths[i], width)); }
+      catch (e) { rows.push({ path: paths[i], failed: String((e && e.message) || e) }); }
+    }
+    window.lastRows = rows;
+    out.textContent = JSON.stringify(rows, null, 1);
+    return rows.map(function (r) {
+      if (r.failed) return [r.path, 'FAILED ' + r.failed];
+      return [r.path, 'iw=' + r.innerWidth, 'h=' + r.docH, 'ovf=' + r.overflow,
+        'small=' + r.smallCount + (r.smallText.length ? '(' + r.smallText.join('|') + ')' : ''),
+        'tap=' + r.tapCount + (r.tapUnder44.length ? '(' + r.tapUnder44.join('|') + ')' : ''),
+        'ads=' + r.adSlots.join(','), 'err=' + r.errors.length];
+    });
+  };
+})();
+</script>
+</body>
+</html>

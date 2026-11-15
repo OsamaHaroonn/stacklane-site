@@ -1029,6 +1029,33 @@ footer, .site-foot { border-top: 1px solid var(--line); background: var(--surfac
   .tk-actions .btn { flex: 0 1 auto; min-width: 168px; max-width: 320px; }
 }
 
+/* A secondary output block under the main result — the word ranking in
+   the text statistician, the preview above the CSS in the gradient tool. */
+.tk-sub { margin-top: var(--sp-4); }
+.tk-subhead { font-size: .9375rem; font-weight: 600; margin: 0 0 var(--sp-2); }
+
+/* Gradient swatch: fills its box so the generated rule is what you see. */
+.gradient-preview {
+  height: 150px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background-color: #f4f5f7;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* Barcode sheet. A wide symbol scrolls inside this box instead of
+   stretching the page, so the layout never gains a horizontal scrollbar. */
+.barcode-preview {
+  margin: var(--sp-2) 0 var(--sp-4);
+  padding: var(--sp-3);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: #ffffff;
+  overflow-x: auto;
+}
+.barcode-preview svg { display: block; max-width: none; height: auto; }
+
 .tk-msg {
   display: flex;
   align-items: center;

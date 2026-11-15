@@ -1,0 +1,207 @@
+/* ============================================================
+   Tool result — the shared result panel
+   Tiles wrap into a row of three above 720px and stack below it.
+   The hero tile (the single figure the page exists for) breaks the grid,
+   runs full width in accent, and keeps colour contrast on its label.
+   ============================================================ */
+
+.tool-panel .tk-out:not([hidden]) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  animation: none;
+}
+
+.tool-panel .tk-out .tk-row {
+  flex: 1 1 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--sp-1);
+  min-width: 0;
+  padding: var(--sp-4) var(--sp-5);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow:
+    0 1px 2px rgba(17, 24, 39, .04),
+    0 8px 20px -16px rgba(17, 24, 39, .35);
+  animation: tk-tile-in .32s cubic-bezier(.22, .61, .36, 1) both;
+  transition:
+    transform .16s ease,
+    box-shadow .2s ease,
+    border-color .16s ease,
+    background-color .2s ease;
+}
+
+@media (min-width: 720px) {
+  .tool-panel .tk-out .tk-row {
+    flex: 1 1 30%;
+    min-width: 180px;
+  }
+}
+
+.tool-panel .tk-out .tk-row:hover {
+  border-color: #c7d6fb;
+  transform: translateY(-1px);
+  box-shadow:
+    0 2px 4px rgba(17, 24, 39, .05),
+    0 14px 28px -18px rgba(29, 78, 216, .45);
+}
+
+.tool-panel .tk-out .tk-row-label {
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+.tool-panel .tk-out .tk-row-value {
+  color: var(--ink);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+  text-align: start;
+  line-height: 1.3;
+}
+
+/* Hero */
+.tool-panel .tk-out .tk-row.is-strong,
+.tool-panel .tk-out .tk-row.is-long,
+.tool-panel .tk-out .tk-row.is-note {
+  flex: 1 1 100%;
+}
+
+.tool-panel .tk-out .tk-row.is-strong { order: -1; }
+.tool-panel .tk-out .tk-row.is-note { order: 3; }
+
+.tool-panel .tk-out .tk-row.is-strong {
+  border-color: transparent;
+  background-image: linear-gradient(135deg, var(--blue-600) 0%, var(--blue-700) 100%);
+  box-shadow:
+    0 2px 6px rgba(17, 24, 39, .10),
+    0 22px 44px -24px rgba(29, 78, 216, .75);
+  animation:
+    tk-tile-in .32s cubic-bezier(.22, .61, .36, 1) both,
+    tk-hero-ring .9s ease-out .12s 1;
+}
+
+.tool-panel .tk-out .tk-row.is-strong .tk-row-label {
+  color: rgba(255, 255, 255, .88);
+}
+
+.tool-panel .tk-out .tk-row.is-strong .tk-row-value {
+  color: #fff;
+  font-size: clamp(1.5rem, 4.6vw, 2rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  text-shadow: 0 1px 2px rgba(9, 20, 60, .35);
+}
+
+.tool-panel .tk-out .tk-row.is-strong:hover {
+  border-color: transparent;
+}
+
+/* Long values: hash, sentence, URL list */
+.tool-panel .tk-out .tk-row.is-long,
+.tool-panel .tk-out .tk-row.is-strong.is-long {
+  border-color: var(--line);
+  background-image: none;
+  background-color: var(--surface);
+  box-shadow: 0 1px 2px rgba(17, 24, 39, .04);
+  animation: tk-tile-in .32s cubic-bezier(.22, .61, .36, 1) both;
+}
+
+.tool-panel .tk-out .tk-row.is-long .tk-row-label,
+.tool-panel .tk-out .tk-row.is-strong.is-long .tk-row-label {
+  color: var(--ink-2);
+}
+
+.tool-panel .tk-out .tk-row.is-long .tk-row-value,
+.tool-panel .tk-out .tk-row.is-strong.is-long .tk-row-value {
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: .9375rem;
+  line-height: 1.5;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-shadow: none;
+  word-break: break-all;
+}
+
+/* Notes: formula used */
+.tool-panel .tk-out .tk-row.is-note {
+  border-style: dashed;
+  border-color: var(--line);
+  background: var(--band);
+  box-shadow: none;
+}
+
+.tool-panel .tk-out .tk-row.is-note .tk-row-value {
+  color: var(--ink-2);
+  font-size: .875rem;
+  font-weight: 500;
+  text-shadow: none;
+}
+
+.tool-panel .tk-out .tk-row.is-note:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--line);
+}
+
+/* Staggered entry */
+.tool-panel .tk-out .tk-row:nth-child(1) { animation-delay: 0ms; }
+.tool-panel .tk-out .tk-row:nth-child(2) { animation-delay: 45ms; }
+.tool-panel .tk-out .tk-row:nth-child(3) { animation-delay: 90ms; }
+.tool-panel .tk-out .tk-row:nth-child(4) { animation-delay: 135ms; }
+.tool-panel .tk-out .tk-row:nth-child(5) { animation-delay: 180ms; }
+.tool-panel .tk-out .tk-row:nth-child(6) { animation-delay: 225ms; }
+
+@keyframes tk-tile-in {
+  from { opacity: 0; transform: translateY(8px) scale(.99); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes tk-hero-ring {
+  0%   { box-shadow: 0 2px 6px rgba(17, 24, 39, .10), 0 0 0 0 rgba(29, 78, 216, .38); }
+  100% { box-shadow: 0 2px 6px rgba(17, 24, 39, .10), 0 0 0 14px rgba(29, 78, 216, 0); }
+}
+
+/* Semantic verdict colours — colour only, never a metric */
+.tool-panel .tk-out .tk-row.is-good {
+  border-color: #b6e0cd;
+  background: var(--good-soft);
+}
+.tool-panel .tk-out .tk-row.is-good .tk-row-value { color: var(--good); }
+
+.tool-panel .tk-out .tk-row.is-warn {
+  border-color: #f0d9a8;
+  background: var(--warn-soft);
+}
+.tool-panel .tk-out .tk-row.is-warn .tk-row-value { color: var(--warn); }
+
+.tool-panel .tk-out .tk-row.is-bad {
+  border-color: #f2c9c4;
+  background: var(--danger-soft);
+}
+.tool-panel .tk-out .tk-row.is-bad .tk-row-value { color: var(--danger); }
+
+/* Empty state — shown by the page when a tool has no result yet or has
+   nothing to show. It never appears alongside a real result set. */
+.tk-empty {
+  margin: 0;
+  padding: var(--sp-5);
+  border: 1px dashed var(--line-2);
+  border-radius: var(--r-md);
+  background: var(--band);
+  color: var(--ink-2);
+  font-size: .9375rem;
+  text-align: center;
+}
+
+.tk-empty strong { color: var(--ink); }

@@ -1,0 +1,39 @@
+/* ============================================================
+   Empty states — shared
+   A single neutral tray with an accent tick mark and a clear, calm
+   message. Used by search results, file lists and result panels when
+   there is genuinely nothing to show yet.
+   ============================================================ */
+
+.tk-empty,
+.empty-state {
+  margin: 0;
+  padding: var(--sp-6) var(--sp-5);
+  border: 1px dashed var(--line-2);
+  border-radius: var(--r-md);
+  background: var(--band);
+  color: var(--ink-2);
+  text-align: center;
+}
+
+.empty-state svg {
+  width: 32px;
+  height: 32px;
+  color: var(--blue-600);
+  margin-bottom: var(--sp-3);
+  opacity: .85;
+}
+
+.empty-state h3,
+.tk-empty strong {
+  display: block;
+  color: var(--ink);
+  font-size: 1rem;
+  margin-bottom: var(--sp-1);
+}
+
+.empty-state p,
+.tk-empty span {
+  margin: 0;
+  font-size: .9375rem;
+}

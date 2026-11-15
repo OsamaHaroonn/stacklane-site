@@ -28,3 +28,6 @@ nul
 
 # Local browser test fixtures (generated, never committed)
 qa-fixtures/
+
+# Local release staging area (never committed)
+.release/

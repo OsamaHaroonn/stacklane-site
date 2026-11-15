@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>QA sweep — local only</title>
+<style>
+  body { font: 13px/1.4 ui-monospace, monospace; margin: 0; padding: 8px; background: #111; color: #eee; }
+  #stage { position: fixed; left: -3000px; top: 0; }
+  #log { white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<div id="log">idle</div>
+<script>
+(function () {
+  'use strict';
+
+  var TOOLS = ['age-calculator','average-calculator','base64','bmi-calculator',
+    'break-even-calculator','bubble-wrap-popper','case-converter','character-counter',
+    'coin-flipper','color-contrast-checker','color-converter','color-palette-generator',
+    'compliment-generator','compound-interest-calculator','crop-rotate-image',
+    'css-box-shadow-generator','csv-json-converter','date-difference',
+    'decision-wheel','dice-roller','discount-calculator','fake-hacker-typer',
+    'favicon-generator','fraction-calculator','gpa-calculator','hash-generator',
+    'html-entity-encoder','html-to-markdown','image-compressor','image-converter',
+    'image-resizer','image-to-base64','images-to-pdf','json-formatter','jwt-decoder',
+    'keyword-density-analyzer','loan-calculator','lorem-ipsum-generator',
+    'margin-calculator','merge-pdf','meta-tag-generator','mortgage-calculator',
+    'number-base-converter','password-generator','password-strength-checker',
+    'percentage-calculator','qr-code-generator','random-number','ratio-calculator',
+    'regex-tester','remove-duplicate-lines','robots-txt-generator','roi-calculator',
+    'roman-numerals','salary-to-hourly','savings-goal-calculator',
+    'shakespearean-insult-generator','slug-generator','sort-lines','split-pdf',
+    'sql-formatter','stopwatch-timer','text-diff-checker','time-zone-converter',
+    'timestamp-converter','tip-split-calculator','typing-speed-test',
+    'unit-converter','url-encoder','user-agent-parser','uuid-generator',
+    'vat-calculator','word-counter','working-days-calculator','xml-sitemap-generator'];
+  var BIZ = ['audit','calculator','invoice','late-payment-calculator',
+    'loss-calculator'];
+  var CATS = ['business','calculators','converters','developer','fun','generators',
+    'images','pdf','text'];
+
+  var PAGES = [];
+  PAGES.push('en/index.html');
+  CATS.forEach(function (c) { PAGES.push('en/' + c + '.html'); });
+  TOOLS.forEach(function (t) { PAGES.push('en/' + t + '.html'); });
+  BIZ.forEach(function (t) { PAGES.push('en/' + t + '.html'); });
+  // margin-calculator and break-even-calculator are in TOOLS already
+
+  var WIDTHS = [375, 1280];
+  var OUT = {};
+
+  function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  function measure(win, doc, want) {
+    var d = doc, w = win;
+    var res = { innerW: w.innerWidth, want: want, ok: true, notes: [] };
+
+    res.overflow = d.documentElement.scrollWidth - w.innerWidth;
+    res.docH = d.documentElement.scrollHeight;
+
+    function visible(el) {
+      var cs = w.getComputedStyle(el);
+      if (cs.display === 'none' || cs.visibility === 'hidden' || cs.opacity === '0') return false;
+      var r = el.getBoundingClientRect();
+      return r.width > 0 && r.height > 0;
+    }
+    function hasOwnText(el) {
+      for (var n = el.firstChild; n; n = n.nextSibling) {
+        if (n.nodeType === 3 && n.nodeValue && n.nodeValue.trim()) return true;
+      }
+      return false;
+    }
+    function label(el) {
+      return el.tagName.toLowerCase() + (el.id ? '#' + el.id : '') +
+        (el.className && typeof el.className === 'string' && el.className.trim()
+          ? '.' + el.className.trim().split(/\s+/).slice(0, 2).join('.') : '');
+    }
+
+    var small = [];
+    var all = d.querySelectorAll('body *');
+    for (var i = 0; i < all.length; i++) {
+      var el = all[i];
+      if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE' || el.tagName === 'NOSCRIPT') continue;
+      if (!hasOwnText(el)) continue;
+      if (!visible(el)) continue;
+      var fs = parseFloat(w.getComputedStyle(el).fontSize);
+      if (fs < 14) small.push(label(el) + ' ' + fs + 'px "' + el.textContent.trim().slice(0, 24) + '"');
+    }
+    res.smallText = small;
+
+    var tap = [];
+    var controls = d.querySelectorAll('a, button, input, select, textarea, summary, [role="button"], [tabindex="0"]');
+    for (var j = 0; j < controls.length; j++) {
+      var c = controls[j];
+      if (c.tagName === 'INPUT' && c.type === 'hidden') continue;
+      if (!visible(c)) continue;
+      var b = c.getBoundingClientRect();
+      // Inline links inside a sentence are exempt (WCAG 2.5.8).
+      var inline = c.tagName === 'A' && w.getComputedStyle(c).display === 'inline';
+      if (inline) continue;
+      if (b.height < 43.5 || b.width < 43.5) {
+        tap.push(label(c) + ' ' + Math.round(b.width) + 'x' + Math.round(b.height));
+      }
+    }
+    res.smallTap = tap;
+
+    var slots = [];
+    var ss = d.querySelectorAll('.ad-slot');
+    for (var k = 0; k < ss.length; k++) {
+      var sr = ss[k].getBoundingClientRect();
+      slots.push({ slot: ss[k].getAttribute('data-slot'), h: Math.round(sr.height * 100) / 100, hidden: ss[k].hasAttribute('hidden') });
+    }
+    res.slots = slots;
+
+    var t = (d.body ? d.body.innerText : '') || '';
+    var bad = [];
+    if (/\bNaN\b/.test(t)) bad.push('NaN');
+    if (/Infinity/.test(t)) bad.push('Infinity');
+    if (/\bundefined\b/.test(t)) bad.push('undefined');
+    if (/\[object Object\]/.test(t)) bad.push('[object Object]');
+    if (/\{[A-Za-z][A-Za-z0-9_.]*\}/.test(t)) bad.push('raw-placeholder');
+    res.badTokens = bad;
+
+    res.title = d.title;
+    res.h1 = d.querySelector('h1') ? d.querySelector('h1').textContent.trim() : null;
+    res.h1count = d.querySelectorAll('h1').length;
+    return res;
+  }
+
+  function loadOne(url, width) {
+    return new Promise(function (resolve) {
+      var f = document.createElement('iframe');
+      f.setAttribute('width', width);
+      f.setAttribute('height', 900);
+      f.style.cssText = 'width:' + width + 'px;height:900px;border:0;position:absolute;left:0;top:0;' +
+        'background:#fff;';
+      var done = false, timer = null;
+      function finish(state) {
+        if (done) return;
+        done = true;
+        if (timer) clearTimeout(timer);
+        var out;
+        try {
+          if (state === 'timeout') {
+            out = { ok: false, error: 'load timeout' };
+          } else {
+            out = measure(f.contentWindow, f.contentDocument, width);
+          }
+        } catch (e) {
+          out = { ok: false, error: String(e && e.message || e) };
+        }
+        try { f.remove(); } catch (e) {}
+        resolve(out);
+      }
+      f.onload = function () { setTimeout(function () { finish('ok'); }, 180); };
+      f.onerror = function () { finish('timeout'); };
+      timer = setTimeout(function () { finish('timeout'); }, 4000);
+      f.src = url + (url.indexOf('?') > -1 ? '&' : '?') + 'qa=' + Date.now();
+      document.getElementById('stage').appendChild(f);
+    });
+  }
+
+  window.PAGES = PAGES;
+
+  window.run = async function (from, count) {
+    var slice = PAGES.slice(from, from + count);
+    var results = {};
+    for (var i = 0; i < slice.length; i++) {
+      var page = slice[i];
+      results[page] = {};
+      for (var j = 0; j < WIDTHS.length; j++) {
+        var wdt = WIDTHS[j];
+        var r = await loadOne('/' + page, wdt);
+        results[page][wdt] = r;
+        await sleep(60);
+      }
+      OUT[page] = results[page];
+      document.getElementById('log').textContent =
+        'done ' + (from + i + 1) + '/' + PAGES.length;
+    }
+    return { from: from, count: slice.length, total: PAGES.length, results: results };
+  };
+
+  window.dumpAll = function () { return OUT; };
+})();
+</script>
+</body>
+</html>

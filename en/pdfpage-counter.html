@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1d4ed8">
+<meta name="referrer" content="no-referrer">
+<title>PDF page counter — count the pages in a PDF file</title>
+<meta name="description" content="Upload a PDF to see how many pages it has, its file size, document title and producer. The file is read in your browser and never uploaded.">
+<link rel="canonical" href="https://stacklanetools.com/en/pdfpage-counter.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="PDF page counter — count the pages in a PDF file">
+<meta property="og:description" content="Upload a PDF to see how many pages it has, its file size, document title and producer. The file is read in your browser and never uploaded.">
+<meta property="og:url" content="https://stacklanetools.com/en/pdfpage-counter.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://stacklanetools.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+<!-- stacklane:jsonld:start -->
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stacklanetools.com/en/"}, {"@type": "ListItem", "position": 2, "name": "PDF", "item": "https://stacklanetools.com/en/pdf.html"}, {"@type": "ListItem", "position": 3, "name": "PDF page counter", "item": "https://stacklanetools.com/en/pdfpage-counter.html"}]}, {"@type": "SoftwareApplication", "name": "PDF page counter", "description": "Read the page count, file size, title and producer of a PDF in your browser. The document is never uploaded.", "url": "https://stacklanetools.com/en/pdfpage-counter.html", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any modern browser", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}]}
+  </script>
+<!-- stacklane:jsonld:end -->
+</head>
+<body data-tool="pdfpage-counter">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header">
+  <!-- stacklane:header:start -->
+    <div class="container head-in">
+      <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7.5 12 3l8 4.5-8 4.5-8-4.5Z"></path><path d="M4 12.5 12 17l8-4.5"></path><path d="M4 17.5 12 22l8-4.5"></path></svg><span class="brand-word">Stacklane Tools</span></a>
+      <nav class="head-nav" aria-label="Stacklane Tools">
+        <div class="head-search">
+          <input id="head-q" type="search" autocomplete="off" spellcheck="false" placeholder="Search tools" aria-label="Search the tools">
+          <ul id="head-results" class="head-results" hidden></ul>
+        </div>
+        <a href="index.html#categories" aria-label="Browse by category">Categories</a>
+        <a href="business.html">Business</a>
+        <details class="menu">
+          <summary>Menu</summary>
+          <div class="menu-panel">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#categories">Browse by category</a></li>
+              <li><a href="../all-tools.html">All tools</a></li>
+              <li><a href="pdf.html">PDF</a></li>
+              <li><a href="images.html">Images</a></li>
+              <li><a href="text.html">Text</a></li>
+              <li><a href="generators.html">Generators</a></li>
+              <li><a href="calculators.html">Calculators</a></li>
+              <li><a href="converters.html">Converters</a></li>
+              <li><a href="developer.html">Developer</a></li>
+              <li><a href="fun.html">Fun</a></li>
+              <li><a href="business.html">Business</a></li>
+              <li class="menu-sep" aria-hidden="true"></li>
+              <li><a href="../privacy.html">Privacy</a></li>
+              <li><a href="../terms.html">Terms</a></li>
+            </ul>
+          </div>
+        </details>
+      </nav>
+    </div>
+  <!-- stacklane:header:end -->
+</div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs">
+    <!-- stacklane:crumbs:start -->
+      <a href="index.html">Home</a>
+      <span class="sep" aria-hidden="true">›</span>
+      <a href="pdf.html">PDF</a>
+      <span class="sep" aria-hidden="true">›</span>
+      <span>PDF page counter</span>
+    <!-- stacklane:crumbs:end -->
+  </nav>
+  <div class="tool-layout">
+  <div class="tool-main">
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.pdf.name">Text</p>
+    <h1 data-i18n="tools.pdfpage-counter.title">PDF page counter</h1>
+    <p class="lede" data-i18n="tools.pdfpage-counter.lede">Choose a PDF and read its page count, byte size, title and producer. The document never leaves your browser.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+  <div class="ad-slot" data-slot="A" hidden></div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.pdfpage-counter.how">The file is read into memory and parsed with pdf-lib, which is loaded only when you pick a file. The page count comes from the PDF's own page tree, so it matches what a PDF reader shows. Size is the raw byte length of the file. Title and producer are the optional metadata fields the creating application wrote; many PDFs leave them empty, in which case the report says so. Encrypted PDFs are opened with decryption ignored, so page counts still work but their content cannot be altered.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p class="worked" data-i18n="tools.pdfpage-counter.example">A 24-page catalogue exported from a design tool reports 24 pages, 1.8 MB, the title set by the exporter and the producing application. A scan with no metadata reports the page count and size with title and producer marked unknown.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <div class="faq-list" data-faq="tools.pdfpage-counter.faq">
+      <!-- stacklane:faq:start -->
+        <details class="faq-item">
+          <summary>Is my PDF uploaded to a server?</summary>
+          <p>No. The file is read by JavaScript in this tab and discarded when you close the page or choose another file. Nothing is transmitted and nothing is stored.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Which PDFs can it read?</summary>
+          <p>Any well-formed PDF, including ones made by common office and design tools. Password-protected files are opened with decryption ignored, so the page count is read but their contents stay encrypted. A damaged file that no reader can open will be reported as unreadable.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why is the page count different from what I expected?</summary>
+          <p>The count is the number of pages stored in the file. Blank pages, cover pages and pages hidden by an unusual viewer setting are all included, because they are all pages in the document.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can it count pages in several files at once?</summary>
+          <p>This tool reads one file at a time. Splitting a PDF into separate files is a separate tool on the site.</p>
+        </details>
+      <!-- stacklane:faq:end -->
+    </div>
+  </section>
+
+  <div class="ad-slot" data-slot="B" hidden></div>
+
+  </div><!-- /.tool-main -->
+
+  <aside class="tool-side">
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid">
+      <!-- stacklane:related:start -->
+        <a class="card tool-card" href="merge-pdf.html">
+          <span class="card-kicker">PDF</span>
+          <h3>Merge PDF files</h3>
+          <p>Combine several PDFs into one document, in the order you choose. The files stay on your device.</p>
+        </a>
+        <a class="card tool-card" href="images-to-pdf.html">
+          <span class="card-kicker">PDF</span>
+          <h3>Images to PDF</h3>
+          <p>Combine JPG, PNG and other image files into a single PDF, with the page size you choose and the files never leaving your device.</p>
+        </a>
+        <a class="card tool-card" href="split-pdf.html">
+          <span class="card-kicker">PDF</span>
+          <h3>Split PDF</h3>
+          <p>Take a range of pages out of a PDF, or write every page as its own file, without uploading the document.</p>
+        </a>
+      <!-- stacklane:related:end -->
+    </div>
+  </section>
+  <div class="ad-slot" data-slot="C" hidden></div>
+  </aside>
+  </div><!-- /.tool-layout -->
+
+  <p><a id="back-cat" href="pdf.html"></a></p>
+    <!-- stacklane:toolcats:start -->
+      <nav class="cat-related" aria-label="Related categories">
+        <h2>Other categories</h2>
+        <ul>
+          <li><a href="images.html">Images</a></li>
+          <li><a href="text.html">Text</a></li>
+          <li><a href="developer.html">Developer</a></li>
+        </ul>
+      </nav>
+    <!-- stacklane:toolcats:end -->
+<p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer">
+  <!-- stacklane:footer:start -->
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <strong>Stacklane Tools</strong>
+          <p class="foot-tagline note">Free browser tools. No accounts, no tracking, no uploads.</p>
+          <p class="note">Everything runs locally in your browser.</p>
+        </div>
+        <nav class="foot-cats" aria-label="Categories">
+          <span class="foot-head">Categories</span>
+          <ul>
+            <li><a href="pdf.html">PDF</a></li>
+            <li><a href="images.html">Images</a></li>
+            <li><a href="text.html">Text</a></li>
+            <li><a href="generators.html">Generators</a></li>
+            <li><a href="calculators.html">Calculators</a></li>
+            <li><a href="converters.html">Converters</a></li>
+            <li><a href="developer.html">Developer</a></li>
+            <li><a href="fun.html">Fun</a></li>
+            <li><a href="business.html">Business</a></li>
+          </ul>
+        </nav>
+        <div>
+          <span class="foot-head">Stacklane</span>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="../privacy.html">Privacy</a></li>
+            <li><a href="../terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="foot-copy">© <span data-year>2026</span> Stacklane Tools</p>
+    </div>
+  <!-- stacklane:footer:end -->
+</div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/pdfpage-counter.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>

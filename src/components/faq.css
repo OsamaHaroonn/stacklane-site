@@ -1,0 +1,64 @@
+/* ============================================================
+   FAQ — disclosure components
+   One question per <details>. Summary is the visible question; the
+   answer is the body. Accent colour on the marker keeps the section
+   scannable without adding noise.
+   ============================================================ */
+
+.faq-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.faq {
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.faq summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  width: 100%;
+  min-height: 52px;
+  padding: var(--sp-3) var(--sp-4);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: start;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+}
+
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "";
+  flex: none;
+  width: 14px;
+  height: 14px;
+  color: var(--blue-600);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%231d4ed8' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E") center / 14px 14px no-repeat;
+  transition: transform .2s ease;
+}
+.faq[open] summary::after { transform: rotate(180deg); }
+.faq summary:hover { background: var(--blue-50); }
+
+.faq-body {
+  padding: 0 var(--sp-4) var(--sp-4);
+  font-size: .9375rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+.faq-body p:last-child { margin-bottom: 0; }

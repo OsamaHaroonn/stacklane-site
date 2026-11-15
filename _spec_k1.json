@@ -1,0 +1,183 @@
+{
+  "tools": [
+    {
+      "slug": "coin-flipper",
+      "cat": "fun",
+      "keywords": "coin flip heads tails random fair toss virtual",
+      "title_tag": "Coin Flipper – Fair Heads or Tails Online",
+      "meta": "Flip a virtual coin with browser crypto randomness, see heads or tails, and keep a running count for this visit. No storage, no bias.",
+      "h1": "Coin flipper",
+      "lede": "Flip a coin as many times as you like and watch the heads and tails counts build up, with the share of each side shown as it goes.",
+      "how": "Each flip asks the browser for one 32-bit random number and takes it modulo 2: an even number is heads, an odd number is tails. A 32-bit number has 2^32 possible values, and 2^32 is even, so the two outcomes split the range exactly in half, with 2^31 values each. Nothing is discarded and neither side is favoured. The helper this page uses also contains a guard that would redraw values for a range that does not divide 2^32 evenly, but with two outcomes that guard can never fire. Every flip is independent of the ones before it. The counters live in this page only: they start at zero and go back to zero when you press reset or reload. Each percentage is that count divided by the total flips so far.",
+      "example": "If the first four flips came out heads, tails, heads, heads, the counter would read heads 3, which is 3 ÷ 4 × 100 = 75.0%, tails 1, which is 25.0%, and a total of 4. Each flip is independent, so that 75% is just what happened in those four flips, not a prediction for the next one.",
+      "faq": [
+        {
+          "q": "Is it really 50/50?",
+          "a": "Yes, exactly. Each flip takes one 32-bit random number modulo 2. Because 2^32 divides evenly by 2, heads and tails each come from exactly 2^31 of the possible values, so nothing is rounded away and no value is discarded. The flips are independent, so earlier results do not change the next one."
+        },
+        {
+          "q": "Does it remember my previous flips?",
+          "a": "Only for this visit, in the page's memory. Reloading or pressing reset clears the counts, and nothing is written to storage or sent anywhere."
+        },
+        {
+          "q": "Are the flips independent?",
+          "a": "Yes. No flip looks at the ones before it, so a run of heads does not change the chance of the next result."
+        },
+        {
+          "q": "Is this a physics simulation?",
+          "a": "No. It does not model a real coin's spin or weighting; it draws a random outcome with equal probability, which is the property you want from a coin toss."
+        },
+        {
+          "q": "What does reset do?",
+          "a": "Sets both counters back to zero and clears the last result, so the next flip starts a fresh run."
+        }
+      ],
+      "ui": {
+        "ready": "Press Flip to start.",
+        "flip": "Flip coin",
+        "reset": "Reset counts",
+        "heads": "Heads",
+        "tails": "Tails",
+        "total": "Flips this visit",
+        "cleared": "Counts reset to zero.",
+        "note": "Flipped in your browser with the Web Crypto API: nothing is stored or sent anywhere."
+      }
+    },
+    {
+      "slug": "dice-roller",
+      "cat": "fun",
+      "keywords": "dice roller d20 d6 roll dice total random rpg",
+      "title_tag": "Dice Roller – d4 to d20, Up to 10 Dice",
+      "meta": "Roll 1 to 10 dice with 4, 6, 8, 10, 12 or 20 sides, see every die and the total. Uniform results from browser crypto, no storage.",
+      "h1": "Dice roller",
+      "lede": "Pick a die from d4 to d20, choose how many to roll, and see each face plus the total, drawn with the browser's own random source.",
+      "how": "Every die is a separate random draw from one to the number of sides, so a roll of several dice is several independent results rather than one number split up. The draw uses 32 random bits per die, discards values above the largest exact multiple of the side count, and then takes the remainder, which keeps every face equally likely. Faces are added one to the offset so a d6 gives 1 to 6, never 0. The values are shown in the order they were drawn, and the total is their plain sum with no modifier applied. Between one and ten dice can be rolled at once; the limit keeps the row of results readable on a phone.",
+      "example": "Rolling two six-sided dice and getting 5 and 3 gives each 5, 3, a total of 5 + 3 = 8, and the summary line 2 × d6. Each face of a d6 has a 1 in 6 chance, so the expected value of one die is 3.5 and the expected total of two dice is 7.",
+      "faq": [
+        {
+          "q": "Are all faces equally likely?",
+          "a": "Yes. Each die uses rejection sampling, which throws away the small range at the top that would otherwise make low faces slightly more likely."
+        },
+        {
+          "q": "Are the dice independent of each other?",
+          "a": "Yes, every die is a separate draw, so one high roll has no effect on the next."
+        },
+        {
+          "q": "Why is the maximum ten dice?",
+          "a": "It keeps every result visible in one row on a narrow screen. The randomness does not depend on the count, so the same method would work for more."
+        },
+        {
+          "q": "Does it add modifiers like +2?",
+          "a": "No. The total is the plain sum of the faces, so add any modifier yourself after rolling."
+        },
+        {
+          "q": "Is anything stored?",
+          "a": "No. Nothing is written to storage, no cookie is set, and the results disappear when you reload."
+        }
+      ],
+      "ui": {
+        "sides": "Die",
+        "count": "How many dice (1 to 10)",
+        "roll": "Roll",
+        "empty": "Enter how many dice to roll.",
+        "badCount": "The number of dice must be a whole number, for example 2.",
+        "countRange": "Roll between 1 and {max} dice.",
+        "each": "Each die",
+        "total": "Total",
+        "dice": "Rolling",
+        "note": "Rolled in your browser with the Web Crypto API: nothing is stored or sent anywhere."
+      }
+    },
+    {
+      "slug": "decision-wheel",
+      "cat": "fun",
+      "keywords": "decision wheel random picker choose option spinner",
+      "title_tag": "Decision Wheel – Pick One Option at Random",
+      "meta": "Type your options, one per line, and spin to pick one at random. The result is shown as text and marked in the list. Up to 20 options.",
+      "h1": "Decision wheel",
+      "lede": "List the options you are choosing between, spin, and get one of them back as plain text with the chosen row marked in the list.",
+      "how": "The text box is split on line breaks, each line is trimmed, and empty lines are dropped, so the options are exactly the lines you typed. A spin draws one random integer from zero up to the number of options minus one, using 32 random bits with rejection sampling so no option is favoured. Every option therefore has the same chance, one divided by the number of options. The chosen option is written into a live region as text and its row in the list is highlighted and marked as current, so a screen reader announces the result without a visual animation. Entries are capped at twenty options of sixty characters each, and the result is never treated as HTML.",
+      "example": "With the three options Walk, Bus and Train, each has a 1 ÷ 3 chance, which is 33.33%. One spin returns exactly one of the three, for example Bus, and that row is the only one marked as current; the next spin is a fresh draw and is not affected by the last result.",
+      "faq": [
+        {
+          "q": "Is every option equally likely?",
+          "a": "Yes. One uniform integer is drawn across the number of options, with rejection sampling so the range divides evenly and no option gets a larger share."
+        },
+        {
+          "q": "Can I make some options more likely?",
+          "a": "Not directly. Every line counts once, so if you want an option twice as likely, list it twice."
+        },
+        {
+          "q": "Why is there no spinning animation?",
+          "a": "So the tool works the same for anyone who prefers reduced motion, and so nothing on the page moves quickly or blocks input. The result appears as text immediately."
+        },
+        {
+          "q": "How many options can I add?",
+          "a": "Twenty, with up to sixty characters each. Longer lists or longer entries get a specific message instead of being silently trimmed."
+        },
+        {
+          "q": "Does it keep my list?",
+          "a": "No. The options stay in the page while it is open and are gone after a reload; nothing is stored or sent."
+        }
+      ],
+      "ui": {
+        "options": "Options, one per line",
+        "placeholder": "Walk\nBus\nTrain",
+        "spin": "Spin",
+        "ready": "Add at least two options, then spin.",
+        "tooBig": "That list is too long for this page. Keep it under {max} characters.",
+        "needTwo": "Add at least two options, one per line, before spinning.",
+        "tooMany": "That is more than {max} options. Remove some and spin again.",
+        "optionLong": "One option is longer than {max} characters. Shorten it and spin again.",
+        "tip": "Every option has the same chance; a duplicate line makes an option more likely.",
+        "note": "Chosen in your browser with the Web Crypto API: your options are never stored or sent anywhere."
+      }
+    },
+    {
+      "slug": "bubble-wrap-popper",
+      "cat": "fun",
+      "keywords": "bubble wrap popper pop bubbles stress relief click",
+      "title_tag": "Bubble Wrap Popper – 100 Bubbles to Pop",
+      "meta": "A sheet of 100 bubbles to pop by click, tap or keyboard, with a running count, a reset and optional sound that is off by default.",
+      "h1": "Bubble wrap popper",
+      "lede": "A sheet of one hundred bubbles that stay popped once you press them, with a count of how many are gone and a reset for another sheet.",
+      "how": "The sheet is a grid of one hundred buttons that reflows to the screen: ten columns on a wide display and fewer on a phone, so every bubble keeps at least 44 pixels and stays an easy tap. Each bubble is a real control, reachable with Tab and pressed with Enter or Space, not a decoration. Pressing one changes its colour, marks it pressed for assistive technology and adds one to the counter, which sits in a live region so the new total is announced. Popped bubbles stay popped until you reset, which builds a fresh sheet. Sound is optional and starts off: turning it on plays a short oscillator tone through the Web Audio API, with no audio file, nothing downloaded and no autoplay.",
+      "example": "The sheet holds 10 × 10 = 100 bubbles. Popping 37 of them leaves the counter reading 37 of 100 popped, and resetting returns it to 0 of 100 with every bubble full again.",
+      "faq": [
+        {
+          "q": "Does it make a sound automatically?",
+          "a": "No. Sound is off until you press the toggle, because a page that makes noise on its own is unpleasant. Nothing is downloaded when you turn it on: the tone is generated in the browser."
+        },
+        {
+          "q": "Can I pop bubbles with the keyboard?",
+          "a": "Yes. Tab moves between bubbles and Enter or Space pops the focused one, so the whole sheet works without a mouse."
+        },
+        {
+          "q": "Is there a timer or a score?",
+          "a": "No timer and no score, only the count of popped bubbles on this sheet. Reset gives you a full sheet again."
+        },
+        {
+          "q": "Why one hundred bubbles?",
+          "a": "A hundred is enough to fill a couple of screens of tapping without becoming a chore. The grid reflows, so the count stays fixed while the columns change to keep each bubble at least 44 pixels."
+        },
+        {
+          "q": "Is anything saved?",
+          "a": "No. The sheet and the count disappear on reload, and nothing is written to storage or sent anywhere."
+        }
+      ],
+      "ui": {
+        "count": "{popped} of {total} popped",
+        "bubble": "Bubble {n}",
+        "popped": "Bubble {n}, popped",
+        "reset": "New sheet",
+        "cleared": "Fresh sheet: all bubbles are back.",
+        "soundOff": "Sound off",
+        "soundOn": "Sound on",
+        "noSound": "This browser does not offer the Web Audio API, so the bubbles stay silent.",
+        "soundNote": "Sound is on: a short tone plays as you pop.",
+        "soundOffNote": "Sound is off.",
+        "note": "Runs entirely in your browser: nothing is stored or sent anywhere."
+      }
+    }
+  ]
+}

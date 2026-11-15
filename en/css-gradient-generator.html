@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1d4ed8">
+<meta name="referrer" content="no-referrer">
+<title>CSS gradient generator — build a linear-gradient and copy the CSS</title>
+<meta name="description" content="Add colour stops, pick an angle and watch a live preview while the matching CSS linear-gradient rule is written for you to copy.">
+<link rel="canonical" href="https://stacklanetools.com/en/css-gradient-generator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="CSS gradient generator — build a linear-gradient and copy the CSS">
+<meta property="og:description" content="Add colour stops, pick an angle and watch a live preview while the matching CSS linear-gradient rule is written for you to copy.">
+<meta property="og:url" content="https://stacklanetools.com/en/css-gradient-generator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://stacklanetools.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+<!-- stacklane:jsonld:start -->
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stacklanetools.com/en/"}, {"@type": "ListItem", "position": 2, "name": "Developer", "item": "https://stacklanetools.com/en/developer.html"}, {"@type": "ListItem", "position": 3, "name": "CSS gradient generator", "item": "https://stacklanetools.com/en/css-gradient-generator.html"}]}, {"@type": "SoftwareApplication", "name": "CSS gradient generator", "description": "Add colour stops, pick an angle and copy the exact CSS linear-gradient rule, with a live preview on the page.", "url": "https://stacklanetools.com/en/css-gradient-generator.html", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any modern browser", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}]}
+  </script>
+<!-- stacklane:jsonld:end -->
+</head>
+<body data-tool="css-gradient-generator">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header">
+  <!-- stacklane:header:start -->
+    <div class="container head-in">
+      <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7.5 12 3l8 4.5-8 4.5-8-4.5Z"></path><path d="M4 12.5 12 17l8-4.5"></path><path d="M4 17.5 12 22l8-4.5"></path></svg><span class="brand-word">Stacklane Tools</span></a>
+      <nav class="head-nav" aria-label="Stacklane Tools">
+        <div class="head-search">
+          <input id="head-q" type="search" autocomplete="off" spellcheck="false" placeholder="Search tools" aria-label="Search the tools">
+          <ul id="head-results" class="head-results" hidden></ul>
+        </div>
+        <a href="index.html#categories" aria-label="Browse by category">Categories</a>
+        <a href="business.html">Business</a>
+        <details class="menu">
+          <summary>Menu</summary>
+          <div class="menu-panel">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#categories">Browse by category</a></li>
+              <li><a href="../all-tools.html">All tools</a></li>
+              <li><a href="pdf.html">PDF</a></li>
+              <li><a href="images.html">Images</a></li>
+              <li><a href="text.html">Text</a></li>
+              <li><a href="generators.html">Generators</a></li>
+              <li><a href="calculators.html">Calculators</a></li>
+              <li><a href="converters.html">Converters</a></li>
+              <li><a href="developer.html">Developer</a></li>
+              <li><a href="fun.html">Fun</a></li>
+              <li><a href="business.html">Business</a></li>
+              <li class="menu-sep" aria-hidden="true"></li>
+              <li><a href="../privacy.html">Privacy</a></li>
+              <li><a href="../terms.html">Terms</a></li>
+            </ul>
+          </div>
+        </details>
+      </nav>
+    </div>
+  <!-- stacklane:header:end -->
+</div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs">
+    <!-- stacklane:crumbs:start -->
+      <a href="index.html">Home</a>
+      <span class="sep" aria-hidden="true">›</span>
+      <a href="developer.html">Developer</a>
+      <span class="sep" aria-hidden="true">›</span>
+      <span>CSS gradient generator</span>
+    <!-- stacklane:crumbs:end -->
+  </nav>
+  <div class="tool-layout">
+  <div class="tool-main">
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.developer.name">Text</p>
+    <h1 data-i18n="tools.css-gradient-generator.title">CSS gradient generator</h1>
+    <p class="lede" data-i18n="tools.css-gradient-generator.lede">Build a CSS linear-gradient from any number of colour stops, preview it on the page and copy the exact rule it produces.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+  <div class="ad-slot" data-slot="A" hidden></div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.css-gradient-generator.how">Colour stops are separated by commas or new lines and are normalised before use: three-digit hex is expanded to six, colour names are converted to hex, and rgb() or rgba() values are checked to be in range. The tool then writes linear-gradient(angle, stop, stop, …) and applies that same string to the preview, so the sample and the copied rule cannot drift apart. Angles are degrees, measured clockwise from the bottom of the element, which is how CSS defines them; “to right” and similar keywords are passed through unchanged.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p class="worked" data-i18n="tools.css-gradient-generator.example">Stops #1d4ed8, #7c3aed and #f59e0b at 135 degrees produce background-image: linear-gradient(135deg, #1d4ed8, #7c3aed, #f59e0b); which runs from the top-left toward the bottom-right.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <div class="faq-list" data-faq="tools.css-gradient-generator.faq">
+      <!-- stacklane:faq:start -->
+        <details class="faq-item">
+          <summary>Which colour formats are accepted?</summary>
+          <p>Six-digit and three-digit hex with or without the leading #, the common CSS colour names, and rgb() or rgba() with channels between 0 and 255. Anything else is rejected with a message naming the value that failed.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I generate a radial gradient?</summary>
+          <p>Not with this tool. It writes linear gradients only, because the angle control and preview are specific to them.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is the copied CSS vendor-prefixed?</summary>
+          <p>No. linear-gradient has been supported unprefixed in every current browser for years, so the copyable rule is the standard property only.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Where does the preview come from?</summary>
+          <p>The preview element has the generated rule applied directly, so what you see is the browser rendering the same CSS you copy.</p>
+        </details>
+      <!-- stacklane:faq:end -->
+    </div>
+  </section>
+
+  <div class="ad-slot" data-slot="B" hidden></div>
+
+  </div><!-- /.tool-main -->
+
+  <aside class="tool-side">
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid">
+      <!-- stacklane:related:start -->
+        <a class="card tool-card" href="json-formatter.html">
+          <span class="card-kicker">Developer</span>
+          <h3>JSON formatter</h3>
+          <p>Format, minify and validate JSON in your browser, with a clear error message when the syntax is wrong.</p>
+        </a>
+        <a class="card tool-card" href="base64.html">
+          <span class="card-kicker">Developer</span>
+          <h3>Base64 encoder</h3>
+          <p>Encode text to Base64 and decode it back, with UTF-8 handled correctly in both directions.</p>
+        </a>
+        <a class="card tool-card" href="url-encoder.html">
+          <span class="card-kicker">Developer</span>
+          <h3>URL encoder</h3>
+          <p>Percent-encode text for a URL or query string, and decode it back again.</p>
+        </a>
+        <a class="card tool-card" href="timestamp-converter.html">
+          <span class="card-kicker">Developer</span>
+          <h3>Timestamp converter</h3>
+          <p>Turn a Unix timestamp into a readable date and time, and a date and time back into a timestamp.</p>
+        </a>
+      <!-- stacklane:related:end -->
+    </div>
+  </section>
+  <div class="ad-slot" data-slot="C" hidden></div>
+  </aside>
+  </div><!-- /.tool-layout -->
+
+  <p><a id="back-cat" href="developer.html"></a></p>
+    <!-- stacklane:toolcats:start -->
+      <nav class="cat-related" aria-label="Related categories">
+        <h2>Other categories</h2>
+        <ul>
+          <li><a href="text.html">Text</a></li>
+          <li><a href="converters.html">Converters</a></li>
+          <li><a href="pdf.html">PDF</a></li>
+        </ul>
+      </nav>
+    <!-- stacklane:toolcats:end -->
+<p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer">
+  <!-- stacklane:footer:start -->
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <strong>Stacklane Tools</strong>
+          <p class="foot-tagline note">Free browser tools. No accounts, no tracking, no uploads.</p>
+          <p class="note">Everything runs locally in your browser.</p>
+        </div>
+        <nav class="foot-cats" aria-label="Categories">
+          <span class="foot-head">Categories</span>
+          <ul>
+            <li><a href="pdf.html">PDF</a></li>
+            <li><a href="images.html">Images</a></li>
+            <li><a href="text.html">Text</a></li>
+            <li><a href="generators.html">Generators</a></li>
+            <li><a href="calculators.html">Calculators</a></li>
+            <li><a href="converters.html">Converters</a></li>
+            <li><a href="developer.html">Developer</a></li>
+            <li><a href="fun.html">Fun</a></li>
+            <li><a href="business.html">Business</a></li>
+          </ul>
+        </nav>
+        <div>
+          <span class="foot-head">Stacklane</span>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="../privacy.html">Privacy</a></li>
+            <li><a href="../terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="foot-copy">© <span data-year>2026</span> Stacklane Tools</p>
+    </div>
+  <!-- stacklane:footer:end -->
+</div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/css-gradient-generator.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>

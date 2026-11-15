@@ -1,0 +1,206 @@
+{
+  "tools": [
+    {
+      "slug": "html-to-markdown",
+      "cat": "developer",
+      "keywords": "html to markdown converter md headings links lists code table",
+      "title_tag": "HTML to Markdown Converter – Plain Text",
+      "meta": "Paste HTML to get Markdown: headings, bold, italics, links, lists, quotes, code and tables, written as text only. Nothing is executed.",
+      "h1": "HTML to Markdown converter",
+      "lede": "Paste an HTML fragment and the tool writes the Markdown equivalent as text you can copy, with tags turned into headings, links, lists and code blocks.",
+      "how": "The HTML is parsed with the browser's DOMParser into a separate, inert document, so scripts in the input never run and images never load. Elements are then walked in order and each one is translated: headings become hash marks, strong and bold become double asterisks, italics become single asterisks, links become brackets with the address in parentheses, images become an exclamation mark and alt text, lists become dashes or numbers, quotes get a leading angle bracket and pre blocks become fenced code. Attributes other than a link or image address are dropped because Markdown has nowhere to put them. Whitespace is collapsed, then blank lines are normalised so the output reads as Markdown rather than a wall of text.",
+      "example": "For <h2>Notes</h2><p>Hello <strong>world</strong> and <a href=\"https://YOURDOMAIN.com/x\">link</a>.</p><ul><li>One</li><li>Two</li></ul> the output is four blocks: ## Notes, then Hello **world** and [link](https://YOURDOMAIN.com/x)., then a bullet for One and a bullet for Two. The heading level comes from the h2 tag, the bold text is wrapped in double asterisks, and the link keeps both its label and its address.",
+      "faq": [
+        {
+          "q": "Is the HTML I paste executed?",
+          "a": "No. It is parsed into an inert document that has no browsing context, so scripts do not run and external images are never fetched. The result is written into a textarea as plain text."
+        },
+        {
+          "q": "Which elements are converted?",
+          "a": "Headings h1 to h6, paragraphs, strong and b, em and i, inline code, pre blocks, links, images, line breaks, horizontal rules, ordered and unordered lists, blockquotes and simple tables. Anything else keeps its text content."
+        },
+        {
+          "q": "What happens to class names and styles?",
+          "a": "They are dropped. Markdown has no equivalent for classes, ids or inline CSS, so only the structure survives the conversion."
+        },
+        {
+          "q": "Why is my table flattened?",
+          "a": "Cells become pipe-separated columns with a separator row after the first row. Merged cells, nested tables and captions cannot be represented in basic Markdown, so their text is kept and the structure is lost."
+        },
+        {
+          "q": "Are the original line breaks kept?",
+          "a": "Not from the source formatting: runs of whitespace collapse into one space. Line breaks in the output come from the structure, meaning separate paragraphs, list items and br tags."
+        }
+      ],
+      "ui": {
+        "html": "HTML to convert",
+        "output": "Markdown",
+        "copy": "Copy Markdown",
+        "nothingToCopy": "There is nothing to copy yet.",
+        "copied": "Markdown copied to the clipboard.",
+        "copyFailed": "The browser blocked the clipboard. Select the text and copy it by hand.",
+        "empty": "Paste some HTML to convert.",
+        "tooBig": "That HTML is too long for this page. The limit is {max} characters.",
+        "noText": "That HTML contains no text to convert.",
+        "badHtml": "That could not be parsed as HTML. Check for an unclosed tag or a broken attribute.",
+        "note": "Parsed in your browser: the HTML you paste is never sent anywhere and its scripts never run."
+      }
+    },
+    {
+      "slug": "user-agent-parser",
+      "cat": "developer",
+      "keywords": "user agent parser ua string browser engine operating system device",
+      "title_tag": "User Agent Parser – Browser, Engine, OS",
+      "meta": "Paste a user agent string or read your own to see the browser, version, engine, operating system and device type. Results are approximate.",
+      "h1": "User agent parser",
+      "lede": "Paste a user agent string, or read the one your browser sends, to see the browser, version, rendering engine, operating system and device type.",
+      "how": "The string is matched against a fixed set of patterns in order, because browsers copy each other's tokens: Edge keeps Chrome and Safari tokens, and Chrome keeps Safari's. The order is Edge first, then Opera, Firefox, Chrome and Safari, so the most specific marker wins. The engine follows from the browser family, with Firefox using Gecko, the Chromium family using Blink and Safari using WebKit. The operating system comes from Windows NT version numbers, Android and iOS markers, or macOS and Linux tokens. The device is a tablet when an iPad or tablet marker is present, a mobile when a mobile or Android marker is, and a desktop otherwise. A string containing a bot, crawler, spider or headless marker is flagged.",
+      "example": "For Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 the tool reports Chrome, version 120.0, engine Blink, operating system Windows 10 or 11, device desktop, and automated no. The Safari token in the same string is ignored because the Chrome marker is checked first.",
+      "faq": [
+        {
+          "q": "Why is the result only approximate?",
+          "a": "A user agent is a self-reported string, and browsers include each other's tokens for compatibility. The parser therefore matches known patterns in a deliberate order rather than identifying anything for certain."
+        },
+        {
+          "q": "Why does Edge show Chrome in its string?",
+          "a": "Edge is built on Chromium and keeps the Chrome token so older sites behave. The Edg marker is what identifies it, which is why that pattern is checked before Chrome."
+        },
+        {
+          "q": "What does the automated flag mean?",
+          "a": "The string contains a bot, crawler, spider, preview or headless marker. Many automated clients no longer announce themselves, so a no does not prove a person is using the browser."
+        },
+        {
+          "q": "Is the string stored anywhere?",
+          "a": "No. It is read in the page, matched against patterns and discarded. Nothing is written to storage, a cookie or the network."
+        },
+        {
+          "q": "Can I check a phone's string on my computer?",
+          "a": "Yes. Paste any string into the box and the result is derived only from that text, not from the device you are using."
+        }
+      ],
+      "ui": {
+        "agent": "User agent string",
+        "useMine": "Use this browser's string",
+        "filled": "Filled in with this browser's user agent.",
+        "browser": "Browser",
+        "version": "Version",
+        "engine": "Engine",
+        "os": "Operating system",
+        "device": "Device type",
+        "automated": "Automated client",
+        "yes": "yes",
+        "no": "no",
+        "length": "String length",
+        "desktop": "desktop",
+        "mobile": "mobile",
+        "tablet": "tablet",
+        "unknown": "not recognised",
+        "empty": "Paste a user agent string, or use the button to read this browser's.",
+        "tooLong": "That string is longer than {max} characters, which is not a real user agent.",
+        "approx": "Matched in your browser from the text above: these results are approximate.",
+        "note": "Parsed in your browser: the string is never stored or sent anywhere."
+      }
+    },
+    {
+      "slug": "bmi-calculator",
+      "cat": "calculators",
+      "keywords": "bmi calculator body mass index weight height metric",
+      "title_tag": "BMI Calculator – Weight and Height, Metric",
+      "meta": "Work out BMI from weight in kilograms and height in centimetres, with the WHO bands and the healthy weight range for that height.",
+      "h1": "BMI calculator",
+      "lede": "Enter weight in kilograms and height in centimetres to get the body mass index, the band it falls in and the weight range usually called healthy for that height.",
+      "how": "Body mass index is weight in kilograms divided by height in metres squared, so the height is converted from centimetres by dividing by one hundred before it is squared. A 70 kg adult at 1.75 m gives 70 ÷ 3.0625 = 22.86. The band comes from the adult cut-offs used by the World Health Organization: below 18.5 underweight, 18.5 to under 25 healthy, 25 to under 30 overweight, and 30 or above obese. The healthy weight range is the same formula rearranged, multiplying the squared height by 18.5 and by 24.9. The result is rounded to one decimal place. This is arithmetic, not a diagnosis.",
+      "example": "For 70 kg and 175 cm the height in metres is 1.75, and 1.75 squared is 3.0625. Dividing 70 by 3.0625 gives 22.86, which displays as 22.9 and falls in the healthy band. The healthy weight range for that height runs from 18.5 × 3.0625 = 56.7 kg to 24.9 × 3.0625 = 76.3 kg.",
+      "faq": [
+        {
+          "q": "What formula does it use?",
+          "a": "Weight in kilograms divided by height in metres squared. Height is entered in centimetres and divided by 100 first, so 175 cm becomes 1.75 m before squaring."
+        },
+        {
+          "q": "Where do the bands come from?",
+          "a": "The adult cut-offs published by the World Health Organization: under 18.5, 18.5 to 24.9, 25 to 29.9 and 30 or above. The link is on the page so you can read the source rather than take this summary on trust."
+        },
+        {
+          "q": "Is BMI a diagnosis?",
+          "a": "No. It is a single ratio that takes no account of muscle, bone, age, sex, pregnancy or body shape, and it is not medical advice. Talk to a clinician about what a number means for you."
+        },
+        {
+          "q": "Why might my doctor's figure differ?",
+          "a": "Rounding, the units used, and whether the measurement was taken at the same time of day. This tool rounds to one decimal place from the values you type."
+        },
+        {
+          "q": "Does it work for children?",
+          "a": "No. Children and teenagers are assessed against age-and-sex percentile charts rather than the adult cut-offs, so this calculator would give a misleading band for them."
+        }
+      ],
+      "ui": {
+        "weight": "Weight (kg)",
+        "height": "Height (cm)",
+        "bmi": "BMI",
+        "band": "Band",
+        "range": "Healthy weight for this height",
+        "formula": "Working",
+        "under": "underweight",
+        "healthy": "healthy range",
+        "over": "overweight",
+        "obese": "obese",
+        "empty": "Enter a weight and a height to see the BMI.",
+        "badWeight": "Weight must be a number in kilograms, for example 70 or 70.5.",
+        "weightZero": "Weight must be more than zero.",
+        "weightRange": "That weight is outside the range this calculator handles, which is up to 500 kg.",
+        "badHeight": "Height must be a number in centimetres, for example 175.",
+        "heightZero": "Height must be more than zero.",
+        "heightRange": "Height must be between 50 and 250 centimetres.",
+        "note": "Calculated in your browser. Arithmetic only, not medical advice: nothing is stored or sent anywhere."
+      },
+      "source_url": "https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight",
+      "source_label": "WHO fact sheet: Obesity and overweight"
+    },
+    {
+      "slug": "sql-formatter",
+      "cat": "developer",
+      "keywords": "sql formatter beautify keywords uppercase query pretty",
+      "title_tag": "SQL Formatter – Uppercase Keywords, Line Breaks",
+      "meta": "Paste a SQL statement to get it formatted: keywords uppercased, clauses on their own lines, quoted strings untouched. Formatting only.",
+      "h1": "SQL formatter",
+      "lede": "Paste a query and the tool puts each major clause on its own line, uppercases the keywords and leaves quoted strings exactly as they were.",
+      "how": "Quoted text is protected first: single-quoted strings, double-quoted identifiers and backticked names are swapped for placeholders so nothing inside them can be altered. Runs of whitespace then collapse to a single space, and a line break is inserted before each major clause: FROM, WHERE, GROUP BY, ORDER BY, HAVING, LIMIT, OFFSET, UNION, VALUES, SET and the JOIN forms. Finally the known keywords are uppercased, using word boundaries so a column called selected is not turned into SELECTed. The placeholders are restored at the end. Conditions joined by AND or OR stay on the same line to keep the statement readable. The input is capped at 50,000 characters.",
+      "example": "For select id, name from users where active = 1 order by name limit 10; the output is SELECT id, name on the first line, then FROM users, then WHERE active = 1, then ORDER BY name, then LIMIT 10;. The keywords become uppercase and each clause starts a new line, while the column names keep their lower-case spelling.",
+      "faq": [
+        {
+          "q": "Does it validate the SQL?",
+          "a": "No. It formats text: there is no database connection, no grammar check and no execution. A query with a missing comma comes back formatted and still broken."
+        },
+        {
+          "q": "Will it change text inside my strings?",
+          "a": "No. Single-quoted strings, double-quoted identifiers and backticked names are set aside before any casing or line breaks are applied, then restored unchanged."
+        },
+        {
+          "q": "Why do AND and OR stay on the same line?",
+          "a": "Only major clauses get their own line. Keeping conditions inline avoids turning a short query into a tall column of single words."
+        },
+        {
+          "q": "Which dialect does it follow?",
+          "a": "The keyword list is shared by the common dialects. Anything it does not recognise is left exactly as typed, so dialect-specific syntax survives."
+        },
+        {
+          "q": "Is my query sent anywhere?",
+          "a": "No. The text is formatted in the page and never leaves it. Nothing is stored, logged or uploaded."
+        }
+      ],
+      "ui": {
+        "sql": "SQL to format",
+        "output": "Formatted SQL",
+        "copy": "Copy SQL",
+        "nothingToCopy": "There is nothing to copy yet.",
+        "copied": "SQL copied to the clipboard.",
+        "copyFailed": "The browser blocked the clipboard. Select the text and copy it by hand.",
+        "empty": "Paste a SQL statement to format it.",
+        "tooBig": "That statement is too long for this page. The limit is {max} characters.",
+        "lines": "Lines in the result",
+        "chars": "Characters in the result",
+        "note": "Formatted in your browser and never run against a database: the query is not sent anywhere."
+      }
+    }
+  ]
+}

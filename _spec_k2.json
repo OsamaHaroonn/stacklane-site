@@ -1,0 +1,135 @@
+{
+  "tools": [
+    {
+      "slug": "fake-hacker-typer",
+      "cat": "fun",
+      "keywords": "hacker typer fake terminal typing toy keyboard movie",
+      "title_tag": "Fake Hacker Typer – Harmless Terminal Toy",
+      "meta": "Press any key and made-up log lines scroll past in a fake terminal. It is a toy: nothing runs, nothing is read from your machine.",
+      "h1": "Fake hacker typer",
+      "lede": "Start the toy and press any key: invented log lines scroll past in a dark terminal, and Escape ends the session.",
+      "how": "Start focuses a terminal area and writes one greeting line. Every later key press, including Enter, adds one line taken at random from a fixed list of twenty-two invented log lines, and the screen keeps only the newest fourteen so it never grows without limit. Nothing is executed and nothing is inspected: the lines come from that list, not from your keyboard's contents, your files or your system. Escape ends the session and writes a closing line, and the status line above the terminal announces whether the toy is running or finished. The copy button copies exactly the text visible on screen. Sound, animation and typing delays are deliberately absent, so no key press can be swallowed or delayed.",
+      "example": "Starting writes one greeting line. Pressing four keys then adds four lines from the list, one per press, so the screen holds five lines in total and any line older than the newest fourteen would be dropped. Pressing Escape adds a closing line and changes the status to say the session ended, and the copy button then copies those six lines exactly as they appear.",
+      "faq": [
+        {
+          "q": "Is anything actually running?",
+          "a": "No. The lines are printed from a list inside the page. There is no command execution, no file access, no network request and no access to anything on your machine."
+        },
+        {
+          "q": "Why does Escape do anything?",
+          "a": "It ends the pretend session so the terminal stops adding lines and the status line can say it is finished. Start begins a fresh session."
+        },
+        {
+          "q": "How many lines are there?",
+          "a": "Twenty-two invented log lines, chosen at random for each key press, so a long session repeats some of them. That repetition is part of the joke."
+        },
+        {
+          "q": "Does it record what I type?",
+          "a": "No. Key presses only trigger the next line; the characters themselves are never read, stored, logged or sent anywhere. Copy takes the visible text, not your keystrokes."
+        },
+        {
+          "q": "Can I use this for a video?",
+          "a": "Yes, that is what it is for. It looks the part without touching a real system, which is safer than pretending with a real terminal."
+        }
+      ],
+      "ui": {
+        "idle": "Ready. Press Start, then type anything.",
+        "screenLabel": "Pretend terminal output",
+        "pressStart": "press Start to begin",
+        "started": "session started. Press any key, Escape to stop.",
+        "running": "Session running: every key press prints a line. Escape ends it.",
+        "ended": "session ended. Press Start for another.",
+        "stopped": "Session ended. Nothing was run.",
+        "start": "Start",
+        "stop": "Stop",
+        "copy": "Copy screen",
+        "copied": "Terminal text copied.",
+        "copyFailed": "The browser blocked the clipboard. Select the text and copy it by hand.",
+        "note": "A toy: the lines come from a list in this page. Nothing is executed, read or sent anywhere."
+      }
+    },
+    {
+      "slug": "compliment-generator",
+      "cat": "fun",
+      "keywords": "compliment generator nice random kind message say something",
+      "title_tag": "Compliment Generator – Kind Random Lines",
+      "meta": "Get a kind, specific compliment built from built-in word lists, ask for another at any time and copy the line. Nothing is stored.",
+      "h1": "Compliment generator",
+      "lede": "Ask for a compliment and the tool puts one together from three small lists of kind, specific phrases, with another available on every press.",
+      "how": "Each compliment is assembled from three parts: an opening about you, a verb phrase describing something you do, and a closing that says why it matters. One phrase is drawn from each list with the browser's random source, so the combination is new each time even though every part is a fixed, written phrase. The lists hold seven openings, ten verb phrases and six closings, which gives 7 × 10 × 6 = 420 possible lines. Nothing is inferred about the reader and nothing is personalised: the tool does not ask for a name or read anything from the page. The copy button copies the line currently shown, and a new line replaces it rather than piling up a history.",
+      "example": "With seven openings, ten verb phrases and six closings, the tool can produce 7 × 10 × 6 = 420 different compliments. One draw might give \"What stands out is how you\" plus \"listen properly\" plus \"and that is rarer than people think.\", which reads as one sentence: What stands out is how you listen properly, and that is rarer than people think.",
+      "faq": [
+        {
+          "q": "How are the compliments made?",
+          "a": "One phrase is drawn from each of three written lists: an opening, something you do, and a closing. Every part is a fixed phrase, so nothing is generated word by word."
+        },
+        {
+          "q": "How many different lines are there?",
+          "a": "Seven openings times ten verb phrases times six closings, which is 420 combinations. You may see a shape repeat, but the full sentence usually changes."
+        },
+        {
+          "q": "Are these about me specifically?",
+          "a": "No. The tool knows nothing about you: it does not ask for a name and does not read any other page. Every line is generic and kind by design."
+        },
+        {
+          "q": "Is anything stored or sent?",
+          "a": "No. The line is built in the page and disappears when you reload. There is no storage, no cookie and no network request."
+        },
+        {
+          "q": "Can I use a line in a message?",
+          "a": "Yes, that is what the copy button is for. It copies the exact sentence shown."
+        }
+      ],
+      "ui": {
+        "ready": "Press the button for a compliment.",
+        "another": "Another compliment",
+        "copy": "Copy",
+        "copied": "Compliment copied.",
+        "copyFailed": "The browser blocked the clipboard. Select the text and copy it by hand.",
+        "note": "Built in your browser from written word lists: nothing is stored or sent anywhere."
+      }
+    },
+    {
+      "slug": "shakespearean-insult-generator",
+      "cat": "fun",
+      "keywords": "shakespearean insult generator elizabethan words theatre playful",
+      "title_tag": "Shakespearean Insult Generator – Mild",
+      "meta": "Build a mild, original stage-villain insult from archaic word lists. Playful only, and not a quotation from Shakespeare.",
+      "h1": "Shakespearean insult generator",
+      "lede": "Press once for a mild, old-fashioned insult assembled from archaic words in one of four sentence shapes, ready to copy for a play or a joke.",
+      "how": "The line is built from four shapes: thou art a single two-word insult, a longer version with two of them, a version with a verb, and one that compares your wit to something. Words come from three lists of mild archaic terms: twenty adjectives such as addle-pated and pottle-deep, twenty-six nouns such as flap-dragon and whey-face, and eight verbs such as prate and cavil. The shape and one word from each slot it uses are drawn separately, so the combinations run into hundreds of thousands. The phrasings are assembled by this page and are not quotations: no line here is taken from a play, and nothing is stored or sent anywhere.",
+      "example": "The simplest shape takes one adjective and one noun, and 20 × 26 = 520 such pairs exist, for instance \"Thou art a knotty-pated flap-dragon.\" Across the four shapes the count is 520 + 270,400 + 4,160 + 270,400 = 545,480 possible lines, all built from the same three mild lists.",
+      "faq": [
+        {
+          "q": "Are these real Shakespeare quotes?",
+          "a": "No. They are original combinations of archaic words in old-fashioned sentence shapes, made by this page. Nothing here is quoted from a play, and the page says so under the result."
+        },
+        {
+          "q": "Are the insults offensive?",
+          "a": "They are deliberately mild and theatrical, using words like flap-dragon and addle-pated. There are no slurs, no profanity and no references to real people."
+        },
+        {
+          "q": "How many combinations are there?",
+          "a": "545,480 across the four shapes, from 20 adjectives, 26 nouns and 8 verbs. The simplest shape alone gives 520 two-word insults."
+        },
+        {
+          "q": "Can I use one in a script?",
+          "a": "Yes. Copy takes the exact line shown, and because the words are original combinations there is no attribution to worry about."
+        },
+        {
+          "q": "Does it remember what it made?",
+          "a": "No. Only the current line is kept, and it is gone after a reload. Nothing is stored, logged or sent."
+        }
+      ],
+      "ui": {
+        "ready": "Press the button for an insult.",
+        "another": "Another insult",
+        "copy": "Copy",
+        "copied": "Insult copied.",
+        "copyFailed": "The browser blocked the clipboard. Select the text and copy it by hand.",
+        "original": "These lines are original combinations of archaic words, not quotations from Shakespeare.",
+        "note": "Built in your browser from written word lists: nothing is stored or sent anywhere."
+      }
+    }
+  ]
+}

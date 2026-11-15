@@ -1,0 +1,58 @@
+/* ============================================================
+   Form fields — shared
+   One label treatment, one input treatment, one focus ring. Field rows
+   collapse to a single column on narrow screens.
+   ============================================================ */
+
+label {
+  display: block;
+  font-size: .875rem;
+  font-weight: 600;
+  margin-bottom: var(--sp-1);
+  color: var(--ink);
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-sm);
+  font: inherit;
+  font-size: 1rem;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--blue-600);
+  outline-offset: 1px;
+  border-color: var(--blue-600);
+}
+
+textarea { resize: vertical; min-height: 120px; }
+.field { margin-bottom: var(--sp-4); }
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--sp-3);
+}
+.form-note { font-size: .875rem; color: var(--ink-2); margin-top: var(--sp-2); }
+
+/* Validation emphasis — colour only, never a box metric */
+input.is-bad,
+textarea.is-bad,
+select.is-bad {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+}
+input.is-good,
+textarea.is-good,
+select.is-good {
+  border-color: var(--good);
+  background: var(--good-soft);
+}

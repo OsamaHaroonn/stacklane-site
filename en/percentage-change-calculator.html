@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1d4ed8">
+<meta name="referrer" content="no-referrer">
+<title>Percentage change calculator — increase or decrease between values</title>
+<meta name="description" content="Find the percentage change between two numbers, with the absolute difference, the direction of the change and a plain-English summary.">
+<link rel="canonical" href="https://stacklanetools.com/en/percentage-change-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stacklane Tools">
+<meta property="og:title" content="Percentage change calculator — increase or decrease between values">
+<meta property="og:description" content="Find the percentage change between two numbers, with the absolute difference, the direction of the change and a plain-English summary.">
+<meta property="og:url" content="https://stacklanetools.com/en/percentage-change-calculator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://stacklanetools.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Stacklane Tools">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="../assets/style.css">
+<!-- stacklane:jsonld:start -->
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://stacklanetools.com/en/"}, {"@type": "ListItem", "position": 2, "name": "Calculators", "item": "https://stacklanetools.com/en/calculators.html"}, {"@type": "ListItem", "position": 3, "name": "Percentage change calculator", "item": "https://stacklanetools.com/en/percentage-change-calculator.html"}]}, {"@type": "SoftwareApplication", "name": "Percentage change calculator", "description": "Find the percentage change between two numbers, with the absolute difference, the direction and a plain-English summary.", "url": "https://stacklanetools.com/en/percentage-change-calculator.html", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any modern browser", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}]}
+  </script>
+<!-- stacklane:jsonld:end -->
+</head>
+<body data-tool="percentage-change-calculator">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header">
+  <!-- stacklane:header:start -->
+    <div class="container head-in">
+      <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7.5 12 3l8 4.5-8 4.5-8-4.5Z"></path><path d="M4 12.5 12 17l8-4.5"></path><path d="M4 17.5 12 22l8-4.5"></path></svg><span class="brand-word">Stacklane Tools</span></a>
+      <nav class="head-nav" aria-label="Stacklane Tools">
+        <div class="head-search">
+          <input id="head-q" type="search" autocomplete="off" spellcheck="false" placeholder="Search tools" aria-label="Search the tools">
+          <ul id="head-results" class="head-results" hidden></ul>
+        </div>
+        <a href="index.html#categories" aria-label="Browse by category">Categories</a>
+        <a href="business.html">Business</a>
+        <details class="menu">
+          <summary>Menu</summary>
+          <div class="menu-panel">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="index.html#categories">Browse by category</a></li>
+              <li><a href="../all-tools.html">All tools</a></li>
+              <li><a href="pdf.html">PDF</a></li>
+              <li><a href="images.html">Images</a></li>
+              <li><a href="text.html">Text</a></li>
+              <li><a href="generators.html">Generators</a></li>
+              <li><a href="calculators.html">Calculators</a></li>
+              <li><a href="converters.html">Converters</a></li>
+              <li><a href="developer.html">Developer</a></li>
+              <li><a href="fun.html">Fun</a></li>
+              <li><a href="business.html">Business</a></li>
+              <li class="menu-sep" aria-hidden="true"></li>
+              <li><a href="../privacy.html">Privacy</a></li>
+              <li><a href="../terms.html">Terms</a></li>
+            </ul>
+          </div>
+        </details>
+      </nav>
+    </div>
+  <!-- stacklane:header:end -->
+</div>
+
+<main id="main" class="wrap">
+  <nav id="crumbs" class="crumbs">
+    <!-- stacklane:crumbs:start -->
+      <a href="index.html">Home</a>
+      <span class="sep" aria-hidden="true">›</span>
+      <a href="calculators.html">Calculators</a>
+      <span class="sep" aria-hidden="true">›</span>
+      <span>Percentage change calculator</span>
+    <!-- stacklane:crumbs:end -->
+  </nav>
+  <div class="tool-layout">
+  <div class="tool-main">
+
+  <header class="tool-head">
+    <p class="card-kicker" data-i18n="categories.calculators.name">Text</p>
+    <h1 data-i18n="tools.percentage-change-calculator.title">Percentage change calculator</h1>
+    <p class="lede" data-i18n="tools.percentage-change-calculator.lede">Enter an original value and a new value to get the percentage change, the absolute difference and whether it went up or down.</p>
+    <p class="badge-row"><span class="badge badge-good" data-i18n="tool.runsLocal">Runs locally in your browser</span></p>
+  </header>
+
+  <div class="tool-panel">
+    <div id="tool-ui" class="tool-ui"></div>
+  </div>
+  <div class="ad-slot" data-slot="A" hidden></div>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.how">How it works</h2>
+    <p data-i18n="tools.percentage-change-calculator.how">Percentage change is the difference divided by the size of the original value, times 100. Dividing by the size of the original means the sign always describes the movement: a change from −50 to −40 is an increase, not a decrease. A change from zero has no meaningful percentage, because every percentage of zero is zero, so it is reported as undefined with the absolute difference instead. The result is rounded to two decimals for display and the unrounded value is used in the summary.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.example">Worked example</h2>
+    <p class="worked" data-i18n="tools.percentage-change-calculator.example">From 50 to 60 the change is +20%, the difference is +10 and the direction is an increase. From 80 to 60 the change is −25%, the difference is −20 and the direction is a decrease.</p>
+  </section>
+
+  <section class="tool-section">
+    <h2 data-i18n="tool.faq">Questions and answers</h2>
+    <div class="faq-list" data-faq="tools.percentage-change-calculator.faq">
+      <!-- stacklane:faq:start -->
+        <details class="faq-item">
+          <summary>What is the difference between percentage change and percentage points?</summary>
+          <p>Percentage change compares two values relative to the first. Percentage points describe the gap between two percentages: a rate moving from 5% to 7% rose by 2 percentage points, which is a 40% change. This tool reports the percentage change.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why is the change undefined when the original is zero?</summary>
+          <p>Percentage change is a ratio to the original value. With an original of zero there is no base to compare against, so any percentage would be misleading. The tool shows the absolute difference and says the percentage is undefined.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does it work with negative numbers?</summary>
+          <p>Yes. The calculation divides by the size of the original, so the direction is always reported correctly even when both values are below zero.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Are the results rounded?</summary>
+          <p>Displayed percentages use two decimals. The summary sentence is built from the same rounded figure so the numbers on screen never disagree with each other.</p>
+        </details>
+      <!-- stacklane:faq:end -->
+    </div>
+  </section>
+
+  <div class="ad-slot" data-slot="B" hidden></div>
+
+  </div><!-- /.tool-main -->
+
+  <aside class="tool-side">
+  <section class="tool-section" id="related-sec">
+    <h2 data-i18n="tool.related">Related tools</h2>
+    <div id="related" class="grid">
+      <!-- stacklane:related:start -->
+        <a class="card tool-card" href="age-calculator.html">
+          <span class="card-kicker">Calculators</span>
+          <h3>Age calculator</h3>
+          <p>Work out an exact age in years, months and days from a date of birth, with the total number of days between the two dates.</p>
+        </a>
+        <a class="card tool-card" href="percentage-calculator.html">
+          <span class="card-kicker">Calculators</span>
+          <h3>Percentage calculator</h3>
+          <p>Find a percentage of a number, work out what percent one number is of another, and add or subtract a percentage — with the working shown.</p>
+        </a>
+        <a class="card tool-card" href="loan-calculator.html">
+          <span class="card-kicker">Calculators</span>
+          <h3>Loan calculator</h3>
+          <p>Work out the monthly payment, total paid and total interest on a fixed-rate loan, with the formula and the numbers filled in.</p>
+        </a>
+        <a class="card tool-card" href="mortgage-calculator.html">
+          <span class="card-kicker">Calculators</span>
+          <h3>Mortgage calculator</h3>
+          <p>Estimate the monthly principal and interest on a mortgage from the price, down payment, rate and term.</p>
+        </a>
+      <!-- stacklane:related:end -->
+    </div>
+  </section>
+  <div class="ad-slot" data-slot="C" hidden></div>
+  </aside>
+  </div><!-- /.tool-layout -->
+
+  <p><a id="back-cat" href="calculators.html"></a></p>
+    <!-- stacklane:toolcats:start -->
+      <nav class="cat-related" aria-label="Related categories">
+        <h2>Other categories</h2>
+        <ul>
+          <li><a href="converters.html">Converters</a></li>
+          <li><a href="business.html">Business</a></li>
+          <li><a href="text.html">Text</a></li>
+        </ul>
+      </nav>
+    <!-- stacklane:toolcats:end -->
+<p class="note" data-i18n="tool.privacy">Everything runs in your browser: your text, file or value is never uploaded anywhere.</p>
+</main>
+
+<div id="site-footer">
+  <!-- stacklane:footer:start -->
+    <div class="container">
+      <div class="foot-grid">
+        <div>
+          <strong>Stacklane Tools</strong>
+          <p class="foot-tagline note">Free browser tools. No accounts, no tracking, no uploads.</p>
+          <p class="note">Everything runs locally in your browser.</p>
+        </div>
+        <nav class="foot-cats" aria-label="Categories">
+          <span class="foot-head">Categories</span>
+          <ul>
+            <li><a href="pdf.html">PDF</a></li>
+            <li><a href="images.html">Images</a></li>
+            <li><a href="text.html">Text</a></li>
+            <li><a href="generators.html">Generators</a></li>
+            <li><a href="calculators.html">Calculators</a></li>
+            <li><a href="converters.html">Converters</a></li>
+            <li><a href="developer.html">Developer</a></li>
+            <li><a href="fun.html">Fun</a></li>
+            <li><a href="business.html">Business</a></li>
+          </ul>
+        </nav>
+        <div>
+          <span class="foot-head">Stacklane</span>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="../privacy.html">Privacy</a></li>
+            <li><a href="../terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="foot-copy">© <span data-year>2026</span> Stacklane Tools</p>
+    </div>
+  <!-- stacklane:footer:end -->
+</div>
+<script src="../assets/config.js"></script>
+<script src="../assets/i18n.js"></script>
+<script src="../assets/catalog.js"></script>
+<script src="../assets/tools/shared.js"></script>
+<script src="../assets/tools/percentage-change-calculator.js"></script>
+<script src="../assets/chrome.js"></script>
+</body>
+</html>
