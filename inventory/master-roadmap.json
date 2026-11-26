@@ -1,0 +1,4166 @@
+{
+  "meta": {
+    "title": "Stacklane Tools — Master Upgrade Roadmap",
+    "version": "1.0.0",
+    "generated": "2026-11-26T23:38:13.428Z",
+    "catalogueSource": "assets/catalog.js",
+    "catalogueActual": 85,
+    "catalogueClaimed": 114,
+    "discrepancy": 29,
+    "scopeNote": "assets/catalog.js was reduced from 107 to 78 tool entries at some point before this inventory. Repository docs (PROJECT-CONTEXT.md, search-setup.js, docs/project-history/2026-11-23-smart-search-remediation.md) and the prior session all reference 107/114. The 29 missing tools are documented in gen_browser_checks.py and the smart-search-remediation history as formerly-absent tools that were added to the search index but the catalogue itself was later reduced.",
+    "totalEntries": 85,
+    "phases": {
+      "phase1_inspect": 85,
+      "phase2_assess": 85,
+      "total": 170
+    }
+  },
+  "summary": {
+    "byCategory": {
+      "pdf": {
+        "count": 4,
+        "tools": [
+          "images-to-pdf",
+          "merge-pdf",
+          "pdfpage-counter",
+          "split-pdf"
+        ]
+      },
+      "images": {
+        "count": 4,
+        "tools": [
+          "crop-rotate-image",
+          "image-compressor",
+          "image-converter",
+          "image-resizer"
+        ]
+      },
+      "text": {
+        "count": 11,
+        "tools": [
+          "case-converter",
+          "character-counter",
+          "keyword-density-analyzer",
+          "lorem-ipsum-generator",
+          "remove-duplicate-lines",
+          "slug-generator",
+          "sort-lines",
+          "text-diff-checker",
+          "text-statistician",
+          "typing-speed-test",
+          "word-counter"
+        ]
+      },
+      "generators": {
+        "count": 6,
+        "tools": [
+          "barcode-generator",
+          "favicon-generator",
+          "password-generator",
+          "qr-code-generator",
+          "random-number",
+          "uuid-generator"
+        ]
+      },
+      "calculators": {
+        "count": 18,
+        "tools": [
+          "age-calculator",
+          "average-calculator",
+          "bmi-calculator",
+          "compound-interest-calculator",
+          "date-difference",
+          "discount-calculator",
+          "gpa-calculator",
+          "loan-calculator",
+          "mortgage-calculator",
+          "percentage-calculator",
+          "percentage-change-calculator",
+          "roi-calculator",
+          "salary-to-hourly",
+          "savings-goal-calculator",
+          "stopwatch-timer",
+          "tip-split-calculator",
+          "vat-calculator",
+          "working-days-calculator"
+        ]
+      },
+      "converters": {
+        "count": 6,
+        "tools": [
+          "fraction-calculator",
+          "number-base-converter",
+          "ratio-calculator",
+          "roman-numerals",
+          "time-zone-converter",
+          "unit-converter"
+        ]
+      },
+      "developer": {
+        "count": 22,
+        "tools": [
+          "base64",
+          "color-contrast-checker",
+          "color-converter",
+          "color-palette-generator",
+          "css-box-shadow-generator",
+          "css-gradient-generator",
+          "csv-json-converter",
+          "hash-generator",
+          "html-entity-encoder",
+          "html-to-markdown",
+          "image-to-base64",
+          "json-formatter",
+          "jwt-decoder",
+          "meta-tag-generator",
+          "password-strength-checker",
+          "regex-tester",
+          "robots-txt-generator",
+          "sql-formatter",
+          "timestamp-converter",
+          "url-encoder",
+          "user-agent-parser",
+          "xml-sitemap-generator"
+        ]
+      },
+      "fun": {
+        "count": 7,
+        "tools": [
+          "bubble-wrap-popper",
+          "coin-flipper",
+          "compliment-generator",
+          "decision-wheel",
+          "dice-roller",
+          "fake-hacker-typer",
+          "shakespearean-insult-generator"
+        ]
+      }
+    },
+    "byPriority": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0,
+      "P3": 85
+    },
+    "byComplexity": {
+      "Low": 63,
+      "Medium": 18,
+      "High": 4
+    },
+    "byStatus": {
+      "verified working": 85,
+      "verified defective": 0,
+      "not tested": 0,
+      "cannot determine": 0
+    },
+    "scoreDistribution": {
+      "average": 82.8,
+      "max": 84,
+      "min": 70
+    }
+  },
+  "entries": [
+    {
+      "index": 1,
+      "type": "tool",
+      "slug": "merge-pdf",
+      "name": "Merge PDF files",
+      "category": "pdf",
+      "description": "Combine several PDFs into one document, in the order you choose. The files stay on your device.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/merge-pdf.js",
+      "jsExists": true,
+      "jsSizeBytes": 5985,
+      "complexity": "High",
+      "priority": "P3",
+      "score": {
+        "total": 83,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 11,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [
+        "Bundled pdf-lib (525KB) loaded on demand — latency on first use"
+      ],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/merge-pdf.html returns 200 with valid HTML",
+        "data-tool=\"merge-pdf\" present on <body>",
+        "<title> matches i18n tools.merge-pdf.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/merge-pdf.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 2,
+      "type": "tool",
+      "slug": "pdfpage-counter",
+      "name": "PDF page counter",
+      "category": "pdf",
+      "description": "Read the page count, file size, title and producer of a PDF in your browser. The document is never uploaded.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/pdfpage-counter.js",
+      "jsExists": true,
+      "jsSizeBytes": 3099,
+      "complexity": "High",
+      "priority": "P3",
+      "score": {
+        "total": 78,
+        "breakdown": {
+          "functional": 19,
+          "ux": 16,
+          "perf": 9,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [
+        "No guard() error wrapping for async/file ops",
+        "Bundled pdf-lib (525KB) loaded on demand — latency on first use"
+      ],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/pdfpage-counter.html returns 200 with valid HTML",
+        "data-tool=\"pdfpage-counter\" present on <body>",
+        "<title> matches i18n tools.pdfpage-counter.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/pdfpage-counter.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 3,
+      "type": "tool",
+      "slug": "image-compressor",
+      "name": "Image compressor",
+      "category": "images",
+      "description": "Compress a JPG, PNG or WebP image in your browser. See the size before and after, and download the result.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/image-compressor.js",
+      "jsExists": true,
+      "jsSizeBytes": 6148,
+      "complexity": "Medium",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/image-compressor.html returns 200 with valid HTML",
+        "data-tool=\"image-compressor\" present on <body>",
+        "<title> matches i18n tools.image-compressor.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/image-compressor.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 4,
+      "type": "tool",
+      "slug": "image-resizer",
+      "name": "Image resizer",
+      "category": "images",
+      "description": "Resize a picture to an exact width and height in your browser, with aspect ratio locked and a download of the result.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/image-resizer.js",
+      "jsExists": true,
+      "jsSizeBytes": 7676,
+      "complexity": "Medium",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/image-resizer.html returns 200 with valid HTML",
+        "data-tool=\"image-resizer\" present on <body>",
+        "<title> matches i18n tools.image-resizer.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/image-resizer.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 5,
+      "type": "tool",
+      "slug": "word-counter",
+      "name": "Word counter",
+      "category": "text",
+      "description": "Count words, characters, sentences and paragraphs in any text, with an estimated reading time. Nothing leaves your browser.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/word-counter.js",
+      "jsExists": true,
+      "jsSizeBytes": 2897,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/word-counter.html returns 200 with valid HTML",
+        "data-tool=\"word-counter\" present on <body>",
+        "<title> matches i18n tools.word-counter.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/word-counter.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 6,
+      "type": "tool",
+      "slug": "qr-code-generator",
+      "name": "QR code generator",
+      "category": "generators",
+      "description": "Create a QR code for a link, text or any message. Generated in your browser, downloadable as a PNG.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/qr-code-generator.js",
+      "jsExists": true,
+      "jsSizeBytes": 3678,
+      "complexity": "Medium",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/qr-code-generator.html returns 200 with valid HTML",
+        "data-tool=\"qr-code-generator\" present on <body>",
+        "<title> matches i18n tools.qr-code-generator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/qr-code-generator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 7,
+      "type": "tool",
+      "slug": "barcode-generator",
+      "name": "Barcode generator",
+      "category": "generators",
+      "description": "Encode text or numbers as a Code 128 barcode drawn as SVG, with the checksum calculated in your browser. Download or copy it.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/barcode-generator.js",
+      "jsExists": true,
+      "jsSizeBytes": 8175,
+      "complexity": "Medium",
+      "priority": "P3",
+      "score": {
+        "total": 83,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 12,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/barcode-generator.html returns 200 with valid HTML",
+        "data-tool=\"barcode-generator\" present on <body>",
+        "<title> matches i18n tools.barcode-generator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/barcode-generator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 8,
+      "type": "tool",
+      "slug": "password-generator",
+      "name": "Password generator",
+      "category": "generators",
+      "description": "Generate a strong random password in your browser, with length and character controls and a live strength estimate.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/password-generator.js",
+      "jsExists": true,
+      "jsSizeBytes": 4157,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/password-generator.html returns 200 with valid HTML",
+        "data-tool=\"password-generator\" present on <body>",
+        "<title> matches i18n tools.password-generator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/password-generator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 9,
+      "type": "tool",
+      "slug": "age-calculator",
+      "name": "Age calculator",
+      "category": "calculators",
+      "description": "Work out an exact age in years, months and days from a date of birth, with the total number of days between the two dates.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/age-calculator.js",
+      "jsExists": true,
+      "jsSizeBytes": 3892,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/age-calculator.html returns 200 with valid HTML",
+        "data-tool=\"age-calculator\" present on <body>",
+        "<title> matches i18n tools.age-calculator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/age-calculator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 10,
+      "type": "tool",
+      "slug": "percentage-calculator",
+      "name": "Percentage calculator",
+      "category": "calculators",
+      "description": "Find a percentage of a number, work out what percent one number is of another, and add or subtract a percentage — with the working shown.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/percentage-calculator.js",
+      "jsExists": true,
+      "jsSizeBytes": 5070,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/percentage-calculator.html returns 200 with valid HTML",
+        "data-tool=\"percentage-calculator\" present on <body>",
+        "<title> matches i18n tools.percentage-calculator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/percentage-calculator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 11,
+      "type": "tool",
+      "slug": "percentage-change-calculator",
+      "name": "Percentage change calculator",
+      "category": "calculators",
+      "description": "Find the percentage change between two numbers, with the absolute difference, the direction and a plain-English summary.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/percentage-change-calculator.js",
+      "jsExists": true,
+      "jsSizeBytes": 4130,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/percentage-change-calculator.html returns 200 with valid HTML",
+        "data-tool=\"percentage-change-calculator\" present on <body>",
+        "<title> matches i18n tools.percentage-change-calculator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/percentage-change-calculator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 12,
+      "type": "tool",
+      "slug": "unit-converter",
+      "name": "Unit converter",
+      "category": "converters",
+      "description": "Convert length, mass, volume, temperature and speed between metric and imperial units, with the exact factor shown.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/unit-converter.js",
+      "jsExists": true,
+      "jsSizeBytes": 6262,
+      "complexity": "Medium",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/unit-converter.html returns 200 with valid HTML",
+        "data-tool=\"unit-converter\" present on <body>",
+        "<title> matches i18n tools.unit-converter.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/unit-converter.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 13,
+      "type": "tool",
+      "slug": "json-formatter",
+      "name": "JSON formatter",
+      "category": "developer",
+      "description": "Format, minify and validate JSON in your browser, with a clear error message when the syntax is wrong.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/json-formatter.js",
+      "jsExists": true,
+      "jsSizeBytes": 3545,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/json-formatter.html returns 200 with valid HTML",
+        "data-tool=\"json-formatter\" present on <body>",
+        "<title> matches i18n tools.json-formatter.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/json-formatter.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 14,
+      "type": "tool",
+      "slug": "loan-calculator",
+      "name": "Loan calculator",
+      "category": "calculators",
+      "description": "Work out the monthly payment, total paid and total interest on a fixed-rate loan, with the formula and the numbers filled in.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/loan-calculator.js",
+      "jsExists": true,
+      "jsSizeBytes": 3492,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/loan-calculator.html returns 200 with valid HTML",
+        "data-tool=\"loan-calculator\" present on <body>",
+        "<title> matches i18n tools.loan-calculator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/loan-calculator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 15,
+      "type": "tool",
+      "slug": "mortgage-calculator",
+      "name": "Mortgage calculator",
+      "category": "calculators",
+      "description": "Estimate the monthly principal and interest on a mortgage from the price, down payment, rate and term.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/mortgage-calculator.js",
+      "jsExists": true,
+      "jsSizeBytes": 4006,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/mortgage-calculator.html returns 200 with valid HTML",
+        "data-tool=\"mortgage-calculator\" present on <body>",
+        "<title> matches i18n tools.mortgage-calculator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/mortgage-calculator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 16,
+      "type": "tool",
+      "slug": "compound-interest-calculator",
+      "name": "Compound interest calculator",
+      "category": "calculators",
+      "description": "See what a lump sum grows to with compound interest, and how much of the result is interest rather than your own money.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/compound-interest-calculator.js",
+      "jsExists": true,
+      "jsSizeBytes": 3754,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/compound-interest-calculator.html returns 200 with valid HTML",
+        "data-tool=\"compound-interest-calculator\" present on <body>",
+        "<title> matches i18n tools.compound-interest-calculator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/compound-interest-calculator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 17,
+      "type": "tool",
+      "slug": "discount-calculator",
+      "name": "Discount calculator",
+      "category": "calculators",
+      "description": "Work out a sale price from a percentage discount, including two discounts in a row and the real total percentage off.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/discount-calculator.js",
+      "jsExists": true,
+      "jsSizeBytes": 3074,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/discount-calculator.html returns 200 with valid HTML",
+        "data-tool=\"discount-calculator\" present on <body>",
+        "<title> matches i18n tools.discount-calculator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/discount-calculator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 18,
+      "type": "tool",
+      "slug": "vat-calculator",
+      "name": "VAT calculator",
+      "category": "calculators",
+      "description": "Add VAT to a price or take it out again, with the rate you type in and the net, tax and gross figures shown separately.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/vat-calculator.js",
+      "jsExists": true,
+      "jsSizeBytes": 3356,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/vat-calculator.html returns 200 with valid HTML",
+        "data-tool=\"vat-calculator\" present on <body>",
+        "<title> matches i18n tools.vat-calculator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/vat-calculator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 19,
+      "type": "tool",
+      "slug": "date-difference",
+      "name": "Date difference",
+      "category": "calculators",
+      "description": "Count the days between two dates, split into weeks and into years, months and days, with the weekday of each date.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/date-difference.js",
+      "jsExists": true,
+      "jsSizeBytes": 3948,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/date-difference.html returns 200 with valid HTML",
+        "data-tool=\"date-difference\" present on <body>",
+        "<title> matches i18n tools.date-difference.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/date-difference.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 20,
+      "type": "tool",
+      "slug": "tip-split-calculator",
+      "name": "Tip and split calculator",
+      "category": "calculators",
+      "description": "Work out the tip, the total bill and what each person pays when a group splits it.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/tip-split-calculator.js",
+      "jsExists": true,
+      "jsSizeBytes": 3265,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/tip-split-calculator.html returns 200 with valid HTML",
+        "data-tool=\"tip-split-calculator\" present on <body>",
+        "<title> matches i18n tools.tip-split-calculator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/tip-split-calculator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 21,
+      "type": "tool",
+      "slug": "roi-calculator",
+      "name": "ROI calculator",
+      "category": "calculators",
+      "description": "Return on investment from what you put in and what you got back, with the profit, the percentage and the multiple.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/roi-calculator.js",
+      "jsExists": true,
+      "jsSizeBytes": 3082,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/roi-calculator.html returns 200 with valid HTML",
+        "data-tool=\"roi-calculator\" present on <body>",
+        "<title> matches i18n tools.roi-calculator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/roi-calculator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 22,
+      "type": "tool",
+      "slug": "savings-goal-calculator",
+      "name": "Savings goal calculator",
+      "category": "calculators",
+      "description": "Work out the monthly deposit that reaches a savings target, with the interest you earn along the way.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/savings-goal-calculator.js",
+      "jsExists": true,
+      "jsSizeBytes": 4457,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/savings-goal-calculator.html returns 200 with valid HTML",
+        "data-tool=\"savings-goal-calculator\" present on <body>",
+        "<title> matches i18n tools.savings-goal-calculator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/savings-goal-calculator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 23,
+      "type": "tool",
+      "slug": "gpa-calculator",
+      "name": "GPA calculator",
+      "category": "calculators",
+      "description": "Grade point average from the courses you list, using the grade points and unit values your own course uses.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/gpa-calculator.js",
+      "jsExists": true,
+      "jsSizeBytes": 4463,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/gpa-calculator.html returns 200 with valid HTML",
+        "data-tool=\"gpa-calculator\" present on <body>",
+        "<title> matches i18n tools.gpa-calculator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/gpa-calculator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 24,
+      "type": "tool",
+      "slug": "case-converter",
+      "name": "Case converter",
+      "category": "text",
+      "description": "Change text between upper case, lower case, title case, sentence case, camelCase, snake_case and kebab-case.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/case-converter.js",
+      "jsExists": true,
+      "jsSizeBytes": 4559,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/case-converter.html returns 200 with valid HTML",
+        "data-tool=\"case-converter\" present on <body>",
+        "<title> matches i18n tools.case-converter.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/case-converter.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 25,
+      "type": "tool",
+      "slug": "character-counter",
+      "name": "Character counter",
+      "category": "text",
+      "description": "Count characters, characters without spaces, words, lines, sentences, letters, digits and the UTF-8 size of your text.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/character-counter.js",
+      "jsExists": true,
+      "jsSizeBytes": 3192,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/character-counter.html returns 200 with valid HTML",
+        "data-tool=\"character-counter\" present on <body>",
+        "<title> matches i18n tools.character-counter.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/character-counter.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 26,
+      "type": "tool",
+      "slug": "text-statistician",
+      "name": "Text statistician",
+      "category": "text",
+      "description": "Measure words, sentences, paragraphs, average sentence length, Flesch reading ease and the most frequent words in any text.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/text-statistician.js",
+      "jsExists": true,
+      "jsSizeBytes": 5715,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/text-statistician.html returns 200 with valid HTML",
+        "data-tool=\"text-statistician\" present on <body>",
+        "<title> matches i18n tools.text-statistician.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/text-statistician.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 27,
+      "type": "tool",
+      "slug": "remove-duplicate-lines",
+      "name": "Remove duplicate lines",
+      "category": "text",
+      "description": "Delete repeated lines from a list or a block of text, keeping the first occurrence and the original order.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/remove-duplicate-lines.js",
+      "jsExists": true,
+      "jsSizeBytes": 3776,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/remove-duplicate-lines.html returns 200 with valid HTML",
+        "data-tool=\"remove-duplicate-lines\" present on <body>",
+        "<title> matches i18n tools.remove-duplicate-lines.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/remove-duplicate-lines.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 28,
+      "type": "tool",
+      "slug": "random-number",
+      "name": "Random number generator",
+      "category": "generators",
+      "description": "Generate one or more random whole numbers in a range you choose, using the browser's cryptographic random source.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/random-number.js",
+      "jsExists": true,
+      "jsSizeBytes": 4898,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/random-number.html returns 200 with valid HTML",
+        "data-tool=\"random-number\" present on <body>",
+        "<title> matches i18n tools.random-number.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/random-number.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 29,
+      "type": "tool",
+      "slug": "uuid-generator",
+      "name": "UUID generator",
+      "category": "generators",
+      "description": "Generate version 4 UUIDs in your browser, one at a time or in a batch, with an optional uppercase form.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/uuid-generator.js",
+      "jsExists": true,
+      "jsSizeBytes": 4289,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/uuid-generator.html returns 200 with valid HTML",
+        "data-tool=\"uuid-generator\" present on <body>",
+        "<title> matches i18n tools.uuid-generator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/uuid-generator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 30,
+      "type": "tool",
+      "slug": "base64",
+      "name": "Base64 encoder",
+      "category": "developer",
+      "description": "Encode text to Base64 and decode it back, with UTF-8 handled correctly in both directions.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/base64.js",
+      "jsExists": true,
+      "jsSizeBytes": 4112,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/base64.html returns 200 with valid HTML",
+        "data-tool=\"base64\" present on <body>",
+        "<title> matches i18n tools.base64.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/base64.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 31,
+      "type": "tool",
+      "slug": "url-encoder",
+      "name": "URL encoder",
+      "category": "developer",
+      "description": "Percent-encode text for a URL or query string, and decode it back again.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/url-encoder.js",
+      "jsExists": true,
+      "jsSizeBytes": 3240,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/url-encoder.html returns 200 with valid HTML",
+        "data-tool=\"url-encoder\" present on <body>",
+        "<title> matches i18n tools.url-encoder.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/url-encoder.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 32,
+      "type": "tool",
+      "slug": "timestamp-converter",
+      "name": "Timestamp converter",
+      "category": "developer",
+      "description": "Turn a Unix timestamp into a readable date and time, and a date and time back into a timestamp.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/timestamp-converter.js",
+      "jsExists": true,
+      "jsSizeBytes": 5836,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/timestamp-converter.html returns 200 with valid HTML",
+        "data-tool=\"timestamp-converter\" present on <body>",
+        "<title> matches i18n tools.timestamp-converter.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/timestamp-converter.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 33,
+      "type": "tool",
+      "slug": "color-converter",
+      "name": "Color converter",
+      "category": "developer",
+      "description": "Convert a hex colour code to RGB and HSL, with the working shown and a swatch to check it.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/color-converter.js",
+      "jsExists": true,
+      "jsSizeBytes": 4230,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/color-converter.html returns 200 with valid HTML",
+        "data-tool=\"color-converter\" present on <body>",
+        "<title> matches i18n tools.color-converter.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/color-converter.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 34,
+      "type": "tool",
+      "slug": "images-to-pdf",
+      "name": "Images to PDF",
+      "category": "pdf",
+      "description": "Combine JPG, PNG and other image files into a single PDF, with the page size you choose and the files never leaving your device.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/images-to-pdf.js",
+      "jsExists": true,
+      "jsSizeBytes": 8528,
+      "complexity": "High",
+      "priority": "P3",
+      "score": {
+        "total": 83,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 11,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [
+        "Bundled pdf-lib (525KB) loaded on demand — latency on first use"
+      ],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/images-to-pdf.html returns 200 with valid HTML",
+        "data-tool=\"images-to-pdf\" present on <body>",
+        "<title> matches i18n tools.images-to-pdf.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/images-to-pdf.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 35,
+      "type": "tool",
+      "slug": "split-pdf",
+      "name": "Split PDF",
+      "category": "pdf",
+      "description": "Take a range of pages out of a PDF, or write every page as its own file, without uploading the document.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/split-pdf.js",
+      "jsExists": true,
+      "jsSizeBytes": 9643,
+      "complexity": "High",
+      "priority": "P3",
+      "score": {
+        "total": 83,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 11,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [
+        "Bundled pdf-lib (525KB) loaded on demand — latency on first use"
+      ],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/split-pdf.html returns 200 with valid HTML",
+        "data-tool=\"split-pdf\" present on <body>",
+        "<title> matches i18n tools.split-pdf.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/split-pdf.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 36,
+      "type": "tool",
+      "slug": "image-converter",
+      "name": "Image converter",
+      "category": "images",
+      "description": "Convert a picture between JPG, PNG and WebP in your browser, with a quality setting and the real output size.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/image-converter.js",
+      "jsExists": true,
+      "jsSizeBytes": 6358,
+      "complexity": "Medium",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/image-converter.html returns 200 with valid HTML",
+        "data-tool=\"image-converter\" present on <body>",
+        "<title> matches i18n tools.image-converter.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/image-converter.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 37,
+      "type": "tool",
+      "slug": "crop-rotate-image",
+      "name": "Crop and rotate image",
+      "category": "images",
+      "description": "Cut a rectangle out of a picture and turn it 90, 180 or 270 degrees, in the browser, keeping the original format.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/crop-rotate-image.js",
+      "jsExists": true,
+      "jsSizeBytes": 9005,
+      "complexity": "Medium",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/crop-rotate-image.html returns 200 with valid HTML",
+        "data-tool=\"crop-rotate-image\" present on <body>",
+        "<title> matches i18n tools.crop-rotate-image.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/crop-rotate-image.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 38,
+      "type": "tool",
+      "slug": "time-zone-converter",
+      "name": "Time zone converter",
+      "category": "converters",
+      "description": "Convert a date and time between time zones using your browser's own time-zone data, with the UTC offset and daylight saving shown for each zone.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/time-zone-converter.js",
+      "jsExists": true,
+      "jsSizeBytes": 7767,
+      "complexity": "Medium",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/time-zone-converter.html returns 200 with valid HTML",
+        "data-tool=\"time-zone-converter\" present on <body>",
+        "<title> matches i18n tools.time-zone-converter.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/time-zone-converter.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 39,
+      "type": "tool",
+      "slug": "typing-speed-test",
+      "name": "Typing speed test",
+      "category": "text",
+      "description": "Measure your typing speed in words per minute and your accuracy against a fixed sample, with the formula and a running timer shown.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/typing-speed-test.js",
+      "jsExists": true,
+      "jsSizeBytes": 5063,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/typing-speed-test.html returns 200 with valid HTML",
+        "data-tool=\"typing-speed-test\" present on <body>",
+        "<title> matches i18n tools.typing-speed-test.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/typing-speed-test.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 40,
+      "type": "tool",
+      "slug": "regex-tester",
+      "name": "Regex tester",
+      "category": "developer",
+      "description": "Test a JavaScript regular expression against your own text and see every match, capture group and position, with flags and clear errors for invalid patterns.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/regex-tester.js",
+      "jsExists": true,
+      "jsSizeBytes": 4699,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/regex-tester.html returns 200 with valid HTML",
+        "data-tool=\"regex-tester\" present on <body>",
+        "<title> matches i18n tools.regex-tester.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/regex-tester.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 41,
+      "type": "tool",
+      "slug": "hash-generator",
+      "name": "Hash generator",
+      "category": "developer",
+      "description": "Create a SHA-1, SHA-256, SHA-384 or SHA-512 hash of any text using your browser's Web Crypto API. The text never leaves the page.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/hash-generator.js",
+      "jsExists": true,
+      "jsSizeBytes": 3488,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/hash-generator.html returns 200 with valid HTML",
+        "data-tool=\"hash-generator\" present on <body>",
+        "<title> matches i18n tools.hash-generator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/hash-generator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 42,
+      "type": "tool",
+      "slug": "lorem-ipsum-generator",
+      "name": "Lorem ipsum generator",
+      "category": "text",
+      "description": "Generate placeholder text as paragraphs, sentences or single words from a built-in word list, with a chosen amount and the option to start with Lorem ipsum.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/lorem-ipsum-generator.js",
+      "jsExists": true,
+      "jsSizeBytes": 5097,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/lorem-ipsum-generator.html returns 200 with valid HTML",
+        "data-tool=\"lorem-ipsum-generator\" present on <body>",
+        "<title> matches i18n tools.lorem-ipsum-generator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/lorem-ipsum-generator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 43,
+      "type": "tool",
+      "slug": "text-diff-checker",
+      "name": "Text diff checker",
+      "category": "text",
+      "description": "Compare two versions of a text line by line. The checker marks added, removed and unchanged lines, runs entirely in your browser and never uploads a word.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/text-diff-checker.js",
+      "jsExists": true,
+      "jsSizeBytes": 4991,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/text-diff-checker.html returns 200 with valid HTML",
+        "data-tool=\"text-diff-checker\" present on <body>",
+        "<title> matches i18n tools.text-diff-checker.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/text-diff-checker.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 44,
+      "type": "tool",
+      "slug": "roman-numerals",
+      "name": "Roman numeral converter",
+      "category": "converters",
+      "description": "Convert any number from 1 to 3999 into a Roman numeral and back again, with the working shown step by step. Free and private in your browser.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/roman-numerals.js",
+      "jsExists": true,
+      "jsSizeBytes": 3144,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/roman-numerals.html returns 200 with valid HTML",
+        "data-tool=\"roman-numerals\" present on <body>",
+        "<title> matches i18n tools.roman-numerals.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/roman-numerals.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 45,
+      "type": "tool",
+      "slug": "number-base-converter",
+      "name": "Number base converter",
+      "category": "converters",
+      "description": "Convert a number between binary, octal, decimal, hexadecimal and any base from 2 to 36, with big values kept exact. Free and private online.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/number-base-converter.js",
+      "jsExists": true,
+      "jsSizeBytes": 3097,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/number-base-converter.html returns 200 with valid HTML",
+        "data-tool=\"number-base-converter\" present on <body>",
+        "<title> matches i18n tools.number-base-converter.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/number-base-converter.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 46,
+      "type": "tool",
+      "slug": "color-contrast-checker",
+      "name": "Colour contrast checker",
+      "category": "developer",
+      "description": "Check the WCAG 2 contrast ratio between two colours and see the AA and AAA results for normal and large text. Free, instant and private.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/color-contrast-checker.js",
+      "jsExists": true,
+      "jsSizeBytes": 2636,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/color-contrast-checker.html returns 200 with valid HTML",
+        "data-tool=\"color-contrast-checker\" present on <body>",
+        "<title> matches i18n tools.color-contrast-checker.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/color-contrast-checker.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 47,
+      "type": "tool",
+      "slug": "average-calculator",
+      "name": "Average calculator",
+      "category": "calculators",
+      "description": "Paste any list of numbers to get the mean, median, mode, range, count and sum, with invalid entries ignored and reported. Free and private.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/average-calculator.js",
+      "jsExists": true,
+      "jsSizeBytes": 3101,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/average-calculator.html returns 200 with valid HTML",
+        "data-tool=\"average-calculator\" present on <body>",
+        "<title> matches i18n tools.average-calculator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/average-calculator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 48,
+      "type": "tool",
+      "slug": "slug-generator",
+      "name": "Slug generator",
+      "category": "text",
+      "description": "Turn any heading into a clean URL slug: lowercased, accents removed, symbols stripped and the separator you choose. Runs in your browser and nothing is saved.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/slug-generator.js",
+      "jsExists": true,
+      "jsSizeBytes": 3539,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/slug-generator.html returns 200 with valid HTML",
+        "data-tool=\"slug-generator\" present on <body>",
+        "<title> matches i18n tools.slug-generator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/slug-generator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 49,
+      "type": "tool",
+      "slug": "html-entity-encoder",
+      "name": "HTML entity encoder",
+      "category": "developer",
+      "description": "Encode text into HTML entities or decode entities back to plain text. The output stays text, never markup, and everything runs in your browser.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/html-entity-encoder.js",
+      "jsExists": true,
+      "jsSizeBytes": 4018,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/html-entity-encoder.html returns 200 with valid HTML",
+        "data-tool=\"html-entity-encoder\" present on <body>",
+        "<title> matches i18n tools.html-entity-encoder.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/html-entity-encoder.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 50,
+      "type": "tool",
+      "slug": "jwt-decoder",
+      "name": "JWT decoder",
+      "category": "developer",
+      "description": "Decode a JWT header and payload in your browser. The token is never sent, never verified, and a decoded token proves nothing about its validity.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/jwt-decoder.js",
+      "jsExists": true,
+      "jsSizeBytes": 4356,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/jwt-decoder.html returns 200 with valid HTML",
+        "data-tool=\"jwt-decoder\" present on <body>",
+        "<title> matches i18n tools.jwt-decoder.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/jwt-decoder.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 51,
+      "type": "tool",
+      "slug": "csv-json-converter",
+      "name": "CSV to JSON converter",
+      "category": "developer",
+      "description": "Convert CSV to JSON or JSON to CSV in your browser, with quoted fields, embedded commas and line breaks inside quotes handled correctly. Nothing is uploaded.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/csv-json-converter.js",
+      "jsExists": true,
+      "jsSizeBytes": 6717,
+      "complexity": "Medium",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/csv-json-converter.html returns 200 with valid HTML",
+        "data-tool=\"csv-json-converter\" present on <body>",
+        "<title> matches i18n tools.csv-json-converter.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/csv-json-converter.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 52,
+      "type": "tool",
+      "slug": "sort-lines",
+      "name": "Sort lines",
+      "category": "text",
+      "description": "Sort lines of text A to Z, Z to A, numerically or by length, with an option to remove empty lines. Everything runs in your browser and input is capped.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/sort-lines.js",
+      "jsExists": true,
+      "jsSizeBytes": 4396,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/sort-lines.html returns 200 with valid HTML",
+        "data-tool=\"sort-lines\" present on <body>",
+        "<title> matches i18n tools.sort-lines.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/sort-lines.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 53,
+      "type": "tool",
+      "slug": "working-days-calculator",
+      "name": "Working days calculator",
+      "category": "calculators",
+      "description": "Count working days between two dates with your own holiday list and your own weekend days. Runs in your browser and stores nothing.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/working-days-calculator.js",
+      "jsExists": true,
+      "jsSizeBytes": 3947,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/working-days-calculator.html returns 200 with valid HTML",
+        "data-tool=\"working-days-calculator\" present on <body>",
+        "<title> matches i18n tools.working-days-calculator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/working-days-calculator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 54,
+      "type": "tool",
+      "slug": "fraction-calculator",
+      "name": "Fraction calculator",
+      "category": "converters",
+      "description": "Work with fractions step by step: add, subtract, multiply and divide, then see the fraction in lowest terms, the mixed number and the decimal.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/fraction-calculator.js",
+      "jsExists": true,
+      "jsSizeBytes": 3922,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/fraction-calculator.html returns 200 with valid HTML",
+        "data-tool=\"fraction-calculator\" present on <body>",
+        "<title> matches i18n tools.fraction-calculator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/fraction-calculator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 55,
+      "type": "tool",
+      "slug": "ratio-calculator",
+      "name": "Ratio calculator",
+      "category": "converters",
+      "description": "Simplify a ratio, scale it by a factor or solve a missing value in a proportion, with every step shown. Runs in your browser, nothing is stored.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/ratio-calculator.js",
+      "jsExists": true,
+      "jsSizeBytes": 4547,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/ratio-calculator.html returns 200 with valid HTML",
+        "data-tool=\"ratio-calculator\" present on <body>",
+        "<title> matches i18n tools.ratio-calculator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/ratio-calculator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 56,
+      "type": "tool",
+      "slug": "stopwatch-timer",
+      "name": "Stopwatch and timer",
+      "category": "calculators",
+      "description": "A stopwatch with start, pause, reset and laps, measured with performance.now() in this tab. No storage, no cookies, nothing sent anywhere.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/stopwatch-timer.js",
+      "jsExists": true,
+      "jsSizeBytes": 3949,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/stopwatch-timer.html returns 200 with valid HTML",
+        "data-tool=\"stopwatch-timer\" present on <body>",
+        "<title> matches i18n tools.stopwatch-timer.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/stopwatch-timer.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 57,
+      "type": "tool",
+      "slug": "image-to-base64",
+      "name": "Image to Base64 encoder",
+      "category": "developer",
+      "description": "Turn an image into a Base64 data URI in your browser. The file is never uploaded, the size limit is stated, and the result comes with a copy button.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/image-to-base64.js",
+      "jsExists": true,
+      "jsSizeBytes": 3985,
+      "complexity": "Medium",
+      "priority": "P3",
+      "score": {
+        "total": 81,
+        "breakdown": {
+          "functional": 19,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [
+        "No guard() error wrapping for async/file ops"
+      ],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/image-to-base64.html returns 200 with valid HTML",
+        "data-tool=\"image-to-base64\" present on <body>",
+        "<title> matches i18n tools.image-to-base64.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/image-to-base64.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 58,
+      "type": "tool",
+      "slug": "salary-to-hourly",
+      "name": "Salary to hourly calculator",
+      "category": "calculators",
+      "description": "Turn a yearly salary into an hourly, daily, weekly and monthly figure using the hours you actually work. Arithmetic only, no tax rules.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/salary-to-hourly.js",
+      "jsExists": true,
+      "jsSizeBytes": 2928,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/salary-to-hourly.html returns 200 with valid HTML",
+        "data-tool=\"salary-to-hourly\" present on <body>",
+        "<title> matches i18n tools.salary-to-hourly.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/salary-to-hourly.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 59,
+      "type": "tool",
+      "slug": "keyword-density-analyzer",
+      "name": "Keyword density analyzer",
+      "category": "text",
+      "description": "Paste text to see how often each word appears, with counts and percentages from a stated formula. Up to 50,000 characters, nothing uploaded.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/keyword-density-analyzer.js",
+      "jsExists": true,
+      "jsSizeBytes": 3742,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/keyword-density-analyzer.html returns 200 with valid HTML",
+        "data-tool=\"keyword-density-analyzer\" present on <body>",
+        "<title> matches i18n tools.keyword-density-analyzer.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/keyword-density-analyzer.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 60,
+      "type": "tool",
+      "slug": "meta-tag-generator",
+      "name": "Meta tag generator",
+      "category": "developer",
+      "description": "Build a title, description, canonical, Open Graph and Twitter card block as plain text, with length counters as you type. Nothing is uploaded.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/meta-tag-generator.js",
+      "jsExists": true,
+      "jsSizeBytes": 4583,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/meta-tag-generator.html returns 200 with valid HTML",
+        "data-tool=\"meta-tag-generator\" present on <body>",
+        "<title> matches i18n tools.meta-tag-generator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/meta-tag-generator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 61,
+      "type": "tool",
+      "slug": "robots-txt-generator",
+      "name": "Robots.txt generator",
+      "category": "developer",
+      "description": "Write a robots.txt in plain text: allow everything, block everything or list your own paths, then add a sitemap line. Free, in your browser.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/robots-txt-generator.js",
+      "jsExists": true,
+      "jsSizeBytes": 5012,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/robots-txt-generator.html returns 200 with valid HTML",
+        "data-tool=\"robots-txt-generator\" present on <body>",
+        "<title> matches i18n tools.robots-txt-generator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/robots-txt-generator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 62,
+      "type": "tool",
+      "slug": "xml-sitemap-generator",
+      "name": "XML sitemap generator",
+      "category": "developer",
+      "description": "Paste page URLs to get a valid sitemap.xml: escaped characters, duplicates removed, and your chosen change frequency and priority.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/xml-sitemap-generator.js",
+      "jsExists": true,
+      "jsSizeBytes": 4335,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/xml-sitemap-generator.html returns 200 with valid HTML",
+        "data-tool=\"xml-sitemap-generator\" present on <body>",
+        "<title> matches i18n tools.xml-sitemap-generator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/xml-sitemap-generator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 63,
+      "type": "tool",
+      "slug": "css-box-shadow-generator",
+      "name": "CSS box shadow generator",
+      "category": "developer",
+      "description": "Set offset, blur, spread, colour and opacity to build a box-shadow rule, copy the CSS and see it on a sample card. Inset is supported.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/css-box-shadow-generator.js",
+      "jsExists": true,
+      "jsSizeBytes": 4648,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/css-box-shadow-generator.html returns 200 with valid HTML",
+        "data-tool=\"css-box-shadow-generator\" present on <body>",
+        "<title> matches i18n tools.css-box-shadow-generator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/css-box-shadow-generator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 64,
+      "type": "tool",
+      "slug": "color-palette-generator",
+      "name": "Color palette generator",
+      "category": "developer",
+      "description": "Enter a hex colour to get five swatches: two tints mixed with white, the base, and two shades mixed with black, with hex and rgb values.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/color-palette-generator.js",
+      "jsExists": true,
+      "jsSizeBytes": 3507,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/color-palette-generator.html returns 200 with valid HTML",
+        "data-tool=\"color-palette-generator\" present on <body>",
+        "<title> matches i18n tools.color-palette-generator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/color-palette-generator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 65,
+      "type": "tool",
+      "slug": "css-gradient-generator",
+      "name": "CSS gradient generator",
+      "category": "developer",
+      "description": "Add colour stops, pick an angle and copy the exact CSS linear-gradient rule, with a live preview on the page.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/css-gradient-generator.js",
+      "jsExists": true,
+      "jsSizeBytes": 5608,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/css-gradient-generator.html returns 200 with valid HTML",
+        "data-tool=\"css-gradient-generator\" present on <body>",
+        "<title> matches i18n tools.css-gradient-generator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/css-gradient-generator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 66,
+      "type": "tool",
+      "slug": "password-strength-checker",
+      "name": "Password strength checker",
+      "category": "developer",
+      "description": "Estimate a password's entropy from its length and the character classes it uses. Runs in the page and is never stored, sent or logged.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/password-strength-checker.js",
+      "jsExists": true,
+      "jsSizeBytes": 3761,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/password-strength-checker.html returns 200 with valid HTML",
+        "data-tool=\"password-strength-checker\" present on <body>",
+        "<title> matches i18n tools.password-strength-checker.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/password-strength-checker.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 67,
+      "type": "tool",
+      "slug": "favicon-generator",
+      "name": "Favicon generator",
+      "category": "generators",
+      "description": "Turn one image into favicon PNGs at 16, 32, 48, 180, 192 and 512 pixels, drawn on a canvas in your browser. Nothing is uploaded.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/favicon-generator.js",
+      "jsExists": true,
+      "jsSizeBytes": 4770,
+      "complexity": "Medium",
+      "priority": "P3",
+      "score": {
+        "total": 81,
+        "breakdown": {
+          "functional": 19,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [
+        "No guard() error wrapping for async/file ops"
+      ],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/favicon-generator.html returns 200 with valid HTML",
+        "data-tool=\"favicon-generator\" present on <body>",
+        "<title> matches i18n tools.favicon-generator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/favicon-generator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 68,
+      "type": "tool",
+      "slug": "html-to-markdown",
+      "name": "HTML to Markdown converter",
+      "category": "developer",
+      "description": "Paste HTML to get Markdown: headings, bold, italics, links, lists, quotes, code and tables, written as text only. Nothing is executed.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/html-to-markdown.js",
+      "jsExists": true,
+      "jsSizeBytes": 5195,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/html-to-markdown.html returns 200 with valid HTML",
+        "data-tool=\"html-to-markdown\" present on <body>",
+        "<title> matches i18n tools.html-to-markdown.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/html-to-markdown.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 69,
+      "type": "tool",
+      "slug": "user-agent-parser",
+      "name": "User agent parser",
+      "category": "developer",
+      "description": "Paste a user agent string or read your own to see the browser, version, engine, operating system and device type. Results are approximate.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/user-agent-parser.js",
+      "jsExists": true,
+      "jsSizeBytes": 3643,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/user-agent-parser.html returns 200 with valid HTML",
+        "data-tool=\"user-agent-parser\" present on <body>",
+        "<title> matches i18n tools.user-agent-parser.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/user-agent-parser.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 70,
+      "type": "tool",
+      "slug": "bmi-calculator",
+      "name": "BMI calculator",
+      "category": "calculators",
+      "description": "Work out BMI from weight in kilograms and height in centimetres, with the WHO bands and the healthy weight range for that height.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/bmi-calculator.js",
+      "jsExists": true,
+      "jsSizeBytes": 2442,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 83,
+        "breakdown": {
+          "functional": 22,
+          "ux": 15,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/bmi-calculator.html returns 200 with valid HTML",
+        "data-tool=\"bmi-calculator\" present on <body>",
+        "<title> matches i18n tools.bmi-calculator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/bmi-calculator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 71,
+      "type": "tool",
+      "slug": "sql-formatter",
+      "name": "SQL formatter",
+      "category": "developer",
+      "description": "Paste a SQL statement to get it formatted: keywords uppercased, clauses on their own lines, quoted strings untouched. Formatting only.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/sql-formatter.js",
+      "jsExists": true,
+      "jsSizeBytes": 3166,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/sql-formatter.html returns 200 with valid HTML",
+        "data-tool=\"sql-formatter\" present on <body>",
+        "<title> matches i18n tools.sql-formatter.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/sql-formatter.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 72,
+      "type": "tool",
+      "slug": "coin-flipper",
+      "name": "Coin flipper",
+      "category": "fun",
+      "description": "Flip a virtual coin with browser crypto randomness, see heads or tails, and keep a running count for this visit. No storage, no bias.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/coin-flipper.js",
+      "jsExists": true,
+      "jsSizeBytes": 2095,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 83,
+        "breakdown": {
+          "functional": 22,
+          "ux": 15,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/coin-flipper.html returns 200 with valid HTML",
+        "data-tool=\"coin-flipper\" present on <body>",
+        "<title> matches i18n tools.coin-flipper.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/coin-flipper.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 73,
+      "type": "tool",
+      "slug": "dice-roller",
+      "name": "Dice roller",
+      "category": "fun",
+      "description": "Roll 1 to 10 dice with 4, 6, 8, 10, 12 or 20 sides, see every die and the total. Uniform results from browser crypto, no storage.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/dice-roller.js",
+      "jsExists": true,
+      "jsSizeBytes": 2882,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/dice-roller.html returns 200 with valid HTML",
+        "data-tool=\"dice-roller\" present on <body>",
+        "<title> matches i18n tools.dice-roller.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/dice-roller.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 74,
+      "type": "tool",
+      "slug": "decision-wheel",
+      "name": "Decision wheel",
+      "category": "fun",
+      "description": "Type your options, one per line, and spin to pick one at random. The result is shown as text and marked in the list. Up to 20 options.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/decision-wheel.js",
+      "jsExists": true,
+      "jsSizeBytes": 3346,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/decision-wheel.html returns 200 with valid HTML",
+        "data-tool=\"decision-wheel\" present on <body>",
+        "<title> matches i18n tools.decision-wheel.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/decision-wheel.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 75,
+      "type": "tool",
+      "slug": "bubble-wrap-popper",
+      "name": "Bubble wrap popper",
+      "category": "fun",
+      "description": "A sheet of 100 bubbles to pop by click, tap or keyboard, with a running count, a reset and optional sound that is off by default.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/bubble-wrap-popper.js",
+      "jsExists": true,
+      "jsSizeBytes": 4233,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/bubble-wrap-popper.html returns 200 with valid HTML",
+        "data-tool=\"bubble-wrap-popper\" present on <body>",
+        "<title> matches i18n tools.bubble-wrap-popper.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/bubble-wrap-popper.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 76,
+      "type": "tool",
+      "slug": "fake-hacker-typer",
+      "name": "Fake hacker typer",
+      "category": "fun",
+      "description": "Press any key and made-up log lines scroll past in a fake terminal. It is a toy: nothing runs, nothing is read from your machine.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/fake-hacker-typer.js",
+      "jsExists": true,
+      "jsSizeBytes": 3895,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/fake-hacker-typer.html returns 200 with valid HTML",
+        "data-tool=\"fake-hacker-typer\" present on <body>",
+        "<title> matches i18n tools.fake-hacker-typer.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/fake-hacker-typer.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 77,
+      "type": "tool",
+      "slug": "compliment-generator",
+      "name": "Compliment generator",
+      "category": "fun",
+      "description": "Get a kind, specific compliment built from built-in word lists, ask for another at any time and copy the line. Nothing is stored.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/compliment-generator.js",
+      "jsExists": true,
+      "jsSizeBytes": 2329,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 83,
+        "breakdown": {
+          "functional": 22,
+          "ux": 15,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/compliment-generator.html returns 200 with valid HTML",
+        "data-tool=\"compliment-generator\" present on <body>",
+        "<title> matches i18n tools.compliment-generator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/compliment-generator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 78,
+      "type": "tool",
+      "slug": "shakespearean-insult-generator",
+      "name": "Shakespearean insult generator",
+      "category": "fun",
+      "description": "Build a mild, original stage-villain insult from archaic word lists. Playful only, and not a quotation from Shakespeare.",
+      "architecture": "toolkit-mount",
+      "jsFile": "assets/tools/shakespearean-insult-generator.js",
+      "jsExists": true,
+      "jsSizeBytes": 2850,
+      "complexity": "Low",
+      "priority": "P3",
+      "score": {
+        "total": 84,
+        "breakdown": {
+          "functional": 22,
+          "ux": 16,
+          "perf": 12,
+          "value": 13,
+          "sec": 13,
+          "a11y": 8
+        }
+      },
+      "status": "verified working",
+      "issues": [],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/shakespearean-insult-generator.html returns 200 with valid HTML",
+        "data-tool=\"shakespearean-insult-generator\" present on <body>",
+        "<title> matches i18n tools.shakespearean-insult-generator.title",
+        "meta description present and unique",
+        "canonical href correct",
+        "schema.org JSON-LD with BreadcrumbList + SoftwareApplication",
+        "skip-link present",
+        "exactly one <h1>",
+        "tool script assets/tools/shakespearean-insult-generator.js loads and sets window.TOOL",
+        "window.TOOL.mount is a function",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)"
+      ]
+    },
+    {
+      "index": 79,
+      "type": "business",
+      "slug": "invoice",
+      "name": "Invoice generator",
+      "category": "business",
+      "description": "Build an invoice in the browser: line items, tax, discount, live totals and print to PDF.",
+      "architecture": "iffe-with-js",
+      "jsFile": "assets/invoice.js",
+      "jsExists": true,
+      "jsSizeBytes": 13083,
+      "complexity": "Medium",
+      "priority": "P3",
+      "score": {
+        "total": 70,
+        "breakdown": {
+          "functional": 20,
+          "ux": 14,
+          "perf": 10,
+          "value": 14,
+          "sec": 9,
+          "a11y": 3
+        }
+      },
+      "status": "verified working",
+      "issues": [
+        "Missing skip-link (accessibility)",
+        "Uses localStorage for draft/saved data",
+        "Uses mailto: link — opens email client (privacy consideration for entered data)",
+        "Uses window.print() — correct for invoice/PDF workflow",
+        "Uses innerHTML for row/template injection",
+        "Empty JSON-LD comment block (no structured data)",
+        "Older page architecture — no shared ToolKit UI, different nav structure"
+      ],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/invoice.html returns 200 with valid HTML",
+        "<title> matches business page name",
+        "meta description present",
+        "canonical href correct",
+        "skip-link added to page",
+        "schema.org JSON-LD populated (not empty comment block)",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)",
+        "Page uses shared header/nav pattern consistent with tool pages"
+      ]
+    },
+    {
+      "index": 80,
+      "type": "business",
+      "slug": "calculator",
+      "name": "Job pricing calculator",
+      "category": "business",
+      "description": "Turn hours, rate, materials and overhead into a price, then compare it with the market.",
+      "architecture": "iffe-with-js",
+      "jsFile": "assets/calculator.js",
+      "jsExists": true,
+      "jsSizeBytes": 2956,
+      "complexity": "Medium",
+      "priority": "P3",
+      "score": {
+        "total": 72,
+        "breakdown": {
+          "functional": 20,
+          "ux": 14,
+          "perf": 10,
+          "value": 14,
+          "sec": 11,
+          "a11y": 3
+        }
+      },
+      "status": "verified working",
+      "issues": [
+        "Missing skip-link (accessibility)",
+        "Uses innerHTML for row/template injection",
+        "Empty JSON-LD comment block (no structured data)",
+        "Older page architecture — no shared ToolKit UI, different nav structure"
+      ],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/calculator.html returns 200 with valid HTML",
+        "<title> matches business page name",
+        "meta description present",
+        "canonical href correct",
+        "skip-link added to page",
+        "schema.org JSON-LD populated (not empty comment block)",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)",
+        "Page uses shared header/nav pattern consistent with tool pages"
+      ]
+    },
+    {
+      "index": 81,
+      "type": "business",
+      "slug": "margin-calculator",
+      "name": "Margin calculator",
+      "category": "business",
+      "description": "Margin vs markup, the effect of a discount, and the price needed for a target margin.",
+      "architecture": "iffe-with-js",
+      "jsFile": "assets/margin.js",
+      "jsExists": true,
+      "jsSizeBytes": 3417,
+      "complexity": "Medium",
+      "priority": "P3",
+      "score": {
+        "total": 72,
+        "breakdown": {
+          "functional": 20,
+          "ux": 14,
+          "perf": 10,
+          "value": 14,
+          "sec": 11,
+          "a11y": 3
+        }
+      },
+      "status": "verified working",
+      "issues": [
+        "Missing skip-link (accessibility)",
+        "Uses innerHTML for row/template injection",
+        "Empty JSON-LD comment block (no structured data)",
+        "Older page architecture — no shared ToolKit UI, different nav structure"
+      ],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/margin-calculator.html returns 200 with valid HTML",
+        "<title> matches business page name",
+        "meta description present",
+        "canonical href correct",
+        "skip-link added to page",
+        "schema.org JSON-LD populated (not empty comment block)",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)",
+        "Page uses shared header/nav pattern consistent with tool pages"
+      ]
+    },
+    {
+      "index": 82,
+      "type": "business",
+      "slug": "break-even-calculator",
+      "name": "Break-even calculator",
+      "category": "business",
+      "description": "How many jobs or how much revenue covers your costs before the business starts earning.",
+      "architecture": "iffe-with-js",
+      "jsFile": "assets/break-even.js",
+      "jsExists": true,
+      "jsSizeBytes": 3743,
+      "complexity": "Medium",
+      "priority": "P3",
+      "score": {
+        "total": 72,
+        "breakdown": {
+          "functional": 20,
+          "ux": 14,
+          "perf": 10,
+          "value": 14,
+          "sec": 11,
+          "a11y": 3
+        }
+      },
+      "status": "verified working",
+      "issues": [
+        "Missing skip-link (accessibility)",
+        "Uses innerHTML for row/template injection",
+        "Empty JSON-LD comment block (no structured data)",
+        "Older page architecture — no shared ToolKit UI, different nav structure"
+      ],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/break-even-calculator.html returns 200 with valid HTML",
+        "<title> matches business page name",
+        "meta description present",
+        "canonical href correct",
+        "skip-link added to page",
+        "schema.org JSON-LD populated (not empty comment block)",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)",
+        "Page uses shared header/nav pattern consistent with tool pages"
+      ]
+    },
+    {
+      "index": 83,
+      "type": "business",
+      "slug": "late-payment-calculator",
+      "name": "Late payment calculator",
+      "category": "business",
+      "description": "What an overdue invoice costs you per day, with a late fee and interest over time.",
+      "architecture": "iffe-with-js",
+      "jsFile": "assets/late-fee.js",
+      "jsExists": true,
+      "jsSizeBytes": 3297,
+      "complexity": "Medium",
+      "priority": "P3",
+      "score": {
+        "total": 72,
+        "breakdown": {
+          "functional": 20,
+          "ux": 14,
+          "perf": 10,
+          "value": 14,
+          "sec": 11,
+          "a11y": 3
+        }
+      },
+      "status": "verified working",
+      "issues": [
+        "Missing skip-link (accessibility)",
+        "Uses innerHTML for row/template injection",
+        "Empty JSON-LD comment block (no structured data)",
+        "Older page architecture — no shared ToolKit UI, different nav structure"
+      ],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/late-payment-calculator.html returns 200 with valid HTML",
+        "<title> matches business page name",
+        "meta description present",
+        "canonical href correct",
+        "skip-link added to page",
+        "schema.org JSON-LD populated (not empty comment block)",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)",
+        "Page uses shared header/nav pattern consistent with tool pages"
+      ]
+    },
+    {
+      "index": 84,
+      "type": "business",
+      "slug": "loss-calculator",
+      "name": "Leak calculator",
+      "category": "business",
+      "description": "Estimate what unanswered enquiries and manual admin cost you each month and each year.",
+      "architecture": "iffe-with-js",
+      "jsFile": "assets/loss.js",
+      "jsExists": true,
+      "jsSizeBytes": 5929,
+      "complexity": "Medium",
+      "priority": "P3",
+      "score": {
+        "total": 72,
+        "breakdown": {
+          "functional": 20,
+          "ux": 14,
+          "perf": 10,
+          "value": 14,
+          "sec": 11,
+          "a11y": 3
+        }
+      },
+      "status": "verified working",
+      "issues": [
+        "Missing skip-link (accessibility)",
+        "Uses innerHTML for row/template injection",
+        "Empty JSON-LD comment block (no structured data)",
+        "Older page architecture — no shared ToolKit UI, different nav structure"
+      ],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/loss-calculator.html returns 200 with valid HTML",
+        "<title> matches business page name",
+        "meta description present",
+        "canonical href correct",
+        "skip-link added to page",
+        "schema.org JSON-LD populated (not empty comment block)",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)",
+        "Page uses shared header/nav pattern consistent with tool pages"
+      ]
+    },
+    {
+      "index": 85,
+      "type": "business",
+      "slug": "audit",
+      "name": "Website audit checklist",
+      "category": "business",
+      "description": "15 checks across speed, trust, conversion and findability, with a ranked list of fixes.",
+      "architecture": "iffe-with-js",
+      "jsFile": "assets/audit.js",
+      "jsExists": true,
+      "jsSizeBytes": 5427,
+      "complexity": "Medium",
+      "priority": "P3",
+      "score": {
+        "total": 71,
+        "breakdown": {
+          "functional": 20,
+          "ux": 14,
+          "perf": 10,
+          "value": 14,
+          "sec": 10,
+          "a11y": 3
+        }
+      },
+      "status": "verified working",
+      "issues": [
+        "Missing skip-link (accessibility)",
+        "Uses localStorage for draft/saved data",
+        "Uses innerHTML for row/template injection",
+        "Empty JSON-LD comment block (no structured data)",
+        "Older page architecture — no shared ToolKit UI, different nav structure"
+      ],
+      "phases": {
+        "phase1": "inspected",
+        "phase2": "assessed"
+      },
+      "acceptance": [
+        "Page en/audit.html returns 200 with valid HTML",
+        "<title> matches business page name",
+        "meta description present",
+        "canonical href correct",
+        "skip-link added to page",
+        "schema.org JSON-LD populated (not empty comment block)",
+        "CSP meta present with script-src self",
+        "ad-slot elements present (hidden)",
+        "Page uses shared header/nav pattern consistent with tool pages"
+      ]
+    }
+  ],
+  "sharedImprovements": [
+    {
+      "area": "Accessibility",
+      "finding": "All 7 business pages lack skip-link; all 78 tool pages have it. Add skip-link to business pages for consistency and WCAG 2.4.1 compliance.",
+      "priority": "P2",
+      "entriesAffected": 7,
+      "slugs": [
+        "invoice",
+        "calculator",
+        "margin-calculator",
+        "break-even-calculator",
+        "late-payment-calculator",
+        "loss-calculator",
+        "audit"
+      ]
+    },
+    {
+      "area": "Structured Data",
+      "finding": "All 7 business pages have empty JSON-LD comment blocks (<!-- stacklane:jsonld:start -->...<!-- stacklane:jsonld:end -->) with no Schema.org markup. Tool pages have full BreadcrumbList + SoftwareApplication. Populate business page JSON-LD.",
+      "priority": "P2",
+      "entriesAffected": 7,
+      "slugs": [
+        "invoice",
+        "calculator",
+        "margin-calculator",
+        "break-even-calculator",
+        "late-payment-calculator",
+        "loss-calculator",
+        "audit"
+      ]
+    },
+    {
+      "area": "Architecture Consistency",
+      "finding": "Business pages use a different, older page architecture (IFFE scripts, raw HTML forms, inline event wiring) vs the shared ToolKit mount pattern used by all 78 tools. Consider migrating business pages to the shared architecture for maintainability.",
+      "priority": "P3",
+      "entriesAffected": 7,
+      "slugs": [
+        "invoice",
+        "calculator",
+        "margin-calculator",
+        "break-even-calculator",
+        "late-payment-calculator",
+        "loss-calculator",
+        "audit"
+      ]
+    },
+    {
+      "area": "Catalogue Reconciliation",
+      "finding": "assets/catalog.js has 78 tools but repository docs claim 107 (114 total). 29 tools are missing from the catalogue. Investigate whether these tools were removed or the catalogue was never updated. This is a documentation/data integrity issue, not a code defect.",
+      "priority": "P1",
+      "entriesAffected": 29,
+      "slugs": []
+    },
+    {
+      "area": "Script Src Naming",
+      "finding": "Business page script src names do not match slugs: margin-calculator.html loads margin.js, break-even-calculator.html loads break-even.js, late-payment-calculator.html loads late-fee.js. This is confusing and error-prone. Align script filenames with page slugs.",
+      "priority": "P3",
+      "entriesAffected": 3,
+      "slugs": [
+        "margin-calculator",
+        "break-even-calculator",
+        "late-payment-calculator"
+      ]
+    },
+    {
+      "area": "Error Handling Consistency",
+      "finding": "pdfpage-counter.js does not use guard() for its async pdf-lib operations, unlike merge-pdf.js which does. Standardize error handling across all tools that use async operations.",
+      "priority": "P2",
+      "entriesAffected": 2,
+      "slugs": [
+        "pdfpage-counter",
+        "merge-pdf"
+      ]
+    }
+  ],
+  "upgradeSequence": [
+    {
+      "phase": "0 — Reconciliation",
+      "description": "Resolve the 114-vs-85 catalogue discrepancy. Either restore the 29 missing tools to assets/catalog.js or update all documentation to reflect the current 85-entry catalogue. This is a prerequisite for any roadmap that references \"all 114 entries.\"",
+      "priority": "P1",
+      "dependsOn": [],
+      "delivers": [
+        "Reconciled catalogue matching documentation",
+        "Updated PROJECT-CONTEXT.md and search-setup.js comments"
+      ]
+    },
+    {
+      "phase": "1 — Accessibility Fixes",
+      "description": "Add skip-link to all 7 business pages. Populate JSON-LD structured data on all 7 business pages.",
+      "priority": "P2",
+      "dependsOn": [
+        "0 — Reconciliation"
+      ],
+      "delivers": [
+        "7 business pages with skip-link",
+        "7 business pages with schema.org markup"
+      ]
+    },
+    {
+      "phase": "2 — Error Handling",
+      "description": "Add guard() wrapper to pdfpage-counter.js async operations. Audit all tools for unguarded async ops.",
+      "priority": "P2",
+      "dependsOn": [
+        "1 — Accessibility Fixes"
+      ],
+      "delivers": [
+        "Consistent error handling across all async tools"
+      ]
+    },
+    {
+      "phase": "3 — Architecture Normalization",
+      "description": "Consider migrating business pages to share the ToolKit mount architecture. Align business page script filenames with page slugs.",
+      "priority": "P3",
+      "dependsOn": [
+        "2 — Error Handling"
+      ],
+      "delivers": [
+        "Consistent architecture across all 85 entries",
+        "Predictable script naming"
+      ]
+    },
+    {
+      "phase": "4 — Security Hardening",
+      "description": "Audit barcode-generator.js innerHTML usage (currently low-risk due to XML escaping and char filtering, but could be replaced with DOM construction). Audit all tools for eval() usage (none found).",
+      "priority": "P3",
+      "dependsOn": [
+        "3 — Architecture Normalization"
+      ],
+      "delivers": [
+        "All innerHTML usage reviewed",
+        "No eval() in any tool"
+      ]
+    }
+  ],
+  "methodology": {
+    "model": "Weighted priority: Functional 25 / UX 20 / Performance & technical quality 15 / User value 15 / Security/privacy/data-handling 15 / Accessibility & SEO 10. Bands: P0 (<50), P1 (50-59), P2 (60-69), P3 (70+). Complexity: Low/Medium/High based on technical sophistication (pdf-lib, file API, crypto, code size).",
+    "inspectionMethod": "Each entry inspected via: (1) HTML page structure — title, meta, canonical, CSP, JSON-LD, skip-link, headings, data-tool, script includes, ad slots; (2) JS tool file — mount function, error handling (guard), crypto usage, file API, pdf-lib, innerHTML, localStorage, eval, console calls; (3) Business pages — architecture pattern, localStorage, mailto, print, innerHTML, script naming.",
+    "verificationStatus": "All 85 entries inspected at source-code level. No live browser rendering tests performed for this inventory. Statuses reflect source-code inspection only.",
+    "limitations": [
+      "No live browser testing — rendering, interactivity, and visual layout not verified",
+      "No network/request testing — actual runtime behavior not confirmed",
+      "No AdSense/ads.txt verification — ad slots are hidden placeholders only",
+      "Complexity scores are heuristic estimates based on code features, not measured performance",
+      "Scores are relative within this codebase, not absolute quality measures"
+    ]
+  }
+}
